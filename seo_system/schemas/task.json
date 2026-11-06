@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spinoff.local/schemas/task.json",
+  "type": "object",
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "finding_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "action": {
+      "type": "string",
+      "minLength": 1
+    },
+    "owner_role": {
+      "type": "string",
+      "minLength": 1
+    },
+    "priority": {
+      "enum": [
+        "P1",
+        "P2"
+      ]
+    },
+    "effort_hours": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "risk": {
+      "type": "string",
+      "minLength": 1
+    },
+    "acceptance_test": {
+      "type": "string",
+      "minLength": 1
+    },
+    "metric": {
+      "type": "string",
+      "minLength": 1
+    },
+    "measurement_window": {
+      "type": "string",
+      "minLength": 1
+    },
+    "required_permission": {
+      "type": "string",
+      "minLength": 1
+    },
+    "expected_effect": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "task_id",
+    "finding_ids",
+    "url",
+    "action",
+    "owner_role",
+    "priority",
+    "effort_hours",
+    "dependencies",
+    "risk",
+    "acceptance_test",
+    "metric",
+    "measurement_window",
+    "required_permission",
+    "expected_effect"
+  ],
+  "additionalProperties": false
+}

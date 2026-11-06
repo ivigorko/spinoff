@@ -1,0 +1,22 @@
+{
+  "technical": {
+    "preflight": [],
+    "import": ["preflight"],
+    "normalize": ["import"],
+    "technical_findings": ["normalize"],
+    "report": ["technical_findings"],
+    "priority": ["technical_findings"],
+    "roadmap": ["priority"],
+    "qa": ["report", "priority", "roadmap"]
+  },
+  "go": {
+    "preflight": [],
+    "import": ["preflight"],
+    "normalize": ["import"],
+    "technical_findings": ["normalize"],
+    "report": ["technical_findings"],
+    "priority": ["technical_findings"],
+    "roadmap": ["priority"],
+    "qa": ["report", "priority", "roadmap"]
+  }
+}

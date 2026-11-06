@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spinoff.local/schemas/finding.json",
+  "type": "object",
+  "properties": {
+    "finding_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "category": {
+      "const": "technical"
+    },
+    "code": {
+      "enum": [
+        "http_error",
+        "missing_title",
+        "missing_h1"
+      ]
+    },
+    "severity": {
+      "enum": [
+        "high",
+        "medium"
+      ]
+    },
+    "url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "fact": {
+      "type": "object",
+      "minProperties": 1,
+      "maxProperties": 1
+    },
+    "evidence": {
+      "type": "object",
+      "properties": {
+        "artifact_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "row_index": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "field": {
+          "enum": [
+            "status_code",
+            "title",
+            "h1"
+          ]
+        }
+      },
+      "required": [
+        "artifact_id",
+        "row_index",
+        "field"
+      ],
+      "additionalProperties": false
+    },
+    "action": {
+      "type": "string",
+      "minLength": 1
+    },
+    "acceptance_test": {
+      "type": "string",
+      "minLength": 1
+    },
+    "expected_effect": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "finding_id",
+    "category",
+    "code",
+    "severity",
+    "url",
+    "fact",
+    "evidence",
+    "action",
+    "acceptance_test",
+    "expected_effect"
+  ],
+  "additionalProperties": false
+}

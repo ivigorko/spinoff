@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spinoff.local/schemas/source-manifest.json",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "project_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{0,63}$"
+    },
+    "source_id": {
+      "enum": [
+        "labrika",
+        "crawl_export",
+        "manual_fixture"
+      ]
+    },
+    "source_locator": {
+      "type": "string",
+      "minLength": 1
+    },
+    "primary_origin": {
+      "type": "string",
+      "minLength": 1
+    },
+    "kind": {
+      "const": "pages"
+    },
+    "host": {
+      "type": "string",
+      "minLength": 1
+    },
+    "site_revision": {
+      "type": "string",
+      "minLength": 1
+    },
+    "file": {
+      "type": "string",
+      "minLength": 1
+    },
+    "format": {
+      "enum": [
+        "json",
+        "csv",
+        "xlsx"
+      ]
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "row_count": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 100000
+    },
+    "collected_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source_generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "coverage": {
+      "type": "object",
+      "properties": {
+        "complete": {
+          "type": "boolean"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "complete",
+        "reason"
+      ],
+      "additionalProperties": false
+    },
+    "column_mapping": {
+      "type": "object",
+      "propertyNames": {
+        "enum": [
+          "url",
+          "status_code",
+          "title",
+          "h1"
+        ]
+      },
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "delimiter": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1
+    },
+    "sheet": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "schema_version",
+    "project_id",
+    "source_id",
+    "source_locator",
+    "primary_origin",
+    "kind",
+    "host",
+    "site_revision",
+    "file",
+    "format",
+    "sha256",
+    "row_count",
+    "collected_at",
+    "source_generated_at",
+    "coverage"
+  ],
+  "additionalProperties": false
+}

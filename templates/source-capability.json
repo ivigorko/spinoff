@@ -1,0 +1,16 @@
+{
+  "source": "REPLACE_WITH_SOURCE",
+  "report_kind": "REPLACE_WITH_REPORT",
+  "documented": false,
+  "account_verified": false,
+  "executor_verified": false,
+  "export_verified": false,
+  "api_verified": false,
+  "verified_at": null,
+  "account_or_property": null,
+  "method": null,
+  "evidence_locator": null,
+  "limitations": ["Template only; no access is established"],
+  "remaining_quota": null,
+  "allow_new_paid_calls": false
+}

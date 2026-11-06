@@ -1,0 +1,36 @@
+{
+  "upstream": {
+    "repository": "https://github.com/z1fex/SEO-AGENCY-IN-A-BOX",
+    "commit": "738e86a84a55c44ef9093b6631943bef8a4738e0",
+    "inspected_at": "2026-11-06",
+    "license": "MIT",
+    "adapted_sources": [
+      "CLAUDE.md",
+      "instructions/data-flow.md",
+      "instructions/flow.md",
+      "workflows/full-seo-audit.md",
+      "agents/_base/quality-gate.md",
+      "quality/qa-checklist.md",
+      "agents/technical/site-crawler.md",
+      "agents/strategy/priority-matrix-builder.md",
+      "agents/strategy/roadmap-planner.md"
+    ],
+    "method": "Selected concepts rewritten for Codex and a validated local workflow; no bulk copying of agents"
+  },
+  "specification": {
+    "name": "SEO_система_Codex_Лабрика_обновлено.md",
+    "version": "1.1",
+    "library_file_id": "libfile_ca5fad5e72b88191a365a3e83d3b9742",
+    "library_version": 0,
+    "size_bytes": 98333,
+    "sha256": "09266bab433b95ca4d45dfe5dbd5a4904de1ad465b8a66d41004b9cb930ce318"
+  },
+  "original_repository": {
+    "url": "https://github.com/ivigorko/spinoff",
+    "commit": "62822d3768a2827607842ea1ad1cc8281609b8f2",
+    "files": [
+      "README.md"
+    ],
+    "deleted_files": []
+  }
+}

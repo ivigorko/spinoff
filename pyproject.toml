@@ -1,0 +1,19 @@
+[project]
+name = "spinoff-seo"
+version = "0.1.0"
+description = "Evidence-backed offline SEO workflow for Codex"
+requires-python = ">=3.11"
+dependencies = ["jsonschema==4.26.0", "openpyxl==3.1.5"]
+
+[project.scripts]
+seo = "seo_system.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["seo_system*"]
+
+[tool.setuptools.package-data]
+seo_system = ["schemas/*.json", "config/*.json"]
