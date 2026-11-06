@@ -104,14 +104,22 @@ def read_table(raw, manifest):
             if manifest.get("sheet") not in workbook.sheetnames:
                 raise WorkflowError("Select an existing XLSX sheet explicitly")
             sheet = workbook[manifest["sheet"]]
-            if sheet.max_row > MAX_ROWS + 1 or sheet.max_column > 200:
+            # Google Sheets exports may omit worksheet dimension metadata.
+            if (sheet.max_row is not None and sheet.max_row > MAX_ROWS + 1) or (sheet.max_column is not None and sheet.max_column > 200):
                 raise WorkflowError("XLSX dimensions exceed limits")
             values = sheet.iter_rows()
-            headers = [cell.value for cell in next(values)]
+            header_cells = next(values, None)
+            if header_cells is None:
+                raise WorkflowError("Empty XLSX sheet")
+            headers = [cell.value for cell in header_cells]
+            if len(headers) > 200:
+                raise WorkflowError("XLSX dimensions exceed limits")
             if not all(isinstance(h, str) for h in headers) or len(set(headers)) != len(headers):
                 raise WorkflowError("Missing or duplicate XLSX headers")
             rows = []
-            for cells in values:
+            for row_number, cells in enumerate(values, start=2):
+                if row_number > MAX_ROWS + 1 or len(cells) > 200:
+                    raise WorkflowError("XLSX dimensions exceed limits")
                 if any(c.data_type == "f" for c in cells):
                     raise WorkflowError("XLSX formulas are not accepted")
                 row = dict(zip(headers, [c.value for c in cells]))
@@ -140,6 +148,46 @@ def read_table(raw, manifest):
             if value is not None:
                 page[target] = value
         result.append(page)
+    return result
+
+
+def inspect_import(path, fmt, sheet_name=None):
+    """Inspect a bounded local container, without treating it as measured pages."""
+    path = Path(path)
+    if path.stat().st_size > MAX_BYTES:
+        raise WorkflowError("Source exceeds 20 MiB")
+    raw = path.read_bytes()
+    result = {"format": fmt, "bytes": len(raw), "sha256": digest(raw),
+              "source_access": "local_file_only", "audit_status": "not_started"}
+    if fmt == "xlsx":
+        from openpyxl import load_workbook
+        with zipfile.ZipFile(io.BytesIO(raw)) as archive:
+            if sum(i.file_size for i in archive.infolist()) > 100 * 1024 * 1024:
+                raise WorkflowError("XLSX expands beyond 100 MiB")
+        workbook = load_workbook(io.BytesIO(raw), read_only=True, data_only=False, keep_links=False)
+        try:
+            result["sheets"] = [{"name": s.title, "declared_rows": s.max_row,
+                                  "declared_columns": s.max_column} for s in workbook]
+            if sheet_name is not None:
+                if sheet_name not in workbook.sheetnames:
+                    raise WorkflowError("Select an existing XLSX sheet explicitly")
+                cells = next(workbook[sheet_name].iter_rows(), [])
+                if len(cells) > 200:
+                    raise WorkflowError("XLSX dimensions exceed limits")
+                if any(c.data_type == "f" for c in cells):
+                    raise WorkflowError("XLSX header formulas are not accepted")
+                result["first_row"] = [c.value if isinstance(c.value, (str, int, float, bool, type(None))) else str(c.value) for c in cells]
+        finally:
+            workbook.close()
+    elif fmt == "csv":
+        # This is an inspection preview; normalization still requires explicit delimiter/mapping.
+        result["first_line"] = raw.decode("utf-8-sig").splitlines()[0] if raw else ""
+        result["delimiter_status"] = "select_explicitly_in_manifest"
+    else:
+        value = json.loads(raw.decode("utf-8"))
+        result["json_type"] = type(value).__name__
+        result["row_count"] = len(value) if isinstance(value, list) else None
+    result["note"] = "Container inspection only: verify report kind, mapping, source date, scope and provenance before import"
     return result
 
 

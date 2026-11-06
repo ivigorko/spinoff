@@ -1,15 +1,17 @@
 import hashlib
 import io
 import json
+import re
 import subprocess
 import sys
 import tempfile
 import unittest
+import zipfile
 from datetime import datetime, timezone
 from pathlib import Path
 
 from examples.create_demo import create
-from seo_system.core import WorkflowError, analyze, database, execute, intake, qa, read_table, resolve
+from seo_system.core import WorkflowError, analyze, database, execute, intake, qa, read_table, resolve, inspect_import
 
 CLOCK = datetime(2026, 11, 6, 18, tzinfo=timezone.utc)
 
@@ -151,6 +153,57 @@ class WorkflowTests(unittest.TestCase):
         stream = io.BytesIO()
         book.save(stream)
         with self.assertRaisesRegex(WorkflowError, "formulas"):
+            read_table(stream.getvalue(), {"format": "xlsx", "sheet": "Sheet", "column_mapping": {"url": "URL", "status_code": "HTTP"}})
+
+    def dimensionless_xlsx(self):
+        from openpyxl import Workbook
+        book = Workbook()
+        book.active.append(["URL", "HTTP"])
+        book.active.append(["https://example.com/", 200])
+        stream = io.BytesIO()
+        book.save(stream)
+        output = io.BytesIO()
+        with zipfile.ZipFile(stream) as original, zipfile.ZipFile(output, "w") as target:
+            for entry in original.infolist():
+                data = original.read(entry.filename)
+                if entry.filename == "xl/worksheets/sheet1.xml":
+                    data = re.sub(rb'<dimension[^>]*/>', b'', data)
+                target.writestr(entry, data)
+        return output.getvalue()
+
+    def test_google_style_xlsx_without_dimensions(self):
+        raw = self.dimensionless_xlsx()
+        path = self.root / "source.xlsx"
+        path.write_bytes(raw)
+        inspection = inspect_import(path, "xlsx", "Sheet")
+        self.assertIsNone(inspection["sheets"][0]["declared_rows"])
+        self.assertEqual(inspection["audit_status"], "not_started")
+        self.assertEqual(read_table(raw, {"format": "xlsx", "sheet": "Sheet", "column_mapping": {"url": "URL", "status_code": "HTTP"}}),
+                         [{"url": "https://example.com/", "status_code": 200}])
+
+    def test_dimensionless_xlsx_still_enforces_row_limit(self):
+        from unittest.mock import patch
+        with patch("seo_system.core.MAX_ROWS", 0):
+            with self.assertRaisesRegex(WorkflowError, "dimensions exceed"):
+                read_table(self.dimensionless_xlsx(), {"format": "xlsx", "sheet": "Sheet", "column_mapping": {"url": "URL", "status_code": "HTTP"}})
+
+    def test_dimensionless_xlsx_end_to_end(self):
+        raw = self.dimensionless_xlsx()
+        (self.manifest.parent / "pages.xlsx").write_bytes(raw)
+        self.update(self.manifest, file="pages.xlsx", format="xlsx", sheet="Sheet", row_count=1,
+                    sha256=hashlib.sha256(raw).hexdigest(), column_mapping={"url": "URL", "status_code": "HTTP"})
+        result = self.run_workflow()
+        self.assertEqual(json.loads((Path(result["path"]) / "normalized/pages.json").read_text()),
+                         [{"url": "https://example.com/", "status_code": 200}])
+
+    def test_non_pages_sheet_does_not_become_audit(self):
+        from openpyxl import Workbook
+        book = Workbook()
+        book.active.append(["Task", "Owner"])
+        book.active.append(["Review existing reports", "SEO"])
+        stream = io.BytesIO()
+        book.save(stream)
+        with self.assertRaisesRegex(WorkflowError, "Mapped source columns"):
             read_table(stream.getvalue(), {"format": "xlsx", "sheet": "Sheet", "column_mapping": {"url": "URL", "status_code": "HTTP"}})
 
     def test_qa_fabricated_evidence_blocks(self):

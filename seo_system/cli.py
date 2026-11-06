@@ -4,7 +4,7 @@ import sqlite3
 import sys
 from pathlib import Path
 
-from .core import WorkflowError, config, database, execute, read_json, resolve, check_project
+from .core import WorkflowError, config, database, execute, read_json, resolve, check_project, inspect_import
 
 
 def main():
@@ -19,6 +19,10 @@ def main():
     run.add_argument("--workflow", choices=["technical", "go"], default="technical")
     preflight = sub.add_parser("preflight")
     preflight.add_argument("--profile", required=True)
+    inspect = sub.add_parser("inspect-import")
+    inspect.add_argument("--file", required=True)
+    inspect.add_argument("--format", choices=["json", "csv", "xlsx"], required=True)
+    inspect.add_argument("--sheet")
     status = sub.add_parser("status")
     status.add_argument("--workspace", required=True)
     status.add_argument("--project", required=True)
@@ -35,9 +39,13 @@ def main():
             profile = read_json(args.profile)
             check_project(profile)
             result = {"project_id": profile["project_id"], "local_import": "available",
-                      "drive": "not_configured", "labrika": "not_verified", "gsc": "not_verified",
+                      "drive": "adapter_not_implemented", "labrika": "not_verified", "gsc": "not_verified",
                       "yandex_webmaster": "not_verified", "yandex_metrika": "not_verified", "wordstat": "not_verified",
-                      "paid_calls": "not_implemented", "publication": "not_implemented"}
+                      "paid_calls": "not_implemented", "publication": "not_implemented",
+                      "access_probe": "not_performed_by_cli",
+                      "session_tools": "not_inherited; see dated read-only probe evidence in docs/access-verification.md"}
+        elif args.command == "inspect-import":
+            result = inspect_import(args.file, args.format, args.sheet)
         elif args.command == "run":
             result = execute(args.profile, args.manifest, args.workspace, args.workflow)
         else:

@@ -13,7 +13,7 @@
 
 ## Проверено
 
-`uv sync --frozen` выполнен в новой .venv, Python 3.12.14 / uv 0.12.23. `uv run python -m unittest discover -v`: 23 теста прошли. Проверены E2E/evidence/roadmap, reuse после открытия новой SQLite connection, неверные project/host/checksum/count/types, дубликаты, stale/future timestamps, revision drift, отсутствие полей, CSV mapping, XLSX sheet/formulas, ложная evidence, повреждённые выходы, orphan directory и CLI plan/preflight.
+`uv sync --frozen` выполнен в новой .venv, Python 3.12.14 / uv 0.12.23. После read-only проверки источников `uv run python -m unittest discover -v`: 27 тестов прошли. Проверены E2E/evidence/roadmap, reuse после открытия новой SQLite connection, неверные project/host/checksum/count/types, дубликаты, stale/future timestamps, revision drift, отсутствие полей, CSV mapping, XLSX sheet/formulas/dimensionless export и фактические лимиты строк, отказ трактовать задачи как pages, ложная evidence, повреждённые выходы, orphan directory и CLI plan/preflight.
 
 `python scripts/check_repository.py` и `git diff --check` пройдены. `uv build` создал sdist и wheel; wheel установлен в отдельную /workspace/spinoff-wheel-test, из /tmp выполнены plan и полный offline run с packaged schemas/config. Демо выполнено без сети SEO-сервисов; результаты синтетические. Эти проверки не подтверждают формат реального отчёта Labrika, аккаунтный доступ, устойчивость диска или запись в Drive.
 
@@ -29,6 +29,12 @@
 - Произвольный DAG planner, partial dependency policy, retries/leases/fencing, несколько workers и распределённое состояние. SQLite держит локальную транзакцию на весь run; не предназначена для долгих сетевых задач.
 - Программное apply/publish/production verification/measurement и расписание. Патчи и измерения выполняются лишь по конкретным будущим поручениям и проверенным входам; этот релиз их не делает.
 - Полное DLP/secret scanning и exhaustive security review. Локальный guard проверяет ограниченные паттерны; staged diff необходимо просматривать.
+
+## Продолжение: read-only проверка источников
+
+Через session tools этой среды подтверждены Drive search/fetch и native Sheets→XLSX export конкретных существующих файлов. Исходник сохранён только в приватном игнорируемом workspace. Реальный Google XLSX не содержит worksheet dimensions; импортёр исправлен, добавлен inspect-import и четыре регрессионных теста. Выбранный файл является регламентом, а не измерениями URL, поэтому pages import корректно блокируется; реальный аудит не имитировался.
+
+GSC discovery сообщает no active connection, подключение не создавалось. Yandex connection активен, но доступ к конкретным счётчикам/Вебмастеру не подтверждён; подходящий list-counters/host-list tool не найден, ID не угадывались. Релевантный Labrika tool не найден; UI-доступ не проверен. Это не отсутствие аккаунтов и не недоступность всех способов работы. Полный протокол и границы — docs/access-verification.md. Автономных внешних адаптеров CLI по-прежнему нет.
 
 Это полезная часть этапа 1 исходного ТЗ, а не выполнение всех критериев этапов 0–5. Для частичных результатов не заявлять готовность полной SEO-системы.
 
