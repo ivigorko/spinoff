@@ -31,13 +31,33 @@
             "device": {
               "type": "string",
               "minLength": 1
+            },
+            "property_ref": {
+              "type": "string",
+              "minLength": 1
+            },
+            "timezone": {
+              "type": "string",
+              "minLength": 1
+            },
+            "definition_version": {
+              "type": "string",
+              "minLength": 1
+            },
+            "filters_hash": {
+              "type": "string",
+              "minLength": 1
             }
           },
           "required": [
             "host",
             "region",
             "engine",
-            "device"
+            "device",
+            "property_ref",
+            "timezone",
+            "definition_version",
+            "filters_hash"
           ],
           "additionalProperties": false
         },
@@ -114,13 +134,33 @@
             "device": {
               "type": "string",
               "minLength": 1
+            },
+            "property_ref": {
+              "type": "string",
+              "minLength": 1
+            },
+            "timezone": {
+              "type": "string",
+              "minLength": 1
+            },
+            "definition_version": {
+              "type": "string",
+              "minLength": 1
+            },
+            "filters_hash": {
+              "type": "string",
+              "minLength": 1
             }
           },
           "required": [
             "host",
             "region",
             "engine",
-            "device"
+            "device",
+            "property_ref",
+            "timezone",
+            "definition_version",
+            "filters_hash"
           ],
           "additionalProperties": false
         },

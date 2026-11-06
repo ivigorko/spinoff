@@ -68,6 +68,17 @@ def read_json(path):
     return parse_json(path.read_text(encoding="utf-8"))
 
 
+def selected_input(manifest_path, selected):
+    """Nested manifest data cannot select files outside the explicitly chosen directory."""
+    base = Path(manifest_path).resolve().parent
+    path = (base / selected).resolve()
+    if not path.is_relative_to(base):
+        raise WorkflowError('Manifest input escapes its selected directory')
+    if not path.is_file():
+        raise WorkflowError('Selected input is not a regular file')
+    return path
+
+
 def config(name):
     return json.loads(files("seo_system").joinpath(f"config/{name}.json").read_text())
 
@@ -213,7 +224,7 @@ def intake(profile_path, manifest_path, clock=None):
         raise WorkflowError("Pages source is stale; downloading again does not refresh source time")
     if manifest["site_revision"] != profile["site_revision"]:
         raise WorkflowError("Site revision changed; obtain a fresh source")
-    source = (Path(manifest_path).resolve().parent / manifest["file"]).resolve()
+    source = selected_input(manifest_path, manifest["file"])
     if source.stat().st_size > MAX_BYTES:
         raise WorkflowError("Source exceeds 20 MiB")
     raw = source.read_bytes()

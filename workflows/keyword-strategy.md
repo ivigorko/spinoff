@@ -26,6 +26,18 @@
 | `priority` / analysis | `strategy.priority-matrix-builder` | content-strategy | scale, scored_tasks, dependencies, sequence |
 | `roadmap` / analysis | `strategy.roadmap-planner` | priority | capacity, phases, tasks, dependencies, checkpoints |
 
+Входы и режимы узлов (переопределяют standalone role только в этом workflow):
+
+- `discovery`: business; режим `analysis`.
+- `serp`: serp; режим `analysis`.
+- `intent`: business; режим `analysis`.
+- `competitor-keywords`: competitors; режим `analysis`.
+- `gaps`: business; режим `analysis`.
+- `clusters`: business; режим `analysis`.
+- `content-strategy`: business; режим `analysis`.
+- `priority`: business; режим `analysis`.
+- `roadmap`: business; режим `analysis`.
+
 На каждом узле выполнить предметную процедуру procedures/roles/<team>/<name>.md, её QA и work-product contract. Readiness рассчитывается coordinator; он не пишет экспертный результат вместо Codex.
 
 ## Условия перехода и завершения

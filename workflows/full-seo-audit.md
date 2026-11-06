@@ -40,6 +40,32 @@
 | `report` / analysis | `audit.report-builder` | compile, priority, roadmap | scope, method, findings, priorities, roadmap, limitations |
 | `summary` / analysis | `audit.executive-summary-writer` | report | state, risks, opportunities, decisions, next_steps |
 
+Входы и режимы узлов (переопределяют standalone role только в этом workflow):
+
+- `crawl`: pages; режим `analysis`.
+- `indexation`: pages; режим `analysis`.
+- `cwv`: performance; режим `analysis`.
+- `schema`: pages; режим `analysis`.
+- `internal-links`: internal_links; режим `analysis`.
+- `mobile`: pages; режим `analysis`.
+- `keyword-discovery`: business; режим `analysis`.
+- `serp`: serp; режим `analysis`.
+- `competitor-keywords`: competitors; режим `analysis`.
+- `keyword-gaps`: business; режим `analysis`.
+- `intent`: business; режим `analysis`.
+- `clusters`: business; режим `analysis`.
+- `content-gaps`: business; режим `analysis`.
+- `backlinks`: backlinks; режим `analysis`.
+- `ai`: ai_visibility; режим `analysis`.
+- `local`: local; режим `analysis`.
+- `ecommerce`: products; режим `analysis`.
+- `compile`: business; режим `analysis`.
+- `recommendations`: business; режим `analysis`.
+- `priority`: business; режим `analysis`.
+- `roadmap`: business; режим `analysis`.
+- `report`: business; режим `analysis`.
+- `summary`: business; режим `analysis`.
+
 На каждом узле выполнить предметную процедуру procedures/roles/<team>/<name>.md, её QA и work-product contract. Readiness рассчитывается coordinator; он не пишет экспертный результат вместо Codex.
 
 ## Условия перехода и завершения

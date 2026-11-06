@@ -133,6 +133,13 @@
         ],
         "additionalProperties": false
       }
+    },
+    "work_mode": {
+      "enum": [
+        "analysis",
+        "planning",
+        "draft"
+      ]
     }
   },
   "required": [
@@ -146,7 +153,8 @@
     "data",
     "claims",
     "coverage",
-    "qa"
+    "qa",
+    "work_mode"
   ],
   "additionalProperties": false
 }

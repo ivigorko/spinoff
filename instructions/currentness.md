@@ -21,4 +21,6 @@
 | C15 | Оценка «стоимости агентства» исключена из фактического ROI. Реальный результат требует затрат, ценности и attribution; CPC-equivalent, LTV-прогнозы и экономия времени — отдельные модели с допущениями. | Решение адаптации по контрактам данных и измерений |
 | C16 | Исправлены несуществующие aliases competitor-spy/gap-analyst в исходной team-инструкции. Активные ссылки строятся по реальным IDs из roles.json; vault/output не образуют две редактируемые копии результата. | Сверка pinned upstream и каталогов |
 
+| C17 | Не обещать HowTo rich results (прекращены 13.09.2023) и sitelinks search box от WebSite/SearchAction (удаление с 21.11.2024). WebSite для site names — отдельный действующий сценарий. Синтаксически корректная разметка не доказывает поддержку feature. | [HowTo update](https://developers.google.com/search/blog/2023/08/howto-faq-changes?hl=en), [Sitelinks search box](https://developers.google.com/search/blog/2024/10/sitelinks-search-box) |
+
 Не поддерживаемые фактами рекомендации становятся гипотезами или missing inputs. Никакой суммарный quality score не компенсирует ложные данные. Не превращать актуальную методичку в обещание конкретного ранжирования.

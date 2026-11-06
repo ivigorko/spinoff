@@ -27,6 +27,19 @@
 | `verify` / verify | `operations.production-verify` | release | checks, regressions, decision |
 | `post-audit` / verify | `technical.site-migration-specialist` | verify | baseline, url_mapping, redirect_rules, parity, rollback, verification |
 
+Входы и режимы узлов (переопределяют standalone role только в этом workflow):
+
+- `baseline`: pages; режим `analysis`.
+- `mapping`: pages; режим `analysis`.
+- `indexation`: pages; режим `analysis`.
+- `meta`: pages; режим `analysis`.
+- `links`: internal_links; режим `analysis`.
+- `dashboard`: analytics; режим `analysis`.
+- `prepared`: business; режим `analysis`.
+- `release`: release; режим `analysis`.
+- `verify`: verification, release; режим `analysis`.
+- `post-audit`: pages; режим `analysis`.
+
 На каждом узле выполнить предметную процедуру procedures/roles/<team>/<name>.md, её QA и work-product contract. Readiness рассчитывается coordinator; он не пишет экспертный результат вместо Codex.
 
 ## Условия перехода и завершения

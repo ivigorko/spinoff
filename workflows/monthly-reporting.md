@@ -24,6 +24,16 @@
 | `report` / analysis | `analytics.monthly-report-writer` | rankings, traffic, conversions, content, roi | summary, kpis, work_log, changes, next_month, limitations |
 | `refresh` / analysis | `operations.strategy-refresh` | report | continue, change, stop, next_backlog, review_window |
 
+Входы и режимы узлов (переопределяют standalone role только в этом workflow):
+
+- `rankings`: serp; режим `analysis`.
+- `traffic`: analytics; режим `analysis`.
+- `conversions`: analytics; режим `analysis`.
+- `content`: analytics; режим `analysis`.
+- `roi`: analytics; режим `analysis`.
+- `report`: analytics; режим `analysis`.
+- `refresh`: business; режим `analysis`.
+
 На каждом узле выполнить предметную процедуру procedures/roles/<team>/<name>.md, её QA и work-product contract. Readiness рассчитывается coordinator; он не пишет экспертный результат вместо Codex.
 
 ## Условия перехода и завершения

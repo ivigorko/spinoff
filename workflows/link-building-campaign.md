@@ -22,7 +22,19 @@
 | `broken` / analysis | `links.broken-link-finder` | prospects | candidates, status_checks, replacements, drafts |
 | `pr` / analysis | `links.digital-pr-strategist` | prospects | assets, campaigns, media_targets, calendar, measurement |
 | `outreach` / analysis | `links.outreach-writer` | prospects, broken, pr | drafts, personalization_evidence, followups, recipient_scope |
-| `summary` / analysis | `audit.executive-summary-writer` | audit, competitors, outreach | state, risks, opportunities, decisions, next_steps |
+| `summary` / analysis | `audit.executive-summary-writer` | audit, competitors, prospects, broken, pr, outreach | campaign_summary, prospect_register, draft_messages, tracking_plan, limitations |
+
+Входы и режимы узлов (переопределяют standalone role только в этом workflow):
+
+- `audit`: backlinks; режим `analysis`.
+- `competitors`: backlinks; режим `analysis`.
+- `prospects`: business; режим `analysis`.
+- `broken`: backlinks; режим `analysis`.
+- `pr`: business; режим `analysis`.
+- `outreach`: business; режим `analysis`.
+- `summary`: business; режим `analysis`.
+  - Собрать campaign summary, prospect register и связанные draft messages из принятых outputs.
+  - Передать owner/metrics/next_check tracking plan; executor_status=not_scheduled. Не объявлять рассылку или мониторинг действующими.
 
 На каждом узле выполнить предметную процедуру procedures/roles/<team>/<name>.md, её QA и work-product contract. Readiness рассчитывается coordinator; он не пишет экспертный результат вместо Codex.
 

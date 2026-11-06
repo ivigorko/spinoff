@@ -25,6 +25,17 @@
 | `strategy` / analysis | `strategy.competitive-strategy-analyst` | keywords, content, links, serp, technical | landscape, attack, defend, differentiate, defer |
 | `summary` / analysis | `audit.executive-summary-writer` | strategy | state, risks, opportunities, decisions, next_steps |
 
+Входы и режимы узлов (переопределяют standalone role только в этом workflow):
+
+- `crawl`: competitors; режим `analysis`.
+- `keywords`: competitors; режим `analysis`.
+- `content`: competitors; режим `analysis`.
+- `links`: backlinks; режим `analysis`.
+- `serp`: serp; режим `analysis`.
+- `technical`: competitors; режим `analysis`.
+- `strategy`: business; режим `analysis`.
+- `summary`: business; режим `analysis`.
+
 На каждом узле выполнить предметную процедуру procedures/roles/<team>/<name>.md, её QA и work-product contract. Readiness рассчитывается coordinator; он не пишет экспертный результат вместо Codex.
 
 ## Условия перехода и завершения

@@ -3,6 +3,9 @@ from pathlib import Path
 import argparse
 import hashlib
 import json
+import sys
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
+from seo_system.subject_gates import subject_roles
 
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG = ROOT / 'seo_system/config'
@@ -39,7 +42,12 @@ def rendered():
   parts += ['- Профиль проекта и фактические права; source manifest и принятые контекстные продукты.','', '## Действия и результаты этапов','', '| Узел / фаза | Процедура | Зависимости | Результат |','|---|---|---|---|']
   for node in w['nodes']:
    role={**roles,**ops}[node['role']]
-   parts.append(f"| `{node['id']}` / {node['phase']} | `{node['role']}` | {', '.join(node['depends_on']) or 'Внешние входы'} | {', '.join(role['sections'])} |")
+   parts.append(f"| `{node['id']}` / {node['phase']} | `{node['role']}` | {', '.join(node['depends_on']) or 'Внешние входы'} | {', '.join(node.get('sections',role['sections']))} |")
+  parts += ['', 'Входы и режимы узлов (переопределяют standalone role только в этом workflow):','']
+  for node in w['nodes']:
+   role={**roles,**ops}[node['role']]
+   parts.append(f"- `{node['id']}`: {', '.join(node.get('required_evidence_kinds',role['required_evidence_kinds']))}; режим `{node.get('work_mode','analysis')}`.")
+   parts += ['  - '+action+'.' for action in node.get('procedural_overrides',[])]
   parts += ['', 'На каждом узле выполнить предметную процедуру procedures/roles/<team>/<name>.md, её QA и work-product contract. Readiness рассчитывается coordinator; он не пишет экспертный результат вместо Codex.','', '## Условия перехода и завершения','',w['completion'],'При partial dependencies consumer обязан явно принимать неполноту; итог остаётся partial. Optional-модуль исключается только с предметным обоснованием. Все остальные обязательные узлы должны иметь принятый продукт.','', '## Проверки и ошибки','']+['- '+e+'.' for e in w['errors']]
   parts += ['- Применить quality/qa-checklist.md, source freshness, immutable lineage и subject-specific currentness decisions.','- Результаты соответствуют scope/цели, а не просто наличию заполненного JSON.','', '## Фактический режим','', 'Процедура адаптирована для исполнения Codex. CLI автоматизирует DAG, state, проверку контрактов/ссылок/значений evidence и фиксацию результата. Предметный анализ и ревью — ручная работа Codex с реальными разрешёнными источниками. Сетевые адаптеры, store/apply/publish/scheduling не имитируются.','', '## Команды','',f'`seo process plan --workflow {wid}` → `seo process start --profile <profile.json> --workflow {wid} --workspace <private-dir>` → `source` → `template` → выполнение Codex → `submit` → `status`. Для сухого примера только synthetic fixtures с `--synthetic`.']
   path='workflows/'+(wid if wid!='agency-cycle' else 'agency-cycle')+'.md'
@@ -124,9 +132,9 @@ description: Предметные процедуры направления {tea
   elif source.name=='ROI Tracker.md':targets=['templates/roi-tracker.md']
   else:
    targets=['docs/compatibility.md'];mode='preserved_reference_only';reason='Obsidian preferences and legacy ignore conventions are not active Codex behavior; preserved unchanged, replaced by scoped storage contracts'
-  source_map.append({'source':name,'sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'preserved_path':'vendor/seo-agency-in-a-box/'+name,'adapted_paths':targets,'mode':mode,'reason':reason})
- outputs['provenance/source-map.json']=json.dumps({'upstream_commit':'738e86a84a55c44ef9093b6631943bef8a4738e0','entries':source_map},ensure_ascii=False,indent=2)+'\n'
- overview=['# Полная карта адаптации','', 'Upstream: 738e86a84a55c44ef9093b6631943bef8a4738e0. Все 144 файла сохранены побайтно; их hashes и dispositions — provenance/source-map.json. Это функциональная адаптация процедур для Codex, не утверждение об автоматизированных сетевых интеграциях.','', '75 специалистов и 12 leaders имеют отдельные предметные процедуры. Все 17 инструкций, onboarding/base/QA/tool guides и 11 workflows получили адаптации. Для Obsidian-настроек и legacy ignore conventions объяснён reference-only режим.','', '| Режим | Значение |','|---|---|','| adapted_manual | Процедура/шаблон адаптированы; предметную работу и ревью выполняет Codex |','| manual_analysis_with_structural_coordinator | Workflow связан с DAG/state/contracts; координатор не делает экспертный анализ или external actions |','| preserved_exact | MIT notice сохранён точно |','| preserved_reference_only | Сохранено, но не является активной инструкцией Codex; основание в compatibility.md |','', '| Исходный файл | Адаптация | Режим |','|---|---|---|']
+  source_map.append({'source':name,'sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'preserved_path':'vendor/seo-agency-in-a-box/'+name,'adapted_paths':targets,'mode':mode,'reason':reason,'review_basis':'preserved bytes and procedural mapping; not independent expert validation or live integration proof'})
+ outputs['provenance/source-map.json']=json.dumps({'upstream_commit':'738e86a84a55c44ef9093b6631943bef8a4738e0','review_limits':{'typed_subject_roles':sorted(subject_roles()),'other_roles':'manual checklist and generic lineage checks only','workflow_tests':'synthetic coordinator traversal; not expert-output or live-site certification'},'entries':source_map},ensure_ascii=False,indent=2)+'\n'
+ overview=['# Полная карта адаптации','', 'Upstream: 738e86a84a55c44ef9093b6631943bef8a4738e0. Все 144 файла сохранены побайтно; их hashes и dispositions — provenance/source-map.json. Это функциональная адаптация процедур для Codex, не утверждение об автоматизированных сетевых интеграциях.','', 'Счёт файлов и mode отражают трассировку, не полноту предметной автоматизации. Проверенные дефекты и границы: docs/pilot-critical-review.md. Для выбранных ролей есть typed subject gates; остальные проходят generic schema/lineage и заявленный ручной QA.','', '75 специалистов и 12 leaders имеют отдельные предметные процедуры. Все 17 инструкций, onboarding/base/QA/tool guides и 11 workflows получили адаптации. Для Obsidian-настроек и legacy ignore conventions объяснён reference-only режим.','', '| Режим | Значение |','|---|---|','| adapted_manual | Процедура/шаблон адаптированы; предметную работу и ревью выполняет Codex |','| manual_analysis_with_structural_coordinator | Workflow связан с DAG/state/contracts; координатор не делает экспертный анализ или external actions |','| preserved_exact | MIT notice сохранён точно |','| preserved_reference_only | Сохранено, но не является активной инструкцией Codex; основание в compatibility.md |','', '| Исходный файл | Адаптация | Режим |','|---|---|---|']
  for entry in source_map:
   targets=', '.join(f'[{Path(name).name}](../{name})' for name in entry['adapted_paths'])
   overview.append(f"| [{entry['source']}](../{entry['preserved_path'].replace(' ','%20')}) | {targets} | {entry['mode']} |")

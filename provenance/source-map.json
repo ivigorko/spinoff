@@ -1,5 +1,36 @@
 {
   "upstream_commit": "738e86a84a55c44ef9093b6631943bef8a4738e0",
+  "review_limits": {
+    "typed_subject_roles": [
+      "analytics.monthly-report-writer",
+      "analytics.roi-calculator",
+      "analytics.traffic-analyst",
+      "audit.data-compiler",
+      "audit.fix-generator",
+      "audit.recommendation-engine",
+      "audit.report-builder",
+      "content.brief-writer",
+      "content.content-optimizer",
+      "content.meta-tag-writer",
+      "content.seo-blog-writer",
+      "ecommerce.product-schema-generator",
+      "keywords.cluster-builder",
+      "keywords.intent-classifier",
+      "keywords.keyword-discovery",
+      "links.backlink-auditor",
+      "local.citation-builder",
+      "operations.measurement",
+      "operations.onboard",
+      "operations.production-verify",
+      "operations.release-record",
+      "strategy.priority-matrix-builder",
+      "strategy.roadmap-planner",
+      "technical.core-web-vitals-analyst",
+      "technical.site-crawler"
+    ],
+    "other_roles": "manual checklist and generic lineage checks only",
+    "workflow_tests": "synthetic coordinator traversal; not expert-output or live-site certification"
+  },
   "entries": [
     {
       "source": ".gitignore",
@@ -9,7 +40,8 @@
         "docs/compatibility.md"
       ],
       "mode": "preserved_reference_only",
-      "reason": "Obsidian preferences and legacy ignore conventions are not active Codex behavior; preserved unchanged, replaced by scoped storage contracts"
+      "reason": "Obsidian preferences and legacy ignore conventions are not active Codex behavior; preserved unchanged, replaced by scoped storage contracts",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": ".obsidian/app.json",
@@ -19,7 +51,8 @@
         "docs/compatibility.md"
       ],
       "mode": "preserved_reference_only",
-      "reason": "Obsidian preferences and legacy ignore conventions are not active Codex behavior; preserved unchanged, replaced by scoped storage contracts"
+      "reason": "Obsidian preferences and legacy ignore conventions are not active Codex behavior; preserved unchanged, replaced by scoped storage contracts",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": ".obsidian/appearance.json",
@@ -29,7 +62,8 @@
         "docs/compatibility.md"
       ],
       "mode": "preserved_reference_only",
-      "reason": "Obsidian preferences and legacy ignore conventions are not active Codex behavior; preserved unchanged, replaced by scoped storage contracts"
+      "reason": "Obsidian preferences and legacy ignore conventions are not active Codex behavior; preserved unchanged, replaced by scoped storage contracts",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": ".obsidian/graph.json",
@@ -39,7 +73,8 @@
         "docs/compatibility.md"
       ],
       "mode": "preserved_reference_only",
-      "reason": "Obsidian preferences and legacy ignore conventions are not active Codex behavior; preserved unchanged, replaced by scoped storage contracts"
+      "reason": "Obsidian preferences and legacy ignore conventions are not active Codex behavior; preserved unchanged, replaced by scoped storage contracts",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "CLAUDE.md",
@@ -50,7 +85,8 @@
         ".agents/skills/seo-orchestrator/SKILL.md"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "LICENSE",
@@ -60,7 +96,8 @@
         "LICENSE"
       ],
       "mode": "preserved_exact",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "MASTER-PLAN.md",
@@ -70,7 +107,8 @@
         "docs/implementation-plan.md"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "README.md",
@@ -80,7 +118,8 @@
         "README.md"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/_base/quality-gate.md",
@@ -90,7 +129,8 @@
         "procedures/base/quality-gate.md"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/_base/seo-fundamentals.md",
@@ -100,7 +140,8 @@
         "procedures/base/seo-fundamentals.md"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/aeo/_lead.md",
@@ -111,7 +152,8 @@
         "seo_system/config/teams.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/aeo/ai-overview-optimizer.md",
@@ -122,7 +164,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/aeo/citation-optimizer.md",
@@ -133,7 +176,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/aeo/conversational-query-researcher.md",
@@ -144,7 +188,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/aeo/entity-optimizer.md",
@@ -155,7 +200,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/aeo/featured-snippet-strategist.md",
@@ -166,7 +212,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/aeo/knowledge-panel-manager.md",
@@ -177,7 +224,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/aeo/perplexity-optimizer.md",
@@ -188,7 +236,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/analytics/_lead.md",
@@ -199,7 +248,8 @@
         "seo_system/config/teams.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/analytics/conversion-analyst.md",
@@ -210,7 +260,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/analytics/dashboard-builder.md",
@@ -221,7 +272,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/analytics/monthly-report-writer.md",
@@ -232,7 +284,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/analytics/ranking-tracker.md",
@@ -243,7 +296,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/analytics/roi-calculator.md",
@@ -254,7 +308,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/analytics/traffic-analyst.md",
@@ -265,7 +320,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/audit/_lead.md",
@@ -276,7 +332,8 @@
         "seo_system/config/teams.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/audit/data-compiler.md",
@@ -287,7 +344,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/audit/executive-summary-writer.md",
@@ -298,7 +356,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/audit/fix-generator.md",
@@ -309,7 +368,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/audit/recommendation-engine.md",
@@ -320,7 +380,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/audit/report-builder.md",
@@ -331,7 +392,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/competitor/_lead.md",
@@ -342,7 +404,8 @@
         "seo_system/config/teams.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/competitor/competitor-backlink-profiler.md",
@@ -353,7 +416,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/competitor/competitor-content-analyzer.md",
@@ -364,7 +428,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/competitor/competitor-keyword-analyst.md",
@@ -375,7 +440,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/competitor/competitor-serp-tracker.md",
@@ -386,7 +452,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/competitor/competitor-site-crawler.md",
@@ -397,7 +464,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/competitor/competitor-technical-benchmarker.md",
@@ -408,7 +476,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/content/_lead.md",
@@ -419,7 +488,8 @@
         "seo_system/config/teams.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/content/brief-writer.md",
@@ -430,7 +500,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/content/content-calendar-planner.md",
@@ -441,7 +512,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/content/content-gap-analyst.md",
@@ -452,7 +524,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/content/content-optimizer.md",
@@ -463,7 +536,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/content/content-performance-analyst.md",
@@ -474,7 +548,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/content/content-strategist.md",
@@ -485,7 +560,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/content/faq-paa-writer.md",
@@ -496,7 +572,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/content/landing-page-copywriter.md",
@@ -507,7 +584,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/content/meta-tag-writer.md",
@@ -518,7 +596,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/content/seo-blog-writer.md",
@@ -529,7 +608,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/ecommerce/_lead.md",
@@ -540,7 +620,8 @@
         "seo_system/config/teams.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/ecommerce/category-strategist.md",
@@ -551,7 +632,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/ecommerce/faceted-navigation-auditor.md",
@@ -562,7 +644,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/ecommerce/product-page-optimizer.md",
@@ -573,7 +656,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/ecommerce/product-schema-generator.md",
@@ -584,7 +668,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/ecommerce/shopping-feed-optimizer.md",
@@ -595,7 +680,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/keywords/_lead.md",
@@ -606,7 +692,8 @@
         "seo_system/config/teams.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/keywords/cluster-builder.md",
@@ -617,7 +704,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/keywords/competitor-keyword-spy.md",
@@ -628,7 +716,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/keywords/intent-classifier.md",
@@ -639,7 +728,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/keywords/keyword-discovery.md",
@@ -650,7 +740,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/keywords/keyword-gap-analyst.md",
@@ -661,7 +752,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/keywords/serp-analyzer.md",
@@ -672,7 +764,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/links/_lead.md",
@@ -683,7 +776,8 @@
         "seo_system/config/teams.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/links/backlink-auditor.md",
@@ -694,7 +788,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/links/broken-link-finder.md",
@@ -705,7 +800,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/links/competitor-backlink-analyzer.md",
@@ -716,7 +812,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/links/digital-pr-strategist.md",
@@ -727,7 +824,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/links/link-prospector.md",
@@ -738,7 +836,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/links/outreach-writer.md",
@@ -749,7 +848,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/local/_lead.md",
@@ -760,7 +860,8 @@
         "seo_system/config/teams.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/local/citation-builder.md",
@@ -771,7 +872,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/local/gbp-optimizer.md",
@@ -782,7 +884,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/local/local-competitor-analyst.md",
@@ -793,7 +896,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/local/local-content-writer.md",
@@ -804,7 +908,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/local/review-strategist.md",
@@ -815,7 +920,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/research/_lead.md",
@@ -826,7 +932,8 @@
         "seo_system/config/teams.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/research/ai-search-landscape-analyst.md",
@@ -837,7 +944,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/research/algorithm-monitor.md",
@@ -848,7 +956,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/research/data-analyst.md",
@@ -859,7 +968,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/research/industry-trend-analyst.md",
@@ -870,7 +980,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/research/market-researcher.md",
@@ -881,7 +992,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/research/serp-feature-researcher.md",
@@ -892,7 +1004,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/strategy/_lead.md",
@@ -903,7 +1016,8 @@
         "seo_system/config/teams.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/strategy/client-communication-manager.md",
@@ -914,7 +1028,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/strategy/competitive-strategy-analyst.md",
@@ -925,7 +1040,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/strategy/priority-matrix-builder.md",
@@ -936,7 +1052,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/strategy/roadmap-planner.md",
@@ -947,7 +1064,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/strategy/seo-strategist.md",
@@ -958,7 +1076,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/technical/_lead.md",
@@ -969,7 +1088,8 @@
         "seo_system/config/teams.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/technical/core-web-vitals-analyst.md",
@@ -980,7 +1100,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/technical/indexation-manager.md",
@@ -991,7 +1112,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/technical/internal-linking-architect.md",
@@ -1002,7 +1124,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/technical/log-analyzer.md",
@@ -1013,7 +1136,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/technical/mobile-seo-auditor.md",
@@ -1024,7 +1148,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/technical/schema-specialist.md",
@@ -1035,7 +1160,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/technical/site-crawler.md",
@@ -1046,7 +1172,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "agents/technical/site-migration-specialist.md",
@@ -1057,7 +1184,8 @@
         "seo_system/config/roles.json"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "instructions/data-flow.md",
@@ -1067,7 +1195,8 @@
         "instructions/data-flow.md"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "instructions/flow.md",
@@ -1077,7 +1206,8 @@
         "instructions/flow.md"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "instructions/hierarchy.md",
@@ -1087,7 +1217,8 @@
         "instructions/hierarchy.md"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "instructions/quality-standards.md",
@@ -1097,7 +1228,8 @@
         "instructions/quality-standards.md"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "instructions/teams/aeo.md",
@@ -1107,7 +1239,8 @@
         "instructions/teams/aeo.md"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "instructions/teams/analytics-reporting.md",
@@ -1117,7 +1250,8 @@
         "instructions/teams/analytics-reporting.md"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "instructions/teams/audit-recommendations.md",
@@ -1127,7 +1261,8 @@
         "instructions/teams/audit-recommendations.md"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "instructions/teams/competitor-analysis.md",
@@ -1137,7 +1272,8 @@
         "instructions/teams/competitor-analysis.md"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "instructions/teams/content-seo.md",
@@ -1147,7 +1283,8 @@
         "instructions/teams/content-seo.md"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "instructions/teams/ecommerce-seo.md",
@@ -1157,7 +1294,8 @@
         "instructions/teams/ecommerce-seo.md"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "instructions/teams/keyword-research.md",
@@ -1167,7 +1305,8 @@
         "instructions/teams/keyword-research.md"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "instructions/teams/link-building.md",
@@ -1177,7 +1316,8 @@
         "instructions/teams/link-building.md"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "instructions/teams/local-seo.md",
@@ -1187,7 +1327,8 @@
         "instructions/teams/local-seo.md"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "instructions/teams/research.md",
@@ -1197,7 +1338,8 @@
         "instructions/teams/research.md"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "instructions/teams/strategy-direction.md",
@@ -1207,7 +1349,8 @@
         "instructions/teams/strategy-direction.md"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "instructions/teams/technical-seo.md",
@@ -1217,7 +1360,8 @@
         "instructions/teams/technical-seo.md"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "instructions/tool-usage.md",
@@ -1227,7 +1371,8 @@
         "instructions/tool-usage.md"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "onboarding/onboard.md",
@@ -1237,7 +1382,8 @@
         "onboarding/onboard.md"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "quality/qa-checklist.md",
@@ -1247,7 +1393,8 @@
         "quality/qa-checklist.md"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "templates/backlink-audit-report.md",
@@ -1257,7 +1404,8 @@
         "templates/backlink-audit-report.md"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "templates/client-proposal.md",
@@ -1267,7 +1415,8 @@
         "templates/client-proposal.md"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "templates/competitor-analysis.md",
@@ -1277,7 +1426,8 @@
         "templates/competitor-analysis.md"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "templates/content-brief.md",
@@ -1287,7 +1437,8 @@
         "templates/content-brief.md"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "templates/keyword-research-report.md",
@@ -1297,7 +1448,8 @@
         "templates/keyword-research-report.md"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "templates/local-seo-report.md",
@@ -1307,7 +1459,8 @@
         "templates/local-seo-report.md"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "templates/monthly-seo-report.md",
@@ -1317,7 +1470,8 @@
         "templates/monthly-seo-report.md"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "templates/priority-matrix.md",
@@ -1327,7 +1481,8 @@
         "templates/priority-matrix.md"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "templates/seo-audit-report.md",
@@ -1337,7 +1492,8 @@
         "templates/seo-audit-report.md"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "templates/seo-roadmap.md",
@@ -1347,7 +1503,8 @@
         "templates/seo-roadmap.md"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "templates/technical-audit.md",
@@ -1357,7 +1514,8 @@
         "templates/technical-audit.md"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "tools/credit-saving.md",
@@ -1367,7 +1525,8 @@
         "tools/credit-saving.md"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "tools/firecrawl-guide.md",
@@ -1377,7 +1536,8 @@
         "tools/firecrawl-guide.md"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "tools/tavily-guide.md",
@@ -1387,7 +1547,8 @@
         "tools/tavily-guide.md"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "vault/00-Dashboard/Agency Dashboard.md",
@@ -1397,7 +1558,8 @@
         "templates/agency-dashboard.md"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "vault/00-Dashboard/ROI Tracker.md",
@@ -1407,7 +1569,8 @@
         "templates/roi-tracker.md"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "vault/README.md",
@@ -1417,7 +1580,8 @@
         "docs/storage-layout.md"
       ],
       "mode": "adapted_manual",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "workflows/competitor-teardown.md",
@@ -1428,7 +1592,8 @@
         "seo_system/config/processes.json"
       ],
       "mode": "manual_analysis_with_structural_coordinator",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "workflows/content-sprint.md",
@@ -1439,7 +1604,8 @@
         "seo_system/config/processes.json"
       ],
       "mode": "manual_analysis_with_structural_coordinator",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "workflows/ecommerce-audit.md",
@@ -1450,7 +1616,8 @@
         "seo_system/config/processes.json"
       ],
       "mode": "manual_analysis_with_structural_coordinator",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "workflows/full-seo-audit.md",
@@ -1461,7 +1628,8 @@
         "seo_system/config/processes.json"
       ],
       "mode": "manual_analysis_with_structural_coordinator",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "workflows/keyword-strategy.md",
@@ -1472,7 +1640,8 @@
         "seo_system/config/processes.json"
       ],
       "mode": "manual_analysis_with_structural_coordinator",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "workflows/link-building-campaign.md",
@@ -1483,7 +1652,8 @@
         "seo_system/config/processes.json"
       ],
       "mode": "manual_analysis_with_structural_coordinator",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "workflows/local-seo-setup.md",
@@ -1494,7 +1664,8 @@
         "seo_system/config/processes.json"
       ],
       "mode": "manual_analysis_with_structural_coordinator",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "workflows/monthly-reporting.md",
@@ -1505,7 +1676,8 @@
         "seo_system/config/processes.json"
       ],
       "mode": "manual_analysis_with_structural_coordinator",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "workflows/new-site-launch.md",
@@ -1516,7 +1688,8 @@
         "seo_system/config/processes.json"
       ],
       "mode": "manual_analysis_with_structural_coordinator",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "workflows/quarterly-review.md",
@@ -1527,7 +1700,8 @@
         "seo_system/config/processes.json"
       ],
       "mode": "manual_analysis_with_structural_coordinator",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     },
     {
       "source": "workflows/site-migration.md",
@@ -1538,7 +1712,8 @@
         "seo_system/config/processes.json"
       ],
       "mode": "manual_analysis_with_structural_coordinator",
-      "reason": "Functional rewrite with unified contracts and currentness corrections"
+      "reason": "Functional rewrite with unified contracts and currentness corrections",
+      "review_basis": "preserved bytes and procedural mapping; not independent expert validation or live integration proof"
     }
   ]
 }

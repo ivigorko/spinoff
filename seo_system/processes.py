@@ -6,8 +6,10 @@ import sqlite3
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
-from .core import WorkflowError, canonical, check_project, config, digest, now, read_json, timestamp, validate, MAX_BYTES, parse_json
+from .core import WorkflowError, canonical, check_project, config, digest, now, read_json, timestamp, validate, MAX_BYTES, parse_json, selected_input
+from .subject_gates import subject_roles, validate_subject
 
 STATES = {'pending', 'completed', 'partial', 'blocked_input', 'blocked_permission', 'not_applicable'}
 DDL = '''
@@ -43,7 +45,8 @@ def plan(workflow):
             raise WorkflowError('Invalid process DAG or unknown role')
         seen.add(node['id'])
     return {'workflow': spec, 'execution': 'Codex performs analysis; coordinator validates and records supplied work products',
-            'roles': {n['role']: roles[n['role']] for n in spec['nodes']}, 'external_actions': 'none'}
+            'roles': {n['role']: roles[n['role']] for n in spec['nodes']}, 'external_actions': 'none',
+            'contract_version': 3, 'freshness_policy': config('freshness')}
 
 
 def connection(root):
@@ -114,11 +117,17 @@ def status(root, project, run):
         record = run_record(con, project, run)
         rows = node_rows(con, project, run)
         specs = record['snapshot']['workflow']['nodes']
+        available_kinds = {json.loads(s[0])['kind'] for s in con.execute('SELECT manifest FROM process_sources WHERE project_id=? AND run_id=?',(project,run))}
         output = []
         for node in specs:
             row = rows[node['id']]
             missing = [d for d in node['depends_on'] if rows[d]['status'] not in {'completed', 'not_applicable'} and not (node['accept_partial_inputs'] and rows[d]['status'] == 'partial')]
-            output.append({**node, **{k: row[k] for k in ('status', 'reason', 'artifact_id')}, 'ready': row['status'] == 'pending' and not missing, 'waiting_for': missing})
+            role = record['snapshot']['roles'][node['role']]
+            needed = set(node.get('required_evidence_kinds', role['required_evidence_kinds']))-available_kinds
+            output.append({**node, **{k: row[k] for k in ('status', 'reason', 'artifact_id')}, 'ready': row['status'] == 'pending' and not missing and not needed,
+                           'dependencies_ready': not missing, 'waiting_for': missing, 'missing_evidence_kinds': sorted(needed),
+                           'validation_level': 'typed_subject_contract' if node['role'] in subject_roles() else 'manual_checklist',
+                           'source_readiness_basis': 'registered kinds; freshness/hashes rechecked at submit'})
         statuses = {r['status'] for r in rows.values()}
         if statuses <= {'completed', 'not_applicable'}:
             overall = 'completed'
@@ -128,8 +137,11 @@ def status(root, project, run):
             overall = 'blocked'
         else:
             overall = 'in_progress'
+        if record['snapshot'].get('contract_version', 0) < 3:
+            overall = 'legacy_unreviewed'
         return {'project_id': project, 'run_id': run, 'workflow': record['workflow'], 'status': overall,
-                'synthetic': bool(record['synthetic']), 'nodes': output, 'external_actions_performed': False}
+                'synthetic': bool(record['synthetic']), 'nodes': output, 'external_actions_performed': False,
+                'completion_basis': 'Accepted work products and declared Codex QA; not independent expert certification'}
     finally:
         con.close()
 
@@ -149,13 +161,15 @@ def source_bytes(con, root, project, run, source_id):
     return manifest, parse_json(raw)
 
 
-def source_fresh(manifest, clock=None):
+def source_fresh(manifest, clock=None, policy=None):
     current = clock or now()
     generated = timestamp(manifest['source_generated_at'])
     collected = timestamp(manifest['collected_at'])
     if generated > collected or collected > current:
         raise WorkflowError('Invalid evidence source chronology')
-    days = config('freshness').get(manifest['kind'], 30)
+    if manifest['kind'] == 'release':
+        return  # Historical immutable release facts do not expire like current observations.
+    days = (policy or config('freshness')).get(manifest['kind'], 30)
     if (current - generated).total_seconds() > days * 86400:
         raise WorkflowError('Evidence source is stale')
 
@@ -183,8 +197,8 @@ def add_source(root, project, run, manifest_path, clock=None):
                 raise WorkflowError('Synthetic and client evidence cannot be mixed')
             if not record['synthetic'] and 'original' not in manifest:
                 raise WorkflowError('Client evidence requires original bytes and normalization provenance')
-            source_fresh(manifest, clock)
-            source = (Path(manifest_path).resolve().parent / manifest['file']).resolve()
+            source_fresh(manifest, clock, record['snapshot'].get('freshness_policy'))
+            source = selected_input(manifest_path, manifest['file'])
             if source.stat().st_size > MAX_BYTES:
                 raise WorkflowError('Evidence exceeds 20 MiB')
             raw = source.read_bytes()
@@ -193,7 +207,7 @@ def add_source(root, project, run, manifest_path, clock=None):
             parse_json(raw)  # normalized JSON evidence only; retain raw export separately
             original_raw = None
             if 'original' in manifest:
-                original = (Path(manifest_path).resolve().parent / manifest['original']['file']).resolve()
+                original = selected_input(manifest_path, manifest['original']['file'])
                 if original.stat().st_size > MAX_BYTES:
                     raise WorkflowError('Original evidence exceeds 20 MiB')
                 original_raw = original.read_bytes()
@@ -241,7 +255,7 @@ def product(con, root, project, run, node):
     raw = safe_file(root, row['logical_path']).read_bytes()
     if digest(raw) != row['sha256']:
         raise WorkflowError('Work product checksum changed')
-    return json.loads(raw), row['artifact_id']
+    return parse_json(raw), row['artifact_id']
 
 
 def validate_comparison(comparison, clock=None, sources=None):
@@ -258,13 +272,23 @@ def validate_comparison(comparison, clock=None, sources=None):
                 raise WorkflowError('Measurement definitions/periods contradict source record')
             if measurement['scope']['host'] != manifest['host'] or any(manifest['scope'][key] is not None and measurement['scope'][key] != manifest['scope'][key] for key in ['region', 'engine', 'device']):
                 raise WorkflowError('Measurement scope contradicts source manifest')
+            signature = manifest.get('analytics_signature', {})
+            if any(signature.get(key) != measurement['scope'][key] for key in ['property_ref','timezone','definition_version','filters_hash']):
+                raise WorkflowError('Analytics property/timezone/definitions/filters are not supported by source metadata')
+            period = manifest['period']
+            if period is None or measurement['start'] < period['start'] or measurement['end'] > period['end']:
+                raise WorkflowError('Measurement is outside the declared source period')
     if (a['scope'] != b['scope'] or a['metric'] != b['metric'] or a['unit'] != b['unit']):
         raise WorkflowError('Measurement scope/metric/unit mismatch')
     a0, a1 = datetime.fromisoformat(a['start']), datetime.fromisoformat(a['end'])
     b0, b1 = datetime.fromisoformat(b['start']), datetime.fromisoformat(b['end'])
     if a1 < a0 or b1 < b0 or (a1-a0) != (b1-b0) or a1 >= b0:
         raise WorkflowError('Measurement periods overlap or are not comparable')
-    if b1.date() >= (clock or now()).date():
+    try:
+        zone = ZoneInfo(b['scope']['timezone'])
+    except (KeyError, ValueError) as exc:
+        raise WorkflowError('Invalid measurement timezone') from exc
+    if b1.date() >= (clock or now()).astimezone(zone).date():
         raise WorkflowError('Measurement period is not closed; awaiting_measurement')
     absolute = b['value'] - a['value'] if a['value'] is not None and b['value'] is not None else None
     percent = 100 * absolute / a['value'] if absolute is not None and a['value'] else None
@@ -279,6 +303,11 @@ def check_release_scope(release, profile, clock=None):
         raise WorkflowError('Release cannot be in the future')
     for url in release['urls']:
         check_url(url, profile['allowed_hosts'])
+    for change in release['expected_changes']:
+        if change['url'] not in release['urls'] or change['task_id'] not in release['task_ids']:
+            raise WorkflowError('Expected change is outside the released task/URL scope')
+    if set(release['urls'])-{c['url'] for c in release['expected_changes']} or set(release['task_ids'])-{c['task_id'] for c in release['expected_changes']}:
+        raise WorkflowError('Release lacks expected changes for one or more URLs/tasks')
 
 
 def submit(root, project, run, node_id, result_path, clock=None):
@@ -290,6 +319,8 @@ def submit(root, project, run, node_id, result_path, clock=None):
             con.execute('BEGIN IMMEDIATE')
             record = run_record(con, project, run)
             specs = {n['id']: n for n in record['snapshot']['workflow']['nodes']}
+            if record['snapshot'].get('contract_version', 0) < 3:
+                raise WorkflowError('Legacy process is unreviewed under current contracts; start a new run')
             if node_id not in specs:
                 raise WorkflowError('Unknown process node')
             spec = specs[node_id]
@@ -299,15 +330,20 @@ def submit(root, project, run, node_id, result_path, clock=None):
             if result['project_id'] != project or result['run_id'] != run or result['node_id'] != node_id or result['role'] != spec['role']:
                 raise WorkflowError('Work product scope/role mismatch')
             role = record['snapshot']['roles'][spec['role']]
-            missing = set(role['sections']) - result['data'].keys()
+            if result['work_mode'] != spec.get('work_mode', 'analysis'):
+                raise WorkflowError('Work mode differs from the frozen scope')
+            missing = set(spec.get('sections', role['sections'])) - result['data'].keys()
             if missing:
                 raise WorkflowError('Required output sections missing: ' + ','.join(sorted(missing)))
-            for value in result['data'].values():
-                if value is None or value == '' or value == [] or value == {}:
+            empty_table_fields = {'audit.data-compiler':{'findings'},'audit.report-builder':{'findings'},'audit.recommendation-engine':{'recommendations'},'strategy.priority-matrix-builder':{'scored_tasks'},'strategy.roadmap-planner':{'tasks'},'analytics.monthly-report-writer':{'work_log'}}
+            for key,value in result['data'].items():
+                explicit_empty = value == [] and key in empty_table_fields.get(spec['role'],set()) and isinstance(result['data'].get('no_action_reason'),str) and bool(result['data']['no_action_reason'].strip())
+                if not explicit_empty and (value is None or value == '' or value == [] or value == {}):
                     raise WorkflowError('Work product sections must be substantive or explicitly unavailable')
             if re.search(r'\bTODO\b|REPLACE_WITH|\{\{', canonical(result['data'])):
                 raise WorkflowError('Unfilled template in submitted work product')
             parents = []
+            input_products = []
             inherited_partial = False
             for dependency in spec['depends_on']:
                 dep = rows[dependency]
@@ -315,7 +351,8 @@ def submit(root, project, run, node_id, result_path, clock=None):
                     continue
                 if dep['status'] != 'completed' and not (spec['accept_partial_inputs'] and dep['status'] == 'partial'):
                     raise WorkflowError('Required dependency has not passed its gate: ' + dependency)
-                _, aid = product(con, root, project, run, dependency)
+                dependency_product, aid = product(con, root, project, run, dependency)
+                input_products.append({**dependency_product, '_artifact_id': aid})
                 parents.append(aid)
                 inherited_partial |= dep['status'] == 'partial'
             if set(result['input_artifact_ids']) != set(parents):
@@ -325,11 +362,11 @@ def submit(root, project, run, node_id, result_path, clock=None):
             sources = {}
             for sid in result['source_ids']:
                 manifest, data = source_bytes(con, root, project, run, sid)
-                source_fresh(manifest, clock)
+                source_fresh(manifest, clock, record['snapshot'].get('freshness_policy'))
                 sources[sid] = (manifest, data)
                 if not manifest['coverage']['complete'] and result['coverage']['complete']:
                     raise WorkflowError('Incomplete evidence requires partial coverage')
-            required_missing = set(role['required_evidence_kinds']) - {m['kind'] for m, _ in sources.values()}
+            required_missing = set(spec.get('required_evidence_kinds', role['required_evidence_kinds'])) - {m['kind'] for m, _ in sources.values()}
             if required_missing and result['coverage']['complete']:
                 raise WorkflowError('Required evidence kinds missing: ' + ','.join(sorted(required_missing)))
             for claim in result['claims']:
@@ -344,6 +381,13 @@ def submit(root, project, run, node_id, result_path, clock=None):
             checks = {q['id']: q for q in result['qa']}
             if len(checks) != len(result['qa']) or not required_qa <= checks.keys() or any(not checks[q]['passed'] for q in required_qa):
                 raise WorkflowError('Critical work-product QA failed or missing')
+            try:
+                validate_subject(result, sources, input_products, record['profile'], spec, pointer,
+                                 lambda comparison, sources: validate_comparison(comparison, clock, sources))
+            except WorkflowError:
+                raise
+            except (KeyError, TypeError, ValueError, RecursionError) as exc:
+                raise WorkflowError('Malformed subject work product; review nested field types and references') from exc
             # These are evidence records, never authorization to perform an external action.
             if spec['role'] == 'operations.onboard' and result['coverage']['complete']:
                 profile = result['data']['profile']
@@ -367,6 +411,11 @@ def submit(root, project, run, node_id, result_path, clock=None):
                             raise WorkflowError('Release task/URL scope differs from prepared changes')
                         if not isinstance(prepared['baseline'], dict) or prepared['baseline'].get('revision') != release['baseline_revision']:
                             raise WorkflowError('Release baseline differs from prepared revision')
+                        selected = [patch for patch in patches if patch.get('task_id') in release['task_ids']]
+                        wanted = {(patch['task_id'],patch['url'],patch['field'],canonical(patch['after'])) for patch in selected}
+                        declared = {(change['task_id'],change['url'],change['field'],canonical(change['expected'])) for change in release['expected_changes']}
+                        if wanted != declared:
+                            raise WorkflowError('Release expectations differ from the selected prepared patches')
             if spec['role'] == 'operations.production-verify' and result['coverage']['complete']:
                 release_products = [product(con, root, project, run, d)[0] for d in spec['depends_on'] if specs[d]['role'] == 'operations.release-record']
                 if release_products:
@@ -392,8 +441,13 @@ def submit(root, project, run, node_id, result_path, clock=None):
                     parent = pointer(document, ref.get('pointer', '').rsplit('/', 1)[0])
                     if actual != check['actual'] or not isinstance(parent, dict) or parent.get('url') != check.get('url'):
                         raise WorkflowError('Verification check contradicts URL evidence')
+                    if ref['pointer'].rsplit('/',1)[-1].replace('~1','/').replace('~0','~') != check.get('field'):
+                        raise WorkflowError('Verification field contradicts its source pointer')
                 if set(release['urls']) - {c.get('url') for c in checks_data}:
                     raise WorkflowError('Production verification does not cover released URLs')
+                observed = {(c['url'],c['field'],canonical(c['expected'])) for c in checks_data}
+                if {(c['url'],c['field'],canonical(c['expected'])) for c in release['expected_changes']}-observed:
+                    raise WorkflowError('Production verification did not check the actual released changes')
             if spec['phase'] == 'verify' and spec['role'] != 'operations.production-verify' and result['coverage']['complete']:
                 releases = [product(con, root, project, run, n['id'])[0]['data']['release'] for n in specs.values() if n['role'] == 'operations.release-record' and rows[n['id']]['status'] == 'completed']
                 if not releases or not any(m['kind'] == 'pages' and m['purpose'] == 'post_release' and m['site_revision'] == releases[-1]['target_revision'] and timestamp(m['source_generated_at']) > timestamp(releases[-1]['released_at']) for m, _ in sources.values()):
@@ -423,7 +477,11 @@ def submit(root, project, run, node_id, result_path, clock=None):
                 for release in releases:
                     check_release_scope(release, record['profile'], clock)
                     comparison = result['data']['comparison']
-                    if datetime.fromisoformat(comparison['current']['start']).date() < timestamp(release['released_at']).date() or datetime.fromisoformat(comparison['baseline']['end']).date() >= timestamp(release['released_at']).date():
+                    zone = ZoneInfo(comparison['current']['scope']['timezone'])
+                    current_start = datetime.fromisoformat(comparison['current']['start']).replace(tzinfo=zone)
+                    from datetime import timedelta
+                    baseline_end = (datetime.fromisoformat(comparison['baseline']['end'])+timedelta(days=1)).replace(tzinfo=zone)
+                    if current_start < timestamp(release['released_at']) or baseline_end > timestamp(release['released_at']):
                         raise WorkflowError('Measurement baseline/current windows do not bracket the release')
             state = 'completed' if result['coverage']['complete'] else 'partial'
             if state == 'partial' and not result['coverage']['limitations']:
@@ -473,9 +531,9 @@ def template(root, project, run, node_id):
         node = specs[node_id]
         rows = node_rows(con, project, run)
         role = record['snapshot']['roles'][node['role']]
-        return {'schema_version': 1, 'project_id': project, 'run_id': run, 'node_id': node_id, 'role': node['role'],
+        return {'schema_version': 1, 'project_id': project, 'run_id': run, 'node_id': node_id, 'role': node['role'], 'work_mode': node.get('work_mode', 'analysis'),
                 'input_artifact_ids': [rows[d]['artifact_id'] for d in node['depends_on'] if rows[d]['artifact_id']],
-                'source_ids': [], 'data': {section: None for section in role['sections']}, 'claims': [],
+                'source_ids': [], 'data': {section: None for section in node.get('sections', role['sections'])}, 'claims': [],
                 'coverage': {'complete': False, 'limitations': ['Unfilled template; not a work product']},
                 'qa': [{'id': key, 'passed': False, 'note': 'Review required'} for key in ['scope', 'evidence', 'domain_procedure', 'currentness', 'permissions', 'completeness']]}
     finally:

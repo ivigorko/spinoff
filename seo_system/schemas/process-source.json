@@ -195,6 +195,34 @@
         "normalization"
       ],
       "additionalProperties": false
+    },
+    "analytics_signature": {
+      "type": "object",
+      "properties": {
+        "property_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "timezone": {
+          "type": "string",
+          "minLength": 1
+        },
+        "definition_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "filters_hash": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "property_ref",
+        "timezone",
+        "definition_version",
+        "filters_hash"
+      ],
+      "additionalProperties": false
     }
   },
   "required": [

@@ -18,14 +18,24 @@
 |---|---|---|---|
 | `onboard` / onboard | `operations.onboard` | Внешние входы | profile, scope, goals, brand_voice, access_inventory, constraints |
 | `market` / research | `research.market-researcher` | onboard | market_scope, segments, demand, opportunities |
-| `discovery` / research | `keywords.keyword-discovery` | onboard | seeds, candidates, metrics, coverage |
-| `serp` / research | `keywords.serp-analyzer` | discovery | query_scope, features, page_types, intent_evidence |
 | `crawl` / audit | `technical.site-crawler` | onboard | inventory, status_summary, redirects, coverage |
-| `technical` / audit | `technical.indexation-manager` | crawl | robots, sitemaps, canonicals, indexation_map, conflicts |
+| `indexation` / audit | `technical.indexation-manager` | crawl | robots, sitemaps, canonicals, indexation_map, conflicts |
+| `cwv` / audit | `technical.core-web-vitals-analyst` | crawl | method, field_data, lab_data, diagnosis, acceptance |
+| `schema` / audit | `technical.schema-specialist` | crawl | inventory, eligibility, json_ld, validation, implementation |
+| `internal-links` / audit | `technical.internal-linking-architect` | crawl | graph, orphans, link_changes, acceptance |
+| `mobile` / audit | `technical.mobile-seo-auditor` | crawl | sample, render_checks, parity, issues, acceptance |
+| `keyword-discovery` / research | `keywords.keyword-discovery` | onboard | seeds, candidates, metrics, coverage |
+| `serp` / research | `keywords.serp-analyzer` | keyword-discovery | query_scope, features, page_types, intent_evidence |
+| `competitor-keywords` / research | `keywords.competitor-keyword-spy` | keyword-discovery | candidate_targets, verified_positions, overlap |
+| `keyword-gaps` / research | `keywords.keyword-gap-analyst` | serp, competitor-keywords | comparison, gaps, defensive_actions |
 | `intent` / research | `keywords.intent-classifier` | serp | intent_map, mixed_intents, page_types |
-| `clusters` / research | `keywords.cluster-builder` | intent | clusters, url_mapping, link_relationships, unresolved |
-| `content` / audit | `content.content-gap-analyst` | crawl, clusters | inventory, coverage_matrix, gaps, consolidation, priorities |
-| `compile` / audit | `audit.data-compiler` | market, technical, content | artifact_inventory, findings, conflicts, coverage |
+| `clusters` / research | `keywords.cluster-builder` | intent, keyword-gaps | clusters, url_mapping, link_relationships, unresolved |
+| `content-gaps` / audit | `content.content-gap-analyst` | crawl, clusters | inventory, coverage_matrix, gaps, consolidation, priorities |
+| `backlinks` / audit | `links.backlink-auditor` | onboard | coverage, domains, anchors, risks, recommendations |
+| `ai` / audit | `aeo.ai-overview-optimizer` | onboard | observations, cited_sources, content_gaps, experiments |
+| `local` / audit | `local.local-competitor-analyst` | onboard | geo_scope, profiles, pack_observations, gaps |
+| `ecommerce` / audit | `ecommerce.faceted-navigation-auditor` | onboard | parameter_inventory, index_policy, conflicts, tests |
+| `compile` / audit | `audit.data-compiler` | crawl, indexation, cwv, schema, internal-links, mobile, keyword-discovery, serp, competitor-keywords, keyword-gaps, intent, clusters, content-gaps, backlinks, ai, local, ecommerce, market | artifact_inventory, findings, conflicts, coverage |
 | `strategy` / strategy | `strategy.seo-strategist` | compile | assessment, pillars, kpis, risks, decisions |
 | `priority` / strategy | `strategy.priority-matrix-builder` | strategy | scale, scored_tasks, dependencies, sequence |
 | `roadmap` / strategy | `strategy.roadmap-planner` | priority | capacity, phases, tasks, dependencies, checkpoints |
@@ -36,6 +46,39 @@
 | `report` / report | `analytics.monthly-report-writer` | measure | summary, kpis, work_log, changes, next_month, limitations |
 | `refresh` / strategy_refresh | `operations.strategy-refresh` | report | continue, change, stop, next_backlog, review_window |
 | `next-roadmap` / strategy_refresh | `strategy.roadmap-planner` | refresh | capacity, phases, tasks, dependencies, checkpoints |
+
+Входы и режимы узлов (переопределяют standalone role только в этом workflow):
+
+- `onboard`: business; режим `analysis`.
+- `market`: business; режим `analysis`.
+- `crawl`: pages; режим `analysis`.
+- `indexation`: pages; режим `analysis`.
+- `cwv`: performance; режим `analysis`.
+- `schema`: pages; режим `analysis`.
+- `internal-links`: internal_links; режим `analysis`.
+- `mobile`: pages; режим `analysis`.
+- `keyword-discovery`: business; режим `analysis`.
+- `serp`: serp; режим `analysis`.
+- `competitor-keywords`: competitors; режим `analysis`.
+- `keyword-gaps`: business; режим `analysis`.
+- `intent`: business; режим `analysis`.
+- `clusters`: business; режим `analysis`.
+- `content-gaps`: business; режим `analysis`.
+- `backlinks`: backlinks; режим `analysis`.
+- `ai`: ai_visibility; режим `analysis`.
+- `local`: local; режим `analysis`.
+- `ecommerce`: products; режим `analysis`.
+- `compile`: business; режим `analysis`.
+- `strategy`: business; режим `analysis`.
+- `priority`: business; режим `analysis`.
+- `roadmap`: business; режим `analysis`.
+- `prepare`: business; режим `analysis`.
+- `release`: release; режим `analysis`.
+- `verify`: verification, release; режим `analysis`.
+- `measure`: analytics, release; режим `analysis`.
+- `report`: analytics; режим `analysis`.
+- `refresh`: business; режим `analysis`.
+- `next-roadmap`: business; режим `analysis`.
 
 На каждом узле выполнить предметную процедуру procedures/roles/<team>/<name>.md, её QA и work-product contract. Readiness рассчитывается coordinator; он не пишет экспертный результат вместо Codex.
 

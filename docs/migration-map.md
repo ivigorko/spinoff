@@ -2,6 +2,8 @@
 
 Upstream: 738e86a84a55c44ef9093b6631943bef8a4738e0. Все 144 файла сохранены побайтно; их hashes и dispositions — provenance/source-map.json. Это функциональная адаптация процедур для Codex, не утверждение об автоматизированных сетевых интеграциях.
 
+Счёт файлов и mode отражают трассировку, не полноту предметной автоматизации. Проверенные дефекты и границы: docs/pilot-critical-review.md. Для выбранных ролей есть typed subject gates; остальные проходят generic schema/lineage и заявленный ручной QA.
+
 75 специалистов и 12 leaders имеют отдельные предметные процедуры. Все 17 инструкций, onboarding/base/QA/tool guides и 11 workflows получили адаптации. Для Obsidian-настроек и legacy ignore conventions объяснён reference-only режим.
 
 | Режим | Значение |

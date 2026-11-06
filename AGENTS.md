@@ -19,3 +19,5 @@
 15. Проверки: `python -m unittest discover -v`, `python scripts/render_playbook.py --check`, `python scripts/check_playbook.py`, `python scripts/check_repository.py`, `git diff --check`. Сверяй currentness.md; preserved vendor не является активными инструкциями. Не публикуй и не меняй production в рамках этой разработки.
 16. Финал: фактические результаты, артефакты, ограничения, блокеры и следующий шаг. Не обещай автоматический мониторинг без проверенного расписания и исполнителя.
 17. Анализ и предметный QA выполняет Codex. Process coordinator проверяет schema, dependencies, hashes, source values, partial propagation и release/verify/measurement records; он не заменяет экспертное ревью, не доказывает подлинность провайдера по локальному JSON и сам не делает network/store/apply/publish.
+
+18. До пилота прочитай docs/pilot-critical-review.md. Уважай node work_mode и procedural_overrides: proposed plans/drafts не становятся live observations. Typed subject guards покрывают выбранные поля, остальные выводы требуют ручного ревью. Старые snapshots legacy_unreviewed — создать новый run.

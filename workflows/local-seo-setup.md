@@ -23,6 +23,15 @@
 | `reviews` / analysis | `local.review-strategist` | profile | review_inventory, sentiment, response_drafts, collection_plan |
 | `roadmap` / analysis | `strategy.roadmap-planner` | citations, content, reviews | capacity, phases, tasks, dependencies, checkpoints |
 
+Входы и режимы узлов (переопределяют standalone role только в этом workflow):
+
+- `competitors`: local; режим `analysis`.
+- `profile`: local; режим `analysis`.
+- `citations`: local; режим `analysis`.
+- `content`: business; режим `analysis`.
+- `reviews`: local; режим `analysis`.
+- `roadmap`: business; режим `analysis`.
+
 На каждом узле выполнить предметную процедуру procedures/roles/<team>/<name>.md, её QA и work-product contract. Readiness рассчитывается coordinator; он не пишет экспертный результат вместо Codex.
 
 ## Условия перехода и завершения

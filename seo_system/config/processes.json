@@ -115,13 +115,27 @@
     "trigger": "Запрос на контентный спринт от плана до проверенного draft",
     "prerequisites": [
       "Принятая стратегия/keyword mapping либо явно описанный ограниченный scope",
-      "Актуальная страница, факты и brand voice; публикация отдельно"
+      "Принятый черновик либо страница, проверенные факты и brand voice; публикация отдельно"
     ],
     "nodes": [
       {
+        "id": "strategy",
+        "role": "content.content-strategist",
+        "depends_on": [],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "planning",
+        "required_evidence_kinds": [
+          "business",
+          "keywords"
+        ]
+      },
+      {
         "id": "calendar",
         "role": "content.content-calendar-planner",
-        "depends_on": [],
+        "depends_on": [
+          "strategy"
+        ],
         "accept_partial_inputs": false,
         "optional": false,
         "phase": "analysis"
@@ -165,7 +179,15 @@
         ],
         "accept_partial_inputs": false,
         "optional": false,
-        "phase": "analysis"
+        "phase": "analysis",
+        "work_mode": "draft",
+        "required_evidence_kinds": [
+          "business"
+        ],
+        "procedural_overrides": [
+          "Работать с принятым draft предшественника, не требовать опубликованную страницу; сохранить ID и target URL из brief/architecture",
+          "Результат остаётся предложением/черновиком; live проверка выполняется после разрешённого релиза"
+        ]
       },
       {
         "id": "faq",
@@ -188,7 +210,15 @@
         ],
         "accept_partial_inputs": false,
         "optional": false,
-        "phase": "analysis"
+        "phase": "analysis",
+        "work_mode": "draft",
+        "required_evidence_kinds": [
+          "business"
+        ],
+        "procedural_overrides": [
+          "Работать с принятым draft предшественника, не требовать опубликованную страницу; сохранить ID и target URL из brief/architecture",
+          "Результат остаётся предложением/черновиком; live проверка выполняется после разрешённого релиза"
+        ]
       },
       {
         "id": "summary",
@@ -474,11 +504,26 @@
         "depends_on": [
           "audit",
           "competitors",
+          "prospects",
+          "broken",
+          "pr",
           "outreach"
         ],
         "accept_partial_inputs": true,
         "optional": false,
-        "phase": "analysis"
+        "phase": "analysis",
+        "sections": [
+          "campaign_summary",
+          "prospect_register",
+          "draft_messages",
+          "tracking_plan",
+          "limitations"
+        ],
+        "report_kind": "campaign_plan",
+        "procedural_overrides": [
+          "Собрать campaign summary, prospect register и связанные draft messages из принятых outputs",
+          "Передать owner/metrics/next_check tracking plan; executor_status=not_scheduled. Не объявлять рассылку или мониторинг действующими"
+        ]
       }
     ],
     "completion": "Все обязательные узлы приняты; report/coverage отражают реально выполненное. Partial входы никогда не дают completed всего workflow.",
@@ -711,7 +756,22 @@
         ],
         "accept_partial_inputs": false,
         "optional": false,
-        "phase": "analysis"
+        "phase": "analysis",
+        "work_mode": "planning",
+        "required_evidence_kinds": [
+          "business",
+          "keywords"
+        ],
+        "sections": [
+          "target_pages",
+          "planned_changes",
+          "acceptance_plan",
+          "limitations"
+        ],
+        "procedural_overrides": [
+          "Вместо извлечения текущей разметки/директив определить proposed URL и правила по architecture и business facts",
+          "Подготовить конкретные planned changes и acceptance checks; отсутствие live наблюдения раскрыть в limitations; не объявлять сайт проверенным"
+        ]
       },
       {
         "id": "indexation",
@@ -721,7 +781,22 @@
         ],
         "accept_partial_inputs": false,
         "optional": false,
-        "phase": "analysis"
+        "phase": "analysis",
+        "work_mode": "planning",
+        "required_evidence_kinds": [
+          "business",
+          "keywords"
+        ],
+        "sections": [
+          "target_pages",
+          "planned_changes",
+          "acceptance_plan",
+          "limitations"
+        ],
+        "procedural_overrides": [
+          "Вместо извлечения текущей разметки/директив определить proposed URL и правила по architecture и business facts",
+          "Подготовить конкретные planned changes и acceptance checks; отсутствие live наблюдения раскрыть в limitations; не объявлять сайт проверенным"
+        ]
       },
       {
         "id": "brief",
@@ -751,7 +826,15 @@
         ],
         "accept_partial_inputs": false,
         "optional": false,
-        "phase": "analysis"
+        "phase": "analysis",
+        "work_mode": "draft",
+        "required_evidence_kinds": [
+          "business"
+        ],
+        "procedural_overrides": [
+          "Работать с принятым draft предшественника, не требовать опубликованную страницу; сохранить ID и target URL из brief/architecture",
+          "Результат остаётся предложением/черновиком; live проверка выполняется после разрешённого релиза"
+        ]
       },
       {
         "id": "roadmap",
@@ -789,7 +872,8 @@
         "depends_on": [],
         "accept_partial_inputs": false,
         "optional": false,
-        "phase": "analysis"
+        "phase": "analysis",
+        "minimum_window_days": 84
       },
       {
         "id": "rankings",
@@ -1014,7 +1098,7 @@
         "depends_on": [
           "crawl"
         ],
-        "accept_partial_inputs": false,
+        "accept_partial_inputs": true,
         "optional": false,
         "phase": "analysis"
       },
@@ -1024,7 +1108,7 @@
         "depends_on": [
           "crawl"
         ],
-        "accept_partial_inputs": false,
+        "accept_partial_inputs": true,
         "optional": false,
         "phase": "analysis"
       },
@@ -1034,7 +1118,7 @@
         "depends_on": [
           "crawl"
         ],
-        "accept_partial_inputs": false,
+        "accept_partial_inputs": true,
         "optional": false,
         "phase": "analysis"
       },
@@ -1044,7 +1128,7 @@
         "depends_on": [
           "crawl"
         ],
-        "accept_partial_inputs": false,
+        "accept_partial_inputs": true,
         "optional": false,
         "phase": "analysis"
       },
@@ -1054,7 +1138,7 @@
         "depends_on": [
           "crawl"
         ],
-        "accept_partial_inputs": false,
+        "accept_partial_inputs": true,
         "optional": false,
         "phase": "analysis"
       },
@@ -1072,7 +1156,7 @@
         "depends_on": [
           "keyword-discovery"
         ],
-        "accept_partial_inputs": false,
+        "accept_partial_inputs": true,
         "optional": false,
         "phase": "analysis"
       },
@@ -1082,7 +1166,7 @@
         "depends_on": [
           "keyword-discovery"
         ],
-        "accept_partial_inputs": false,
+        "accept_partial_inputs": true,
         "optional": false,
         "phase": "analysis"
       },
@@ -1093,7 +1177,7 @@
           "serp",
           "competitor-keywords"
         ],
-        "accept_partial_inputs": false,
+        "accept_partial_inputs": true,
         "optional": false,
         "phase": "analysis"
       },
@@ -1103,7 +1187,7 @@
         "depends_on": [
           "serp"
         ],
-        "accept_partial_inputs": false,
+        "accept_partial_inputs": true,
         "optional": false,
         "phase": "analysis"
       },
@@ -1114,7 +1198,7 @@
           "intent",
           "keyword-gaps"
         ],
-        "accept_partial_inputs": false,
+        "accept_partial_inputs": true,
         "optional": false,
         "phase": "analysis"
       },
@@ -1125,7 +1209,7 @@
           "crawl",
           "clusters"
         ],
-        "accept_partial_inputs": false,
+        "accept_partial_inputs": true,
         "optional": false,
         "phase": "analysis"
       },
@@ -1276,7 +1360,67 @@
         "phase": "research"
       },
       {
-        "id": "discovery",
+        "id": "crawl",
+        "role": "technical.site-crawler",
+        "depends_on": [
+          "onboard"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "audit"
+      },
+      {
+        "id": "indexation",
+        "role": "technical.indexation-manager",
+        "depends_on": [
+          "crawl"
+        ],
+        "accept_partial_inputs": true,
+        "optional": false,
+        "phase": "audit"
+      },
+      {
+        "id": "cwv",
+        "role": "technical.core-web-vitals-analyst",
+        "depends_on": [
+          "crawl"
+        ],
+        "accept_partial_inputs": true,
+        "optional": false,
+        "phase": "audit"
+      },
+      {
+        "id": "schema",
+        "role": "technical.schema-specialist",
+        "depends_on": [
+          "crawl"
+        ],
+        "accept_partial_inputs": true,
+        "optional": false,
+        "phase": "audit"
+      },
+      {
+        "id": "internal-links",
+        "role": "technical.internal-linking-architect",
+        "depends_on": [
+          "crawl"
+        ],
+        "accept_partial_inputs": true,
+        "optional": false,
+        "phase": "audit"
+      },
+      {
+        "id": "mobile",
+        "role": "technical.mobile-seo-auditor",
+        "depends_on": [
+          "crawl"
+        ],
+        "accept_partial_inputs": true,
+        "optional": false,
+        "phase": "audit"
+      },
+      {
+        "id": "keyword-discovery",
         "role": "keywords.keyword-discovery",
         "depends_on": [
           "onboard"
@@ -1289,15 +1433,68 @@
         "id": "serp",
         "role": "keywords.serp-analyzer",
         "depends_on": [
-          "discovery"
+          "keyword-discovery"
         ],
-        "accept_partial_inputs": false,
+        "accept_partial_inputs": true,
         "optional": false,
         "phase": "research"
       },
       {
-        "id": "crawl",
-        "role": "technical.site-crawler",
+        "id": "competitor-keywords",
+        "role": "keywords.competitor-keyword-spy",
+        "depends_on": [
+          "keyword-discovery"
+        ],
+        "accept_partial_inputs": true,
+        "optional": false,
+        "phase": "research"
+      },
+      {
+        "id": "keyword-gaps",
+        "role": "keywords.keyword-gap-analyst",
+        "depends_on": [
+          "serp",
+          "competitor-keywords"
+        ],
+        "accept_partial_inputs": true,
+        "optional": false,
+        "phase": "research"
+      },
+      {
+        "id": "intent",
+        "role": "keywords.intent-classifier",
+        "depends_on": [
+          "serp"
+        ],
+        "accept_partial_inputs": true,
+        "optional": false,
+        "phase": "research"
+      },
+      {
+        "id": "clusters",
+        "role": "keywords.cluster-builder",
+        "depends_on": [
+          "intent",
+          "keyword-gaps"
+        ],
+        "accept_partial_inputs": true,
+        "optional": false,
+        "phase": "research"
+      },
+      {
+        "id": "content-gaps",
+        "role": "content.content-gap-analyst",
+        "depends_on": [
+          "crawl",
+          "clusters"
+        ],
+        "accept_partial_inputs": true,
+        "optional": false,
+        "phase": "audit"
+      },
+      {
+        "id": "backlinks",
+        "role": "links.backlink-auditor",
         "depends_on": [
           "onboard"
         ],
@@ -1306,55 +1503,59 @@
         "phase": "audit"
       },
       {
-        "id": "technical",
-        "role": "technical.indexation-manager",
+        "id": "ai",
+        "role": "aeo.ai-overview-optimizer",
         "depends_on": [
-          "crawl"
+          "onboard"
         ],
         "accept_partial_inputs": false,
         "optional": false,
         "phase": "audit"
       },
       {
-        "id": "intent",
-        "role": "keywords.intent-classifier",
+        "id": "local",
+        "role": "local.local-competitor-analyst",
         "depends_on": [
-          "serp"
+          "onboard"
         ],
         "accept_partial_inputs": false,
-        "optional": false,
-        "phase": "research"
+        "optional": true,
+        "phase": "audit"
       },
       {
-        "id": "clusters",
-        "role": "keywords.cluster-builder",
+        "id": "ecommerce",
+        "role": "ecommerce.faceted-navigation-auditor",
         "depends_on": [
-          "intent"
+          "onboard"
         ],
         "accept_partial_inputs": false,
-        "optional": false,
-        "phase": "research"
-      },
-      {
-        "id": "content",
-        "role": "content.content-gap-analyst",
-        "depends_on": [
-          "crawl",
-          "clusters"
-        ],
-        "accept_partial_inputs": false,
-        "optional": false,
+        "optional": true,
         "phase": "audit"
       },
       {
         "id": "compile",
         "role": "audit.data-compiler",
         "depends_on": [
-          "market",
-          "technical",
-          "content"
+          "crawl",
+          "indexation",
+          "cwv",
+          "schema",
+          "internal-links",
+          "mobile",
+          "keyword-discovery",
+          "serp",
+          "competitor-keywords",
+          "keyword-gaps",
+          "intent",
+          "clusters",
+          "content-gaps",
+          "backlinks",
+          "ai",
+          "local",
+          "ecommerce",
+          "market"
         ],
-        "accept_partial_inputs": false,
+        "accept_partial_inputs": true,
         "optional": false,
         "phase": "audit"
       },

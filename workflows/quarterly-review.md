@@ -25,6 +25,17 @@
 | `summary` / analysis | `strategy.client-communication-manager` | roadmap | audience, summary, decision_requests, status, faq |
 | `refresh` / analysis | `operations.strategy-refresh` | summary | continue, change, stop, next_backlog, review_window |
 
+Входы и режимы узлов (переопределяют standalone role только в этом workflow):
+
+- `traffic`: analytics; режим `analysis`.
+- `rankings`: serp; режим `analysis`.
+- `roi`: analytics; режим `analysis`.
+- `competitive`: business; режим `analysis`.
+- `strategy`: business; режим `analysis`.
+- `roadmap`: business; режим `analysis`.
+- `summary`: business; режим `analysis`.
+- `refresh`: business; режим `analysis`.
+
 На каждом узле выполнить предметную процедуру procedures/roles/<team>/<name>.md, её QA и work-product contract. Readiness рассчитывается coordinator; он не пишет экспертный результат вместо Codex.
 
 ## Условия перехода и завершения

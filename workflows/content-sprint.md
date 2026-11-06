@@ -9,14 +9,15 @@
 ## Входы и зависимости
 
 - Принятая стратегия/keyword mapping либо явно описанный ограниченный scope.
-- Актуальная страница, факты и brand voice; публикация отдельно.
+- Принятый черновик либо страница, проверенные факты и brand voice; публикация отдельно.
 - Профиль проекта и фактические права; source manifest и принятые контекстные продукты.
 
 ## Действия и результаты этапов
 
 | Узел / фаза | Процедура | Зависимости | Результат |
 |---|---|---|---|
-| `calendar` / analysis | `content.content-calendar-planner` | Внешние входы | calendar, capacity, dependencies, refresh_slots |
+| `strategy` / planning | `content.content-strategist` | Внешние входы | pillars, page_mapping, priorities, metrics, dependencies |
+| `calendar` / analysis | `content.content-calendar-planner` | strategy | calendar, capacity, dependencies, refresh_slots |
 | `serp` / analysis | `keywords.serp-analyzer` | calendar | query_scope, features, page_types, intent_evidence |
 | `brief` / analysis | `content.brief-writer` | calendar, serp | intent, outline, unique_value, facts, links, acceptance |
 | `draft` / analysis | `content.seo-blog-writer` | brief | draft, metadata, links, sources, editorial_checks |
@@ -24,6 +25,22 @@
 | `faq` / analysis | `content.faq-paa-writer` | brief, draft | questions, answers, sources, placement, eligibility |
 | `optimize` / analysis | `content.content-optimizer` | draft, meta, faq | baseline, gaps, edit_plan, revised_content, acceptance |
 | `summary` / analysis | `audit.executive-summary-writer` | optimize | state, risks, opportunities, decisions, next_steps |
+
+Входы и режимы узлов (переопределяют standalone role только в этом workflow):
+
+- `strategy`: business, keywords; режим `analysis`.
+- `calendar`: business; режим `analysis`.
+- `serp`: serp; режим `analysis`.
+- `brief`: business; режим `analysis`.
+- `draft`: business; режим `analysis`.
+- `meta`: business; режим `draft`.
+  - Работать с принятым draft предшественника, не требовать опубликованную страницу; сохранить ID и target URL из brief/architecture.
+  - Результат остаётся предложением/черновиком; live проверка выполняется после разрешённого релиза.
+- `faq`: business; режим `analysis`.
+- `optimize`: business; режим `draft`.
+  - Работать с принятым draft предшественника, не требовать опубликованную страницу; сохранить ID и target URL из brief/architecture.
+  - Результат остаётся предложением/черновиком; live проверка выполняется после разрешённого релиза.
+- `summary`: business; режим `analysis`.
 
 На каждом узле выполнить предметную процедуру procedures/roles/<team>/<name>.md, её QA и work-product contract. Readiness рассчитывается coordinator; он не пишет экспертный результат вместо Codex.
 
