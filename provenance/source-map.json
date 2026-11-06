@@ -1,0 +1,1544 @@
+{
+  "upstream_commit": "738e86a84a55c44ef9093b6631943bef8a4738e0",
+  "entries": [
+    {
+      "source": ".gitignore",
+      "sha256": "71cd837f285eec0971c0bcb00aaecddf8bc222e69fc6e768a1129d1de4d23fdc",
+      "preserved_path": "vendor/seo-agency-in-a-box/.gitignore",
+      "adapted_paths": [
+        "docs/compatibility.md"
+      ],
+      "mode": "preserved_reference_only",
+      "reason": "Obsidian preferences and legacy ignore conventions are not active Codex behavior; preserved unchanged, replaced by scoped storage contracts"
+    },
+    {
+      "source": ".obsidian/app.json",
+      "sha256": "dba893bada94f3a6bee3b04076f18cf47758f4834493b346b9865c99bafdd603",
+      "preserved_path": "vendor/seo-agency-in-a-box/.obsidian/app.json",
+      "adapted_paths": [
+        "docs/compatibility.md"
+      ],
+      "mode": "preserved_reference_only",
+      "reason": "Obsidian preferences and legacy ignore conventions are not active Codex behavior; preserved unchanged, replaced by scoped storage contracts"
+    },
+    {
+      "source": ".obsidian/appearance.json",
+      "sha256": "579e1297d201fdb04e323c0f640e2b081cd6d8d697b29e6d3e9814010312b989",
+      "preserved_path": "vendor/seo-agency-in-a-box/.obsidian/appearance.json",
+      "adapted_paths": [
+        "docs/compatibility.md"
+      ],
+      "mode": "preserved_reference_only",
+      "reason": "Obsidian preferences and legacy ignore conventions are not active Codex behavior; preserved unchanged, replaced by scoped storage contracts"
+    },
+    {
+      "source": ".obsidian/graph.json",
+      "sha256": "0814d778d13f91b0d033dac5b101d512220fd10f545958feb21a7483b6f2e97b",
+      "preserved_path": "vendor/seo-agency-in-a-box/.obsidian/graph.json",
+      "adapted_paths": [
+        "docs/compatibility.md"
+      ],
+      "mode": "preserved_reference_only",
+      "reason": "Obsidian preferences and legacy ignore conventions are not active Codex behavior; preserved unchanged, replaced by scoped storage contracts"
+    },
+    {
+      "source": "CLAUDE.md",
+      "sha256": "f8eb8a02af01962ac88441a1739ad0a1084876d6eae1bb69e196825a1282092a",
+      "preserved_path": "vendor/seo-agency-in-a-box/CLAUDE.md",
+      "adapted_paths": [
+        "AGENTS.md",
+        ".agents/skills/seo-orchestrator/SKILL.md"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "LICENSE",
+      "sha256": "2c8a47eb0dc705b83bba2e7894f181689e0de204224429075a464b747c86b49f",
+      "preserved_path": "vendor/seo-agency-in-a-box/LICENSE",
+      "adapted_paths": [
+        "LICENSE"
+      ],
+      "mode": "preserved_exact",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "MASTER-PLAN.md",
+      "sha256": "6bb8e57741b6d58459b833e414dd55f40a737500d8e44533718152d1453b8ea9",
+      "preserved_path": "vendor/seo-agency-in-a-box/MASTER-PLAN.md",
+      "adapted_paths": [
+        "docs/implementation-plan.md"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "README.md",
+      "sha256": "6a16991a1b9ddfad95b433fa0eefaada4fcb79b8c12e74a14f827fc395ede779",
+      "preserved_path": "vendor/seo-agency-in-a-box/README.md",
+      "adapted_paths": [
+        "README.md"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/_base/quality-gate.md",
+      "sha256": "4a9635d3844b4fe832403c509bf0554ee851a717215d331ab67abfdc00777332",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/_base/quality-gate.md",
+      "adapted_paths": [
+        "procedures/base/quality-gate.md"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/_base/seo-fundamentals.md",
+      "sha256": "f90a6844a536767b79808f431944fb64dd855190d4222c1bb2645d1aa610cab3",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/_base/seo-fundamentals.md",
+      "adapted_paths": [
+        "procedures/base/seo-fundamentals.md"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/aeo/_lead.md",
+      "sha256": "d3c0370e29dd2779f097d087d04e672eaad1038fb1220cf439163f6bba47d09a",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/aeo/_lead.md",
+      "adapted_paths": [
+        "procedures/leads/aeo.md",
+        "seo_system/config/teams.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/aeo/ai-overview-optimizer.md",
+      "sha256": "5bb3f7c23d8ef0606228510b1b7ed62989d56df306d8bf0137d8982d0ba5e6bf",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/aeo/ai-overview-optimizer.md",
+      "adapted_paths": [
+        "procedures/roles/aeo/ai-overview-optimizer.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/aeo/citation-optimizer.md",
+      "sha256": "1909580c30b1da7a4160dced4d0ab52e6bbdfc352696c7348ed0cb36e9429f44",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/aeo/citation-optimizer.md",
+      "adapted_paths": [
+        "procedures/roles/aeo/citation-optimizer.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/aeo/conversational-query-researcher.md",
+      "sha256": "bfafd582f77fdd8c08ad037673d75e13eda7f486419c65fabb52f7bd76a95c9a",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/aeo/conversational-query-researcher.md",
+      "adapted_paths": [
+        "procedures/roles/aeo/conversational-query-researcher.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/aeo/entity-optimizer.md",
+      "sha256": "c743f1cb9b3ec3a776e61453a39b2cd77c839781e904c5f34395a8d8bc7f6939",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/aeo/entity-optimizer.md",
+      "adapted_paths": [
+        "procedures/roles/aeo/entity-optimizer.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/aeo/featured-snippet-strategist.md",
+      "sha256": "0faff27c30d61c3284bc06259d26f61f9e65c17539389d85c87e34d61037e05e",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/aeo/featured-snippet-strategist.md",
+      "adapted_paths": [
+        "procedures/roles/aeo/featured-snippet-strategist.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/aeo/knowledge-panel-manager.md",
+      "sha256": "2eb4430392f563a957962f6d43434a75cc5ed82906ab848e4b0e25d90bd481f9",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/aeo/knowledge-panel-manager.md",
+      "adapted_paths": [
+        "procedures/roles/aeo/knowledge-panel-manager.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/aeo/perplexity-optimizer.md",
+      "sha256": "f3d3223e5520444cd6bc4d053b06011d83694439ce4d5dbaf5b7341c48edb1af",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/aeo/perplexity-optimizer.md",
+      "adapted_paths": [
+        "procedures/roles/aeo/perplexity-optimizer.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/analytics/_lead.md",
+      "sha256": "89e3e707f03d697e9556a6c4a7e2fe613a8a85a08a1006414ea4b48da03a133a",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/analytics/_lead.md",
+      "adapted_paths": [
+        "procedures/leads/analytics.md",
+        "seo_system/config/teams.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/analytics/conversion-analyst.md",
+      "sha256": "daca8c779e3b2ef09dc285f6bcde94446fb139c4da5abcc54eeb5fb982a939c3",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/analytics/conversion-analyst.md",
+      "adapted_paths": [
+        "procedures/roles/analytics/conversion-analyst.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/analytics/dashboard-builder.md",
+      "sha256": "9fee9a2519faf782476fd3d701f7c3cbc979a4d598170e0b12e0517754afa6a8",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/analytics/dashboard-builder.md",
+      "adapted_paths": [
+        "procedures/roles/analytics/dashboard-builder.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/analytics/monthly-report-writer.md",
+      "sha256": "84f654c822f2639324388f7ff13565d7deee83492edad05099ba6970acdeeb00",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/analytics/monthly-report-writer.md",
+      "adapted_paths": [
+        "procedures/roles/analytics/monthly-report-writer.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/analytics/ranking-tracker.md",
+      "sha256": "231c53b47771482178604fd6e1533da471051ca12885f58d377c6748f1754809",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/analytics/ranking-tracker.md",
+      "adapted_paths": [
+        "procedures/roles/analytics/ranking-tracker.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/analytics/roi-calculator.md",
+      "sha256": "0336d57afad3e7bfa71de57f18ae1e31eb7fc6d792d11d658cea6f47c261f3c9",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/analytics/roi-calculator.md",
+      "adapted_paths": [
+        "procedures/roles/analytics/roi-calculator.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/analytics/traffic-analyst.md",
+      "sha256": "76c6c2ef0f17bb79439fa3e348db235428468046082c231ec222097cb43309bd",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/analytics/traffic-analyst.md",
+      "adapted_paths": [
+        "procedures/roles/analytics/traffic-analyst.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/audit/_lead.md",
+      "sha256": "4b9dbf56934e6813de7f9f9d183971db08e56eede9c40609f517748d7e8c9aae",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/audit/_lead.md",
+      "adapted_paths": [
+        "procedures/leads/audit.md",
+        "seo_system/config/teams.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/audit/data-compiler.md",
+      "sha256": "f489ab5dada4c398308c517ca15ad0dc592e3ebeb0ed709b46f078b246292770",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/audit/data-compiler.md",
+      "adapted_paths": [
+        "procedures/roles/audit/data-compiler.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/audit/executive-summary-writer.md",
+      "sha256": "a52abfe5c64cfecbb7d3430c0a752f7d4a7cec613f916d34e47d6e1abd33ac8d",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/audit/executive-summary-writer.md",
+      "adapted_paths": [
+        "procedures/roles/audit/executive-summary-writer.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/audit/fix-generator.md",
+      "sha256": "58b556b3978efa93d82bcb178a5b65915fb02f6ddae713c72366306b21928cdc",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/audit/fix-generator.md",
+      "adapted_paths": [
+        "procedures/roles/audit/fix-generator.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/audit/recommendation-engine.md",
+      "sha256": "dcf5c716907f09f559a3dc0db21121020cc5665bd5c70527ec781425b6b8e278",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/audit/recommendation-engine.md",
+      "adapted_paths": [
+        "procedures/roles/audit/recommendation-engine.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/audit/report-builder.md",
+      "sha256": "81da535399ea876667f5b36363cca14b933008df28a24b59a4131b5f1ada5e8d",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/audit/report-builder.md",
+      "adapted_paths": [
+        "procedures/roles/audit/report-builder.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/competitor/_lead.md",
+      "sha256": "e41098ba78cac849c476bb701aa38cc5ea8896796a663d9e5da589b9cef7ebbb",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/competitor/_lead.md",
+      "adapted_paths": [
+        "procedures/leads/competitor.md",
+        "seo_system/config/teams.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/competitor/competitor-backlink-profiler.md",
+      "sha256": "d8d6e1cb93e1853656630d59b6f1aefbaf88c576e9f5216f0a1dd111fa178ee1",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/competitor/competitor-backlink-profiler.md",
+      "adapted_paths": [
+        "procedures/roles/competitor/competitor-backlink-profiler.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/competitor/competitor-content-analyzer.md",
+      "sha256": "0c414912252ce7101cad0e357ed28de28f87b16e362408352850a4751e9cf8c4",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/competitor/competitor-content-analyzer.md",
+      "adapted_paths": [
+        "procedures/roles/competitor/competitor-content-analyzer.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/competitor/competitor-keyword-analyst.md",
+      "sha256": "7da237428953e763dd6e8e339510577f1a5acc77fdec270cf9fe6aea0f5661b7",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/competitor/competitor-keyword-analyst.md",
+      "adapted_paths": [
+        "procedures/roles/competitor/competitor-keyword-analyst.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/competitor/competitor-serp-tracker.md",
+      "sha256": "fb77733e800237d16675ee7ee4d60c54df609939834468581fa2aca32bd560e1",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/competitor/competitor-serp-tracker.md",
+      "adapted_paths": [
+        "procedures/roles/competitor/competitor-serp-tracker.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/competitor/competitor-site-crawler.md",
+      "sha256": "5153e43e9b794411ff9ad313488b7e554c8941edf6085de7f6e7936262d4e01b",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/competitor/competitor-site-crawler.md",
+      "adapted_paths": [
+        "procedures/roles/competitor/competitor-site-crawler.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/competitor/competitor-technical-benchmarker.md",
+      "sha256": "27ddf1aebd263a3831c086bc33f7db822d6ad5b84d4fdef4f4188b2357f996ba",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/competitor/competitor-technical-benchmarker.md",
+      "adapted_paths": [
+        "procedures/roles/competitor/competitor-technical-benchmarker.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/content/_lead.md",
+      "sha256": "e4b6dc7284e4c0e592b5f696958e4e640090fc29aee9196081a4c1a367740536",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/content/_lead.md",
+      "adapted_paths": [
+        "procedures/leads/content.md",
+        "seo_system/config/teams.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/content/brief-writer.md",
+      "sha256": "e0975ec2b2e5d7135f1970103a26223db29f71b8c013b35d177870a8c0aff54f",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/content/brief-writer.md",
+      "adapted_paths": [
+        "procedures/roles/content/brief-writer.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/content/content-calendar-planner.md",
+      "sha256": "3b6c65932d4567bdd172b53e36808647f3a8eb2db1d3913ab8d669622a70f82c",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/content/content-calendar-planner.md",
+      "adapted_paths": [
+        "procedures/roles/content/content-calendar-planner.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/content/content-gap-analyst.md",
+      "sha256": "67c2a159dbf9b0052825c20df169caf112cade15e2aa7875ff3db336f13ec07d",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/content/content-gap-analyst.md",
+      "adapted_paths": [
+        "procedures/roles/content/content-gap-analyst.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/content/content-optimizer.md",
+      "sha256": "e39fcc66e89deb1a3656cf3c01d94b0c4416bc695b79f7fe2ce061820dd4c0c8",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/content/content-optimizer.md",
+      "adapted_paths": [
+        "procedures/roles/content/content-optimizer.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/content/content-performance-analyst.md",
+      "sha256": "631f573e6a553fd0df97383f74908547f497324debe70bfcc6842ee301085790",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/content/content-performance-analyst.md",
+      "adapted_paths": [
+        "procedures/roles/content/content-performance-analyst.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/content/content-strategist.md",
+      "sha256": "5e6efe577d020178f3b95aac281af1332c768adf402256be8fa3a95b48fa11fc",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/content/content-strategist.md",
+      "adapted_paths": [
+        "procedures/roles/content/content-strategist.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/content/faq-paa-writer.md",
+      "sha256": "4230196f7499a5b21b2b7dcf91515881972077e5d06e7e6c164018c0942e30de",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/content/faq-paa-writer.md",
+      "adapted_paths": [
+        "procedures/roles/content/faq-paa-writer.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/content/landing-page-copywriter.md",
+      "sha256": "c6d19475b79ae5c34b1aed3db12c9239ddf610b9f38a50bc1e0dc41b6cc983f3",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/content/landing-page-copywriter.md",
+      "adapted_paths": [
+        "procedures/roles/content/landing-page-copywriter.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/content/meta-tag-writer.md",
+      "sha256": "82ec08efa69f8656b5c9f3e50558890f660959171dd25ca6f0150f85f4e2c2e9",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/content/meta-tag-writer.md",
+      "adapted_paths": [
+        "procedures/roles/content/meta-tag-writer.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/content/seo-blog-writer.md",
+      "sha256": "b6efe5e2798122abfb4f81577527c5cef11c6255a77a6c517dc780b46a48edb0",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/content/seo-blog-writer.md",
+      "adapted_paths": [
+        "procedures/roles/content/seo-blog-writer.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/ecommerce/_lead.md",
+      "sha256": "c93783b665dfbeb309a537f018979ac6865aa0aafbb51e4644ad71f0e596d134",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/ecommerce/_lead.md",
+      "adapted_paths": [
+        "procedures/leads/ecommerce.md",
+        "seo_system/config/teams.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/ecommerce/category-strategist.md",
+      "sha256": "f57613375e362b55374a6f30c03a3601d38a0b935f9a527453ecefceb433a462",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/ecommerce/category-strategist.md",
+      "adapted_paths": [
+        "procedures/roles/ecommerce/category-strategist.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/ecommerce/faceted-navigation-auditor.md",
+      "sha256": "e9fb6cea963dc53e4342c4aab3341fba160519ddfbc0687a8cae34a72fc3347f",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/ecommerce/faceted-navigation-auditor.md",
+      "adapted_paths": [
+        "procedures/roles/ecommerce/faceted-navigation-auditor.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/ecommerce/product-page-optimizer.md",
+      "sha256": "9cd2d2d4ed01bdb0b8fc52a1c3ba3cfed31ba4324da68dd35dfa6bbfc388fa2a",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/ecommerce/product-page-optimizer.md",
+      "adapted_paths": [
+        "procedures/roles/ecommerce/product-page-optimizer.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/ecommerce/product-schema-generator.md",
+      "sha256": "31d1e7a5ad75b431c65b8eef1dea107499fb4b4fe58794b851ea074eb598a769",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/ecommerce/product-schema-generator.md",
+      "adapted_paths": [
+        "procedures/roles/ecommerce/product-schema-generator.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/ecommerce/shopping-feed-optimizer.md",
+      "sha256": "e422047469b22978af8bfdb977258b3d6fa842bc4c9b611f1d6b8b8a35e9c30e",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/ecommerce/shopping-feed-optimizer.md",
+      "adapted_paths": [
+        "procedures/roles/ecommerce/shopping-feed-optimizer.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/keywords/_lead.md",
+      "sha256": "6f3d490b0aa698e8648569fb67114a60082f568bbb96bbb68b6d27f1741c7729",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/keywords/_lead.md",
+      "adapted_paths": [
+        "procedures/leads/keywords.md",
+        "seo_system/config/teams.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/keywords/cluster-builder.md",
+      "sha256": "a503c999da3ebd31fc0f9494e00916e21e6d8e25463df9c3fcd6a0453c3e727e",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/keywords/cluster-builder.md",
+      "adapted_paths": [
+        "procedures/roles/keywords/cluster-builder.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/keywords/competitor-keyword-spy.md",
+      "sha256": "e96785cc90739b96490e8ebc1c51b48307537723eec2ee7637e657ac0aec04f5",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/keywords/competitor-keyword-spy.md",
+      "adapted_paths": [
+        "procedures/roles/keywords/competitor-keyword-spy.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/keywords/intent-classifier.md",
+      "sha256": "7119c2b2a024e2638241077e2afb9478b3bd748b78a7c256c3c52853a6420686",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/keywords/intent-classifier.md",
+      "adapted_paths": [
+        "procedures/roles/keywords/intent-classifier.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/keywords/keyword-discovery.md",
+      "sha256": "59b5881fb91ce117e5af39dccd97b2c02bb627430af5f88f7dc57b5bf956567c",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/keywords/keyword-discovery.md",
+      "adapted_paths": [
+        "procedures/roles/keywords/keyword-discovery.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/keywords/keyword-gap-analyst.md",
+      "sha256": "dfe95da49ddc10f82ce05b2c79d9485673c58d36e846d91ed3dfb75f8660439d",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/keywords/keyword-gap-analyst.md",
+      "adapted_paths": [
+        "procedures/roles/keywords/keyword-gap-analyst.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/keywords/serp-analyzer.md",
+      "sha256": "0a6aecc3d5f6848f22b1b52c9523f2439269e871864d8ac5f143175277ff0faa",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/keywords/serp-analyzer.md",
+      "adapted_paths": [
+        "procedures/roles/keywords/serp-analyzer.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/links/_lead.md",
+      "sha256": "c2791171534c9995256cce06881a77bfb7416671a33823394fc7409c18209c10",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/links/_lead.md",
+      "adapted_paths": [
+        "procedures/leads/links.md",
+        "seo_system/config/teams.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/links/backlink-auditor.md",
+      "sha256": "22640b2248a31032f27c7486927572c635b9f6524f1c0dc6083603b2848cc314",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/links/backlink-auditor.md",
+      "adapted_paths": [
+        "procedures/roles/links/backlink-auditor.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/links/broken-link-finder.md",
+      "sha256": "2bb16b6980a5cfe7f62591a2ee5b148eb687ca192b8696dce8d0f728f524ab02",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/links/broken-link-finder.md",
+      "adapted_paths": [
+        "procedures/roles/links/broken-link-finder.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/links/competitor-backlink-analyzer.md",
+      "sha256": "7a94de8c74b288fadf4bdb4c70d44bf25c6bdbe2350e2ad1734b484a93d9ff71",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/links/competitor-backlink-analyzer.md",
+      "adapted_paths": [
+        "procedures/roles/links/competitor-backlink-analyzer.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/links/digital-pr-strategist.md",
+      "sha256": "8919f85f579fd099e598046396f5b9676b5bf03f9b7d1336ebe8b40429a4e2d5",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/links/digital-pr-strategist.md",
+      "adapted_paths": [
+        "procedures/roles/links/digital-pr-strategist.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/links/link-prospector.md",
+      "sha256": "b121a1f47f1f93b678ddd4376b9a4d91de9cb01062113c25c0ccb0f2325ff48b",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/links/link-prospector.md",
+      "adapted_paths": [
+        "procedures/roles/links/link-prospector.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/links/outreach-writer.md",
+      "sha256": "34a0de40aeed2a0b9e7cfaee39e91b4c462bd90ac2f19c9bded3d220ba1bdd2a",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/links/outreach-writer.md",
+      "adapted_paths": [
+        "procedures/roles/links/outreach-writer.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/local/_lead.md",
+      "sha256": "c80dd391310364b304f629929ab511fd36f912922e0de223ec907fdd6e344c82",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/local/_lead.md",
+      "adapted_paths": [
+        "procedures/leads/local.md",
+        "seo_system/config/teams.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/local/citation-builder.md",
+      "sha256": "5f09c381e161de15b3f2dcfa47fa6eaab561f077d2f26fe3e692300376e5fb31",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/local/citation-builder.md",
+      "adapted_paths": [
+        "procedures/roles/local/citation-builder.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/local/gbp-optimizer.md",
+      "sha256": "578d49b65235a04ac4f7a69e4b0b65c2cc68605a076919189048e7bbee13b85d",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/local/gbp-optimizer.md",
+      "adapted_paths": [
+        "procedures/roles/local/gbp-optimizer.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/local/local-competitor-analyst.md",
+      "sha256": "f5ac11f61659ac522cf448faae1117caf12e8d3bfa4487415b5766eea3514050",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/local/local-competitor-analyst.md",
+      "adapted_paths": [
+        "procedures/roles/local/local-competitor-analyst.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/local/local-content-writer.md",
+      "sha256": "2d9e65d4dc10d15adacaa2a1a8d3094eab8c4519b53583fb659cf4c7f070579f",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/local/local-content-writer.md",
+      "adapted_paths": [
+        "procedures/roles/local/local-content-writer.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/local/review-strategist.md",
+      "sha256": "84b6e459bb9f3bf91f722f54345934f8eb76e473fb0eef37d48a3f8f0c86489b",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/local/review-strategist.md",
+      "adapted_paths": [
+        "procedures/roles/local/review-strategist.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/research/_lead.md",
+      "sha256": "2bbef99c742fdcb9fe9b6396f92a3d95d8a53939690d4f8ec198ac6e4242c193",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/research/_lead.md",
+      "adapted_paths": [
+        "procedures/leads/research.md",
+        "seo_system/config/teams.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/research/ai-search-landscape-analyst.md",
+      "sha256": "c4ed62f55f5b7871672538b50bbbdb5cb8cad08ae034b3f3638284e46e25c829",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/research/ai-search-landscape-analyst.md",
+      "adapted_paths": [
+        "procedures/roles/research/ai-search-landscape-analyst.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/research/algorithm-monitor.md",
+      "sha256": "a23d20bb2ae2b974a2aaae5c89fea066040f4d661ef5a380e533fadbd15245a7",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/research/algorithm-monitor.md",
+      "adapted_paths": [
+        "procedures/roles/research/algorithm-monitor.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/research/data-analyst.md",
+      "sha256": "ce3dff94ae15c21d24343c582577876677dcf365456134f4f980567b50244bfd",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/research/data-analyst.md",
+      "adapted_paths": [
+        "procedures/roles/research/data-analyst.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/research/industry-trend-analyst.md",
+      "sha256": "f38d74bcf18d6c36d4e15449a91457c5b4a57c724da2619e049a842f8d5e9ade",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/research/industry-trend-analyst.md",
+      "adapted_paths": [
+        "procedures/roles/research/industry-trend-analyst.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/research/market-researcher.md",
+      "sha256": "ee4514ec0f91abfec605dc7fd7a1c86334927aecada78a8187c23d44147808d2",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/research/market-researcher.md",
+      "adapted_paths": [
+        "procedures/roles/research/market-researcher.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/research/serp-feature-researcher.md",
+      "sha256": "15aefaaa75e217898f46e5fb61ccc6cac2c0d8145317725779e7dae4b9a5728b",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/research/serp-feature-researcher.md",
+      "adapted_paths": [
+        "procedures/roles/research/serp-feature-researcher.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/strategy/_lead.md",
+      "sha256": "b1e5d2d840fd92c569fa6d97210d2b5db199fea5ee67986abc7af79d99d3aa20",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/strategy/_lead.md",
+      "adapted_paths": [
+        "procedures/leads/strategy.md",
+        "seo_system/config/teams.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/strategy/client-communication-manager.md",
+      "sha256": "0bda4b94810dea02f6c3b5dc769fece4659b6358b99d29da77571abffd7bc634",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/strategy/client-communication-manager.md",
+      "adapted_paths": [
+        "procedures/roles/strategy/client-communication-manager.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/strategy/competitive-strategy-analyst.md",
+      "sha256": "14519645147d00b24800f90257d83315ad3d52f818f664ec3733d68a63544a56",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/strategy/competitive-strategy-analyst.md",
+      "adapted_paths": [
+        "procedures/roles/strategy/competitive-strategy-analyst.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/strategy/priority-matrix-builder.md",
+      "sha256": "4a3109f8b246235c473d481be594102fd1f4e63a97c1c95243581c5de132205f",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/strategy/priority-matrix-builder.md",
+      "adapted_paths": [
+        "procedures/roles/strategy/priority-matrix-builder.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/strategy/roadmap-planner.md",
+      "sha256": "f483a931c669754db9e9bc1aa1755ccb6f542921df443d2e019d178ce9ebfc2e",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/strategy/roadmap-planner.md",
+      "adapted_paths": [
+        "procedures/roles/strategy/roadmap-planner.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/strategy/seo-strategist.md",
+      "sha256": "a936701fe27e22a2a844904008ce8a4b1d4237f45673795753ee0348e6d70464",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/strategy/seo-strategist.md",
+      "adapted_paths": [
+        "procedures/roles/strategy/seo-strategist.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/technical/_lead.md",
+      "sha256": "edb53120d6ded39c0cae05445a350879023cf2edc2a363168b9ded77c93c71e8",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/technical/_lead.md",
+      "adapted_paths": [
+        "procedures/leads/technical.md",
+        "seo_system/config/teams.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/technical/core-web-vitals-analyst.md",
+      "sha256": "5f431065737f7e3d2a528f9eeff8f57efdb597b205ab7505d48d1b1614c46055",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/technical/core-web-vitals-analyst.md",
+      "adapted_paths": [
+        "procedures/roles/technical/core-web-vitals-analyst.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/technical/indexation-manager.md",
+      "sha256": "d80755c3b144c0a54c6a0f40f6d95c56b887a35f75e4351c6d73628f0564c50c",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/technical/indexation-manager.md",
+      "adapted_paths": [
+        "procedures/roles/technical/indexation-manager.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/technical/internal-linking-architect.md",
+      "sha256": "41b19741c27628690797dd59a5b5b3c4585a4abe731d54f7ae7a20e8032e1994",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/technical/internal-linking-architect.md",
+      "adapted_paths": [
+        "procedures/roles/technical/internal-linking-architect.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/technical/log-analyzer.md",
+      "sha256": "671d8eb31590b5512108a6a84fd13b858158ec9dad0dcd9eb55df90b122e7036",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/technical/log-analyzer.md",
+      "adapted_paths": [
+        "procedures/roles/technical/log-analyzer.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/technical/mobile-seo-auditor.md",
+      "sha256": "1eef28c2ae19422ce8a94121620e14493853107555760b143fdfe6b636ace1d8",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/technical/mobile-seo-auditor.md",
+      "adapted_paths": [
+        "procedures/roles/technical/mobile-seo-auditor.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/technical/schema-specialist.md",
+      "sha256": "fab88166a60cf5a5274da2d9ba64b5a572c7f66d9b47ebc9f914a75802933b0a",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/technical/schema-specialist.md",
+      "adapted_paths": [
+        "procedures/roles/technical/schema-specialist.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/technical/site-crawler.md",
+      "sha256": "3c39753e3f75951a70dc792aa2231a21dcc327fc28f2ea03976e6a8701a1bf7c",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/technical/site-crawler.md",
+      "adapted_paths": [
+        "procedures/roles/technical/site-crawler.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "agents/technical/site-migration-specialist.md",
+      "sha256": "8cff2104c4ff04f79c7c88eefa1903e8689f340b8818451ba6c4bea952882ba7",
+      "preserved_path": "vendor/seo-agency-in-a-box/agents/technical/site-migration-specialist.md",
+      "adapted_paths": [
+        "procedures/roles/technical/site-migration-specialist.md",
+        "seo_system/config/roles.json"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "instructions/data-flow.md",
+      "sha256": "1087079b4a6d0387c5daf8b56054825145b228eacb3b73f55f7a85979d2230c7",
+      "preserved_path": "vendor/seo-agency-in-a-box/instructions/data-flow.md",
+      "adapted_paths": [
+        "instructions/data-flow.md"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "instructions/flow.md",
+      "sha256": "44a648dc5f1b76a71ee6b6e3f25854d1716a3576c9efd070da4c4afa0feff305",
+      "preserved_path": "vendor/seo-agency-in-a-box/instructions/flow.md",
+      "adapted_paths": [
+        "instructions/flow.md"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "instructions/hierarchy.md",
+      "sha256": "6f5d879a689a89dd656d5d36de52fff0500a1362ab6394f3a0ab4af14c89def3",
+      "preserved_path": "vendor/seo-agency-in-a-box/instructions/hierarchy.md",
+      "adapted_paths": [
+        "instructions/hierarchy.md"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "instructions/quality-standards.md",
+      "sha256": "a12afa9669f01fb335d988baeec3ffad94e62aeb63895a4ef71e78411af2f528",
+      "preserved_path": "vendor/seo-agency-in-a-box/instructions/quality-standards.md",
+      "adapted_paths": [
+        "instructions/quality-standards.md"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "instructions/teams/aeo.md",
+      "sha256": "c5da6d1e5d052aa8e8a07ca6d1203df6bf125d91577299536577243a3997ddf4",
+      "preserved_path": "vendor/seo-agency-in-a-box/instructions/teams/aeo.md",
+      "adapted_paths": [
+        "instructions/teams/aeo.md"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "instructions/teams/analytics-reporting.md",
+      "sha256": "ac34552e295147d8d437aa426a394b189096013d31c92a5dac6ea81d18a98cdb",
+      "preserved_path": "vendor/seo-agency-in-a-box/instructions/teams/analytics-reporting.md",
+      "adapted_paths": [
+        "instructions/teams/analytics-reporting.md"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "instructions/teams/audit-recommendations.md",
+      "sha256": "aab0183b41e67368645a0b7ed4ef46e68d83eb3a84ba9821b846f3cb2ba7fbaf",
+      "preserved_path": "vendor/seo-agency-in-a-box/instructions/teams/audit-recommendations.md",
+      "adapted_paths": [
+        "instructions/teams/audit-recommendations.md"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "instructions/teams/competitor-analysis.md",
+      "sha256": "bc44f42b3d854eabaa2e84045fe46aac151f433b10a6364e6456870bf75db382",
+      "preserved_path": "vendor/seo-agency-in-a-box/instructions/teams/competitor-analysis.md",
+      "adapted_paths": [
+        "instructions/teams/competitor-analysis.md"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "instructions/teams/content-seo.md",
+      "sha256": "3239772ef3eee968d3440992a7926056755df12330addd65123d1d16c3cbd7c1",
+      "preserved_path": "vendor/seo-agency-in-a-box/instructions/teams/content-seo.md",
+      "adapted_paths": [
+        "instructions/teams/content-seo.md"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "instructions/teams/ecommerce-seo.md",
+      "sha256": "898d06457b5d857fafeb3de724e51455bc87814656f2ce8d4cd372dc3c166903",
+      "preserved_path": "vendor/seo-agency-in-a-box/instructions/teams/ecommerce-seo.md",
+      "adapted_paths": [
+        "instructions/teams/ecommerce-seo.md"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "instructions/teams/keyword-research.md",
+      "sha256": "b6262cd3f89f7b961f8925e041607f666310033249c18d47dd92714f83a52fa5",
+      "preserved_path": "vendor/seo-agency-in-a-box/instructions/teams/keyword-research.md",
+      "adapted_paths": [
+        "instructions/teams/keyword-research.md"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "instructions/teams/link-building.md",
+      "sha256": "fed7842c9c7a8c19446580f51d5d219b0a841c4f0a8968facdcf82b4aec53116",
+      "preserved_path": "vendor/seo-agency-in-a-box/instructions/teams/link-building.md",
+      "adapted_paths": [
+        "instructions/teams/link-building.md"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "instructions/teams/local-seo.md",
+      "sha256": "dfa09063f4808ced36c90332719d9a95c621914b550b154e4bd7c1e7e6c8ffe3",
+      "preserved_path": "vendor/seo-agency-in-a-box/instructions/teams/local-seo.md",
+      "adapted_paths": [
+        "instructions/teams/local-seo.md"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "instructions/teams/research.md",
+      "sha256": "1feb823679c2252dc4cd2a8fffa22a4c07ead1222eb61a2b3893ce86a5e261fc",
+      "preserved_path": "vendor/seo-agency-in-a-box/instructions/teams/research.md",
+      "adapted_paths": [
+        "instructions/teams/research.md"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "instructions/teams/strategy-direction.md",
+      "sha256": "129edf57f904b8c2355130e960facd44a67c54f104612f63174a578c3fb1bda6",
+      "preserved_path": "vendor/seo-agency-in-a-box/instructions/teams/strategy-direction.md",
+      "adapted_paths": [
+        "instructions/teams/strategy-direction.md"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "instructions/teams/technical-seo.md",
+      "sha256": "79d2645be534b5f36cdb8f375e7a68093a8032e1348debf506385d5332e18a72",
+      "preserved_path": "vendor/seo-agency-in-a-box/instructions/teams/technical-seo.md",
+      "adapted_paths": [
+        "instructions/teams/technical-seo.md"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "instructions/tool-usage.md",
+      "sha256": "22f95808f4d85795f9ad3d43d631f903ccb6131111400ca903ad943c5edaf2bf",
+      "preserved_path": "vendor/seo-agency-in-a-box/instructions/tool-usage.md",
+      "adapted_paths": [
+        "instructions/tool-usage.md"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "onboarding/onboard.md",
+      "sha256": "c58ed72c06d8a5f04282b797af0973a942596bebafdeb4b561a655a9b218ee61",
+      "preserved_path": "vendor/seo-agency-in-a-box/onboarding/onboard.md",
+      "adapted_paths": [
+        "onboarding/onboard.md"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "quality/qa-checklist.md",
+      "sha256": "991ad89299e7f584387af339a7fa95f557b04a4fb8f08b0be2942de125f9ac4f",
+      "preserved_path": "vendor/seo-agency-in-a-box/quality/qa-checklist.md",
+      "adapted_paths": [
+        "quality/qa-checklist.md"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "templates/backlink-audit-report.md",
+      "sha256": "035c4915745e882a9f5ef6cdfbfb8eeadfaa7a51b0b220651269764c075f2ce7",
+      "preserved_path": "vendor/seo-agency-in-a-box/templates/backlink-audit-report.md",
+      "adapted_paths": [
+        "templates/backlink-audit-report.md"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "templates/client-proposal.md",
+      "sha256": "b104192cfa81e06f9710c7916bb7a0bb5be4ba2c6fe12574ec28978c47c0b1ed",
+      "preserved_path": "vendor/seo-agency-in-a-box/templates/client-proposal.md",
+      "adapted_paths": [
+        "templates/client-proposal.md"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "templates/competitor-analysis.md",
+      "sha256": "8f8f316d8d46bee90436f83a6ad9dabf0192d6c9347f4726bde39dee3a14cdf6",
+      "preserved_path": "vendor/seo-agency-in-a-box/templates/competitor-analysis.md",
+      "adapted_paths": [
+        "templates/competitor-analysis.md"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "templates/content-brief.md",
+      "sha256": "f5bc0693befe6f2d578fe1b13ca77e89e94a4aa6fa6bf627f691a069bdbb5b52",
+      "preserved_path": "vendor/seo-agency-in-a-box/templates/content-brief.md",
+      "adapted_paths": [
+        "templates/content-brief.md"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "templates/keyword-research-report.md",
+      "sha256": "1cda3865dc1e258b81852c53f7c985a2289c5e5956a85ab267124b4e5a52cc67",
+      "preserved_path": "vendor/seo-agency-in-a-box/templates/keyword-research-report.md",
+      "adapted_paths": [
+        "templates/keyword-research-report.md"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "templates/local-seo-report.md",
+      "sha256": "8aeeb9117ce955f39bc287b3e8c583a2174f7076fe942d1e980e59bfe1bf2e7f",
+      "preserved_path": "vendor/seo-agency-in-a-box/templates/local-seo-report.md",
+      "adapted_paths": [
+        "templates/local-seo-report.md"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "templates/monthly-seo-report.md",
+      "sha256": "4b9cbd9d98a1b8e12e753311c75b503484355a525eed2e5da372df4ea1c24a35",
+      "preserved_path": "vendor/seo-agency-in-a-box/templates/monthly-seo-report.md",
+      "adapted_paths": [
+        "templates/monthly-seo-report.md"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "templates/priority-matrix.md",
+      "sha256": "6cf09982e6865137d3cf90e1808aaa2d4a23a9acda909fb3526c65a3aa879a9f",
+      "preserved_path": "vendor/seo-agency-in-a-box/templates/priority-matrix.md",
+      "adapted_paths": [
+        "templates/priority-matrix.md"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "templates/seo-audit-report.md",
+      "sha256": "293260a23ceba75341dcb45c6b3246749764e8d393bb0370d4c166dcde272ee9",
+      "preserved_path": "vendor/seo-agency-in-a-box/templates/seo-audit-report.md",
+      "adapted_paths": [
+        "templates/seo-audit-report.md"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "templates/seo-roadmap.md",
+      "sha256": "2e37ba988edeb722b4b77e406cada222b982acbb0e93a20ff84ae646ed841a6a",
+      "preserved_path": "vendor/seo-agency-in-a-box/templates/seo-roadmap.md",
+      "adapted_paths": [
+        "templates/seo-roadmap.md"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "templates/technical-audit.md",
+      "sha256": "20efe0217f99df7b617b6a8891058df57b6d4ab5f08f8937107cb5d067067b7a",
+      "preserved_path": "vendor/seo-agency-in-a-box/templates/technical-audit.md",
+      "adapted_paths": [
+        "templates/technical-audit.md"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "tools/credit-saving.md",
+      "sha256": "ad89d594e8fecb2dfae143bf066cff4e93aba30defd129959279b00cab3237d3",
+      "preserved_path": "vendor/seo-agency-in-a-box/tools/credit-saving.md",
+      "adapted_paths": [
+        "tools/credit-saving.md"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "tools/firecrawl-guide.md",
+      "sha256": "a6d873def2aa831447afa11ee32311a10ee823c7c827a4faf5fac6290fe022ef",
+      "preserved_path": "vendor/seo-agency-in-a-box/tools/firecrawl-guide.md",
+      "adapted_paths": [
+        "tools/firecrawl-guide.md"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "tools/tavily-guide.md",
+      "sha256": "6da14cd2c79226dc474e43649022f79b21d744eee29bd8eb4e02ad94809aceea",
+      "preserved_path": "vendor/seo-agency-in-a-box/tools/tavily-guide.md",
+      "adapted_paths": [
+        "tools/tavily-guide.md"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "vault/00-Dashboard/Agency Dashboard.md",
+      "sha256": "bc350c3f0849634b9c9bf86400e04c6170ebd104d57a4f06ffc3c3343dde5b7b",
+      "preserved_path": "vendor/seo-agency-in-a-box/vault/00-Dashboard/Agency Dashboard.md",
+      "adapted_paths": [
+        "templates/agency-dashboard.md"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "vault/00-Dashboard/ROI Tracker.md",
+      "sha256": "944d693c94927c20afaf394063e77771494927d89a127b1d35ccafadc2b5c7b7",
+      "preserved_path": "vendor/seo-agency-in-a-box/vault/00-Dashboard/ROI Tracker.md",
+      "adapted_paths": [
+        "templates/roi-tracker.md"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "vault/README.md",
+      "sha256": "baad764ae7d780b2c00df8350c208963943b540bcb479c77eb150a875faed6e6",
+      "preserved_path": "vendor/seo-agency-in-a-box/vault/README.md",
+      "adapted_paths": [
+        "docs/storage-layout.md"
+      ],
+      "mode": "adapted_manual",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "workflows/competitor-teardown.md",
+      "sha256": "34ab21ca9cd83d8038415b672adabc27287dd681669827e53d7a7e65d93cb8a0",
+      "preserved_path": "vendor/seo-agency-in-a-box/workflows/competitor-teardown.md",
+      "adapted_paths": [
+        "workflows/competitor-teardown.md",
+        "seo_system/config/processes.json"
+      ],
+      "mode": "manual_analysis_with_structural_coordinator",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "workflows/content-sprint.md",
+      "sha256": "3a3d442e972209d1a9cb77b6437c592465e0be8711c77637b19f28e06bedded5",
+      "preserved_path": "vendor/seo-agency-in-a-box/workflows/content-sprint.md",
+      "adapted_paths": [
+        "workflows/content-sprint.md",
+        "seo_system/config/processes.json"
+      ],
+      "mode": "manual_analysis_with_structural_coordinator",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "workflows/ecommerce-audit.md",
+      "sha256": "22f038912381050aeed0810aacc343af51aa4e44bda1816a5c597ee18d88d69a",
+      "preserved_path": "vendor/seo-agency-in-a-box/workflows/ecommerce-audit.md",
+      "adapted_paths": [
+        "workflows/ecommerce-audit.md",
+        "seo_system/config/processes.json"
+      ],
+      "mode": "manual_analysis_with_structural_coordinator",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "workflows/full-seo-audit.md",
+      "sha256": "24b9412631204084a72beb3e4c6b41a8f784e025ec085fc708d7ba749e204491",
+      "preserved_path": "vendor/seo-agency-in-a-box/workflows/full-seo-audit.md",
+      "adapted_paths": [
+        "workflows/full-seo-audit.md",
+        "seo_system/config/processes.json"
+      ],
+      "mode": "manual_analysis_with_structural_coordinator",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "workflows/keyword-strategy.md",
+      "sha256": "2e4eda0e2a7d3aa2aa4636aad251a27ba1a9a13a5883ca72794a8d48c16d15bb",
+      "preserved_path": "vendor/seo-agency-in-a-box/workflows/keyword-strategy.md",
+      "adapted_paths": [
+        "workflows/keyword-strategy.md",
+        "seo_system/config/processes.json"
+      ],
+      "mode": "manual_analysis_with_structural_coordinator",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "workflows/link-building-campaign.md",
+      "sha256": "aaa344ebd728673a6075ccbaf50454b520dcd388e0c58840ab2cfedb2895efe2",
+      "preserved_path": "vendor/seo-agency-in-a-box/workflows/link-building-campaign.md",
+      "adapted_paths": [
+        "workflows/link-building-campaign.md",
+        "seo_system/config/processes.json"
+      ],
+      "mode": "manual_analysis_with_structural_coordinator",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "workflows/local-seo-setup.md",
+      "sha256": "e197e1a1fcddf1f4335af5e36f470f808d78fa8d1e43f31f608f36b1eb866143",
+      "preserved_path": "vendor/seo-agency-in-a-box/workflows/local-seo-setup.md",
+      "adapted_paths": [
+        "workflows/local-seo-setup.md",
+        "seo_system/config/processes.json"
+      ],
+      "mode": "manual_analysis_with_structural_coordinator",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "workflows/monthly-reporting.md",
+      "sha256": "08f228a0b6411ba88c0cf0fd8f37b062ebfb03c6ddb40c2e6936bf7a5427c0d0",
+      "preserved_path": "vendor/seo-agency-in-a-box/workflows/monthly-reporting.md",
+      "adapted_paths": [
+        "workflows/monthly-reporting.md",
+        "seo_system/config/processes.json"
+      ],
+      "mode": "manual_analysis_with_structural_coordinator",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "workflows/new-site-launch.md",
+      "sha256": "2579fd5ad2b9aafe280cc76edf2d21df64d6fe4f6398061685f8070c6274cfc5",
+      "preserved_path": "vendor/seo-agency-in-a-box/workflows/new-site-launch.md",
+      "adapted_paths": [
+        "workflows/new-site-launch.md",
+        "seo_system/config/processes.json"
+      ],
+      "mode": "manual_analysis_with_structural_coordinator",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "workflows/quarterly-review.md",
+      "sha256": "6bc4c48cb9048f5a2ab68f37252100d65d9237008d32f7588b4e638a591105cc",
+      "preserved_path": "vendor/seo-agency-in-a-box/workflows/quarterly-review.md",
+      "adapted_paths": [
+        "workflows/quarterly-review.md",
+        "seo_system/config/processes.json"
+      ],
+      "mode": "manual_analysis_with_structural_coordinator",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    },
+    {
+      "source": "workflows/site-migration.md",
+      "sha256": "a04e06b6ef3e391c73e91c9142987bba2d3868f1f7787ab0dacfbe578411d3ec",
+      "preserved_path": "vendor/seo-agency-in-a-box/workflows/site-migration.md",
+      "adapted_paths": [
+        "workflows/site-migration.md",
+        "seo_system/config/processes.json"
+      ],
+      "mode": "manual_analysis_with_structural_coordinator",
+      "reason": "Functional rewrite with unified contracts and currentness corrections"
+    }
+  ]
+}

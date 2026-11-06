@@ -13,5 +13,8 @@ jobs:
       - run: pip install uv==0.12.23
       - run: uv sync --frozen
       - run: uv run python -m unittest discover -v
+      - run: uv run python scripts/render_playbook.py --check
+      - run: uv run python scripts/check_playbook.py
       - run: uv run python scripts/check_repository.py
+      - run: uv build
       - run: git diff --check

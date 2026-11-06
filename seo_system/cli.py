@@ -31,9 +31,53 @@ def main():
     artifact.add_argument("--project", required=True)
     artifact.add_argument("--run", required=True)
     artifact.add_argument("--artifact", required=True)
+    roles = sub.add_parser("roles")
+    roles.add_argument("--team")
+    process = sub.add_parser("process", help="Coordinate Codex work products; no external execution")
+    operations = process.add_subparsers(dest="operation", required=True)
+    pp = operations.add_parser("plan")
+    pp.add_argument("--workflow", required=True)
+    ps = operations.add_parser("start")
+    ps.add_argument("--profile", required=True)
+    ps.add_argument("--workflow", required=True)
+    ps.add_argument("--workspace", required=True)
+    ps.add_argument("--synthetic", action="store_true")
+    for name in ["source", "submit", "status", "mark", "template"]:
+        command = operations.add_parser(name)
+        command.add_argument("--workspace", required=True)
+        command.add_argument("--project", required=True)
+        command.add_argument("--run", required=True)
+        if name in {"submit", "mark", "template"}:
+            command.add_argument("--node", required=True)
+        if name == "source":
+            command.add_argument("--manifest", required=True)
+        if name == "submit":
+            command.add_argument("--result", required=True)
+        if name == "mark":
+            command.add_argument("--state", choices=["pending", "blocked_input", "blocked_permission", "not_applicable"], required=True)
+            command.add_argument("--reason", required=True)
     args = parser.parse_args()
     try:
-        if args.command == "plan":
+        if args.command == "roles":
+            from .processes import catalog
+            result = {k: v for k, v in catalog().items() if args.team is None or k.startswith(args.team + ".")}
+        elif args.command == "process":
+            from . import processes
+            if args.operation == "plan":
+                result = processes.plan(args.workflow)
+            elif args.operation == "start":
+                result = processes.start(args.profile, args.workflow, args.workspace, args.synthetic)
+            elif args.operation == "source":
+                result = processes.add_source(args.workspace, args.project, args.run, args.manifest)
+            elif args.operation == "submit":
+                result = processes.submit(args.workspace, args.project, args.run, args.node, args.result)
+            elif args.operation == "mark":
+                result = processes.mark(args.workspace, args.project, args.run, args.node, args.state, args.reason)
+            elif args.operation == "template":
+                result = processes.template(args.workspace, args.project, args.run, args.node)
+            else:
+                result = processes.status(args.workspace, args.project, args.run)
+        elif args.command == "plan":
             result = {"nodes": config("workflows")[args.workflow], "executable_scope": "offline technical import only", "analysis_status": "partial"}
         elif args.command == "preflight":
             profile = read_json(args.profile)

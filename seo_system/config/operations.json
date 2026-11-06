@@ -1,0 +1,190 @@
+{
+  "operations.onboard": {
+    "id": "operations.onboard",
+    "source": "onboarding/onboard.md",
+    "purpose": "Зафиксировать полный профиль, цель и границы проекта",
+    "trigger": "Соответствующий этап жизненного цикла или отдельное поручение",
+    "required_evidence_kinds": [
+      "business"
+    ],
+    "optional_evidence_kinds": [],
+    "sections": [
+      "profile",
+      "scope",
+      "goals",
+      "brand_voice",
+      "access_inventory",
+      "constraints"
+    ],
+    "actions": [
+      "Проведи быстрый либо полный бриф по onboarding/onboard.md",
+      "Уточни реальные продукты, аудиторию, рынок, историю SEO и конкурентов",
+      "Зафиксируй цели, конверсии, baseline, ресурсы, brand voice и ограничения",
+      "Проверь capabilities конкретных источников без новых доступов и расходов",
+      "Создай versioned profile; неизвестное и требуемые решения оставь явными"
+    ],
+    "source_step_titles": [],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Заполненные sections, evidence, критический QA; внешний факт подтверждён реальными наблюдениями",
+    "qa": [
+      "Scope и источники валидны",
+      "Полномочия подтверждаются поручением, не JSON",
+      "Статусы отражают фактическое состояние"
+    ],
+    "errors": [
+      "blocked_input при отсутствии фактов",
+      "blocked_permission при отсутствии полномочий",
+      "partial/awaiting_measurement/inconclusive не считаются полным результатом"
+    ]
+  },
+  "operations.release-record": {
+    "id": "operations.release-record",
+    "source": "instructions/flow.md",
+    "purpose": "Зарегистрировать факт разрешённого внешнего релиза",
+    "trigger": "Соответствующий этап жизненного цикла или отдельное поручение",
+    "required_evidence_kinds": [
+      "release"
+    ],
+    "optional_evidence_kinds": [],
+    "sections": [
+      "release",
+      "authorization_boundary",
+      "tests",
+      "rollback"
+    ],
+    "actions": [
+      "Получи конкретные task/finding IDs, протестированный diff и baseline revision",
+      "Проверь фактические полномочия вне JSON и отсутствие drift",
+      "Выполняй apply/publish только отдельным подходящим инструментом в уже разрешённом объёме",
+      "Запиши настоящий release ID, URLs и released_at; неопределённый исход сначала сверяй",
+      "Координатор только регистрирует evidence и сам не публикует"
+    ],
+    "source_step_titles": [],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Заполненные sections, evidence, критический QA; внешний факт подтверждён реальными наблюдениями",
+    "qa": [
+      "Scope и источники валидны",
+      "Полномочия подтверждаются поручением, не JSON",
+      "Статусы отражают фактическое состояние"
+    ],
+    "errors": [
+      "blocked_input при отсутствии фактов",
+      "blocked_permission при отсутствии полномочий",
+      "partial/awaiting_measurement/inconclusive не считаются полным результатом"
+    ]
+  },
+  "operations.production-verify": {
+    "id": "operations.production-verify",
+    "source": "instructions/flow.md",
+    "purpose": "Проверить фактическое состояние URL после релиза",
+    "trigger": "Соответствующий этап жизненного цикла или отдельное поручение",
+    "required_evidence_kinds": [
+      "verification",
+      "release"
+    ],
+    "optional_evidence_kinds": [],
+    "sections": [
+      "checks",
+      "regressions",
+      "decision"
+    ],
+    "actions": [
+      "Прочитай release record и согласованные expected values",
+      "Получи новые наблюдения затронутых URL строго после release time",
+      "Проверь HTTP/rendered metadata/robots/canonical/links и функции по scope",
+      "Сохрани expected и actual, failures не маскируй средним баллом",
+      "При расхождении verification_failed и план исправления/разрешённого отката"
+    ],
+    "source_step_titles": [],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Заполненные sections, evidence, критический QA; внешний факт подтверждён реальными наблюдениями",
+    "qa": [
+      "Scope и источники валидны",
+      "Полномочия подтверждаются поручением, не JSON",
+      "Статусы отражают фактическое состояние"
+    ],
+    "errors": [
+      "blocked_input при отсутствии фактов",
+      "blocked_permission при отсутствии полномочий",
+      "partial/awaiting_measurement/inconclusive не считаются полным результатом"
+    ]
+  },
+  "operations.measurement": {
+    "id": "operations.measurement",
+    "source": "instructions/flow.md",
+    "purpose": "Сопоставить baseline с закрытым окном после изменения",
+    "trigger": "Соответствующий этап жизненного цикла или отдельное поручение",
+    "required_evidence_kinds": [
+      "analytics",
+      "release"
+    ],
+    "optional_evidence_kinds": [],
+    "sections": [
+      "comparison",
+      "confounders",
+      "decision"
+    ],
+    "actions": [
+      "Проверь baseline, release log, definitions и одинаковые scope/units",
+      "Выбери закрытые сопоставимые неперекрывающиеся периоды",
+      "Рассчитай изменения; при нулевом baseline процент неизвестен",
+      "Учти сезонность, спрос, tracking, рекламу и другие релизы",
+      "Если окно не наступило, awaiting_measurement; недостаточно данных — inconclusive"
+    ],
+    "source_step_titles": [],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Заполненные sections, evidence, критический QA; внешний факт подтверждён реальными наблюдениями",
+    "qa": [
+      "Scope и источники валидны",
+      "Полномочия подтверждаются поручением, не JSON",
+      "Статусы отражают фактическое состояние"
+    ],
+    "errors": [
+      "blocked_input при отсутствии фактов",
+      "blocked_permission при отсутствии полномочий",
+      "partial/awaiting_measurement/inconclusive не считаются полным результатом"
+    ]
+  },
+  "operations.strategy-refresh": {
+    "id": "operations.strategy-refresh",
+    "source": "instructions/flow.md",
+    "purpose": "Обновить стратегию по измерениям и остатку работ",
+    "trigger": "Соответствующий этап жизненного цикла или отдельное поручение",
+    "required_evidence_kinds": [
+      "business"
+    ],
+    "optional_evidence_kinds": [],
+    "sections": [
+      "continue",
+      "change",
+      "stop",
+      "next_backlog",
+      "review_window"
+    ],
+    "actions": [
+      "Прочитай последний принятый отчёт, измерения и журнал релизов",
+      "Сверь достижение целей и объяснения отклонений",
+      "Для каждого направления выбери continue/change/stop с evidence",
+      "Обнови backlog, ресурсы, риски и roadmap отдельной версией",
+      "Не запускай новый цикл или расписание без поручения"
+    ],
+    "source_step_titles": [],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Заполненные sections, evidence, критический QA; внешний факт подтверждён реальными наблюдениями",
+    "qa": [
+      "Scope и источники валидны",
+      "Полномочия подтверждаются поручением, не JSON",
+      "Статусы отражают фактическое состояние"
+    ],
+    "errors": [
+      "blocked_input при отсутствии фактов",
+      "blocked_permission при отсутствии полномочий",
+      "partial/awaiting_measurement/inconclusive не считаются полным результатом"
+    ]
+  }
+}

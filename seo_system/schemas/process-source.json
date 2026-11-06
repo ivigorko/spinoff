@@ -1,0 +1,220 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "source_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{0,80}$"
+    },
+    "project_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{0,80}$"
+    },
+    "kind": {
+      "enum": [
+        "business",
+        "market",
+        "search_updates",
+        "serp",
+        "keywords",
+        "competitors",
+        "pages",
+        "indexation",
+        "performance",
+        "schema",
+        "internal_links",
+        "content",
+        "backlinks",
+        "ai_visibility",
+        "local",
+        "products",
+        "analytics",
+        "logs",
+        "release",
+        "verification"
+      ]
+    },
+    "source_locator": {
+      "type": "string",
+      "minLength": 1
+    },
+    "primary_origin": {
+      "type": "string",
+      "minLength": 1
+    },
+    "file": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "host": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scope": {
+      "type": "object",
+      "properties": {
+        "region": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "language": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "engine": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "device": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "region",
+        "language",
+        "engine",
+        "device"
+      ],
+      "additionalProperties": false
+    },
+    "site_revision": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "purpose": {
+      "enum": [
+        "current",
+        "baseline",
+        "post_release"
+      ]
+    },
+    "source_generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "collected_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "period": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "start": {
+          "type": "string",
+          "format": "date"
+        },
+        "end": {
+          "type": "string",
+          "format": "date"
+        }
+      },
+      "required": [
+        "start",
+        "end"
+      ],
+      "additionalProperties": false
+    },
+    "classification": {
+      "enum": [
+        "synthetic",
+        "client_confidential"
+      ]
+    },
+    "coverage": {
+      "type": "object",
+      "properties": {
+        "complete": {
+          "type": "boolean"
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "complete",
+        "limitations"
+      ],
+      "additionalProperties": false
+    },
+    "original": {
+      "type": "object",
+      "properties": {
+        "file": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "format": {
+          "enum": [
+            "json",
+            "csv",
+            "xlsx",
+            "txt",
+            "pdf",
+            "html",
+            "other"
+          ]
+        },
+        "normalization": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "file",
+        "sha256",
+        "format",
+        "normalization"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "schema_version",
+    "source_id",
+    "project_id",
+    "kind",
+    "source_locator",
+    "primary_origin",
+    "file",
+    "sha256",
+    "host",
+    "scope",
+    "site_revision",
+    "purpose",
+    "source_generated_at",
+    "collected_at",
+    "period",
+    "classification",
+    "coverage"
+  ],
+  "additionalProperties": false
+}

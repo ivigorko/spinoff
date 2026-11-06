@@ -1,7 +1,7 @@
 [project]
 name = "spinoff-seo"
-version = "0.1.0"
-description = "Evidence-backed offline SEO workflow for Codex"
+version = "0.2.0"
+description = "Complete SEO procedure library and evidence-backed process coordination for Codex"
 requires-python = ">=3.11"
 dependencies = ["jsonschema==4.26.0", "openpyxl==3.1.5"]
 

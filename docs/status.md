@@ -1,46 +1,58 @@
-# Фактическое состояние — 06.11.2026
+# Фактическое состояние v0.2 — 06.11.2026
 
-Локальная ветка: codex/seo-system-foundation, исходная база 62822d3768a2827607842ea1ad1cc8281609b8f2. Удалений нет; main и production не менялись. Push/PR/deployment не выполнялись.
+Ветка codex/seo-system-foundation. Первые коммиты 2357b5d/e7bce23 содержали только технический срез; после поимённой сверки выполнена полная функциональная адаптация библиотеки процедур. Исходный spinoff и upstream сохранены, удалений нет. Main, production, push/PR/deployment не затрагивались.
 
-## Реализовано
+## Покрытие переноса
 
-- Корневой AGENTS.md, семь .agents/skills, правила полномочий/источников/качества, карта миграции выбранных upstream producer/consumer. Upstream pin, MIT notice и SHA исходного ТЗ сохранены.
-- Python CLI plan/preflight/run/status/resolve. Исполняемый объём — один pages import в технический workflow; go выполняет тот же частичный срез и явно показывает отсутствующие модули.
-- JSON Schema для profile, source manifest, pages, finding, task, artifact. Явный mapping для CSV/XLSX, лист XLSX, оригинальные raw, даты, provenance, scope, revision, checksum и coverage.
-- SQLite для одного локального писателя: runs, artifacts, tasks, events; атомарная регистрация принятого пакета, fingerprint по входам/политике/реализации/схемам, reuse с проверкой хэшей, scoped artifact resolver. Не многопользовательская очередь.
-- Три детерминированные проверки: HTTP ошибки и пустые title/H1. Evidence до строки набора, QA, отчёт/приоритеты/roadmap/tasks/coverage; отсутствующие данные не выдумываются.
-- Воспроизводимое synthetic demo, uv.lock, тесты и ограниченный Git data/secret guard. CI подготовлен; удалённый workflow не запускался.
+| Компонент | Фактическое состояние |
+|---|---|
+| 144 upstream файла | Сохранены побайтно в vendor; SHA-256 и disposition каждого в provenance/source-map.json |
+| 75 специализаций | Предметные процедуры с назначением, триггером, required/optional inputs, действиями, sections, completion, QA и ошибками; roles.json + procedures/roles |
+| 12 leaders | Командные DAGs, порядок и обязанности приёмки/передачи; teams.json, procedures/leads и team-инструкции |
+| 17 исходных инструкций | Все получили активные функциональные адаптации; единые scope/paths/gates и исправленные aliases |
+| 11 workflows | Все адаптированы и связаны с coordinator; дополнительно agency-cycle и role/team selectors |
+| Onboarding/base/QA/tool guides | Полный 19-вопросный охват и быстрый режим, profile schema, текущие SEO-решения и critical QA |
+| 11 шаблонов + dashboards | Адаптированы как templates; unfilled template не является принятым результатом |
+| 18 skills | Укрупнённые маршрутизаторы и командные входы; они загружают конкретные предметные процедуры, не заменяют их краткими общими обещаниями |
+
+Часть исходных инструкций сознательно изменена: средняя quality score не перекрывает критический провал; нет универсальных word count/density/link quotas, гарантированного ROI/роста и автоматического disavow; Google FAQ rich-result promises исключены по актуальному changelog. Источники и решения C01–C16 — instructions/currentness.md. Obsidian settings/legacy ignore conventions сохранены reference-only с объяснением, а не выданы за активные функции Codex.
+
+Полная человеческая трассировка: docs/migration-map.md. Машиночитаемая: provenance/source-map.json. Эти документы описывают адаптацию функций, а не буквальное сохранение устаревших команд и обещаний.
+
+## Что исполняется автоматически
+
+- Локальный process coordinator: frozen profile/plan/role contracts, DAG, зависимости, ready/blocked/partial/completed, неизменяемые sources/products, hashes, scoped registry, parent IDs и события.
+- Проверки work-product schema, required sections, input IDs, source scope/freshness, фактических значений claims по JSON pointers, synthetic/client isolation и critical checklist.
+- Client evidence сохраняет и проверяет оригинальные байты и normalization provenance наряду с normalized JSON. Правильность ручного mapping не выводится из совпадения hash.
+- Release record сверяется с source evidence, task/URL scope и baseline подготовленных изменений. Проверка production требует новых данных после release на target revision, expected/actual и покрытия URL; post-migration audit не принимает старые pages.
+- Measurement проверяет values/definitions/scope/units, закрытые сравнимые окна, zero denominator, расчёт изменений и связь post-release окон с release. Unknown values не становятся measured.
+- Существующий автоматический технический pages import JSON/CSV/XLSX: HTTP errors, пустые title/H1, findings→report/priority/roadmap/QA. Он остаётся отдельным partial-срезом; legacy CLI go не заменяет полный workflow.
+
+## Что выполняет Codex по готовым процедурам
+
+Все предметные research/audit/keywords/content/links/AI/local/ecommerce/strategy/analytics действия и содержательное ревью. Coordinator не является автономным SEO-аналитиком: заполнение sections и флаг QA не доказывают правильность анализа, подлинность источника или будущую SEO-эффективность. Codex обязан прочитать процедуру, получить реальные разрешённые данные, выполнить действия и проверить выводы до submit.
+
+Применение, публикация, отправка и доставка результатов выполняются только подходящим реальным инструментом в действующем поручении; coordinator лишь регистрирует их evidence. Authorization_ref в JSON не выдаёт полномочия. Synthetic release в тесте не означает внешний deployment.
 
 ## Проверено
 
-`uv sync --frozen` выполнен в новой .venv, Python 3.12.14 / uv 0.12.23. После read-only проверки источников `uv run python -m unittest discover -v`: 27 тестов прошли. Проверены E2E/evidence/roadmap, reuse после открытия новой SQLite connection, неверные project/host/checksum/count/types, дубликаты, stale/future timestamps, revision drift, отсутствие полей, CSV mapping, XLSX sheet/formulas/dimensionless export и фактические лимиты строк, отказ трактовать задачи как pages, ложная evidence, повреждённые выходы, orphan directory и CLI plan/preflight.
+- Python 3.12.14, uv 0.12.23; uv sync --frozen.
+- 59 unittest tests прошли. Включены все 11 исходных workflows и agency-cycle на явно synthetic fixtures; dependency/partial gates, source/product immutability, project/market isolation, hashes/freshness, raw original preservation, claims/QA, отсутствие скрытой подмены synthetic/client, release/verify/post-migration/measurement negative cases и zero denominator.
+- Сквозной пример несёт один finding→task→prepared patch→release→fresh title verification→сравнение 100/120→report→strategy refresh/next backlog. Это вымышленные contract fixtures, не реальный SEO-кейс и не причинное доказательство результата.
+- render_playbook.py --check, check_playbook.py, limited repository guard и git diff --check прошли. Inventory checker сверяет 144 оригинала, targets, 75/12/11 coverage и все selectors/DAGs.
+- Собраны spinoff_seo-0.2.0.tar.gz и wheel. Source archive содержит все 144 preserved sources, активные procedures/skills и onboarding. Wheel установлен отдельно; plan/start/mark/source/template/submit/status прошли smoke из установленного пакета.
+- Дополнительно выполнен synthetic agency-cycle: process-725373b09d474338ae0e, 20 принятых узлов, status completed, synthetic=true, external_actions_performed=false. Его summary находится только в игнорируемом workspace/agency-cycle-v02-final-summary.json.
 
-`python scripts/check_repository.py` и `git diff --check` пройдены. `uv build` создал sdist и wheel; wheel установлен в отдельную /workspace/spinoff-wheel-test, из /tmp выполнены plan и полный offline run с packaged schemas/config. Демо выполнено без сети SEO-сервисов; результаты синтетические. Эти проверки не подтверждают формат реального отчёта Labrika, аккаунтный доступ, устойчивость диска или запись в Drive.
+Тесты подтверждают контрактную связность и реализованные gates. Они не доказывают, что любая будущая ручная работа выполнена качественно, что все источники доступны или что сайт получит рост.
 
-Принятый synthetic go: run-4c8d73890832c11f3190 в workspace/demo-state/projects/synthetic-demo/runs/. Три строки дали три finding/task: HTTP 503, пустой H1 и пустой title. Сформированы report/priority/roadmap/coverage/QA; повтор run вернул reused=true и тот же run ID. Workspace игнорируется Git и не содержит реальных клиентских данных. Сборки лежат отдельно в /workspace/spinoff-build; это локальные файлы, не опубликованные пакеты.
+## Внешние интеграции и оставшиеся ограничения
 
-## Ещё не реализовано или не проверено
+- Через инструменты сессии проверены Drive search/read/native Sheets→XLSX export существующих файлов. Write/storage adapter, fileId/revision reconciliation, outbox/restore и длительное хранение не проверены/не реализованы.
+- В GSC discovery нет active connection. У Yandex есть active generic connection, но конкретные counter/host reads не подтверждены. Релевантный Labrika tool не найден; UI-доступ не подтверждён. Детали — docs/access-verification.md. Эта разработка не создавала accounts/tokens и не запускала платные проверки.
+- Автоматические CLI-адаптеры keyword/analytics/AI/provider reports и их индивидуальные нормализаторы ещё не реализованы. Разрешённые реальные данные можно явно нормализовать Codex в source-backed JSON с оригиналом/mapping; произвольный отчёт не считается pages dataset.
+- Нет multi-worker DB/leases/fencing, фонового scheduler, автоматического deployment/crawl или live SEO monitor. SQLite — один локальный писатель, без distributed guarantees. Recovery и резервное копирование локального диска требуют соблюдения runbook.
+- Это ограниченный pattern-based secret/data guard, не exhaustive security scan или DLP. Клиентские файлы, credentials и state вне Git.
 
-- Реальный профиль пилота, цели бизнеса и доступная мощность команды не получены. Демо не подставляется вместо клиента.
-- Drive adapter, write/read smoke test, fileId/revision mapping, upload outbox/reconciliation, восстановление workspace из Drive. Текущий диск не подтверждён как долговременный.
-- Реальные форматы/смысл столбцов нескольких типов Labrika отчётов. Поддержан контейнер pages JSON/CSV/XLSX с mapping, а не универсальный импорт Labrika. Позиции/семантика/конкуренты/ссылки/AI требуют отдельных schemas, normalization и findings.
-- Прямые API Labrika, GSC, Вебмастера, Метрики/Wordstat/GA4; live crawl/search, квоты, OAuth и права на properties.
-- Полные JSON schemas для run/change/analytics/keywords/AI и state tables permissions/changes/outbox/lineage с полноценными переходами. Текущие skills и шаблоны описывают процесс; это не его полная автоматизация.
-- Произвольный DAG planner, partial dependency policy, retries/leases/fencing, несколько workers и распределённое состояние. SQLite держит локальную транзакцию на весь run; не предназначена для долгих сетевых задач.
-- Программное apply/publish/production verification/measurement и расписание. Патчи и измерения выполняются лишь по конкретным будущим поручениям и проверенным входам; этот релиз их не делает.
-- Полное DLP/secret scanning и exhaustive security review. Локальный guard проверяет ограниченные паттерны; staged diff необходимо просматривать.
+## Ближайший следующий этап
 
-## Продолжение: read-only проверка источников
-
-Через session tools этой среды подтверждены Drive search/fetch и native Sheets→XLSX export конкретных существующих файлов. Исходник сохранён только в приватном игнорируемом workspace. Реальный Google XLSX не содержит worksheet dimensions; импортёр исправлен, добавлен inspect-import и четыре регрессионных теста. Выбранный файл является регламентом, а не измерениями URL, поэтому pages import корректно блокируется; реальный аудит не имитировался.
-
-GSC discovery сообщает no active connection, подключение не создавалось. Yandex connection активен, но доступ к конкретным счётчикам/Вебмастеру не подтверждён; подходящий list-counters/host-list tool не найден, ID не угадывались. Релевантный Labrika tool не найден; UI-доступ не проверен. Это не отсутствие аккаунтов и не недоступность всех способов работы. Полный протокол и границы — docs/access-verification.md. Автономных внешних адаптеров CLI по-прежнему нет.
-
-Это полезная часть этапа 1 исходного ТЗ, а не выполнение всех критериев этапов 0–5. Для частичных результатов не заявлять готовность полной SEO-системы.
-
-## Ближайшие действия
-
-1. Выбрать один пилотный сайт и готовый отчёт Labrika; заполнить профиль и scope. Проверить фактические листы, столбцы и дату анализа; добавить обезличенный контрактный fixture без клиентских данных. Пройти реальный technical import.
-2. Указать разрешённую папку Drive. В среде с действующим доступом выполнить write/read smoke test и реализовать storage adapter/outbox; только после этого считать хранилище подключённым.
-3. Выбрать следующий реально полезный тип отчёта (позиции/семантика/аналитика), добавить schema/adapter/QA и совместимость provenance. Не запускать новые платные анализы без полномочий.
-4. По конкретной принятой задаче подготовить первый патч с тестами/rollback; применить в разрешённой среде, проверить production и согласовать измерительное окно.
+Адаптация процедур завершена; теперь уместен ограниченный пользовательский пилот: выбрать сайт, цель и пригодный существующий отчёт/источник, заполнить полный профиль, проверить реальные поля/даты/scope и пройти выбранный workflow. Новые аккаунты и все API для этого не обязательны. Storage adapter и отдельные прямые API расширяются по фактической необходимости и правам. Ни сайт пилота, ни production-изменение, ни paid audit в этой работе не выбирались и не выполнялись.

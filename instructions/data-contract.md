@@ -2,6 +2,8 @@
 
 JSON Schema находится в seo_system/schemas; формат конфигурации MVP — JSON, а не предложенный в черновике YAML. `schema_version=1`. CLI не принимает произвольные поля: неподдержанные поля не должны молча исчезать.
 
+Полная процедурная библиотека v0.2 использует дополнительно process-source/work-product/release-record/comparison schemas и каталог roles/operations/teams/processes. Подробный producer/consumer контракт — instructions/data-flow.md. Этот документ далее описывает совместимый автоматический pages-срез; его finding/task schema не является универсальной схемой всех SEO-направлений.
+
 Профиль: project_id, профиль/ревизия сайта, домены и allowed_hosts, цель, market с регионом/языком/engine/device, timezone, неизвестные Drive ID и мощность как null. Заполнять реальные значения до пилота.
 
 Source manifest: source_id и source_locator, primary_origin, project_id, host, site_revision, source_generated_at и collected_at с timezone, формат, локальный file относительно manifest либо абсолютный путь, SHA-256, число строк и coverage. Пользователь импортирует только файлы, доступ к которым разрешён. Файл не скачивается автоматически из указанного пути.

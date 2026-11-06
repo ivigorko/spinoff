@@ -28,7 +28,13 @@ class WorkflowError(ValueError):
 
 
 def canonical(value):
-    return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+    return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"), allow_nan=False)
+
+
+def parse_json(raw):
+    def invalid(value):
+        raise WorkflowError('Non-finite JSON number: ' + value)
+    return json.loads(raw, parse_constant=invalid)
 
 
 def digest(data):
@@ -59,7 +65,7 @@ def read_json(path):
     path = Path(path)
     if path.stat().st_size > MAX_BYTES:
         raise WorkflowError("Input exceeds 20 MiB")
-    return json.loads(path.read_text(encoding="utf-8"))
+    return parse_json(path.read_text(encoding="utf-8"))
 
 
 def config(name):
@@ -85,7 +91,7 @@ def check_url(url, hosts):
 def read_table(raw, manifest):
     fmt = manifest["format"]
     if fmt == "json":
-        return json.loads(raw.decode("utf-8"))
+        return parse_json(raw.decode("utf-8"))
     if fmt == "csv":
         reader = csv.DictReader(io.StringIO(raw.decode("utf-8-sig")), delimiter=manifest.get("delimiter", ","))
         headers = reader.fieldnames
@@ -394,7 +400,7 @@ def execute(profile_path, manifest_path, root, workflow="technical", clock=None)
             qa(findings, tasks, pages, raw_id)
             limitations = ["Проверены только HTTP-статусы и наличие title/H1 при доступности соответствующих полей.",
                            "Индексация, robots, sitemap, canonical, CWV, семантика, конкуренты, ссылки, AI-видимость и аналитика не проверены.",
-                           "Google Drive не подключён: результаты существуют только локально."]
+                           "Drive storage adapter не реализован: результаты сохранены только локально."]
             if not manifest["coverage"]["complete"]:
                 limitations.append("Выборка неполная: " + manifest["coverage"]["reason"])
             for field in ["title", "h1"]:

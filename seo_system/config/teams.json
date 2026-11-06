@@ -1,0 +1,920 @@
+{
+  "research": {
+    "id": "team:research",
+    "source": "agents/research/_lead.md",
+    "purpose": "Координация специализаций research",
+    "trigger": "Поручение на выбранное направление; для узкой задачи предпочесть role:<id>",
+    "prerequisites": [
+      "Версия профиля, scope, разрешённые источники и принятые контекстные результаты"
+    ],
+    "nodes": [
+      {
+        "id": "market-researcher",
+        "role": "research.market-researcher",
+        "depends_on": [],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "research"
+      },
+      {
+        "id": "algorithm-monitor",
+        "role": "research.algorithm-monitor",
+        "depends_on": [],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "research"
+      },
+      {
+        "id": "serp-feature-researcher",
+        "role": "research.serp-feature-researcher",
+        "depends_on": [],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "research"
+      },
+      {
+        "id": "ai-search-landscape-analyst",
+        "role": "research.ai-search-landscape-analyst",
+        "depends_on": [],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "research"
+      },
+      {
+        "id": "industry-trend-analyst",
+        "role": "research.industry-trend-analyst",
+        "depends_on": [
+          "market-researcher",
+          "algorithm-monitor",
+          "serp-feature-researcher"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "research"
+      },
+      {
+        "id": "data-analyst",
+        "role": "research.data-analyst",
+        "depends_on": [
+          "industry-trend-analyst",
+          "ai-search-landscape-analyst"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "research"
+      }
+    ],
+    "completion": "Каждый выбранный обязательный продукт принят; partial не скрыт общим quality score",
+    "errors": [
+      "Не запускать все специализации без необходимости; team plan раскрывает полную библиотеку",
+      "Не передавать partial как complete; отдельный ограниченный процесс можно начать по нужной роли"
+    ]
+  },
+  "competitor": {
+    "id": "team:competitor",
+    "source": "agents/competitor/_lead.md",
+    "purpose": "Координация специализаций competitor",
+    "trigger": "Поручение на выбранное направление; для узкой задачи предпочесть role:<id>",
+    "prerequisites": [
+      "Версия профиля, scope, разрешённые источники и принятые контекстные результаты"
+    ],
+    "nodes": [
+      {
+        "id": "competitor-site-crawler",
+        "role": "competitor.competitor-site-crawler",
+        "depends_on": [],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "competitor"
+      },
+      {
+        "id": "competitor-keyword-analyst",
+        "role": "competitor.competitor-keyword-analyst",
+        "depends_on": [
+          "competitor-site-crawler"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "competitor"
+      },
+      {
+        "id": "competitor-content-analyzer",
+        "role": "competitor.competitor-content-analyzer",
+        "depends_on": [
+          "competitor-site-crawler"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "competitor"
+      },
+      {
+        "id": "competitor-backlink-profiler",
+        "role": "competitor.competitor-backlink-profiler",
+        "depends_on": [],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "competitor"
+      },
+      {
+        "id": "competitor-technical-benchmarker",
+        "role": "competitor.competitor-technical-benchmarker",
+        "depends_on": [
+          "competitor-site-crawler"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "competitor"
+      },
+      {
+        "id": "competitor-serp-tracker",
+        "role": "competitor.competitor-serp-tracker",
+        "depends_on": [
+          "competitor-keyword-analyst"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "competitor"
+      }
+    ],
+    "completion": "Каждый выбранный обязательный продукт принят; partial не скрыт общим quality score",
+    "errors": [
+      "Не запускать все специализации без необходимости; team plan раскрывает полную библиотеку",
+      "Не передавать partial как complete; отдельный ограниченный процесс можно начать по нужной роли"
+    ]
+  },
+  "keywords": {
+    "id": "team:keywords",
+    "source": "agents/keywords/_lead.md",
+    "purpose": "Координация специализаций keywords",
+    "trigger": "Поручение на выбранное направление; для узкой задачи предпочесть role:<id>",
+    "prerequisites": [
+      "Версия профиля, scope, разрешённые источники и принятые контекстные результаты"
+    ],
+    "nodes": [
+      {
+        "id": "keyword-discovery",
+        "role": "keywords.keyword-discovery",
+        "depends_on": [],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "keywords"
+      },
+      {
+        "id": "serp-analyzer",
+        "role": "keywords.serp-analyzer",
+        "depends_on": [
+          "keyword-discovery"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "keywords"
+      },
+      {
+        "id": "intent-classifier",
+        "role": "keywords.intent-classifier",
+        "depends_on": [
+          "serp-analyzer"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "keywords"
+      },
+      {
+        "id": "competitor-keyword-spy",
+        "role": "keywords.competitor-keyword-spy",
+        "depends_on": [
+          "keyword-discovery"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "keywords"
+      },
+      {
+        "id": "keyword-gap-analyst",
+        "role": "keywords.keyword-gap-analyst",
+        "depends_on": [
+          "competitor-keyword-spy",
+          "intent-classifier"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "keywords"
+      },
+      {
+        "id": "cluster-builder",
+        "role": "keywords.cluster-builder",
+        "depends_on": [
+          "keyword-gap-analyst"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "keywords"
+      }
+    ],
+    "completion": "Каждый выбранный обязательный продукт принят; partial не скрыт общим quality score",
+    "errors": [
+      "Не запускать все специализации без необходимости; team plan раскрывает полную библиотеку",
+      "Не передавать partial как complete; отдельный ограниченный процесс можно начать по нужной роли"
+    ]
+  },
+  "technical": {
+    "id": "team:technical",
+    "source": "agents/technical/_lead.md",
+    "purpose": "Координация специализаций technical",
+    "trigger": "Поручение на выбранное направление; для узкой задачи предпочесть role:<id>",
+    "prerequisites": [
+      "Версия профиля, scope, разрешённые источники и принятые контекстные результаты"
+    ],
+    "nodes": [
+      {
+        "id": "site-crawler",
+        "role": "technical.site-crawler",
+        "depends_on": [],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "technical"
+      },
+      {
+        "id": "indexation-manager",
+        "role": "technical.indexation-manager",
+        "depends_on": [
+          "site-crawler"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "technical"
+      },
+      {
+        "id": "core-web-vitals-analyst",
+        "role": "technical.core-web-vitals-analyst",
+        "depends_on": [
+          "site-crawler"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "technical"
+      },
+      {
+        "id": "schema-specialist",
+        "role": "technical.schema-specialist",
+        "depends_on": [
+          "site-crawler"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "technical"
+      },
+      {
+        "id": "internal-linking-architect",
+        "role": "technical.internal-linking-architect",
+        "depends_on": [
+          "site-crawler"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "technical"
+      },
+      {
+        "id": "mobile-seo-auditor",
+        "role": "technical.mobile-seo-auditor",
+        "depends_on": [
+          "site-crawler"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "technical"
+      },
+      {
+        "id": "log-analyzer",
+        "role": "technical.log-analyzer",
+        "depends_on": [
+          "site-crawler"
+        ],
+        "accept_partial_inputs": false,
+        "optional": true,
+        "phase": "technical"
+      },
+      {
+        "id": "site-migration-specialist",
+        "role": "technical.site-migration-specialist",
+        "depends_on": [
+          "site-crawler"
+        ],
+        "accept_partial_inputs": false,
+        "optional": true,
+        "phase": "technical"
+      }
+    ],
+    "completion": "Каждый выбранный обязательный продукт принят; partial не скрыт общим quality score",
+    "errors": [
+      "Не запускать все специализации без необходимости; team plan раскрывает полную библиотеку",
+      "Не передавать partial как complete; отдельный ограниченный процесс можно начать по нужной роли"
+    ]
+  },
+  "content": {
+    "id": "team:content",
+    "source": "agents/content/_lead.md",
+    "purpose": "Координация специализаций content",
+    "trigger": "Поручение на выбранное направление; для узкой задачи предпочесть role:<id>",
+    "prerequisites": [
+      "Версия профиля, scope, разрешённые источники и принятые контекстные результаты"
+    ],
+    "nodes": [
+      {
+        "id": "content-performance-analyst",
+        "role": "content.content-performance-analyst",
+        "depends_on": [],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "content"
+      },
+      {
+        "id": "content-gap-analyst",
+        "role": "content.content-gap-analyst",
+        "depends_on": [],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "content"
+      },
+      {
+        "id": "content-strategist",
+        "role": "content.content-strategist",
+        "depends_on": [
+          "content-gap-analyst"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "content"
+      },
+      {
+        "id": "content-calendar-planner",
+        "role": "content.content-calendar-planner",
+        "depends_on": [
+          "content-strategist",
+          "content-performance-analyst"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "content"
+      },
+      {
+        "id": "brief-writer",
+        "role": "content.brief-writer",
+        "depends_on": [
+          "content-calendar-planner"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "content"
+      },
+      {
+        "id": "seo-blog-writer",
+        "role": "content.seo-blog-writer",
+        "depends_on": [
+          "brief-writer"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "content"
+      },
+      {
+        "id": "landing-page-copywriter",
+        "role": "content.landing-page-copywriter",
+        "depends_on": [
+          "brief-writer"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "content"
+      },
+      {
+        "id": "meta-tag-writer",
+        "role": "content.meta-tag-writer",
+        "depends_on": [
+          "seo-blog-writer",
+          "landing-page-copywriter"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "content"
+      },
+      {
+        "id": "faq-paa-writer",
+        "role": "content.faq-paa-writer",
+        "depends_on": [
+          "brief-writer"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "content"
+      },
+      {
+        "id": "content-optimizer",
+        "role": "content.content-optimizer",
+        "depends_on": [
+          "meta-tag-writer",
+          "faq-paa-writer"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "content"
+      }
+    ],
+    "completion": "Каждый выбранный обязательный продукт принят; partial не скрыт общим quality score",
+    "errors": [
+      "Не запускать все специализации без необходимости; team plan раскрывает полную библиотеку",
+      "Не передавать partial как complete; отдельный ограниченный процесс можно начать по нужной роли"
+    ]
+  },
+  "links": {
+    "id": "team:links",
+    "source": "agents/links/_lead.md",
+    "purpose": "Координация специализаций links",
+    "trigger": "Поручение на выбранное направление; для узкой задачи предпочесть role:<id>",
+    "prerequisites": [
+      "Версия профиля, scope, разрешённые источники и принятые контекстные результаты"
+    ],
+    "nodes": [
+      {
+        "id": "backlink-auditor",
+        "role": "links.backlink-auditor",
+        "depends_on": [],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "links"
+      },
+      {
+        "id": "competitor-backlink-analyzer",
+        "role": "links.competitor-backlink-analyzer",
+        "depends_on": [
+          "backlink-auditor"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "links"
+      },
+      {
+        "id": "link-prospector",
+        "role": "links.link-prospector",
+        "depends_on": [
+          "competitor-backlink-analyzer"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "links"
+      },
+      {
+        "id": "broken-link-finder",
+        "role": "links.broken-link-finder",
+        "depends_on": [
+          "link-prospector"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "links"
+      },
+      {
+        "id": "digital-pr-strategist",
+        "role": "links.digital-pr-strategist",
+        "depends_on": [
+          "link-prospector"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "links"
+      },
+      {
+        "id": "outreach-writer",
+        "role": "links.outreach-writer",
+        "depends_on": [
+          "broken-link-finder",
+          "digital-pr-strategist"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "links"
+      }
+    ],
+    "completion": "Каждый выбранный обязательный продукт принят; partial не скрыт общим quality score",
+    "errors": [
+      "Не запускать все специализации без необходимости; team plan раскрывает полную библиотеку",
+      "Не передавать partial как complete; отдельный ограниченный процесс можно начать по нужной роли"
+    ]
+  },
+  "aeo": {
+    "id": "team:aeo",
+    "source": "agents/aeo/_lead.md",
+    "purpose": "Координация специализаций aeo",
+    "trigger": "Поручение на выбранное направление; для узкой задачи предпочесть role:<id>",
+    "prerequisites": [
+      "Версия профиля, scope, разрешённые источники и принятые контекстные результаты"
+    ],
+    "nodes": [
+      {
+        "id": "conversational-query-researcher",
+        "role": "aeo.conversational-query-researcher",
+        "depends_on": [],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "aeo"
+      },
+      {
+        "id": "ai-overview-optimizer",
+        "role": "aeo.ai-overview-optimizer",
+        "depends_on": [
+          "conversational-query-researcher"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "aeo"
+      },
+      {
+        "id": "perplexity-optimizer",
+        "role": "aeo.perplexity-optimizer",
+        "depends_on": [
+          "conversational-query-researcher"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "aeo"
+      },
+      {
+        "id": "entity-optimizer",
+        "role": "aeo.entity-optimizer",
+        "depends_on": [],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "aeo"
+      },
+      {
+        "id": "knowledge-panel-manager",
+        "role": "aeo.knowledge-panel-manager",
+        "depends_on": [
+          "entity-optimizer"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "aeo"
+      },
+      {
+        "id": "featured-snippet-strategist",
+        "role": "aeo.featured-snippet-strategist",
+        "depends_on": [
+          "conversational-query-researcher"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "aeo"
+      },
+      {
+        "id": "citation-optimizer",
+        "role": "aeo.citation-optimizer",
+        "depends_on": [
+          "ai-overview-optimizer",
+          "perplexity-optimizer",
+          "knowledge-panel-manager",
+          "featured-snippet-strategist"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "aeo"
+      }
+    ],
+    "completion": "Каждый выбранный обязательный продукт принят; partial не скрыт общим quality score",
+    "errors": [
+      "Не запускать все специализации без необходимости; team plan раскрывает полную библиотеку",
+      "Не передавать partial как complete; отдельный ограниченный процесс можно начать по нужной роли"
+    ]
+  },
+  "local": {
+    "id": "team:local",
+    "source": "agents/local/_lead.md",
+    "purpose": "Координация специализаций local",
+    "trigger": "Поручение на выбранное направление; для узкой задачи предпочесть role:<id>",
+    "prerequisites": [
+      "Версия профиля, scope, разрешённые источники и принятые контекстные результаты"
+    ],
+    "nodes": [
+      {
+        "id": "local-competitor-analyst",
+        "role": "local.local-competitor-analyst",
+        "depends_on": [],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "local"
+      },
+      {
+        "id": "gbp-optimizer",
+        "role": "local.gbp-optimizer",
+        "depends_on": [
+          "local-competitor-analyst"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "local"
+      },
+      {
+        "id": "citation-builder",
+        "role": "local.citation-builder",
+        "depends_on": [
+          "gbp-optimizer"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "local"
+      },
+      {
+        "id": "local-content-writer",
+        "role": "local.local-content-writer",
+        "depends_on": [
+          "local-competitor-analyst"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "local"
+      },
+      {
+        "id": "review-strategist",
+        "role": "local.review-strategist",
+        "depends_on": [
+          "gbp-optimizer"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "local"
+      }
+    ],
+    "completion": "Каждый выбранный обязательный продукт принят; partial не скрыт общим quality score",
+    "errors": [
+      "Не запускать все специализации без необходимости; team plan раскрывает полную библиотеку",
+      "Не передавать partial как complete; отдельный ограниченный процесс можно начать по нужной роли"
+    ]
+  },
+  "ecommerce": {
+    "id": "team:ecommerce",
+    "source": "agents/ecommerce/_lead.md",
+    "purpose": "Координация специализаций ecommerce",
+    "trigger": "Поручение на выбранное направление; для узкой задачи предпочесть role:<id>",
+    "prerequisites": [
+      "Версия профиля, scope, разрешённые источники и принятые контекстные результаты"
+    ],
+    "nodes": [
+      {
+        "id": "faceted-navigation-auditor",
+        "role": "ecommerce.faceted-navigation-auditor",
+        "depends_on": [],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "ecommerce"
+      },
+      {
+        "id": "category-strategist",
+        "role": "ecommerce.category-strategist",
+        "depends_on": [
+          "faceted-navigation-auditor"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "ecommerce"
+      },
+      {
+        "id": "product-page-optimizer",
+        "role": "ecommerce.product-page-optimizer",
+        "depends_on": [
+          "category-strategist"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "ecommerce"
+      },
+      {
+        "id": "product-schema-generator",
+        "role": "ecommerce.product-schema-generator",
+        "depends_on": [
+          "product-page-optimizer"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "ecommerce"
+      },
+      {
+        "id": "shopping-feed-optimizer",
+        "role": "ecommerce.shopping-feed-optimizer",
+        "depends_on": [
+          "product-page-optimizer"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "ecommerce"
+      }
+    ],
+    "completion": "Каждый выбранный обязательный продукт принят; partial не скрыт общим quality score",
+    "errors": [
+      "Не запускать все специализации без необходимости; team plan раскрывает полную библиотеку",
+      "Не передавать partial как complete; отдельный ограниченный процесс можно начать по нужной роли"
+    ]
+  },
+  "audit": {
+    "id": "team:audit",
+    "source": "agents/audit/_lead.md",
+    "purpose": "Координация специализаций audit",
+    "trigger": "Поручение на выбранное направление; для узкой задачи предпочесть role:<id>",
+    "prerequisites": [
+      "Версия профиля, scope, разрешённые источники и принятые контекстные результаты"
+    ],
+    "nodes": [
+      {
+        "id": "data-compiler",
+        "role": "audit.data-compiler",
+        "depends_on": [],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "audit"
+      },
+      {
+        "id": "recommendation-engine",
+        "role": "audit.recommendation-engine",
+        "depends_on": [
+          "data-compiler"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "audit"
+      },
+      {
+        "id": "fix-generator",
+        "role": "audit.fix-generator",
+        "depends_on": [
+          "recommendation-engine"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "audit"
+      },
+      {
+        "id": "report-builder",
+        "role": "audit.report-builder",
+        "depends_on": [
+          "recommendation-engine"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "audit"
+      },
+      {
+        "id": "executive-summary-writer",
+        "role": "audit.executive-summary-writer",
+        "depends_on": [
+          "report-builder"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "audit"
+      }
+    ],
+    "completion": "Каждый выбранный обязательный продукт принят; partial не скрыт общим quality score",
+    "errors": [
+      "Не запускать все специализации без необходимости; team plan раскрывает полную библиотеку",
+      "Не передавать partial как complete; отдельный ограниченный процесс можно начать по нужной роли"
+    ]
+  },
+  "analytics": {
+    "id": "team:analytics",
+    "source": "agents/analytics/_lead.md",
+    "purpose": "Координация специализаций analytics",
+    "trigger": "Поручение на выбранное направление; для узкой задачи предпочесть role:<id>",
+    "prerequisites": [
+      "Версия профиля, scope, разрешённые источники и принятые контекстные результаты"
+    ],
+    "nodes": [
+      {
+        "id": "ranking-tracker",
+        "role": "analytics.ranking-tracker",
+        "depends_on": [],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analytics"
+      },
+      {
+        "id": "traffic-analyst",
+        "role": "analytics.traffic-analyst",
+        "depends_on": [],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analytics"
+      },
+      {
+        "id": "conversion-analyst",
+        "role": "analytics.conversion-analyst",
+        "depends_on": [],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analytics"
+      },
+      {
+        "id": "roi-calculator",
+        "role": "analytics.roi-calculator",
+        "depends_on": [
+          "traffic-analyst",
+          "conversion-analyst"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analytics"
+      },
+      {
+        "id": "dashboard-builder",
+        "role": "analytics.dashboard-builder",
+        "depends_on": [
+          "traffic-analyst",
+          "conversion-analyst",
+          "ranking-tracker"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analytics"
+      },
+      {
+        "id": "monthly-report-writer",
+        "role": "analytics.monthly-report-writer",
+        "depends_on": [
+          "roi-calculator",
+          "dashboard-builder"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analytics"
+      }
+    ],
+    "completion": "Каждый выбранный обязательный продукт принят; partial не скрыт общим quality score",
+    "errors": [
+      "Не запускать все специализации без необходимости; team plan раскрывает полную библиотеку",
+      "Не передавать partial как complete; отдельный ограниченный процесс можно начать по нужной роли"
+    ]
+  },
+  "strategy": {
+    "id": "team:strategy",
+    "source": "agents/strategy/_lead.md",
+    "purpose": "Координация специализаций strategy",
+    "trigger": "Поручение на выбранное направление; для узкой задачи предпочесть role:<id>",
+    "prerequisites": [
+      "Версия профиля, scope, разрешённые источники и принятые контекстные результаты"
+    ],
+    "nodes": [
+      {
+        "id": "seo-strategist",
+        "role": "strategy.seo-strategist",
+        "depends_on": [],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "strategy"
+      },
+      {
+        "id": "priority-matrix-builder",
+        "role": "strategy.priority-matrix-builder",
+        "depends_on": [
+          "seo-strategist"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "strategy"
+      },
+      {
+        "id": "competitive-strategy-analyst",
+        "role": "strategy.competitive-strategy-analyst",
+        "depends_on": [
+          "seo-strategist"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "strategy"
+      },
+      {
+        "id": "roadmap-planner",
+        "role": "strategy.roadmap-planner",
+        "depends_on": [
+          "priority-matrix-builder",
+          "competitive-strategy-analyst"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "strategy"
+      },
+      {
+        "id": "client-communication-manager",
+        "role": "strategy.client-communication-manager",
+        "depends_on": [
+          "roadmap-planner"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "strategy"
+      }
+    ],
+    "completion": "Каждый выбранный обязательный продукт принят; partial не скрыт общим quality score",
+    "errors": [
+      "Не запускать все специализации без необходимости; team plan раскрывает полную библиотеку",
+      "Не передавать partial как complete; отдельный ограниченный процесс можно начать по нужной роли"
+    ]
+  }
+}

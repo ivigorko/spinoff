@@ -1,0 +1,2 @@
+# Preserve the pinned reference snapshot byte-for-byte, including its original whitespace.
+vendor/seo-agency-in-a-box/** -whitespace

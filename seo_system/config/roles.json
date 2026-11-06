@@ -1,0 +1,4125 @@
+{
+  "research.market-researcher": {
+    "id": "research.market-researcher",
+    "source": "agents/research/market-researcher.md",
+    "purpose": "Определить рынок и бизнес-возможности SEO",
+    "trigger": "Выбрана задача «определить рынок и бизнес-возможности seo» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "business"
+    ],
+    "optional_evidence_kinds": [
+      "market",
+      "analytics"
+    ],
+    "sections": [
+      "market_scope",
+      "segments",
+      "demand",
+      "opportunities"
+    ],
+    "actions": [
+      "Уточни географию, продукт, аудиторию и границы рынка",
+      "Собери датированные первичные данные размера/спроса и укажи метод",
+      "Раздели сегменты, сезонность и покупательские задачи",
+      "Проверь конкурентов и регуляторные ограничения",
+      "Сопоставь возможности с целью, неизвестные оценки оставь неизвестными"
+    ],
+    "source_step_titles": [
+      "Define the market scope",
+      "Research market size and growth",
+      "Identify key market players",
+      "Research customer segments and behavior",
+      "Map seasonal demand patterns",
+      "Identify content demand signals",
+      "Research regulatory and macroeconomic factors",
+      "Assess search demand trajectory",
+      "Identify market-level SEO opportunities",
+      "Compile the market research report"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "research.algorithm-monitor": {
+    "id": "research.algorithm-monitor",
+    "source": "agents/research/algorithm-monitor.md",
+    "purpose": "Проверить обновления поисковых систем и риск для проекта",
+    "trigger": "Выбрана задача «проверить обновления поисковых систем и риск для проекта» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "business"
+    ],
+    "optional_evidence_kinds": [
+      "search_updates",
+      "analytics"
+    ],
+    "sections": [
+      "updates",
+      "impact_hypotheses",
+      "monitoring"
+    ],
+    "actions": [
+      "Проверь официальные журналы Google и Яндекса с датами события и публикации",
+      "Отдели подтверждённое обновление от слухов и волатильности",
+      "Сопоставь периоды сайта с изменениями без утверждения причинности",
+      "Запиши затронутые разделы и альтернативные причины",
+      "Предложи наблюдение или адресную проверку вместо массовых правок"
+    ],
+    "source_step_titles": [
+      "Check official Google sources",
+      "Search authoritative industry sources",
+      "Cross-reference every update",
+      "Research update mechanism and targets",
+      "Assess impact on client's vertical",
+      "Check SERP volatility tools",
+      "Review historical pattern",
+      "Generate strategy adjustment recommendations",
+      "Assess upcoming risk",
+      "Compile the algorithm update brief"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "research.serp-feature-researcher": {
+    "id": "research.serp-feature-researcher",
+    "source": "agents/research/serp-feature-researcher.md",
+    "purpose": "Исследовать состав региональной выдачи",
+    "trigger": "Выбрана задача «исследовать состав региональной выдачи» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "serp"
+    ],
+    "optional_evidence_kinds": [
+      "keywords",
+      "ai_visibility"
+    ],
+    "sections": [
+      "feature_map",
+      "eligibility",
+      "opportunities"
+    ],
+    "actions": [
+      "Зафиксируй query, engine, регион, язык, устройство и время каждого наблюдения",
+      "Отдели обычную выдачу, local pack, PAA, snippets и AI-ответы",
+      "Проверь реально доступные типы rich results по актуальным правилам",
+      "Сопоставь занимающие места типы страниц и бизнес-интент",
+      "Дай рекомендации и план повторного наблюдения без обещания CTR"
+    ],
+    "source_step_titles": [
+      "Compile the target query list",
+      "Research current SERP feature landscape",
+      "Analyze SERP features for priority queries",
+      "Map AI Overview presence and behavior",
+      "Assess featured snippet opportunities",
+      "Analyze People Also Ask patterns",
+      "Research rich result eligibility",
+      "Evaluate visual and multimedia features",
+      "Assess feature impact on CTR",
+      "Map optimization strategies per feature",
+      "Prioritize feature opportunities",
+      "Compile the SERP feature map"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "research.ai-search-landscape-analyst": {
+    "id": "research.ai-search-landscape-analyst",
+    "source": "agents/research/ai-search-landscape-analyst.md",
+    "purpose": "Оценить AI-поиск для рынка проекта",
+    "trigger": "Выбрана задача «оценить ai-поиск для рынка проекта» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "business"
+    ],
+    "optional_evidence_kinds": [
+      "ai_visibility",
+      "analytics",
+      "market"
+    ],
+    "sections": [
+      "platforms",
+      "observations",
+      "risks",
+      "experiments"
+    ],
+    "actions": [
+      "Определи релевантные платформы и доступность в целевом рынке",
+      "Собери существующие ответы с prompt, platform, временем и цитатами",
+      "Отдели рекомендации GEO от фактических наблюдений",
+      "Проверь измеримый referral трафик при наличии аналитики",
+      "Предложи проверяемые эксперименты без выдуманной модели ранжирования"
+    ],
+    "source_step_titles": [
+      "Assess Google AI Overviews status",
+      "Research Perplexity AI behavior",
+      "Research ChatGPT Search capabilities",
+      "Research Gemini and Google integration",
+      "Track emerging AI search tools",
+      "Analyze how AI search engines source content",
+      "Assess traffic impact on the client's vertical",
+      "Research AI search optimization best practices",
+      "Identify client-specific AI search risks",
+      "Identify client-specific AI search opportunities",
+      "Generate adaptation strategy",
+      "Compile the AI search landscape report"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "research.industry-trend-analyst": {
+    "id": "research.industry-trend-analyst",
+    "source": "agents/research/industry-trend-analyst.md",
+    "purpose": "Сопоставить тренды со спросом и контентом",
+    "trigger": "Выбрана задача «сопоставить тренды со спросом и контентом» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "business"
+    ],
+    "optional_evidence_kinds": [
+      "market",
+      "keywords",
+      "search_updates"
+    ],
+    "sections": [
+      "trends",
+      "seasonality",
+      "content_opportunities"
+    ],
+    "actions": [
+      "Сверь рыночные, поисковые и алгоритмические наблюдения",
+      "Проверь источник, временной ряд и сезонность каждого тренда",
+      "Отдели устойчивую потребность от краткого инфоповода",
+      "Сопоставь темы с возможностями команды и экспертизой",
+      "Передай приоритеты и сроки актуальности в контент-план"
+    ],
+    "source_step_titles": [
+      "Synthesize the three input reports",
+      "Research emerging topics in the client's industry",
+      "Map Google Trends trajectory",
+      "Identify seasonal demand patterns",
+      "Discover content format trends",
+      "Identify emerging questions and concerns",
+      "Map trends to keyword opportunities",
+      "Assess trend timing and urgency",
+      "Evaluate competitor trend coverage",
+      "Create a trend-to-content roadmap",
+      "Identify trends to avoid",
+      "Compile the industry trends report"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "research.data-analyst": {
+    "id": "research.data-analyst",
+    "source": "agents/research/data-analyst.md",
+    "purpose": "Объединить исследовательские данные без потери происхождения",
+    "trigger": "Выбрана задача «объединить исследовательские данные без потери происхождения» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "business"
+    ],
+    "optional_evidence_kinds": [
+      "market",
+      "analytics",
+      "keywords",
+      "competitors"
+    ],
+    "sections": [
+      "source_inventory",
+      "quality_issues",
+      "insights",
+      "decisions"
+    ],
+    "actions": [
+      "Составь реестр источников с гранулярностью и единицами",
+      "Проверь дубли, пропуски, совместимость периодов и scope",
+      "Сопоставь противоречия и не усредняй несовместимые показатели",
+      "Рассчитай только воспроизводимые агрегаты, корреляцию не называй причиной",
+      "Запиши решения, уверенность, evidence и необходимые данные"
+    ],
+    "source_step_titles": [
+      "Inventory all available data",
+      "Normalize and structure the data",
+      "Cross-reference research agent findings",
+      "Analyze client-provided data (if available)",
+      "Identify patterns",
+      "Identify anomalies",
+      "Identify correlations",
+      "Benchmark against available data",
+      "Generate actionable intelligence",
+      "Prioritize findings by impact",
+      "Create a decision matrix",
+      "Compile the intelligence report"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "competitor.competitor-site-crawler": {
+    "id": "competitor.competitor-site-crawler",
+    "source": "agents/competitor/competitor-site-crawler.md",
+    "purpose": "Описать структуру конкурента по разрешённой выборке",
+    "trigger": "Выбрана задача «описать структуру конкурента по разрешённой выборке» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "competitors"
+    ],
+    "optional_evidence_kinds": [
+      "pages"
+    ],
+    "sections": [
+      "inventory",
+      "structure",
+      "coverage",
+      "findings"
+    ],
+    "actions": [
+      "Подтверди домены конкурентов и лимиты чтения",
+      "Используй пригодный готовый crawl либо разрешённый ограниченный сбор",
+      "Разметь разделы, шаблоны, поддомены и JS-зависимые страницы",
+      "Сохрани URL, HTTP и реальные поля без реконструкции недостающих",
+      "Сопоставь структуру с клиентом и раскрывай неполноту выборки"
+    ],
+    "source_step_titles": [
+      "Run Firecrawl map on competitor domain",
+      "Categorize URLs into content sections",
+      "Identify URL patterns",
+      "Run Firecrawl crawl on high-value sections",
+      "Detect content depth signals",
+      "Check for subdomains and microsites",
+      "Spot-check JavaScript-heavy pages",
+      "Build URL inventory table",
+      "Build site structure map",
+      "Compare against client site",
+      "Flag notable findings",
+      "Compile crawl report"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "competitor.competitor-keyword-analyst": {
+    "id": "competitor.competitor-keyword-analyst",
+    "source": "agents/competitor/competitor-keyword-analyst.md",
+    "purpose": "Отделить целевые темы конкурента от измеренных позиций",
+    "trigger": "Выбрана задача «отделить целевые темы конкурента от измеренных позиций» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "competitors"
+    ],
+    "optional_evidence_kinds": [
+      "keywords",
+      "serp",
+      "pages"
+    ],
+    "sections": [
+      "targets",
+      "observed_rankings",
+      "overlap",
+      "gaps"
+    ],
+    "actions": [
+      "Выбери коммерчески релевантные страницы конкурента",
+      "Извлеки темы title, H1, URL и текста как гипотезы таргетинга",
+      "Позиции и объём отмечай только по подходящим измерениям",
+      "Сравни одинаковые query/engine/region/device/date",
+      "Передай подтверждённые пробелы и гипотезы отдельно"
+    ],
+    "source_step_titles": [
+      "Select high-value pages for scraping",
+      "Scrape on-page SEO elements",
+      "Extract primary keyword targets",
+      "Extract secondary keyword targets",
+      "Map content sections to keyword themes",
+      "Identify keyword priority tiers",
+      "Validate with Tavily search",
+      "Build keyword overlap matrix",
+      "Identify keyword gaps",
+      "Identify keyword opportunities",
+      "Analyze title tag and meta description patterns",
+      "Compile keyword analysis report"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "competitor.competitor-content-analyzer": {
+    "id": "competitor.competitor-content-analyzer",
+    "source": "agents/competitor/competitor-content-analyzer.md",
+    "purpose": "Сравнить полезность контента конкурентов",
+    "trigger": "Выбрана задача «сравнить полезность контента конкурентов» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "competitors"
+    ],
+    "optional_evidence_kinds": [
+      "content",
+      "serp",
+      "analytics"
+    ],
+    "sections": [
+      "sample",
+      "comparison",
+      "gaps",
+      "recommendations"
+    ],
+    "actions": [
+      "Выбери сравнимые страницы одного интента и рынка",
+      "Оцени полноту ответа, факты, оригинальную экспертизу, UX и формат",
+      "Проверь даты и фактическую актуальность, а не длину текста",
+      "Не выводи трафик и успешность из одного наличия страницы",
+      "Предложи дифференциацию, обновление или консолидацию с evidence"
+    ],
+    "source_step_titles": [
+      "Select content pages for deep analysis",
+      "Scrape full content from selected pages",
+      "Evaluate content depth per page",
+      "Analyze topic coverage and content gaps",
+      "Assess publishing frequency and cadence",
+      "Evaluate content types and formats",
+      "Assess E-E-A-T signals",
+      "Analyze multimedia usage",
+      "Evaluate internal linking strategy within content",
+      "Identify top-performing competitor content",
+      "Compare content quality across competitors",
+      "Generate content strategy recommendations"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "competitor.competitor-backlink-profiler": {
+    "id": "competitor.competitor-backlink-profiler",
+    "source": "agents/competitor/competitor-backlink-profiler.md",
+    "purpose": "Описать подтверждённую ссылочную выборку конкурентов",
+    "trigger": "Выбрана задача «описать подтверждённую ссылочную выборку конкурентов» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "backlinks"
+    ],
+    "optional_evidence_kinds": [
+      "competitors"
+    ],
+    "sections": [
+      "coverage",
+      "domains",
+      "anchors",
+      "assets",
+      "opportunities"
+    ],
+    "actions": [
+      "Зафиксируй провайдера, дату и полноту входящих ссылок",
+      "Раздели referring domains, страницы, анкоры и типы размещения",
+      "Проверь выборку реальных placement URL и атрибутов",
+      "Оцени контекст и бизнес-релевантность, метрики провайдера подпиши",
+      "Предложи изучение активов и отношений, не автоматическую покупку ссылок"
+    ],
+    "source_step_titles": [
+      "Research competitor backlink landscape",
+      "Classify link types",
+      "Assess referring domain quality",
+      "Analyze anchor text patterns",
+      "Identify most-linked competitor pages",
+      "Spot-check link placement and context",
+      "Find replicable link opportunities",
+      "Identify link building tactics per competitor",
+      "Compare link profiles across competitors",
+      "Compare with client link profile",
+      "Build prioritized link acquisition targets",
+      "Compile backlink profile report"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "competitor.competitor-technical-benchmarker": {
+    "id": "competitor.competitor-technical-benchmarker",
+    "source": "agents/competitor/competitor-technical-benchmarker.md",
+    "purpose": "Сравнить технические наблюдения одинаковым методом",
+    "trigger": "Выбрана задача «сравнить технические наблюдения одинаковым методом» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "competitors"
+    ],
+    "optional_evidence_kinds": [
+      "pages",
+      "performance",
+      "indexation",
+      "schema"
+    ],
+    "sections": [
+      "method",
+      "comparison",
+      "advantages",
+      "actions"
+    ],
+    "actions": [
+      "Выбери сопоставимые страницы и условия измерения",
+      "Проверь доступность, render, метаданные и поддерживаемую разметку",
+      "Измерения скорости бери из реальных данных, не HTML-эвристики",
+      "Отдели сигналы indexability от фактической индексации",
+      "Дай адресные улучшения и ограничения сравнения вместо фиктивного health score"
+    ],
+    "source_step_titles": [
+      "Select benchmark pages",
+      "Fetch and inspect page source",
+      "Evaluate page speed indicators",
+      "Audit structured data (schema markup)",
+      "Assess mobile optimization",
+      "Check indexation signals",
+      "Evaluate internal linking structure",
+      "Check HTTPS and security",
+      "Research technology stacks",
+      "Build side-by-side comparison table",
+      "Identify technical advantages and gaps",
+      "Generate prioritized technical recommendations",
+      "Calculate overall technical score"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "competitor.competitor-serp-tracker": {
+    "id": "competitor.competitor-serp-tracker",
+    "source": "agents/competitor/competitor-serp-tracker.md",
+    "purpose": "Сопоставить позиции клиента и конкурентов",
+    "trigger": "Выбрана задача «сопоставить позиции клиента и конкурентов» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "serp"
+    ],
+    "optional_evidence_kinds": [
+      "keywords",
+      "competitors"
+    ],
+    "sections": [
+      "scope",
+      "positions",
+      "movements",
+      "opportunities"
+    ],
+    "actions": [
+      "Заморозь общий query set и региональные параметры",
+      "Запиши наблюдаемые позиции и SERP features из разрешённого источника",
+      "Не считай порядок general search API точными Google/Яндекс позициями",
+      "Сравни прошлый период только при одинаковом scope",
+      "Раздели движения, пробелы и рекомендации, не прогнозируя победу"
+    ],
+    "source_step_titles": [
+      "Build keyword tracking list",
+      "Run Tavily search for each keyword",
+      "Build position comparison table",
+      "Identify SERP feature ownership",
+      "Calculate position distribution per competitor",
+      "Identify head-to-head battles",
+      "Identify quick-win keywords",
+      "Identify keywords the client should own but does not",
+      "Detect SERP feature opportunities",
+      "Compare against previous tracking data",
+      "Build gap summary",
+      "Generate tracking recommendations"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "keywords.keyword-discovery": {
+    "id": "keywords.keyword-discovery",
+    "source": "agents/keywords/keyword-discovery.md",
+    "purpose": "Собрать проверяемое множество поисковых задач",
+    "trigger": "Выбрана задача «собрать проверяемое множество поисковых задач» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "business"
+    ],
+    "optional_evidence_kinds": [
+      "keywords",
+      "serp",
+      "market"
+    ],
+    "sections": [
+      "seeds",
+      "candidates",
+      "metrics",
+      "coverage"
+    ],
+    "actions": [
+      "Уточни продукты, аудиторию, географию и seed темы",
+      "Объедини готовые запросы Labrika, Wordstat, GSC или другого подтверждённого источника",
+      "Добавь вопросы и варианты как кандидаты, отличая их от измеренных запросов",
+      "Удали дубли без потери исходной формы и provenance",
+      "Частотность, difficulty и позицию не оценивай по текстовой выдаче, неизвестное оставь null"
+    ],
+    "source_step_titles": [
+      "Define seed keywords",
+      "Expand with modifiers",
+      "Mine question keywords",
+      "Extract People Also Ask",
+      "Find long-tail variations",
+      "Identify LSI terms",
+      "Discover related topics",
+      "Mine competitor content",
+      "Check trending terms",
+      "Compile the raw keyword universe",
+      "Initial relevance filter",
+      "Estimate relative volume"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "keywords.serp-analyzer": {
+    "id": "keywords.serp-analyzer",
+    "source": "agents/keywords/serp-analyzer.md",
+    "purpose": "Определить интент и формат по наблюдаемой выдаче",
+    "trigger": "Выбрана задача «определить интент и формат по наблюдаемой выдаче» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "serp"
+    ],
+    "optional_evidence_kinds": [
+      "keywords"
+    ],
+    "sections": [
+      "query_scope",
+      "features",
+      "page_types",
+      "intent_evidence"
+    ],
+    "actions": [
+      "Проверь точный региональный query scope и дату",
+      "Разметь типы ранжируемых страниц, features и присутствие брендов",
+      "Проверь приоритетную выборку URL и формат ответа",
+      "Раздели наблюдения и оценку сложности без выдуманного DA",
+      "Передай требования к полезности страницы и неопределённые интенты"
+    ],
+    "source_step_titles": [
+      "Search each target keyword on Tavily",
+      "Identify SERP features present",
+      "Analyze ranking content types",
+      "Assess domain authority diversity",
+      "Estimate content requirements",
+      "Determine SERP difficulty level",
+      "Identify featured snippet opportunities",
+      "Identify PAA opportunities",
+      "Assess click-through opportunity",
+      "Compile the SERP landscape summary",
+      "Generate ranking requirements per keyword"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "keywords.intent-classifier": {
+    "id": "keywords.intent-classifier",
+    "source": "agents/keywords/intent-classifier.md",
+    "purpose": "Классифицировать интент с доказательствами и неоднозначностью",
+    "trigger": "Выбрана задача «классифицировать интент с доказательствами и неоднозначностью» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "business"
+    ],
+    "optional_evidence_kinds": [
+      "keywords",
+      "serp"
+    ],
+    "sections": [
+      "intent_map",
+      "mixed_intents",
+      "page_types"
+    ],
+    "actions": [
+      "Сопоставь формулировку запроса с задачей пользователя",
+      "Используй реальную выдачу для проверки спорных интентов",
+      "Разметь informational, navigational, commercial, transactional и mixed",
+      "Сохрани confidence и основания, не навязывай один интент всем вариациям",
+      "Передай соответствующий тип страницы и неизвестные случаи"
+    ],
+    "source_step_titles": [
+      "Load the full keyword list",
+      "Apply pattern-based classification first",
+      "Handle ambiguous keywords",
+      "Detect mixed intent",
+      "Map each keyword to a content type:",
+      "Assess funnel position",
+      "Calculate intent distribution",
+      "Flag strategic imbalances",
+      "Prioritize by intent value",
+      "Cross-reference with client funnel"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "keywords.competitor-keyword-spy": {
+    "id": "keywords.competitor-keyword-spy",
+    "source": "agents/keywords/competitor-keyword-spy.md",
+    "purpose": "Найти тематические и измеренные ключи конкурента",
+    "trigger": "Выбрана задача «найти тематические и измеренные ключи конкурента» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "competitors"
+    ],
+    "optional_evidence_kinds": [
+      "pages",
+      "keywords",
+      "serp"
+    ],
+    "sections": [
+      "candidate_targets",
+      "verified_positions",
+      "overlap"
+    ],
+    "actions": [
+      "Прочитай разрешённую выборку title, H1 и контента конкурента",
+      "Выдели вероятные темы таргетинга, не называя их реальными позициями",
+      "Обогати только подтверждёнными keyword/ranking данными",
+      "Проверь совпадение региона и ядра сравнения",
+      "Передай матрицу покрытия с методикой и ограничениями"
+    ],
+    "source_step_titles": [
+      "Identify high-value competitor pages",
+      "Scrape competitor homepages",
+      "Scrape competitor service/product pages",
+      "Scrape competitor blog/content pages",
+      "Map competitor content to keywords",
+      "Identify competitor keyword themes",
+      "Cross-reference with client keywords",
+      "Assess competitor content quality",
+      "Identify competitor weaknesses",
+      "Score competitor keyword strength",
+      "Generate competitive keyword intelligence brief"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "keywords.keyword-gap-analyst": {
+    "id": "keywords.keyword-gap-analyst",
+    "source": "agents/keywords/keyword-gap-analyst.md",
+    "purpose": "Сопоставить клиентское ядро и конкурентное покрытие",
+    "trigger": "Выбрана задача «сопоставить клиентское ядро и конкурентное покрытие» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "business"
+    ],
+    "optional_evidence_kinds": [
+      "keywords",
+      "serp",
+      "competitors"
+    ],
+    "sections": [
+      "comparison",
+      "gaps",
+      "defensive_actions"
+    ],
+    "actions": [
+      "Согласуй одинаковые query universe и scope сравнения",
+      "Раздели отсутствие страницы, отсутствие наблюдения и низкую измеренную позицию",
+      "Проверь бизнес-ценность и целевые посадочные пробела",
+      "Определи защитные и новые возможности с зависимостями",
+      "Не считай отсутствие строки API доказательством отсутствия в поиске"
+    ],
+    "source_step_titles": [
+      "Build the client keyword inventory",
+      "Build the competitor keyword inventory",
+      "Create the comparison matrix",
+      "Identify GAPS (competitor has, client doesn't)",
+      "Identify ADVANTAGES (client has, competitors don't)",
+      "Identify OPPORTUNITIES (both target, client underperforms)",
+      "Score and prioritize gaps",
+      "Calculate gap metrics",
+      "Generate quick-win recommendations",
+      "Generate defensive recommendations",
+      "Generate improvement recommendations"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "keywords.cluster-builder": {
+    "id": "keywords.cluster-builder",
+    "source": "agents/keywords/cluster-builder.md",
+    "purpose": "Сгруппировать запросы и привязать к реальным посадочным",
+    "trigger": "Выбрана задача «сгруппировать запросы и привязать к реальным посадочным» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "business"
+    ],
+    "optional_evidence_kinds": [
+      "keywords",
+      "serp",
+      "pages"
+    ],
+    "sections": [
+      "clusters",
+      "url_mapping",
+      "link_relationships",
+      "unresolved"
+    ],
+    "actions": [
+      "Сгруппируй по задаче пользователя и проверенному SERP-интенту",
+      "Сверь существующие посадочные и пересечения, не создавая страницы по каждому запросу",
+      "Используй частотность только из измерений с методом",
+      "Для каждого кластера укажи primary intent, members и существующий/предлагаемый URL",
+      "Hub-and-spoke используй при пользе, не требуй фиксированного числа spokes"
+    ],
+    "source_step_titles": [
+      "Identify pillar topic candidates",
+      "Group keywords by semantic similarity",
+      "Validate clusters with Tavily",
+      "Define the pillar page",
+      "Define supporting pages",
+      "Map the internal linking structure",
+      "Assign content types per page",
+      "Estimate cluster size and effort",
+      "Identify cluster gaps",
+      "Create the publication roadmap",
+      "Validate cluster completeness",
+      "Generate the cluster map"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "technical.site-crawler": {
+    "id": "technical.site-crawler",
+    "source": "agents/technical/site-crawler.md",
+    "purpose": "Получить ограниченный воспроизводимый URL-инвентарь",
+    "trigger": "Выбрана задача «получить ограниченный воспроизводимый url-инвентарь» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "pages"
+    ],
+    "optional_evidence_kinds": [
+      "internal_links",
+      "indexation"
+    ],
+    "sections": [
+      "inventory",
+      "status_summary",
+      "redirects",
+      "coverage"
+    ],
+    "actions": [
+      "Проверь домены, источник, свежесть, robots и лимиты до нового сбора",
+      "Предпочти пригодный готовый crawl, новый запуск требует прав и бюджета",
+      "Сохрани raw, параметры, финальные URL, HTTP и доступные метаданные",
+      "Цепочки и битые ссылки подтверждай запросами и реальными referring pages",
+      "Orphans и depth выводи только при достаточно полном графе, не по одной выборке"
+    ],
+    "source_step_titles": [
+      "Run Firecrawl map on the site URL",
+      "Determine crawl parameters",
+      "Run Firecrawl crawl",
+      "Build the URL inventory",
+      "Identify broken pages",
+      "Map redirect chains",
+      "Find orphan pages",
+      "Detect duplicate content signals",
+      "Identify thin content pages",
+      "Analyze URL structure",
+      "Generate the status code summary",
+      "Save all crawl data to vault"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "technical.indexation-manager": {
+    "id": "technical.indexation-manager",
+    "source": "agents/technical/indexation-manager.md",
+    "purpose": "Сверить управляющие сигналы и реальную индексацию",
+    "trigger": "Выбрана задача «сверить управляющие сигналы и реальную индексацию» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "pages"
+    ],
+    "optional_evidence_kinds": [
+      "indexation"
+    ],
+    "sections": [
+      "robots",
+      "sitemaps",
+      "canonicals",
+      "indexation_map",
+      "conflicts"
+    ],
+    "actions": [
+      "Проверь robots, meta/X-Robots, canonical, redirects и sitemap отдельно",
+      "Сопоставь URL с crawl и правильным host/property",
+      "Фактическую индексацию подтверждай Вебмастером/GSC или помечай неизвестной",
+      "Проверь hreflang при соответствующем многоязычном scope",
+      "Опиши конфликты, допустимые исключения и тесты после изменения"
+    ],
+    "source_step_titles": [
+      "Fetch and analyze robots.txt",
+      "Fetch and analyze XML sitemaps",
+      "Cross-reference sitemap URLs against crawl data",
+      "Check robots.txt against crawl data",
+      "Audit canonical tags",
+      "Audit meta robots directives",
+      "Check for hreflang implementation",
+      "Build the indexation status map",
+      "Identify conflicting signals",
+      "Generate recommendations"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "technical.core-web-vitals-analyst": {
+    "id": "technical.core-web-vitals-analyst",
+    "source": "agents/technical/core-web-vitals-analyst.md",
+    "purpose": "Проанализировать измеренные показатели пользовательского опыта",
+    "trigger": "Выбрана задача «проанализировать измеренные показатели пользовательского опыта» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "performance"
+    ],
+    "optional_evidence_kinds": [
+      "pages",
+      "analytics"
+    ],
+    "sections": [
+      "method",
+      "field_data",
+      "lab_data",
+      "diagnosis",
+      "acceptance"
+    ],
+    "actions": [
+      "Выбери важные шаблоны и зафиксируй условия измерения",
+      "Раздели field URL/origin и laboratory данные с окнами и устройствами",
+      "Проверь LCP, INP и CLS",
+      " TBT не подменяет INP",
+      "Причины подтверждай trace/ресурсами, не догадкой по HTML",
+      "Предложи воспроизводимый before/after тест без гарантии балла и роста"
+    ],
+    "source_step_titles": [
+      "Select pages to analyze",
+      "Use Web Search to check for CrUX data",
+      "Fetch each selected page with Web Fetch",
+      "Assess LCP for each page",
+      "Assess INP for each page",
+      "Assess CLS for each page",
+      "Compile per-page findings",
+      "Generate fix recommendations",
+      "Identify site-wide patterns",
+      "Prioritize the fix list",
+      "Use Tavily to verify current best practices",
+      "Write the CWV report"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "technical.schema-specialist": {
+    "id": "technical.schema-specialist",
+    "source": "agents/technical/schema-specialist.md",
+    "purpose": "Подготовить корректную и актуально применимую разметку",
+    "trigger": "Выбрана задача «подготовить корректную и актуально применимую разметку» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "pages"
+    ],
+    "optional_evidence_kinds": [
+      "schema",
+      "products",
+      "local"
+    ],
+    "sections": [
+      "inventory",
+      "eligibility",
+      "json_ld",
+      "validation",
+      "implementation"
+    ],
+    "actions": [
+      "Определи типы страниц и фактически видимое содержимое",
+      "Извлеки существующий JSON-LD/Microdata/RDFa и конфликты",
+      "Проверь актуальные требования конкретного supported feature",
+      "Генерируй только подтверждённые значения, без вымышленных рейтингов/экспертов",
+      "Валидируй синтаксис и соответствие странице, eligibility не означает показ rich result"
+    ],
+    "source_step_titles": [
+      "Categorize all pages by type",
+      "Map schema types to page categories",
+      "Select representative pages for audit",
+      "Fetch each selected page using Web Fetch",
+      "Validate existing schema",
+      "Identify missing schema opportunities",
+      "Use Tavily to verify current Google requirements",
+      "Generate JSON-LD for all missing schema",
+      "Generate Organization/WebSite schema for site-wide implementation",
+      "Generate BreadcrumbList schema",
+      "Create an implementation guide",
+      "Compile the schema audit"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "technical.internal-linking-architect": {
+    "id": "technical.internal-linking-architect",
+    "source": "agents/technical/internal-linking-architect.md",
+    "purpose": "Спроектировать перелинковку по реальному графу и интенту",
+    "trigger": "Выбрана задача «спроектировать перелинковку по реальному графу и интенту» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "internal_links"
+    ],
+    "optional_evidence_kinds": [
+      "pages",
+      "keywords",
+      "indexation"
+    ],
+    "sections": [
+      "graph",
+      "orphans",
+      "link_changes",
+      "acceptance"
+    ],
+    "actions": [
+      "Построй граф из фактических source/target URL и укажи coverage",
+      "Orphan выводи лишь относительно известных inventory/sitemap/analytics и графа",
+      "Проверь depth, канонические ссылки, broken targets и навигацию",
+      "Предложи конкретные source URL, target URL и естественные анкоры",
+      "Проверь полезность, шаблонные исключения и тест отсутствия новых broken links"
+    ],
+    "source_step_titles": [
+      "Build the link graph from crawl data",
+      "Identify orphan pages",
+      "Identify thin-link pages",
+      "Identify link hogs",
+      "Map crawl depth",
+      "Identify topical clusters",
+      "Analyze navigation and footer links",
+      "Check for broken internal links",
+      "Generate specific linking recommendations",
+      "Prioritize recommendations",
+      "Estimate impact",
+      "Compile the internal link map"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "technical.mobile-seo-auditor": {
+    "id": "technical.mobile-seo-auditor",
+    "source": "agents/technical/mobile-seo-auditor.md",
+    "purpose": "Проверить мобильное представление и функции",
+    "trigger": "Выбрана задача «проверить мобильное представление и функции» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "pages"
+    ],
+    "optional_evidence_kinds": [
+      "performance"
+    ],
+    "sections": [
+      "sample",
+      "render_checks",
+      "parity",
+      "issues",
+      "acceptance"
+    ],
+    "actions": [
+      "Выбери реальные устройства/viewport и шаблоны",
+      "Проверь rendered content, viewport, overflow, читаемость и tap targets",
+      "Сравни mobile/desktop содержимое, ссылки и метаданные",
+      "Проверь interstitials и функции без отправки реальных обращений",
+      "Дай URL, screenshot/DOM evidence и воспроизводимые условия приёмки"
+    ],
+    "source_step_titles": [
+      "Determine the mobile implementation type",
+      "Select pages to audit",
+      "Check viewport meta tag on every selected page",
+      "Check text readability",
+      "Check tap targets",
+      "Check for horizontal scroll issues",
+      "Check for intrusive interstitials",
+      "Check mobile content parity",
+      "Check mobile-specific technical issues",
+      "Use Tavily to verify current mobile-first indexing standards",
+      "Compile per-page findings",
+      "Prioritize the mobile fix list"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "technical.log-analyzer": {
+    "id": "technical.log-analyzer",
+    "source": "agents/technical/log-analyzer.md",
+    "purpose": "Проанализировать разрешённые обезличенные серверные логи",
+    "trigger": "Выбрана задача «проанализировать разрешённые обезличенные серверные логи» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "logs"
+    ],
+    "optional_evidence_kinds": [
+      "pages",
+      "indexation"
+    ],
+    "sections": [
+      "format",
+      "bot_validation",
+      "crawl_patterns",
+      "limitations",
+      "actions"
+    ],
+    "actions": [
+      "Проверь формат, период, полноту и удаление лишних персональных данных",
+      "Определи роботов с проверкой идентичности, а не только User-Agent",
+      "Агрегируй статусы, частоту обхода и затраты по URL/разделам",
+      "Сопоставь с назначением страниц и индексированием",
+      "Без логов выдай план сбора, не реконструируй бот-трафик из crawl"
+    ],
+    "source_step_titles": [
+      "Identify the log format",
+      "Extract bot traffic",
+      "Calculate bot vs human ratios",
+      "Analyze Googlebot crawl patterns",
+      "Identify crawl budget waste",
+      "Identify under-crawled pages",
+      "Analyze crawl frequency by page",
+      "Check for Googlebot IP verification",
+      "Analyze AI crawler behavior",
+      "Generate crawl budget optimization recommendations",
+      "Provide log collection guidance",
+      "Provide estimated insights from crawl data"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "technical.site-migration-specialist": {
+    "id": "technical.site-migration-specialist",
+    "source": "agents/technical/site-migration-specialist.md",
+    "purpose": "Подготовить и проверить миграцию URL с сохранением baseline",
+    "trigger": "Выбрана задача «подготовить и проверить миграцию url с сохранением baseline» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "pages"
+    ],
+    "optional_evidence_kinds": [
+      "analytics",
+      "backlinks",
+      "indexation",
+      "release",
+      "verification"
+    ],
+    "sections": [
+      "baseline",
+      "url_mapping",
+      "redirect_rules",
+      "parity",
+      "rollback",
+      "verification"
+    ],
+    "actions": [
+      "Заморозь старые URL, контент, метаданные, трафик и входящие цели",
+      "Для каждого URL назначь обоснованный новый URL, consolidation либо корректное удаление",
+      "Подготовь правила без цепочек и массового редиректа несвязанных страниц на главную",
+      "Проверь тестовую версию, canonical, robots, sitemap, ссылки и трекинг",
+      "После разрешённого релиза проверь новые URL и связи, сохрани rollback и план измерения"
+    ],
+    "source_step_titles": [
+      "Crawl the current site with Firecrawl",
+      "Build the complete URL inventory",
+      "Identify the highest-value pages",
+      "Create the redirect map",
+      "Document content that must be preserved",
+      "Check for existing redirects",
+      "Generate the pre-migration checklist",
+      "Save the pre-migration baseline",
+      "Crawl the new site with Firecrawl",
+      "Verify every redirect",
+      "Find broken pages on the new site",
+      "Check content parity",
+      "Verify XML sitemap update",
+      "Verify robots.txt",
+      "Generate the migration health scorecard"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "content.content-strategist": {
+    "id": "content.content-strategist",
+    "source": "agents/content/content-strategist.md",
+    "purpose": "Преобразовать ядро и цели в контентную стратегию",
+    "trigger": "Выбрана задача «преобразовать ядро и цели в контентную стратегию» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "business"
+    ],
+    "optional_evidence_kinds": [
+      "keywords",
+      "competitors",
+      "content",
+      "analytics"
+    ],
+    "sections": [
+      "pillars",
+      "page_mapping",
+      "priorities",
+      "metrics",
+      "dependencies"
+    ],
+    "actions": [
+      "Сопоставь кластеры, бизнес-цель и текущие URL",
+      "Выбери форматы и уникальную пользу/экспертизу",
+      "Реши create/update/consolidate с защитой работающих страниц",
+      "Определи связи, ресурсные ограничения и метрики",
+      "Передай последовательность в календарь, не обещая публикации и роста"
+    ],
+    "source_step_titles": [
+      "Audit keyword clusters",
+      "Define content pillars",
+      "Design hub-and-spoke models",
+      "Use Tavily for topic research",
+      "Map E-E-A-T requirements",
+      "Identify content moats",
+      "Sequence content creation",
+      "Assess competitive gaps",
+      "Define content types per topic",
+      "Set success metrics",
+      "Document the full strategy",
+      "Pass to Content Calendar Planner"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "content.content-calendar-planner": {
+    "id": "content.content-calendar-planner",
+    "source": "agents/content/content-calendar-planner.md",
+    "purpose": "Составить реалистичный календарь создания и обновления",
+    "trigger": "Выбрана задача «составить реалистичный календарь создания и обновления» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "business"
+    ],
+    "optional_evidence_kinds": [
+      "keywords",
+      "content",
+      "analytics"
+    ],
+    "sections": [
+      "calendar",
+      "capacity",
+      "dependencies",
+      "refresh_slots"
+    ],
+    "actions": [
+      "Уточни горизонт, исполнителей и реальную мощность",
+      "Возьми темы из согласованной стратегии и сезонных данных",
+      "Назначь format, target URL/query, brief и зависимости",
+      "Объём текста задавай редакционной задачей, сроки при unknown capacity сценарные",
+      "Оставь слоты обновлений и QA, публикация отдельный шаг"
+    ],
+    "source_step_titles": [
+      "Establish the planning horizon",
+      "Pull priority topics from strategy",
+      "Check for seasonal opportunities",
+      "Identify time-sensitive topics",
+      "Assign content types",
+      "Sequence for topical authority",
+      "Assign target keywords",
+      "Set word count targets",
+      "Add publishing dates",
+      "Flag dependencies",
+      "Add content refresh slots",
+      "Calculate resource requirements",
+      "Compile the calendar"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "content.brief-writer": {
+    "id": "content.brief-writer",
+    "source": "agents/content/brief-writer.md",
+    "purpose": "Подготовить проверяемое ТЗ автору",
+    "trigger": "Выбрана задача «подготовить проверяемое тз автору» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "business"
+    ],
+    "optional_evidence_kinds": [
+      "keywords",
+      "serp",
+      "content"
+    ],
+    "sections": [
+      "intent",
+      "outline",
+      "unique_value",
+      "facts",
+      "links",
+      "acceptance"
+    ],
+    "actions": [
+      "Проверь цель, аудиторию, кластер и target URL",
+      "Сравни доступные SERP-примеры одного интента и выяви недостающий ответ",
+      "Построй outline с пользой, источниками фактов и нужной экспертизой",
+      "Укажи внутренние ссылки, изображения, CTA и применимую разметку",
+      "Задай редакционные критерии, не универсальный word count или keyword density"
+    ],
+    "source_step_titles": [
+      "Identify the target keyword and cluster",
+      "Analyze search intent",
+      "Scrape top 3 competitor pages",
+      "Identify content gaps in competitors",
+      "Define the content outline",
+      "Set target word count",
+      "Map SERP features",
+      "Define internal linking",
+      "Specify schema markup",
+      "Write the unique angle/hook",
+      "Set E-E-A-T guidance",
+      "Add writer instructions",
+      "Compile the brief"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "content.seo-blog-writer": {
+    "id": "content.seo-blog-writer",
+    "source": "agents/content/seo-blog-writer.md",
+    "purpose": "Написать статью по принятому brief и проверенным фактам",
+    "trigger": "Выбрана задача «написать статью по принятому brief и проверенным фактам» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "business"
+    ],
+    "optional_evidence_kinds": [
+      "keywords",
+      "content",
+      "serp"
+    ],
+    "sections": [
+      "draft",
+      "metadata",
+      "links",
+      "sources",
+      "editorial_checks"
+    ],
+    "actions": [
+      "Следуй brief, интенту и brand voice",
+      "Напиши полный полезный ответ с логичной структурой, примерами и оригинальным вкладом",
+      "Проверь факты и датируй источники, не выдумывай цитаты/опыт",
+      "Добавь осмысленные ссылки, изображения/alt и релевантный CTA",
+      "Проверь читаемость и естественный язык без квот слов/повторов, сохрани как draft"
+    ],
+    "source_step_titles": [
+      "Internalize the brief",
+      "Craft the H1 title",
+      "Write the introduction",
+      "Write each section following the outline",
+      "Use Tavily for fact verification",
+      "Add internal links",
+      "Add external links",
+      "Write the conclusion",
+      "Write the meta description",
+      "Generate image alt text suggestions",
+      "Self-review for keyword integration",
+      "Self-review for readability",
+      "Format the final post"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "content.meta-tag-writer": {
+    "id": "content.meta-tag-writer",
+    "source": "agents/content/meta-tag-writer.md",
+    "purpose": "Подготовить метаданные под назначение страницы",
+    "trigger": "Выбрана задача «подготовить метаданные под назначение страницы» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "pages"
+    ],
+    "optional_evidence_kinds": [
+      "keywords",
+      "business"
+    ],
+    "sections": [
+      "variants",
+      "selected_metadata",
+      "rationale",
+      "acceptance"
+    ],
+    "actions": [
+      "Проверь текущие URL, title, description, H1 и intent",
+      "Подготовь уникальные варианты с реальным предложением и брендом",
+      "Не вставляй неподтверждённые цены, скидки или свойства",
+      "Длину используй как редакционный ориентир отображения, не жёсткое SEO-правило",
+      "Проверь дубли и передай выбранный текст с HTML acceptance, без публикации"
+    ],
+    "source_step_titles": [
+      "Inventory all pages",
+      "Audit existing meta tags",
+      "Scrape competitor meta tags",
+      "Write title tags",
+      "Write meta descriptions",
+      "Write OG tags",
+      "Cross-check for duplicates",
+      "Validate character counts",
+      "Check keyword cannibalization",
+      "Format the deliverable"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "content.faq-paa-writer": {
+    "id": "content.faq-paa-writer",
+    "source": "agents/content/faq-paa-writer.md",
+    "purpose": "Ответить на реальные вопросы пользователей",
+    "trigger": "Выбрана задача «ответить на реальные вопросы пользователей» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "business"
+    ],
+    "optional_evidence_kinds": [
+      "serp",
+      "keywords",
+      "content"
+    ],
+    "sections": [
+      "questions",
+      "answers",
+      "sources",
+      "placement",
+      "eligibility"
+    ],
+    "actions": [
+      "Собери подтверждённые вопросы PAA/поддержки/ядра и выдели предложенные гипотезы",
+      "Удали дубли и приоритизируй по задаче страницы",
+      "Дай точные ответы с фактами и полезными ссылками",
+      "Размести ответы в видимом контенте без обещаний FAQ rich result",
+      "FAQ-разметку рассматривай только по нуждам поддерживающего потребителя и актуальной eligibility"
+    ],
+    "source_step_titles": [
+      "Identify target keywords",
+      "Research actual PAA questions",
+      "Deduplicate and prioritize questions",
+      "Select 5-8 questions per page",
+      "Write concise, direct answers",
+      "Optimize for featured snippet extraction",
+      "Check brand voice compliance",
+      "Add internal linking opportunities",
+      "Generate FAQ schema markup",
+      "Validate schema",
+      "Group for batch delivery"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "content.content-optimizer": {
+    "id": "content.content-optimizer",
+    "source": "agents/content/content-optimizer.md",
+    "purpose": "Предложить адресную правку существующей страницы",
+    "trigger": "Выбрана задача «предложить адресную правку существующей страницы» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "pages"
+    ],
+    "optional_evidence_kinds": [
+      "keywords",
+      "serp",
+      "content",
+      "analytics"
+    ],
+    "sections": [
+      "baseline",
+      "gaps",
+      "edit_plan",
+      "revised_content",
+      "acceptance"
+    ],
+    "actions": [
+      "Сохрани актуальный baseline и работающие элементы страницы",
+      "Проверь интент, полноту ответа, достоверность и дубли",
+      "Сопоставь реальные SERP/конкурентные примеры без копирования",
+      "Подготовь конкретные правки структуры, фактов, метаданных и ссылок",
+      "Проверь потерю контента/конверсий и передай diff с rollback"
+    ],
+    "source_step_titles": [
+      "Scrape the current page",
+      "Identify the target keyword(s)",
+      "Analyze current SERP",
+      "Scrape top 2-3 competitors",
+      "Conduct keyword gap analysis",
+      "Audit heading structure",
+      "Audit content depth",
+      "Check for outdated information",
+      "Audit internal links",
+      "Audit schema markup",
+      "Audit readability",
+      "Produce recommendations",
+      "Produce revised content or edit instructions",
+      "Write updated meta tags"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "content.content-gap-analyst": {
+    "id": "content.content-gap-analyst",
+    "source": "agents/content/content-gap-analyst.md",
+    "purpose": "Найти обоснованные контентные пробелы",
+    "trigger": "Выбрана задача «найти обоснованные контентные пробелы» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "business"
+    ],
+    "optional_evidence_kinds": [
+      "content",
+      "competitors",
+      "keywords",
+      "serp"
+    ],
+    "sections": [
+      "inventory",
+      "coverage_matrix",
+      "gaps",
+      "consolidation",
+      "priorities"
+    ],
+    "actions": [
+      "Сопоставь inventory клиента и релевантную выборку конкурентов",
+      "Раздели отсутствие темы, недостаточный ответ и другой интент",
+      "Проверь спрос измерениями либо пометь гипотезой",
+      "Рассмотри улучшение существующей страницы до создания новой",
+      "Приоритизируй по пользе, целям, effort и зависимостям"
+    ],
+    "source_step_titles": [
+      "Inventory client content",
+      "Identify top 3-5 competitors to analyze",
+      "Crawl competitor content sections",
+      "Categorize competitor content by topic",
+      "Map client vs. competitor coverage",
+      "Identify raw gaps",
+      "Validate demand with Tavily",
+      "Score opportunity",
+      "Identify quick wins",
+      "Identify content consolidation opportunities",
+      "Generate topic recommendations",
+      "Compile the gap analysis report"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "content.landing-page-copywriter": {
+    "id": "content.landing-page-copywriter",
+    "source": "agents/content/landing-page-copywriter.md",
+    "purpose": "Подготовить коммерческую посадочную без ложных обещаний",
+    "trigger": "Выбрана задача «подготовить коммерческую посадочную без ложных обещаний» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "business"
+    ],
+    "optional_evidence_kinds": [
+      "keywords",
+      "serp",
+      "content"
+    ],
+    "sections": [
+      "page_copy",
+      "offer_evidence",
+      "conversion_path",
+      "metadata",
+      "acceptance"
+    ],
+    "actions": [
+      "Проверь оффер, аудиторию, географию и разрешённые факты",
+      "Построй страницу вокруг потребности, доказательств и следующего шага",
+      "Проверь условия, цены, отзывы и кейсы, не создавая вымышленные",
+      "Добавь релевантные вопросы, metadata и ссылки без keyword stuffing",
+      "Проверь brand voice, мобильную структуру, CTA и статус draft"
+    ],
+    "source_step_titles": [
+      "Study the brief and ICP",
+      "Analyze competitor landing pages",
+      "Use Tavily to validate SERP expectations",
+      "Write the hero section",
+      "Write the problem/pain section",
+      "Write the solution/benefit section",
+      "Write the social proof section",
+      "Write the features/how-it-works section",
+      "Write the FAQ section",
+      "Write the final CTA section",
+      "Generate schema markup",
+      "Write meta tags",
+      "Optimize keyword placement",
+      "Add internal linking"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "content.content-performance-analyst": {
+    "id": "content.content-performance-analyst",
+    "source": "agents/content/content-performance-analyst.md",
+    "purpose": "Определить действия по контенту на основе результатов",
+    "trigger": "Выбрана задача «определить действия по контенту на основе результатов» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "analytics"
+    ],
+    "optional_evidence_kinds": [
+      "content",
+      "keywords",
+      "pages"
+    ],
+    "sections": [
+      "inventory",
+      "segments",
+      "performance",
+      "actions",
+      "risks"
+    ],
+    "actions": [
+      "Сопоставь URL и контент с корректными агрегатами аналитики",
+      "Сравни закрытые периоды, возраст и сезонность",
+      "Раздели рост/падение, низкую видимость и проблему конверсии",
+      "Каннибализацию подтверждай общим интентом и данными, а не совпадением слов",
+      "Для обновления/слияния/удаления проверь ссылки, пользy и rollback"
+    ],
+    "source_step_titles": [
+      "Compile the content inventory",
+      "Gather performance data",
+      "Calculate content age",
+      "Categorize each content piece",
+      "Analyze growing content",
+      "Analyze declining content",
+      "Analyze underperforming content",
+      "Identify cannibalization",
+      "Identify consolidation opportunities",
+      "Identify prune candidates",
+      "Prioritize actions",
+      "Connect to content calendar",
+      "Compile the performance report"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "links.backlink-auditor": {
+    "id": "links.backlink-auditor",
+    "source": "agents/links/backlink-auditor.md",
+    "purpose": "Оценить известную выборку входящих ссылок",
+    "trigger": "Выбрана задача «оценить известную выборку входящих ссылок» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "backlinks"
+    ],
+    "optional_evidence_kinds": [
+      "business",
+      "competitors"
+    ],
+    "sections": [
+      "coverage",
+      "domains",
+      "anchors",
+      "risks",
+      "recommendations"
+    ],
+    "actions": [
+      "Проверь источник, дату и полноту именно inbound данных",
+      "Агрегируй домены, анкоры, типы и изменения без оценки невидимой части базы",
+      "Проверь подозрительные размещения и контекст вручную",
+      "Не приравнивай provider toxicity к санкции и не создавай disavow автоматически",
+      "Предложи действия, необходимость отдельной проверки и ограничения"
+    ],
+    "source_step_titles": [
+      "Identify the client's domain",
+      "Research the backlink profile",
+      "Search for known link issues",
+      "Fetch the client's site",
+      "Identify linking domains",
+      "Assess link quality signals",
+      "Spot-check suspicious links",
+      "Analyze anchor text distribution",
+      "Analyze link type distribution",
+      "Identify disavow candidates",
+      "Calculate backlink health score",
+      "Generate recommendations"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "links.competitor-backlink-analyzer": {
+    "id": "links.competitor-backlink-analyzer",
+    "source": "agents/links/competitor-backlink-analyzer.md",
+    "purpose": "Найти подтверждённые ссылочные отличия конкурентов",
+    "trigger": "Выбрана задача «найти подтверждённые ссылочные отличия конкурентов» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "backlinks"
+    ],
+    "optional_evidence_kinds": [
+      "competitors",
+      "business"
+    ],
+    "sections": [
+      "profiles",
+      "verified_placements",
+      "gaps",
+      "opportunities"
+    ],
+    "actions": [
+      "Согласуй сравнимые домены, периоды и provider scope",
+      "Раздели editorial, PR, listings, partnerships и прочие виды",
+      "Проверь реальные placement URL и релевантность",
+      "Отдели покрытие доступной базы от отсутствия ссылок вообще",
+      "Предложи легитимные активы и отношения, не автоматическую репликацию покупок"
+    ],
+    "source_step_titles": [
+      "Define competitor set",
+      "Research each competitor's backlink profile",
+      "Find competitor editorial links",
+      "Find competitor guest posts",
+      "Find competitor directory/listing links",
+      "Find competitor PR/press links",
+      "Verify and assess top linking pages",
+      "Categorize link types per competitor",
+      "Identify replicable opportunities",
+      "Find link gaps",
+      "Identify competitor link patterns",
+      "Compile the competitive backlink intelligence"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "links.link-prospector": {
+    "id": "links.link-prospector",
+    "source": "agents/links/link-prospector.md",
+    "purpose": "Подобрать релевантные площадки и публичные контакты",
+    "trigger": "Выбрана задача «подобрать релевантные площадки и публичные контакты» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "business"
+    ],
+    "optional_evidence_kinds": [
+      "backlinks",
+      "market",
+      "competitors"
+    ],
+    "sections": [
+      "prospects",
+      "relevance",
+      "public_contacts",
+      "asset_mapping"
+    ],
+    "actions": [
+      "Определи аудиторию, тему и существующий полезный актив",
+      "Найди каталоги, публикации, партнёров и brand mentions в разрешённом scope",
+      "Проверь площадку, контекст и опубликованный business contact",
+      "Не угадывай частные email и не считать числовой DA доказательством качества",
+      "Сопоставь prospect с предложением и оставь outreach подготовкой"
+    ],
+    "source_step_titles": [
+      "Define prospecting parameters",
+      "Search for resource pages",
+      "Search for guest post targets",
+      "Search for niche directories",
+      "Search for industry roundups",
+      "Search for partnership opportunities",
+      "Search for unlinked brand mentions",
+      "Verify prospect quality",
+      "Score each prospect",
+      "Categorize and prioritize",
+      "Map prospects to client content",
+      "Compile the prospect list"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "links.outreach-writer": {
+    "id": "links.outreach-writer",
+    "source": "agents/links/outreach-writer.md",
+    "purpose": "Подготовить персонализированное обращение без отправки",
+    "trigger": "Выбрана задача «подготовить персонализированное обращение без отправки» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "business"
+    ],
+    "optional_evidence_kinds": [
+      "backlinks",
+      "market"
+    ],
+    "sections": [
+      "drafts",
+      "personalization_evidence",
+      "followups",
+      "recipient_scope"
+    ],
+    "actions": [
+      "Прочитай проверенный prospect и цель контакта",
+      "Сверь публичный business contact и факт персонализации",
+      "Напиши конкретное полезное предложение без вымышленных отношений",
+      "Подготовь нужные варианты guest/resource/broken-link/content-promotion/partnership/unlinked-mention/PR, темы и follow-up; не используй нерелевантные шаблоны",
+      "Подготовь варианты темы и уместный follow-up без агрессивной рассылки",
+      "Проверь адресат, факты и полномочия, пометь draft, не отправляй"
+    ],
+    "source_step_titles": [
+      "Review the prospect list",
+      "Research top prospects for personalization",
+      "Write Guest Post Pitch template",
+      "Write Resource Page Suggestion template",
+      "Write Broken Link Replacement template",
+      "Write Skyscraper/Content Promotion template",
+      "Write Partnership Proposal template",
+      "Write Unlinked Mention Request template",
+      "Write Digital PR Pitch template",
+      "Write personalized versions",
+      "Write follow-up templates",
+      "Create subject line variations"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "links.digital-pr-strategist": {
+    "id": "links.digital-pr-strategist",
+    "source": "agents/links/digital-pr-strategist.md",
+    "purpose": "Разработать кампанию на реальных данных и экспертизе",
+    "trigger": "Выбрана задача «разработать кампанию на реальных данных и экспертизе» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "business"
+    ],
+    "optional_evidence_kinds": [
+      "market",
+      "backlinks",
+      "competitors"
+    ],
+    "sections": [
+      "assets",
+      "campaigns",
+      "media_targets",
+      "calendar",
+      "measurement"
+    ],
+    "actions": [
+      "Инвентаризируй доступные исследования, экспертов, данные и инструменты",
+      "Выбери news hook с проверкой актуальности и релевантности",
+      "Опиши метод получения оригинальных данных и утверждение фактов",
+      "Рассмотри data study, original research, полезный tool/calculator и экспертный комментарий только при реальной возможности производства",
+      "Подбери публичные медиа/контакты без ложных цитат",
+      "Дай ресурсы, риски, draft-пакет и план измерения earned coverage"
+    ],
+    "source_step_titles": [
+      "Audit the client's linkable assets",
+      "Research competitor PR campaigns",
+      "Identify trending topics and news hooks",
+      "Design data study campaigns",
+      "Design original research campaigns",
+      "Design tool/calculator campaigns",
+      "Design expert commentary campaigns",
+      "Research target media outlets",
+      "Research journalist contacts",
+      "Create a PR campaign calendar",
+      "Estimate link potential",
+      "Compile the strategy"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "links.broken-link-finder": {
+    "id": "links.broken-link-finder",
+    "source": "agents/links/broken-link-finder.md",
+    "purpose": "Проверить возможности замены действительно недоступных ресурсов",
+    "trigger": "Выбрана задача «проверить возможности замены действительно недоступных ресурсов» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "backlinks"
+    ],
+    "optional_evidence_kinds": [
+      "pages",
+      "content",
+      "business"
+    ],
+    "sections": [
+      "candidates",
+      "status_checks",
+      "replacements",
+      "drafts"
+    ],
+    "actions": [
+      "Выбери релевантные исходящие ссылки на площадках из разрешённой выборки",
+      "Проверь HTTP и конечные URL, отличая блокировку робота от удаления",
+      "Уточни назначение старого ресурса по доступной истории",
+      "Сопоставь с полезным существующим активом клиента или brief",
+      "Подготовь доказуемое предложение без автоматического outreach"
+    ],
+    "source_step_titles": [
+      "Identify target pages",
+      "Search for additional targets",
+      "Crawl target pages for outbound links",
+      "Check link status",
+      "Verify broken status",
+      "Research the original content",
+      "Match to client content",
+      "Score each opportunity",
+      "Group by campaign",
+      "Create content briefs for gaps",
+      "Compile the opportunity list"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "local.gbp-optimizer": {
+    "id": "local.gbp-optimizer",
+    "source": "agents/local/gbp-optimizer.md",
+    "purpose": "Подготовить улучшения локального профиля",
+    "trigger": "Выбрана задача «подготовить улучшения локального профиля» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "local"
+    ],
+    "optional_evidence_kinds": [
+      "business"
+    ],
+    "sections": [
+      "profile_audit",
+      "accuracy",
+      "categories",
+      "content",
+      "actions"
+    ],
+    "actions": [
+      "Подтверди business/location ownership scope и нужную платформу рынка",
+      "Сверь название, адрес, контакты, часы, категории и услуги с фактами",
+      "Проверь фото, posts, Q&A и актуальные возможности профиля",
+      "Не добавляй ключи в название или неподтверждённые филиалы",
+      "Подготовь конкретные правки и проверки без изменения профиля"
+    ],
+    "source_step_titles": [
+      "Find and verify the client's GBP listing",
+      "Audit business information accuracy",
+      "Evaluate categories",
+      "Audit attributes and services",
+      "Evaluate photo strategy",
+      "Audit GBP posts",
+      "Evaluate Q&A section",
+      "Check Products/Services section",
+      "Audit hours and special hours",
+      "Optimize business description",
+      "Compile GBP optimization score",
+      "Generate the GBP optimization playbook"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "local.citation-builder": {
+    "id": "local.citation-builder",
+    "source": "agents/local/citation-builder.md",
+    "purpose": "Согласовать локальные упоминания и NAP",
+    "trigger": "Выбрана задача «согласовать локальные упоминания и nap» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "local"
+    ],
+    "optional_evidence_kinds": [
+      "business",
+      "competitors"
+    ],
+    "sections": [
+      "canonical_nap",
+      "citation_inventory",
+      "inconsistencies",
+      "submission_pack"
+    ],
+    "actions": [
+      "Уточни реальные локации и канонические NAP/часы",
+      "Проверь важные для региона платформы, включая Яндекс Бизнес при применимости",
+      "Сопоставь дубли, противоречия и фактический бизнес",
+      "Подготовь приоритетные исправления и данные для подачи",
+      "Не регистрируй каталоги и не расширяй аудиторию без поручения"
+    ],
+    "source_step_titles": [
+      "Define canonical NAP",
+      "Audit Tier 1 citations",
+      "Audit Tier 2 citations (general directories)",
+      "Audit data aggregators",
+      "Identify industry-specific directories",
+      "Check local and regional directories",
+      "Document all NAP inconsistencies",
+      "Compare against competitor citation profiles",
+      "Build the citation action plan",
+      "Prioritize by impact",
+      "Estimate citation building timeline",
+      "Generate submission-ready data"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "local.local-content-writer": {
+    "id": "local.local-content-writer",
+    "source": "agents/local/local-content-writer.md",
+    "purpose": "Подготовить полезный контент реальных локаций",
+    "trigger": "Выбрана задача «подготовить полезный контент реальных локаций» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "business"
+    ],
+    "optional_evidence_kinds": [
+      "local",
+      "keywords",
+      "serp"
+    ],
+    "sections": [
+      "locations",
+      "page_copy",
+      "local_facts",
+      "links",
+      "acceptance"
+    ],
+    "actions": [
+      "Проверь реальное присутствие и область обслуживания",
+      "Сопоставь локальные запросы и задачи пользователей",
+      "Напиши отличимый контент с реальными услугами, маршрутами и условиями",
+      "Свяжи локации и услуги осмысленными ссылками",
+      "Не создавай массовые doorway страницы и вымышленные местные отзывы"
+    ],
+    "source_step_titles": [
+      "Audit existing local content",
+      "Map the content architecture",
+      "Research local content for each target area",
+      "Develop primary local keywords",
+      "Write location page content",
+      "Write local blog content",
+      "Generate LocalBusiness schema",
+      "Plan internal linking",
+      "Create local content calendar",
+      "Optimize for featured snippets and local packs"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "local.review-strategist": {
+    "id": "local.review-strategist",
+    "source": "agents/local/review-strategist.md",
+    "purpose": "Подготовить честную работу с отзывами",
+    "trigger": "Выбрана задача «подготовить честную работу с отзывами» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "local"
+    ],
+    "optional_evidence_kinds": [
+      "business"
+    ],
+    "sections": [
+      "review_inventory",
+      "sentiment",
+      "response_drafts",
+      "collection_plan"
+    ],
+    "actions": [
+      "Проверь доступную выборку отзывов, платформу и период",
+      "Сопоставь повторяющиеся вопросы с реальными проблемами сервиса",
+      "Подготовь уважительные ответы без раскрытия персональных данных",
+      "Предложи добровольный сбор отзывов по правилам платформы без фальшивок и review gating",
+      "Определи владельца, цели качества и реальный способ мониторинга"
+    ],
+    "source_step_titles": [
+      "Audit current review profile",
+      "Analyze review content and sentiment",
+      "Benchmark against competitors",
+      "Audit owner/management responses",
+      "Design the review acquisition system",
+      "Create review response templates",
+      "Plan review diversification",
+      "Design review monitoring system",
+      "Set review goals and milestones",
+      "Address existing negative reviews"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "local.local-competitor-analyst": {
+    "id": "local.local-competitor-analyst",
+    "source": "agents/local/local-competitor-analyst.md",
+    "purpose": "Сравнить локальную конкуренцию в одинаковых условиях",
+    "trigger": "Выбрана задача «сравнить локальную конкуренцию в одинаковых условиях» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "local"
+    ],
+    "optional_evidence_kinds": [
+      "serp",
+      "competitors",
+      "business"
+    ],
+    "sections": [
+      "geo_scope",
+      "profiles",
+      "pack_observations",
+      "gaps"
+    ],
+    "actions": [
+      "Определи географические точки, устройство и локальные услуги",
+      "Зафиксируй actual local pack/profile observations с временем",
+      "Сверь категории, NAP, отзывы, страницы и предложение конкурентов",
+      "Не выводи общий rank из одной геоточки",
+      "Предложи конкретные проверяемые улучшения и повторные наблюдения"
+    ],
+    "source_step_titles": [
+      "Define the local search universe",
+      "Identify local competitors",
+      "Audit competitor GBP profiles",
+      "Map local pack positions",
+      "Analyze competitor citation profiles",
+      "Evaluate competitor review profiles",
+      "Assess competitor local content",
+      "Identify competitive gaps and opportunities",
+      "Score competitive position",
+      "Generate competitive intelligence brief"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "ecommerce.product-page-optimizer": {
+    "id": "ecommerce.product-page-optimizer",
+    "source": "agents/ecommerce/product-page-optimizer.md",
+    "purpose": "Подготовить улучшения реальных товарных карточек",
+    "trigger": "Выбрана задача «подготовить улучшения реальных товарных карточек» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "products"
+    ],
+    "optional_evidence_kinds": [
+      "pages",
+      "keywords",
+      "analytics"
+    ],
+    "sections": [
+      "sample",
+      "product_facts",
+      "content_changes",
+      "acceptance"
+    ],
+    "actions": [
+      "Выбери важные карточки, варианты и шаблоны",
+      "Сверь характеристики, цену, наличие и условия с источником каталога",
+      "Проверь интент, описание, изображения, reviews и metadata",
+      "Предложи правки с учётом вариантов, canonical и UX покупки",
+      "Ничего не генерируй как характеристику без подтверждения и не публикуй"
+    ],
+    "source_step_titles": [
+      "Sample product pages for audit",
+      "Audit product titles",
+      "Audit product descriptions",
+      "Audit product images",
+      "Audit reviews display",
+      "Analyze variant and duplicate handling",
+      "Audit out-of-stock page handling",
+      "Check internal linking on product pages",
+      "Produce optimization templates",
+      "Prioritize product page fixes"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "ecommerce.category-strategist": {
+    "id": "ecommerce.category-strategist",
+    "source": "agents/ecommerce/category-strategist.md",
+    "purpose": "Спроектировать полезные категории и коммерческую навигацию",
+    "trigger": "Выбрана задача «спроектировать полезные категории и коммерческую навигацию» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "products"
+    ],
+    "optional_evidence_kinds": [
+      "keywords",
+      "pages",
+      "analytics"
+    ],
+    "sections": [
+      "taxonomy",
+      "mapping",
+      "category_briefs",
+      "linking",
+      "priorities"
+    ],
+    "actions": [
+      "Сопоставь ассортимент, спрос и существующую таксономию",
+      "Раздели категории, фильтры и информационные задачи",
+      "Определи существующие и оправданные новые посадочные",
+      "Подготовь навигацию, content briefs и исключения пустого ассортимента",
+      "Не создавать категории по каждой вариации ключа без пользы"
+    ],
+    "source_step_titles": [
+      "Map the current category taxonomy",
+      "Audit category page content",
+      "Analyze keyword-to-category mapping",
+      "Benchmark competitor category structures",
+      "Identify taxonomy improvements",
+      "Plan category page content",
+      "Optimize breadcrumb structure",
+      "Plan internal linking between categories",
+      "Address cross-category and seasonal content",
+      "Integrate with faceted navigation findings",
+      "Create implementation plan"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "ecommerce.faceted-navigation-auditor": {
+    "id": "ecommerce.faceted-navigation-auditor",
+    "source": "agents/ecommerce/faceted-navigation-auditor.md",
+    "purpose": "Проверить фильтры, crawl space и каноникализацию",
+    "trigger": "Выбрана задача «проверить фильтры, crawl space и каноникализацию» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "products"
+    ],
+    "optional_evidence_kinds": [
+      "pages",
+      "indexation",
+      "internal_links",
+      "logs"
+    ],
+    "sections": [
+      "parameter_inventory",
+      "index_policy",
+      "conflicts",
+      "tests"
+    ],
+    "actions": [
+      "Инвентаризируй параметры, комбинации и фактические URL",
+      "Сопоставь спрос и ценные indexable filter pages",
+      "Проверь robots/noindex/canonical/links и пагинацию по отдельности",
+      "Предложи политику без блокировки нужного контента или ошибочного ожидания deindex от robots",
+      "Проверь крайние случаи, пустые результаты и рост crawl space"
+    ],
+    "source_step_titles": [
+      "Map the site to discover URL scale",
+      "Crawl to identify filter URL patterns",
+      "Quantify the indexation bloat",
+      "Audit existing parameter handling",
+      "Classify filter combinations by SEO value",
+      "Check pagination handling",
+      "Analyze internal link equity distribution",
+      "Produce platform-specific technical recommendations",
+      "Generate the canonical strategy",
+      "Draft robots.txt additions",
+      "Estimate crawl budget recovery"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "ecommerce.product-schema-generator": {
+    "id": "ecommerce.product-schema-generator",
+    "source": "agents/ecommerce/product-schema-generator.md",
+    "purpose": "Сгенерировать разметку подтверждённых товарных данных",
+    "trigger": "Выбрана задача «сгенерировать разметку подтверждённых товарных данных» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "products"
+    ],
+    "optional_evidence_kinds": [
+      "schema",
+      "pages"
+    ],
+    "sections": [
+      "eligibility",
+      "product_data",
+      "json_ld",
+      "validation"
+    ],
+    "actions": [
+      "Выбери конкретный Google product feature и актуальные требования",
+      "Сверь Product/Offer/variants с видимыми ценой, наличием и валютой",
+      "Используй реальные reviews/ratings либо опусти их",
+      "Подготовь JSON-LD и сопоставление полей CMS, включая варианты",
+      "Проверь синтаксис, содержание и eligibility без обещаний показа/CTR"
+    ],
+    "source_step_titles": [
+      "Audit existing structured data",
+      "Validate against Google's required properties",
+      "Check for common schema errors",
+      "Benchmark competitor schema",
+      "Generate Product JSON-LD template",
+      "Generate AggregateRating schema",
+      "Generate Offer schema",
+      "Generate BreadcrumbList schema",
+      "Handle special product types",
+      "Produce implementation-ready code blocks",
+      "Create a validation checklist"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "ecommerce.shopping-feed-optimizer": {
+    "id": "ecommerce.shopping-feed-optimizer",
+    "source": "agents/ecommerce/shopping-feed-optimizer.md",
+    "purpose": "Проверить товарный фид выбранной площадки",
+    "trigger": "Выбрана задача «проверить товарный фид выбранной площадки» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "products"
+    ],
+    "optional_evidence_kinds": [
+      "analytics"
+    ],
+    "sections": [
+      "feed_inventory",
+      "validation",
+      "consistency",
+      "fixes"
+    ],
+    "actions": [
+      "Уточни площадку, регион, формат и актуальную спецификацию",
+      "Проверь обязательные поля, идентификаторы, currency/availability/images",
+      "Сверь фид с карточкой и каталогом на ту же дату",
+      "Проверь variants, disapprovals и периодичность обновлений",
+      "Подготовь исправления и валидацию без отправки/публикации фида"
+    ],
+    "source_step_titles": [
+      "Assess current feed status",
+      "Audit product titles",
+      "Audit product descriptions",
+      "Audit product identifiers",
+      "Audit Google product categories",
+      "Audit product images",
+      "Check pricing and availability accuracy",
+      "Audit custom labels",
+      "Check for common disapproval triggers",
+      "Optimize for free product listings",
+      "Create title optimization templates",
+      "Produce the optimization plan"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "audit.data-compiler": {
+    "id": "audit.data-compiler",
+    "source": "agents/audit/data-compiler.md",
+    "purpose": "Собрать принятые результаты нужных модулей",
+    "trigger": "Выбрана задача «собрать принятые результаты нужных модулей» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "business"
+    ],
+    "optional_evidence_kinds": [
+      "pages",
+      "keywords",
+      "content",
+      "backlinks",
+      "ai_visibility",
+      "local",
+      "products",
+      "analytics"
+    ],
+    "sections": [
+      "artifact_inventory",
+      "findings",
+      "conflicts",
+      "coverage"
+    ],
+    "actions": [
+      "Разреши только явно выбранные artifact IDs в project/run scope",
+      "Проверь даты, единицы, coverage и соответствие источникам",
+      "Нормализуй severity и объедини дубли без потери evidence",
+      "Сохрани противоречия, unknowns и исключённые модули",
+      "Передай единый список findings, не рассчитывая фиктивный health score"
+    ],
+    "source_step_titles": [
+      "Scan vault folder 10-Technical",
+      "Scan vault folder 03-Research",
+      "Scan vault folder 04-Content",
+      "Scan vault folder 05-Links",
+      "Scan vault folder 06-Competitors",
+      "Scan vault folder 11-AEO",
+      "Scan vault folder 09-Local",
+      "Scan vault folder 02-Audits",
+      "Categorize all findings",
+      "Deduplicate",
+      "Assign unique IDs",
+      "Compile the master inventory",
+      "Generate summary statistics"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "audit.recommendation-engine": {
+    "id": "audit.recommendation-engine",
+    "source": "agents/audit/recommendation-engine.md",
+    "purpose": "Преобразовать findings в обоснованные действия",
+    "trigger": "Выбрана задача «преобразовать findings в обоснованные действия» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "business"
+    ],
+    "optional_evidence_kinds": [
+      "analytics"
+    ],
+    "sections": [
+      "recommendations",
+      "priorities",
+      "dependencies",
+      "acceptance"
+    ],
+    "actions": [
+      "Проверь доказательства и назначение каждого затронутого объекта",
+      "Опиши WHAT/WHERE/HOW/WHY и проверяемую приёмку",
+      "Сначала критические доступность/индексация/трекинг, затем бизнес-ценность и риск",
+      "Оцени impact/confidence/effort только по явной шкале с допущениями",
+      "Сгруппируй зависимости и обратимые шаги, не обещая денег"
+    ],
+    "source_step_titles": [
+      "Review all findings",
+      "Convert findings to recommendations",
+      "Score Impact (1-5)",
+      "Score Effort (1-5)",
+      "Calculate priority score",
+      "Assign quadrants",
+      "Sort within quadrants",
+      "Cross-reference with client goals",
+      "Identify dependencies",
+      "Group into implementation phases",
+      "Write executive recommendation summary",
+      "Compile the prioritized recommendation list"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "audit.fix-generator": {
+    "id": "audit.fix-generator",
+    "source": "agents/audit/fix-generator.md",
+    "purpose": "Подготовить конкретные изменения и тесты",
+    "trigger": "Выбрана задача «подготовить конкретные изменения и тесты» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "business"
+    ],
+    "optional_evidence_kinds": [
+      "pages",
+      "content",
+      "products",
+      "release"
+    ],
+    "sections": [
+      "baseline",
+      "patches",
+      "tests",
+      "rollback",
+      "authorization_boundary"
+    ],
+    "actions": [
+      "Выбери принятые finding/task IDs и актуальную ревизию",
+      "Подготовь точный патч/текст/конфигурацию с учётом CMS и ограничений",
+      "Проверь затронутые шаблоны и исключения, запусти применимые тесты",
+      "Опиши rollback и drift check",
+      "Сохрани prepared результат, применение и публикация требуют реального поручения и evidence"
+    ],
+    "source_step_titles": [
+      "Categorize fixes by type",
+      "Generate technical fixes",
+      "Generate content fixes",
+      "Generate keyword fixes",
+      "Generate link fixes",
+      "Generate AEO fixes",
+      "Generate local fixes",
+      "Add CMS-specific instructions",
+      "Estimate implementation time",
+      "Order fixes by implementation sequence",
+      "Create a fix checklist",
+      "Compile the complete fix document"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "audit.report-builder": {
+    "id": "audit.report-builder",
+    "source": "agents/audit/report-builder.md",
+    "purpose": "Собрать полный по заявленному scope отчёт",
+    "trigger": "Выбрана задача «собрать полный по заявленному scope отчёт» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "business"
+    ],
+    "optional_evidence_kinds": [
+      "analytics"
+    ],
+    "sections": [
+      "scope",
+      "method",
+      "findings",
+      "priorities",
+      "roadmap",
+      "limitations"
+    ],
+    "actions": [
+      "Прочитай принятый compiled artifact и связанные доказательства",
+      "Построй разделы по фактически покрытым technical/keywords/content/links/AI/local/ecommerce",
+      "Покажи неизвестное и исключения вместо пустых якобы проверенных разделов",
+      "Включи рекомендации, priority, roadmap и приложения с source IDs",
+      "Проверь critical QA, аудиторию и фактическую доставку"
+    ],
+    "source_step_titles": [
+      "Design the report structure",
+      "Build the Cover Page",
+      "Write the Audit Scope and Methodology section",
+      "Write the Site Overview section",
+      "Build the Technical SEO section",
+      "Build the Keyword Analysis section",
+      "Build the Content Audit section",
+      "Build the Backlink Audit section",
+      "Build the AEO Assessment section",
+      "Build the Competitor Analysis section",
+      "Build conditional sections",
+      "Build the Priority Matrix section",
+      "Build the Implementation Roadmap section",
+      "Build the Appendices",
+      "Final formatting pass"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "audit.executive-summary-writer": {
+    "id": "audit.executive-summary-writer",
+    "source": "agents/audit/executive-summary-writer.md",
+    "purpose": "Объяснить решение и ограничения для владельца",
+    "trigger": "Выбрана задача «объяснить решение и ограничения для владельца» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "business"
+    ],
+    "optional_evidence_kinds": [
+      "analytics"
+    ],
+    "sections": [
+      "state",
+      "risks",
+      "opportunities",
+      "decisions",
+      "next_steps"
+    ],
+    "actions": [
+      "Извлеки только проверенные ключевые факты и цель",
+      "Объясни главные риски и возможности простым языком",
+      "Дай порядок действий и ограничения ресурсов",
+      "Финансовые оценки включай только с достаточными данными и методикой",
+      "Проверь каждое число и не подменяй аналитический итог обещанием роста"
+    ],
+    "source_step_titles": [
+      "Extract the headline numbers",
+      "Assess current state",
+      "Identify top 3 opportunities",
+      "Identify top 3 risks",
+      "Write the recommended priorities",
+      "Estimate ROI",
+      "Write the timeline overview",
+      "Draft the executive summary",
+      "Remove all jargon",
+      "Add a \"Bottom Line\" statement",
+      "Format for executive readability",
+      "Verify accuracy"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "analytics.ranking-tracker": {
+    "id": "analytics.ranking-tracker",
+    "source": "agents/analytics/ranking-tracker.md",
+    "purpose": "Измерить изменения позиций в согласованном ядре",
+    "trigger": "Выбрана задача «измерить изменения позиций в согласованном ядре» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "serp"
+    ],
+    "optional_evidence_kinds": [
+      "keywords",
+      "analytics"
+    ],
+    "sections": [
+      "scope",
+      "rankings",
+      "distribution",
+      "movers",
+      "limitations"
+    ],
+    "actions": [
+      "Зафиксируй query set, engine, регион, device и наблюдаемые даты",
+      "Используй реальные snapshots Labrika/эквивалента, GSC average position подпиши отдельно",
+      "Сопоставь одинаковые условия и SERP features",
+      "Рассчитай distribution/movers только в покрытом ядре",
+      "Visibility score определи собственной методикой, не выдавай за стандарт поисковика"
+    ],
+    "source_step_titles": [
+      "Prepare the keyword tracking list",
+      "Check SERP positions",
+      "Record SERP feature ownership",
+      "Compare to previous period",
+      "Identify significant movements",
+      "Segment by intent",
+      "Calculate ranking distribution",
+      "Identify competitor positions",
+      "Calculate visibility score",
+      "Generate keyword movers report",
+      "Document SERP landscape changes",
+      "Compile the ranking report"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "analytics.traffic-analyst": {
+    "id": "analytics.traffic-analyst",
+    "source": "agents/analytics/traffic-analyst.md",
+    "purpose": "Проанализировать сопоставимые агрегаты органического трафика",
+    "trigger": "Выбрана задача «проанализировать сопоставимые агрегаты органического трафика» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "analytics"
+    ],
+    "optional_evidence_kinds": [
+      "content",
+      "release",
+      "market"
+    ],
+    "sections": [
+      "definitions",
+      "periods",
+      "segments",
+      "changes",
+      "explanations"
+    ],
+    "actions": [
+      "Проверь counter/property, channel definition, фильтры, sampling и закрытые периоды",
+      "Раздели landing page, контент, device, регион и бренд при доступности",
+      "Рассчитай абсолютные/относительные изменения с unknown/zero denominator",
+      "Сопоставь сезонность, спрос, рекламу, tracking и releases",
+      "Отдели корреляции от причин и дай проверяемые следующие действия"
+    ],
+    "source_step_titles": [
+      "Establish the data source",
+      "Calculate total organic traffic",
+      "Segment by landing page",
+      "Segment by content type",
+      "Segment by device",
+      "Segment by location",
+      "Analyze traffic trends",
+      "Identify seasonality patterns",
+      "Correlate with external factors",
+      "Identify growing pages",
+      "Identify declining pages",
+      "Calculate traffic efficiency metrics"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "analytics.conversion-analyst": {
+    "id": "analytics.conversion-analyst",
+    "source": "agents/analytics/conversion-analyst.md",
+    "purpose": "Сопоставить органические конверсии и воронку",
+    "trigger": "Выбрана задача «сопоставить органические конверсии и воронку» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "analytics"
+    ],
+    "optional_evidence_kinds": [
+      "business",
+      "release"
+    ],
+    "sections": [
+      "goal_definitions",
+      "funnel",
+      "conversions",
+      "attribution",
+      "actions"
+    ],
+    "actions": [
+      "Проверь определения целей, дедупликацию, изменения счётчика и consent",
+      "Сопоставь sessions/users/conversions по совместимым единицам",
+      "Агрегируй по landing page/segment без выдуманной query-конверсии",
+      "Доход и attribution используй только из доступных разрешённых данных",
+      "Опиши проблемы воронки и проверки без обещанного CAC/LTV"
+    ],
+    "source_step_titles": [
+      "Define conversion actions",
+      "Establish data availability",
+      "Calculate overall organic conversion rate",
+      "Analyze conversions by landing page",
+      "Analyze conversions by keyword",
+      "Analyze conversions by content type",
+      "Map the organic conversion funnel",
+      "Calculate revenue attribution",
+      "Calculate customer acquisition cost",
+      "Identify conversion optimization opportunities",
+      "Project conversion trajectory",
+      "Compile the conversion analysis"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "analytics.dashboard-builder": {
+    "id": "analytics.dashboard-builder",
+    "source": "agents/analytics/dashboard-builder.md",
+    "purpose": "Подготовить source-backed dashboard и правила обновления",
+    "trigger": "Выбрана задача «подготовить source-backed dashboard и правила обновления» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "analytics"
+    ],
+    "optional_evidence_kinds": [
+      "serp",
+      "release"
+    ],
+    "sections": [
+      "kpi_definitions",
+      "views",
+      "source_links",
+      "refresh_spec",
+      "alerts"
+    ],
+    "actions": [
+      "Согласуй решения, KPI и определения с владельцем",
+      "Проверь freshness и совпадение periods/scope перед объединением",
+      "Сделай charts/tables с units, источниками и unknowns",
+      "Опиши фильтры, thresholds и исполнителя обновления",
+      "Не называй dashboard живым/мониторящим без проверенного refresh runtime"
+    ],
+    "source_step_titles": [
+      "Define the KPI set",
+      "Calculate period-over-period changes",
+      "Build the hero metrics section",
+      "Build the organic traffic trend chart",
+      "Build the keyword rankings distribution",
+      "Build the top pages section",
+      "Build the conversion metrics section",
+      "Build the visibility score section",
+      "Build the competitor comparison section",
+      "Add goal tracking section",
+      "Add alerts and highlights section",
+      "Format for readability"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "analytics.monthly-report-writer": {
+    "id": "analytics.monthly-report-writer",
+    "source": "agents/analytics/monthly-report-writer.md",
+    "purpose": "Подготовить месячный отчёт и следующий план",
+    "trigger": "Выбрана задача «подготовить месячный отчёт и следующий план» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "analytics"
+    ],
+    "optional_evidence_kinds": [
+      "serp",
+      "release",
+      "content",
+      "backlinks"
+    ],
+    "sections": [
+      "summary",
+      "kpis",
+      "work_log",
+      "changes",
+      "next_month",
+      "limitations"
+    ],
+    "actions": [
+      "Сопоставь закрытые периоды и согласованные KPI",
+      "Раздели подготовлено, опубликовано, verified и measured в журнале работ",
+      "Покажи rankings/traffic/conversions/content/links только при данных",
+      "Раскрой отклонения от цели и альтернативные причины",
+      "Передай факты в следующий backlog и стратегический review без выдуманного ROI"
+    ],
+    "source_step_titles": [
+      "Write the Executive Summary",
+      "Build the KPI Scorecard",
+      "Write the Ranking Progress section",
+      "Write the Traffic Analysis section",
+      "Write the Content Performance section",
+      "Write the Conversion and Revenue section",
+      "Write the Link Building Progress section",
+      "Write the Work Completed section",
+      "Write the Priorities for Next Month section",
+      "Write the Goal Progress section",
+      "Add the ROI Summary",
+      "Final polish"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "analytics.roi-calculator": {
+    "id": "analytics.roi-calculator",
+    "source": "agents/analytics/roi-calculator.md",
+    "purpose": "Рассчитать финансовый результат только при достаточных данных",
+    "trigger": "Выбрана задача «рассчитать финансовый результат только при достаточных данных» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "analytics"
+    ],
+    "optional_evidence_kinds": [
+      "business",
+      "release"
+    ],
+    "sections": [
+      "costs",
+      "value_model",
+      "calculations",
+      "scenarios",
+      "limitations"
+    ],
+    "actions": [
+      "Проверь реальные расходы, ценность конверсий и модель attribution",
+      "Рассчитай ROI/CPA по документированной формуле и периоду",
+      "CPC-equivalent и agency time savings отдели от фактической выручки",
+      "Для LTV/break-even/прогноза раскрой допущения и неопределённость",
+      "При недостатке входов укажи not_computable и план данных вместо суммы"
+    ],
+    "source_step_titles": [
+      "Calculate SEO investment",
+      "Calculate organic traffic value (CPC equivalent)",
+      "Calculate blended traffic value",
+      "Calculate direct revenue from organic",
+      "Calculate ROI percentage",
+      "Calculate cost per acquisition from SEO",
+      "Calculate lifetime value contribution",
+      "Build trend analysis",
+      "Project future ROI",
+      "Calculate break-even analysis",
+      "Compare to alternative channels",
+      "Compile the ROI report"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "strategy.seo-strategist": {
+    "id": "strategy.seo-strategist",
+    "source": "agents/strategy/seo-strategist.md",
+    "purpose": "Сформировать обновляемую стратегию проекта",
+    "trigger": "Выбрана задача «сформировать обновляемую стратегию проекта» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "business"
+    ],
+    "optional_evidence_kinds": [
+      "market",
+      "competitors",
+      "analytics"
+    ],
+    "sections": [
+      "assessment",
+      "pillars",
+      "kpis",
+      "risks",
+      "decisions"
+    ],
+    "actions": [
+      "Сопоставь принятые findings, цели и ограничения",
+      "Выбери ограниченное число направлений с бизнес-основанием",
+      "Определи исходные значения, метрики, guardrails и неизвестное",
+      "Согласуй технические, контентные, ссылочные и AI гипотезы с ресурсами",
+      "Определи checkpoints и правила изменения стратегии по результатам"
+    ],
+    "source_step_titles": [
+      "Conduct a strategic assessment",
+      "Define the strategic opportunity",
+      "Set strategic pillars",
+      "Design the competitive positioning",
+      "Allocate strategic focus",
+      "Define success metrics for each pillar",
+      "Identify strategic risks",
+      "Define the quick-win layer",
+      "Set the strategic timeline",
+      "Document the AEO strategy",
+      "Write the strategy document",
+      "Validate against goals"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "strategy.priority-matrix-builder": {
+    "id": "strategy.priority-matrix-builder",
+    "source": "agents/strategy/priority-matrix-builder.md",
+    "purpose": "Построить очередь с риском и зависимостями",
+    "trigger": "Выбрана задача «построить очередь с риском и зависимостями» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "business"
+    ],
+    "optional_evidence_kinds": [
+      "analytics"
+    ],
+    "sections": [
+      "scale",
+      "scored_tasks",
+      "dependencies",
+      "sequence"
+    ],
+    "actions": [
+      "Собери принятые действия с evidence и объектами изменения",
+      "Выдели критические проблемы независимо от числового балла",
+      "Согласуй шкалу impact/confidence/effort и unknowns",
+      "При одинаковых шкалах посчитай вспомогательный score и quadrants",
+      "Упорядочь по зависимостям, риску и мощности, объясни каждое спорное решение"
+    ],
+    "source_step_titles": [
+      "Inventory all items to score",
+      "Define Impact scoring criteria (1-5)",
+      "Define Effort scoring criteria (1-5)",
+      "Score every item",
+      "Apply goal-based adjustments",
+      "Assign quadrants",
+      "Sort within quadrants",
+      "Identify dependencies",
+      "Create the visual matrix",
+      "Write the matrix summary",
+      "Map to roadmap phases",
+      "Compile the priority matrix document"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "strategy.competitive-strategy-analyst": {
+    "id": "strategy.competitive-strategy-analyst",
+    "source": "agents/strategy/competitive-strategy-analyst.md",
+    "purpose": "Выбрать действия по отношению к конкурентному покрытию",
+    "trigger": "Выбрана задача «выбрать действия по отношению к конкурентному покрытию» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "business"
+    ],
+    "optional_evidence_kinds": [
+      "competitors",
+      "keywords",
+      "backlinks",
+      "analytics"
+    ],
+    "sections": [
+      "landscape",
+      "attack",
+      "defend",
+      "differentiate",
+      "defer"
+    ],
+    "actions": [
+      "Сверь фактическое конкурентное покрытие и ценность сегментов",
+      "Отдели доступные наблюдения от гипотез о причинах успеха",
+      "Определи defend/attack/differentiate/defer по возможностям бизнеса",
+      "Свяжи решения с контентом, техническими задачами и легитимным PR",
+      "Назначь метрики, риски и период повторной оценки"
+    ],
+    "source_step_titles": [
+      "Map the competitive landscape",
+      "Analyze competitor strengths",
+      "Analyze competitor weaknesses",
+      "Map the Attack zones",
+      "Map the Defend zones",
+      "Map the Differentiate zones",
+      "Map the Concede zones",
+      "Build the competitive keyword strategy",
+      "Build the competitive content strategy",
+      "Build the competitive link strategy",
+      "Create the competitive monitoring plan",
+      "Compile the competitive playbook"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "strategy.roadmap-planner": {
+    "id": "strategy.roadmap-planner",
+    "source": "agents/strategy/roadmap-planner.md",
+    "purpose": "Составить ресурсный план и checkpoints",
+    "trigger": "Выбрана задача «составить ресурсный план и checkpoints» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "business"
+    ],
+    "optional_evidence_kinds": [
+      "analytics",
+      "release"
+    ],
+    "sections": [
+      "capacity",
+      "phases",
+      "tasks",
+      "dependencies",
+      "checkpoints"
+    ],
+    "actions": [
+      "Возьми принятые задачи и реальные доступные ресурсы",
+      "Раздели 30/60/90 дней и более дальний условный горизонт",
+      "Назначь владельца, effort, dependencies, риск, acceptance и metric/window",
+      "При неизвестной мощности дай сценарии, а не выдуманные часы",
+      "Поставь точки пересмотра по фактическим релизам и измерениям без обещаний позиций"
+    ],
+    "source_step_titles": [
+      "Inventory all deliverables",
+      "Estimate resource capacity",
+      "Build the 3-month roadmap (Phase 1: Foundation)",
+      "Build the 6-month roadmap (Phase 2: Growth)",
+      "Build the 12-month roadmap (Phase 3: Scale)",
+      "Create monthly sprint plans",
+      "Define milestones",
+      "Map dependencies",
+      "Identify risk points",
+      "Set decision checkpoints",
+      "Calculate expected outcomes by phase",
+      "Compile the complete roadmap"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "strategy.client-communication-manager": {
+    "id": "strategy.client-communication-manager",
+    "source": "agents/strategy/client-communication-manager.md",
+    "purpose": "Подготовить объяснение стратегии и статуса для выбранной аудитории",
+    "trigger": "Выбрана задача «подготовить объяснение стратегии и статуса для выбранной аудитории» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "business"
+    ],
+    "optional_evidence_kinds": [
+      "analytics",
+      "release"
+    ],
+    "sections": [
+      "audience",
+      "summary",
+      "decision_requests",
+      "status",
+      "faq"
+    ],
+    "actions": [
+      "Определи аудиторию, разрешённых получателей и нужное решение",
+      "Переведи priority/roadmap/competitive выводы на понятный язык",
+      "Отдели факты, сценарии и неподтверждённые ожидания",
+      "Подготовь при необходимости Markdown slide-outline, объяснение вложений по данным и FAQ для владельца, без отправки",
+      "Покажи что сделано, что blocked и какое решение требуется",
+      "Подготовь сообщение/презентацию как draft, отправка только по явному поручению"
+    ],
+    "source_step_titles": [
+      "Identify the audience",
+      "Write the Strategy Summary",
+      "Build the presentation deck (in markdown)",
+      "Translate the priority matrix",
+      "Translate the competitive analysis",
+      "Simplify the roadmap",
+      "Write the investment justification",
+      "Write the progress update template",
+      "Create a FAQ document",
+      "Review for jargon",
+      "Add visual aids",
+      "Compile the client communication package"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "aeo.conversational-query-researcher": {
+    "id": "aeo.conversational-query-researcher",
+    "source": "agents/aeo/conversational-query-researcher.md",
+    "purpose": "Собрать набор разговорных задач и промптов",
+    "trigger": "Выбрана задача «собрать набор разговорных задач и промптов» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "business"
+    ],
+    "optional_evidence_kinds": [
+      "keywords",
+      "serp",
+      "ai_visibility"
+    ],
+    "sections": [
+      "prompts",
+      "intents",
+      "chains",
+      "observation_plan"
+    ],
+    "actions": [
+      "Начни с реальных задач аудитории и известных вопросов",
+      "Объедини PAA/поддержку/ядро, помечая предложенные промпты гипотезами",
+      "Разметь интент, этап выбора, язык и цепочки уточнений",
+      "Частотность conversational prompt не выводи из сходного keyword volume",
+      "Определи платформы, scope и воспроизводимый план наблюдений без новых платных запусков"
+    ],
+    "source_step_titles": [
+      "Identify seed topics",
+      "Mine question queries via Tavily",
+      "Extract People Also Ask data",
+      "Harvest forum questions",
+      "Map conversational vs. traditional queries",
+      "Identify AI-divergent queries",
+      "Categorize by intent",
+      "Estimate query volume signals",
+      "Identify long-tail conversational chains",
+      "Map queries to content types",
+      "Flag snippet-ready queries",
+      "Compile the conversational query database"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "aeo.ai-overview-optimizer": {
+    "id": "aeo.ai-overview-optimizer",
+    "source": "agents/aeo/ai-overview-optimizer.md",
+    "purpose": "Оценить наблюдаемую AI-видимость и подготовить контентные эксперименты",
+    "trigger": "Выбрана задача «оценить наблюдаемую ai-видимость и подготовить контентные эксперименты» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "ai_visibility"
+    ],
+    "optional_evidence_kinds": [
+      "pages",
+      "keywords",
+      "serp"
+    ],
+    "sections": [
+      "observations",
+      "cited_sources",
+      "content_gaps",
+      "experiments"
+    ],
+    "actions": [
+      "Сохрани prompt/query, платформу, рынок, время и исходный ответ",
+      "Проверь фактические упоминания, цитаты и URL; позицию бренда фиксируй только при явно ранжированном ответе с методом определения, иначе unknown, не приравнивай её к SERP rank",
+      "Сравни цитируемые источники одного интента и раскрой изменчивость",
+      "Предложи полезные улучшения контента и доступности как гипотезы",
+      "Применяй обычные SEO-основы и отдельный план повторного наблюдения"
+    ],
+    "source_step_titles": [
+      "Audit current AI Overview presence",
+      "Identify AI Overview trigger patterns",
+      "Analyze cited source structure",
+      "Map content structure patterns",
+      "Audit client content against patterns",
+      "Create optimization briefs per page",
+      "Recommend structured data additions",
+      "Design answer-first content blocks",
+      "Assess E-E-A-T signals",
+      "Create freshness strategy",
+      "Build monitoring plan",
+      "Prioritize by opportunity"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "aeo.perplexity-optimizer": {
+    "id": "aeo.perplexity-optimizer",
+    "source": "agents/aeo/perplexity-optimizer.md",
+    "purpose": "Проверить цитирование в Perplexity по реальным ответам",
+    "trigger": "Выбрана задача «проверить цитирование в perplexity по реальным ответам» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "ai_visibility"
+    ],
+    "optional_evidence_kinds": [
+      "pages",
+      "content"
+    ],
+    "sections": [
+      "platform_scope",
+      "citations",
+      "source_comparison",
+      "briefs",
+      "monitoring"
+    ],
+    "actions": [
+      "Отфильтруй существующие ответы именно Perplexity с параметрами и временем",
+      "Раздели упоминание бренда, ссылку и цитирование конкретной страницы",
+      "Проверь доступные cited pages и их полезность без приписывания закрытой модели отбора",
+      "Подготовь адресные briefs и подтверждённые первичные факты",
+      "Задай повторяемую выборку промптов и unknowns, не обещай citation rate"
+    ],
+    "source_step_titles": [
+      "Audit current Perplexity citations",
+      "Analyze Perplexity's source selection",
+      "Map Perplexity citation factors",
+      "Assess client content gaps",
+      "Create Perplexity-optimized content briefs",
+      "Recommend primary-source strategy",
+      "Optimize entity markup",
+      "Design fact-block format",
+      "Build link authority for target pages",
+      "Create monitoring cadence",
+      "Document Perplexity vs. Google differences"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "aeo.entity-optimizer": {
+    "id": "aeo.entity-optimizer",
+    "source": "agents/aeo/entity-optimizer.md",
+    "purpose": "Согласовать реальные сущности и их представление",
+    "trigger": "Выбрана задача «согласовать реальные сущности и их представление» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "business"
+    ],
+    "optional_evidence_kinds": [
+      "pages",
+      "schema",
+      "local",
+      "ai_visibility"
+    ],
+    "sections": [
+      "entities",
+      "relationships",
+      "consistency",
+      "schema_plan"
+    ],
+    "actions": [
+      "Инвентаризируй подтверждённые бренды, людей, организации и локации",
+      "Сверь имена, идентификаторы, отношения и публичные авторитетные источники",
+      "Проверь видимые страницы и разметку на противоречия",
+      "Подготовь sameAs только на реально относящиеся профили",
+      "Не создавай фиктивную экспертизу, Wikipedia/Wikidata записи или обещания Knowledge Graph"
+    ],
+    "source_step_titles": [
+      "Inventory client entities",
+      "Audit Knowledge Graph presence",
+      "Check Wikidata presence",
+      "Check Wikipedia presence",
+      "Map entity relationships",
+      "Audit schema markup",
+      "Design schema implementation plan",
+      "Create sameAs link strategy",
+      "Plan entity-consistent content",
+      "Recommend entity-building actions",
+      "Design entity-rich content templates",
+      "Coordinate with Knowledge Panel Manager"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "aeo.featured-snippet-strategist": {
+    "id": "aeo.featured-snippet-strategist",
+    "source": "agents/aeo/featured-snippet-strategist.md",
+    "purpose": "Подготовить полезные ответы по наблюдаемым snippet возможностям",
+    "trigger": "Выбрана задача «подготовить полезные ответы по наблюдаемым snippet возможностям» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "serp"
+    ],
+    "optional_evidence_kinds": [
+      "keywords",
+      "pages",
+      "content"
+    ],
+    "sections": [
+      "ownership",
+      "answer_formats",
+      "briefs",
+      "tracking"
+    ],
+    "actions": [
+      "Зафиксируй реальное наличие и владельца featured snippet в выбранном SERP scope",
+      "Сопоставь интент, формат и содержимое ответа",
+      "Предложи точные абзацы, списки или таблицы там, где полезно читателю",
+      "Не применяй фиксированную длину/плотность как гарантию выбора",
+      "Сохрани baseline, эксперименты и план повторной проверки отдельно от AI-ответов"
+    ],
+    "source_step_titles": [
+      "Audit current snippet ownership",
+      "Categorize snippet opportunities",
+      "Analyze snippet type per query",
+      "Reverse-engineer winning snippets",
+      "Create snippet-capture briefs",
+      "Optimize existing content",
+      "Design snippet-bait content blocks",
+      "Plan new content for \"Create\" opportunities",
+      "Build snippet defense strategy",
+      "Create tracking dashboard",
+      "Prioritize by traffic impact",
+      "Coordinate with AI Overview Optimizer"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "aeo.knowledge-panel-manager": {
+    "id": "aeo.knowledge-panel-manager",
+    "source": "agents/aeo/knowledge-panel-manager.md",
+    "purpose": "Проверить сведения о сущности в knowledge panels",
+    "trigger": "Выбрана задача «проверить сведения о сущности в knowledge panels» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "business"
+    ],
+    "optional_evidence_kinds": [
+      "serp",
+      "local",
+      "ai_visibility"
+    ],
+    "sections": [
+      "panel_observations",
+      "accuracy",
+      "authority_sources",
+      "claim_plan"
+    ],
+    "actions": [
+      "Проверь фактическую панель по точным запросам, рынку и времени",
+      "Сверь данные панели с подтверждёнными источниками и NAP",
+      "Подготовь обоснованные исправления и процесс claim по актуальным правилам платформы",
+      "Wikipedia/Wikidata оценивай по их правилам значимости и независимым источникам, без автосоздания",
+      "Определи наблюдение изменений без обещания появления панели"
+    ],
+    "source_step_titles": [
+      "Check current Knowledge Panel status",
+      "Assess panel completeness",
+      "Check competitor Knowledge Panels",
+      "Audit entity authority sources",
+      "Build Knowledge Panel acquisition roadmap",
+      "Plan Knowledge Panel claim",
+      "Optimize panel information",
+      "Create NAP consistency audit",
+      "Design ongoing maintenance plan",
+      "Build Wikidata entry guide",
+      "Assess Wikipedia eligibility"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  },
+  "aeo.citation-optimizer": {
+    "id": "aeo.citation-optimizer",
+    "source": "agents/aeo/citation-optimizer.md",
+    "purpose": "Сопоставить цитирование бренда между AI-платформами",
+    "trigger": "Выбрана задача «сопоставить цитирование бренда между ai-платформами» либо соответствующий этап workflow",
+    "required_evidence_kinds": [
+      "ai_visibility"
+    ],
+    "optional_evidence_kinds": [
+      "business",
+      "pages",
+      "backlinks",
+      "analytics"
+    ],
+    "sections": [
+      "platform_matrix",
+      "citations",
+      "source_assets",
+      "crawler_policy",
+      "experiments"
+    ],
+    "actions": [
+      "Сопоставь совместимые наборы prompts/platform/time и покрытие",
+      "Раздели mention/citation/link и наблюдаемую позицию в явно ранжированном ответе; зафиксируй знаменатель выборки и методику, отсутствие ранга не заменяй нулём",
+      "Не выводи содержимое обучающих данных или закрытые ranking factors из ответа модели",
+      "Предложи оригинальные источники, полезные активы и проверку crawler policy",
+      "Не включай доступ AI-ботов и не делай PR-публикации без поручения, измерение отдельно от рекомендаций"
+    ],
+    "source_step_titles": [
+      "Audit AI citation status across platforms",
+      "Benchmark against competitors",
+      "Analyze training data signals",
+      "Identify citation triggers",
+      "Design primary source strategy",
+      "Build digital PR plan for AI visibility",
+      "Optimize for real-time AI access",
+      "Create brand mention monitoring system",
+      "Synthesize all AEO insights",
+      "Develop AI crawler access policy",
+      "Create content authority roadmap",
+      "Calculate citation opportunity cost"
+    ],
+    "execution_mode": "codex_manual_analysis",
+    "external_actions": "not_implemented_by_coordinator",
+    "completion": "Все sections заполнены фактами/выводами с evidence; critical QA принят; неполнота явно partial",
+    "qa": [
+      "Соответствие project/host/market/period и freshness",
+      "Каждый факт прослеживается до raw evidence; гипотезы обозначены",
+      "Предметные sections и действия выполнены; неизвестное не заменено нулём",
+      "Применены решения currentness.md и ограничения прав"
+    ],
+    "errors": [
+      "Обязательный источник отсутствует: blocked_input либо честный partial с исключёнными выводами",
+      "Вход противоречив/устарел: остановить зависимый вывод и сохранить причину",
+      "Нужное внешнее действие не разрешено: blocked_permission; независимую подготовку продолжать"
+    ]
+  }
+}

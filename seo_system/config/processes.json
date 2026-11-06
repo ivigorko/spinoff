@@ -1,0 +1,1469 @@
+{
+  "keyword-strategy": {
+    "id": "keyword-strategy",
+    "source": "workflows/keyword-strategy.md",
+    "purpose": "Семантическая стратегия и контентная дорожная карта",
+    "trigger": "Запрос на семантическая стратегия и контентная дорожная карта",
+    "prerequisites": [
+      "Рынок, бизнес-цель, seed темы и конкуренты",
+      "Готовые keyword/SERP данные при наличии; отсутствие метрик раскрыть"
+    ],
+    "nodes": [
+      {
+        "id": "discovery",
+        "role": "keywords.keyword-discovery",
+        "depends_on": [],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "serp",
+        "role": "keywords.serp-analyzer",
+        "depends_on": [
+          "discovery"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "intent",
+        "role": "keywords.intent-classifier",
+        "depends_on": [
+          "discovery",
+          "serp"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "competitor-keywords",
+        "role": "keywords.competitor-keyword-spy",
+        "depends_on": [
+          "discovery"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "gaps",
+        "role": "keywords.keyword-gap-analyst",
+        "depends_on": [
+          "intent",
+          "competitor-keywords"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "clusters",
+        "role": "keywords.cluster-builder",
+        "depends_on": [
+          "intent",
+          "gaps"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "content-strategy",
+        "role": "content.content-strategist",
+        "depends_on": [
+          "clusters"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "priority",
+        "role": "strategy.priority-matrix-builder",
+        "depends_on": [
+          "content-strategy"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "roadmap",
+        "role": "strategy.roadmap-planner",
+        "depends_on": [
+          "priority"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      }
+    ],
+    "completion": "Все обязательные узлы приняты; report/coverage отражают реально выполненное. Partial входы никогда не дают completed всего workflow.",
+    "errors": [
+      "Отсутствующий вход блокирует зависимую ветку, независимые ready узлы доступны",
+      "Partial передаётся лишь узлам с accept_partial_inputs и сохраняется в итоговом статусе",
+      "Никаких новых paid calls, публикаций, сообщений или ACL-изменений из координатора"
+    ]
+  },
+  "content-sprint": {
+    "id": "content-sprint",
+    "source": "workflows/content-sprint.md",
+    "purpose": "Контентный спринт от плана до проверенного draft",
+    "trigger": "Запрос на контентный спринт от плана до проверенного draft",
+    "prerequisites": [
+      "Принятая стратегия/keyword mapping либо явно описанный ограниченный scope",
+      "Актуальная страница, факты и brand voice; публикация отдельно"
+    ],
+    "nodes": [
+      {
+        "id": "calendar",
+        "role": "content.content-calendar-planner",
+        "depends_on": [],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "serp",
+        "role": "keywords.serp-analyzer",
+        "depends_on": [
+          "calendar"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "brief",
+        "role": "content.brief-writer",
+        "depends_on": [
+          "calendar",
+          "serp"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "draft",
+        "role": "content.seo-blog-writer",
+        "depends_on": [
+          "brief"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "meta",
+        "role": "content.meta-tag-writer",
+        "depends_on": [
+          "draft"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "faq",
+        "role": "content.faq-paa-writer",
+        "depends_on": [
+          "brief",
+          "draft"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "optimize",
+        "role": "content.content-optimizer",
+        "depends_on": [
+          "draft",
+          "meta",
+          "faq"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "summary",
+        "role": "audit.executive-summary-writer",
+        "depends_on": [
+          "optimize"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      }
+    ],
+    "completion": "Все обязательные узлы приняты; report/coverage отражают реально выполненное. Partial входы никогда не дают completed всего workflow.",
+    "errors": [
+      "Отсутствующий вход блокирует зависимую ветку, независимые ready узлы доступны",
+      "Partial передаётся лишь узлам с accept_partial_inputs и сохраняется в итоговом статусе",
+      "Никаких новых paid calls, публикаций, сообщений или ACL-изменений из координатора"
+    ]
+  },
+  "competitor-teardown": {
+    "id": "competitor-teardown",
+    "source": "workflows/competitor-teardown.md",
+    "purpose": "Разбор выбранных конкурентов",
+    "trigger": "Запрос на разбор выбранных конкурентов",
+    "prerequisites": [
+      "Однозначный список конкурентов и допустимый scope чтения",
+      "Сопоставимые snapshot данные; scraping не доказывает ranking/traffic"
+    ],
+    "nodes": [
+      {
+        "id": "crawl",
+        "role": "competitor.competitor-site-crawler",
+        "depends_on": [],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "keywords",
+        "role": "competitor.competitor-keyword-analyst",
+        "depends_on": [
+          "crawl"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "content",
+        "role": "competitor.competitor-content-analyzer",
+        "depends_on": [
+          "crawl"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "links",
+        "role": "competitor.competitor-backlink-profiler",
+        "depends_on": [
+          "crawl"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "serp",
+        "role": "competitor.competitor-serp-tracker",
+        "depends_on": [
+          "keywords"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "technical",
+        "role": "competitor.competitor-technical-benchmarker",
+        "depends_on": [
+          "crawl"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "strategy",
+        "role": "strategy.competitive-strategy-analyst",
+        "depends_on": [
+          "keywords",
+          "content",
+          "links",
+          "serp",
+          "technical"
+        ],
+        "accept_partial_inputs": true,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "summary",
+        "role": "audit.executive-summary-writer",
+        "depends_on": [
+          "strategy"
+        ],
+        "accept_partial_inputs": true,
+        "optional": false,
+        "phase": "analysis"
+      }
+    ],
+    "completion": "Все обязательные узлы приняты; report/coverage отражают реально выполненное. Partial входы никогда не дают completed всего workflow.",
+    "errors": [
+      "Отсутствующий вход блокирует зависимую ветку, независимые ready узлы доступны",
+      "Partial передаётся лишь узлам с accept_partial_inputs и сохраняется в итоговом статусе",
+      "Никаких новых paid calls, публикаций, сообщений или ACL-изменений из координатора"
+    ]
+  },
+  "ecommerce-audit": {
+    "id": "ecommerce-audit",
+    "source": "workflows/ecommerce-audit.md",
+    "purpose": "Аудит электронной торговли и план исправлений",
+    "trigger": "Запрос на аудит электронной торговли и план исправлений",
+    "prerequisites": [
+      "Реальный каталог, варианты, платформа и целевые площадки",
+      "Выборка карточек, фильтров, фида и доступных диагностик"
+    ],
+    "nodes": [
+      {
+        "id": "facets",
+        "role": "ecommerce.faceted-navigation-auditor",
+        "depends_on": [],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "categories",
+        "role": "ecommerce.category-strategist",
+        "depends_on": [
+          "facets"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "products",
+        "role": "ecommerce.product-page-optimizer",
+        "depends_on": [
+          "categories"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "schema",
+        "role": "ecommerce.product-schema-generator",
+        "depends_on": [
+          "products"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "feed",
+        "role": "ecommerce.shopping-feed-optimizer",
+        "depends_on": [
+          "products"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "priority",
+        "role": "strategy.priority-matrix-builder",
+        "depends_on": [
+          "facets",
+          "categories",
+          "products",
+          "schema",
+          "feed"
+        ],
+        "accept_partial_inputs": true,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "roadmap",
+        "role": "strategy.roadmap-planner",
+        "depends_on": [
+          "priority"
+        ],
+        "accept_partial_inputs": true,
+        "optional": false,
+        "phase": "analysis"
+      }
+    ],
+    "completion": "Все обязательные узлы приняты; report/coverage отражают реально выполненное. Partial входы никогда не дают completed всего workflow.",
+    "errors": [
+      "Отсутствующий вход блокирует зависимую ветку, независимые ready узлы доступны",
+      "Partial передаётся лишь узлам с accept_partial_inputs и сохраняется в итоговом статусе",
+      "Никаких новых paid calls, публикаций, сообщений или ACL-изменений из координатора"
+    ]
+  },
+  "link-building-campaign": {
+    "id": "link-building-campaign",
+    "source": "workflows/link-building-campaign.md",
+    "purpose": "Подготовка ссылочной и PR-кампании",
+    "trigger": "Запрос на подготовка ссылочной и pr-кампании",
+    "prerequisites": [
+      "Подтверждённые inbound данные либо ограниченный scope без полной базы",
+      "Полезные активы и публичные business contacts; отправка/покупки не входят"
+    ],
+    "nodes": [
+      {
+        "id": "audit",
+        "role": "links.backlink-auditor",
+        "depends_on": [],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "competitors",
+        "role": "links.competitor-backlink-analyzer",
+        "depends_on": [
+          "audit"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "prospects",
+        "role": "links.link-prospector",
+        "depends_on": [
+          "competitors"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "broken",
+        "role": "links.broken-link-finder",
+        "depends_on": [
+          "prospects"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "pr",
+        "role": "links.digital-pr-strategist",
+        "depends_on": [
+          "prospects"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "outreach",
+        "role": "links.outreach-writer",
+        "depends_on": [
+          "prospects",
+          "broken",
+          "pr"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "summary",
+        "role": "audit.executive-summary-writer",
+        "depends_on": [
+          "audit",
+          "competitors",
+          "outreach"
+        ],
+        "accept_partial_inputs": true,
+        "optional": false,
+        "phase": "analysis"
+      }
+    ],
+    "completion": "Все обязательные узлы приняты; report/coverage отражают реально выполненное. Partial входы никогда не дают completed всего workflow.",
+    "errors": [
+      "Отсутствующий вход блокирует зависимую ветку, независимые ready узлы доступны",
+      "Partial передаётся лишь узлам с accept_partial_inputs и сохраняется в итоговом статусе",
+      "Никаких новых paid calls, публикаций, сообщений или ACL-изменений из координатора"
+    ]
+  },
+  "local-seo-setup": {
+    "id": "local-seo-setup",
+    "source": "workflows/local-seo-setup.md",
+    "purpose": "Локальная стратегия и подготовка профилей",
+    "trigger": "Запрос на локальная стратегия и подготовка профилей",
+    "prerequisites": [
+      "Реальные локации, NAP, услуги и платформы целевого рынка",
+      "Проверенные профили/geo observations; публикация отдельно"
+    ],
+    "nodes": [
+      {
+        "id": "competitors",
+        "role": "local.local-competitor-analyst",
+        "depends_on": [],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "profile",
+        "role": "local.gbp-optimizer",
+        "depends_on": [
+          "competitors"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "citations",
+        "role": "local.citation-builder",
+        "depends_on": [
+          "profile"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "content",
+        "role": "local.local-content-writer",
+        "depends_on": [
+          "competitors",
+          "profile"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "reviews",
+        "role": "local.review-strategist",
+        "depends_on": [
+          "profile"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "roadmap",
+        "role": "strategy.roadmap-planner",
+        "depends_on": [
+          "citations",
+          "content",
+          "reviews"
+        ],
+        "accept_partial_inputs": true,
+        "optional": false,
+        "phase": "analysis"
+      }
+    ],
+    "completion": "Все обязательные узлы приняты; report/coverage отражают реально выполненное. Partial входы никогда не дают completed всего workflow.",
+    "errors": [
+      "Отсутствующий вход блокирует зависимую ветку, независимые ready узлы доступны",
+      "Partial передаётся лишь узлам с accept_partial_inputs и сохраняется в итоговом статусе",
+      "Никаких новых paid calls, публикаций, сообщений или ACL-изменений из координатора"
+    ]
+  },
+  "monthly-reporting": {
+    "id": "monthly-reporting",
+    "source": "workflows/monthly-reporting.md",
+    "purpose": "Месячный отчёт и следующий план",
+    "trigger": "Запрос на месячный отчёт и следующий план",
+    "prerequisites": [
+      "Два закрытых сопоставимых периода, definitions и журнал релизов",
+      "ROI без стоимости/ценности не вычислять; partial отчёт допустим с ограничениями"
+    ],
+    "nodes": [
+      {
+        "id": "rankings",
+        "role": "analytics.ranking-tracker",
+        "depends_on": [],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "traffic",
+        "role": "analytics.traffic-analyst",
+        "depends_on": [],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "conversions",
+        "role": "analytics.conversion-analyst",
+        "depends_on": [],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "content",
+        "role": "content.content-performance-analyst",
+        "depends_on": [
+          "traffic",
+          "conversions"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "roi",
+        "role": "analytics.roi-calculator",
+        "depends_on": [
+          "traffic",
+          "conversions"
+        ],
+        "accept_partial_inputs": true,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "report",
+        "role": "analytics.monthly-report-writer",
+        "depends_on": [
+          "rankings",
+          "traffic",
+          "conversions",
+          "content",
+          "roi"
+        ],
+        "accept_partial_inputs": true,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "refresh",
+        "role": "operations.strategy-refresh",
+        "depends_on": [
+          "report"
+        ],
+        "accept_partial_inputs": true,
+        "optional": false,
+        "phase": "analysis"
+      }
+    ],
+    "completion": "Все обязательные узлы приняты; report/coverage отражают реально выполненное. Partial входы никогда не дают completed всего workflow.",
+    "errors": [
+      "Отсутствующий вход блокирует зависимую ветку, независимые ready узлы доступны",
+      "Partial передаётся лишь узлам с accept_partial_inputs и сохраняется в итоговом статусе",
+      "Никаких новых paid calls, публикаций, сообщений или ACL-изменений из координатора"
+    ]
+  },
+  "new-site-launch": {
+    "id": "new-site-launch",
+    "source": "workflows/new-site-launch.md",
+    "purpose": "План запуска нового сайта",
+    "trigger": "Запрос на план запуска нового сайта",
+    "prerequisites": [
+      "Бриф и целевая структура, тестовая версия/макеты или ограничение планирования",
+      "Результат launch-ready план, а не факт deployment"
+    ],
+    "nodes": [
+      {
+        "id": "discovery",
+        "role": "keywords.keyword-discovery",
+        "depends_on": [],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "intent",
+        "role": "keywords.intent-classifier",
+        "depends_on": [
+          "discovery"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "clusters",
+        "role": "keywords.cluster-builder",
+        "depends_on": [
+          "intent"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "architecture",
+        "role": "content.content-strategist",
+        "depends_on": [
+          "clusters"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "schema",
+        "role": "technical.schema-specialist",
+        "depends_on": [
+          "architecture"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "indexation",
+        "role": "technical.indexation-manager",
+        "depends_on": [
+          "architecture"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "brief",
+        "role": "content.brief-writer",
+        "depends_on": [
+          "architecture"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "content",
+        "role": "content.seo-blog-writer",
+        "depends_on": [
+          "brief"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "meta",
+        "role": "content.meta-tag-writer",
+        "depends_on": [
+          "content"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "roadmap",
+        "role": "strategy.roadmap-planner",
+        "depends_on": [
+          "schema",
+          "indexation",
+          "meta"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      }
+    ],
+    "completion": "Все обязательные узлы приняты; report/coverage отражают реально выполненное. Partial входы никогда не дают completed всего workflow.",
+    "errors": [
+      "Отсутствующий вход блокирует зависимую ветку, независимые ready узлы доступны",
+      "Partial передаётся лишь узлам с accept_partial_inputs и сохраняется в итоговом статусе",
+      "Никаких новых paid calls, публикаций, сообщений или ACL-изменений из координатора"
+    ]
+  },
+  "quarterly-review": {
+    "id": "quarterly-review",
+    "source": "workflows/quarterly-review.md",
+    "purpose": "Квартальный пересмотр стратегии",
+    "trigger": "Запрос на квартальный пересмотр стратегии",
+    "prerequisites": [
+      "Сопоставимые кварталы, цели и журнал работ",
+      "Обновлённое конкурентное покрытие; рассылка не входит"
+    ],
+    "nodes": [
+      {
+        "id": "traffic",
+        "role": "analytics.traffic-analyst",
+        "depends_on": [],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "rankings",
+        "role": "analytics.ranking-tracker",
+        "depends_on": [],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "roi",
+        "role": "analytics.roi-calculator",
+        "depends_on": [
+          "traffic"
+        ],
+        "accept_partial_inputs": true,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "competitive",
+        "role": "strategy.competitive-strategy-analyst",
+        "depends_on": [
+          "traffic",
+          "rankings"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "strategy",
+        "role": "strategy.seo-strategist",
+        "depends_on": [
+          "traffic",
+          "rankings",
+          "competitive",
+          "roi"
+        ],
+        "accept_partial_inputs": true,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "roadmap",
+        "role": "strategy.roadmap-planner",
+        "depends_on": [
+          "strategy"
+        ],
+        "accept_partial_inputs": true,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "summary",
+        "role": "strategy.client-communication-manager",
+        "depends_on": [
+          "roadmap"
+        ],
+        "accept_partial_inputs": true,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "refresh",
+        "role": "operations.strategy-refresh",
+        "depends_on": [
+          "summary"
+        ],
+        "accept_partial_inputs": true,
+        "optional": false,
+        "phase": "analysis"
+      }
+    ],
+    "completion": "Все обязательные узлы приняты; report/coverage отражают реально выполненное. Partial входы никогда не дают completed всего workflow.",
+    "errors": [
+      "Отсутствующий вход блокирует зависимую ветку, независимые ready узлы доступны",
+      "Partial передаётся лишь узлам с accept_partial_inputs и сохраняется в итоговом статусе",
+      "Никаких новых paid calls, публикаций, сообщений или ACL-изменений из координатора"
+    ]
+  },
+  "site-migration": {
+    "id": "site-migration",
+    "source": "workflows/site-migration.md",
+    "purpose": "План и контроль миграции сайта",
+    "trigger": "Запрос на план и контроль миграции сайта",
+    "prerequisites": [
+      "Старый и новый host/структура в согласованном scope, baseline и rollback",
+      "Post-migration шаг требует фактического release и новых observations; координатор их не создаёт"
+    ],
+    "nodes": [
+      {
+        "id": "baseline",
+        "role": "technical.site-crawler",
+        "depends_on": [],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "mapping",
+        "role": "technical.site-migration-specialist",
+        "depends_on": [
+          "baseline"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "indexation",
+        "role": "technical.indexation-manager",
+        "depends_on": [
+          "mapping"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "meta",
+        "role": "content.meta-tag-writer",
+        "depends_on": [
+          "mapping"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "links",
+        "role": "technical.internal-linking-architect",
+        "depends_on": [
+          "mapping"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "dashboard",
+        "role": "analytics.dashboard-builder",
+        "depends_on": [
+          "mapping"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "prepared",
+        "role": "audit.fix-generator",
+        "depends_on": [
+          "indexation",
+          "meta",
+          "links",
+          "dashboard"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "release",
+        "role": "operations.release-record",
+        "depends_on": [
+          "prepared"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "execute"
+      },
+      {
+        "id": "verify",
+        "role": "operations.production-verify",
+        "depends_on": [
+          "release"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "verify"
+      },
+      {
+        "id": "post-audit",
+        "role": "technical.site-migration-specialist",
+        "depends_on": [
+          "verify"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "verify"
+      }
+    ],
+    "completion": "Все обязательные узлы приняты; report/coverage отражают реально выполненное. Partial входы никогда не дают completed всего workflow.",
+    "errors": [
+      "Отсутствующий вход блокирует зависимую ветку, независимые ready узлы доступны",
+      "Partial передаётся лишь узлам с accept_partial_inputs и сохраняется в итоговом статусе",
+      "Никаких новых paid calls, публикаций, сообщений или ACL-изменений из координатора"
+    ]
+  },
+  "full-seo-audit": {
+    "id": "full-seo-audit",
+    "source": "workflows/full-seo-audit.md",
+    "purpose": "Полный SEO-анализ по явно покрытым модулям",
+    "trigger": "Запрос на полный seo-анализ по явно покрытым модулям",
+    "prerequisites": [
+      "Профиль, существующие источники по модулям, рыночный scope и конкуренты",
+      "Отсутствующий модуль должен быть blocked/partial/not_applicable, а не вымышленным результатом"
+    ],
+    "nodes": [
+      {
+        "id": "crawl",
+        "role": "technical.site-crawler",
+        "depends_on": [],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "indexation",
+        "role": "technical.indexation-manager",
+        "depends_on": [
+          "crawl"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "cwv",
+        "role": "technical.core-web-vitals-analyst",
+        "depends_on": [
+          "crawl"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "schema",
+        "role": "technical.schema-specialist",
+        "depends_on": [
+          "crawl"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "internal-links",
+        "role": "technical.internal-linking-architect",
+        "depends_on": [
+          "crawl"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "mobile",
+        "role": "technical.mobile-seo-auditor",
+        "depends_on": [
+          "crawl"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "keyword-discovery",
+        "role": "keywords.keyword-discovery",
+        "depends_on": [],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "serp",
+        "role": "keywords.serp-analyzer",
+        "depends_on": [
+          "keyword-discovery"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "competitor-keywords",
+        "role": "keywords.competitor-keyword-spy",
+        "depends_on": [
+          "keyword-discovery"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "keyword-gaps",
+        "role": "keywords.keyword-gap-analyst",
+        "depends_on": [
+          "serp",
+          "competitor-keywords"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "intent",
+        "role": "keywords.intent-classifier",
+        "depends_on": [
+          "serp"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "clusters",
+        "role": "keywords.cluster-builder",
+        "depends_on": [
+          "intent",
+          "keyword-gaps"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "content-gaps",
+        "role": "content.content-gap-analyst",
+        "depends_on": [
+          "crawl",
+          "clusters"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "backlinks",
+        "role": "links.backlink-auditor",
+        "depends_on": [],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "ai",
+        "role": "aeo.ai-overview-optimizer",
+        "depends_on": [],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "local",
+        "role": "local.local-competitor-analyst",
+        "depends_on": [],
+        "accept_partial_inputs": false,
+        "optional": true,
+        "phase": "analysis"
+      },
+      {
+        "id": "ecommerce",
+        "role": "ecommerce.faceted-navigation-auditor",
+        "depends_on": [],
+        "accept_partial_inputs": false,
+        "optional": true,
+        "phase": "analysis"
+      },
+      {
+        "id": "compile",
+        "role": "audit.data-compiler",
+        "depends_on": [
+          "crawl",
+          "indexation",
+          "cwv",
+          "schema",
+          "internal-links",
+          "mobile",
+          "keyword-discovery",
+          "serp",
+          "competitor-keywords",
+          "keyword-gaps",
+          "intent",
+          "clusters",
+          "content-gaps",
+          "backlinks",
+          "ai",
+          "local",
+          "ecommerce"
+        ],
+        "accept_partial_inputs": true,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "recommendations",
+        "role": "audit.recommendation-engine",
+        "depends_on": [
+          "compile"
+        ],
+        "accept_partial_inputs": true,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "priority",
+        "role": "strategy.priority-matrix-builder",
+        "depends_on": [
+          "recommendations"
+        ],
+        "accept_partial_inputs": true,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "roadmap",
+        "role": "strategy.roadmap-planner",
+        "depends_on": [
+          "priority"
+        ],
+        "accept_partial_inputs": true,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "report",
+        "role": "audit.report-builder",
+        "depends_on": [
+          "compile",
+          "priority",
+          "roadmap"
+        ],
+        "accept_partial_inputs": true,
+        "optional": false,
+        "phase": "analysis"
+      },
+      {
+        "id": "summary",
+        "role": "audit.executive-summary-writer",
+        "depends_on": [
+          "report"
+        ],
+        "accept_partial_inputs": true,
+        "optional": false,
+        "phase": "analysis"
+      }
+    ],
+    "completion": "Все обязательные узлы приняты; report/coverage отражают реально выполненное. Partial входы никогда не дают completed всего workflow.",
+    "errors": [
+      "Отсутствующий вход блокирует зависимую ветку, независимые ready узлы доступны",
+      "Partial передаётся лишь узлам с accept_partial_inputs и сохраняется в итоговом статусе",
+      "Никаких новых paid calls, публикаций, сообщений или ACL-изменений из координатора"
+    ]
+  },
+  "agency-cycle": {
+    "id": "agency-cycle",
+    "source": "instructions/flow.md",
+    "purpose": "Onboard → Research → Audit → Strategy → Execute → Report → обновление стратегии",
+    "trigger": "Запрос на onboard → research → audit → strategy → execute → report → обновление стратегии",
+    "prerequisites": [
+      "Явное поручение и полный профиль",
+      "Принятые реальные источники на каждом этапе; выполнение внешних действий отдельно от регистрации"
+    ],
+    "nodes": [
+      {
+        "id": "onboard",
+        "role": "operations.onboard",
+        "depends_on": [],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "onboard"
+      },
+      {
+        "id": "market",
+        "role": "research.market-researcher",
+        "depends_on": [
+          "onboard"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "research"
+      },
+      {
+        "id": "discovery",
+        "role": "keywords.keyword-discovery",
+        "depends_on": [
+          "onboard"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "research"
+      },
+      {
+        "id": "serp",
+        "role": "keywords.serp-analyzer",
+        "depends_on": [
+          "discovery"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "research"
+      },
+      {
+        "id": "crawl",
+        "role": "technical.site-crawler",
+        "depends_on": [
+          "onboard"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "audit"
+      },
+      {
+        "id": "technical",
+        "role": "technical.indexation-manager",
+        "depends_on": [
+          "crawl"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "audit"
+      },
+      {
+        "id": "intent",
+        "role": "keywords.intent-classifier",
+        "depends_on": [
+          "serp"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "research"
+      },
+      {
+        "id": "clusters",
+        "role": "keywords.cluster-builder",
+        "depends_on": [
+          "intent"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "research"
+      },
+      {
+        "id": "content",
+        "role": "content.content-gap-analyst",
+        "depends_on": [
+          "crawl",
+          "clusters"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "audit"
+      },
+      {
+        "id": "compile",
+        "role": "audit.data-compiler",
+        "depends_on": [
+          "market",
+          "technical",
+          "content"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "audit"
+      },
+      {
+        "id": "strategy",
+        "role": "strategy.seo-strategist",
+        "depends_on": [
+          "compile"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "strategy"
+      },
+      {
+        "id": "priority",
+        "role": "strategy.priority-matrix-builder",
+        "depends_on": [
+          "strategy"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "strategy"
+      },
+      {
+        "id": "roadmap",
+        "role": "strategy.roadmap-planner",
+        "depends_on": [
+          "priority"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "strategy"
+      },
+      {
+        "id": "prepare",
+        "role": "audit.fix-generator",
+        "depends_on": [
+          "roadmap"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "execute"
+      },
+      {
+        "id": "release",
+        "role": "operations.release-record",
+        "depends_on": [
+          "prepare"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "execute"
+      },
+      {
+        "id": "verify",
+        "role": "operations.production-verify",
+        "depends_on": [
+          "release"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "verify"
+      },
+      {
+        "id": "measure",
+        "role": "operations.measurement",
+        "depends_on": [
+          "verify"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "measurement"
+      },
+      {
+        "id": "report",
+        "role": "analytics.monthly-report-writer",
+        "depends_on": [
+          "measure"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "report"
+      },
+      {
+        "id": "refresh",
+        "role": "operations.strategy-refresh",
+        "depends_on": [
+          "report"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "strategy_refresh"
+      },
+      {
+        "id": "next-roadmap",
+        "role": "strategy.roadmap-planner",
+        "depends_on": [
+          "refresh"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "strategy_refresh"
+      }
+    ],
+    "completion": "Все обязательные узлы приняты; report/coverage отражают реально выполненное. Partial входы никогда не дают completed всего workflow.",
+    "errors": [
+      "Отсутствующий вход блокирует зависимую ветку, независимые ready узлы доступны",
+      "Partial передаётся лишь узлам с accept_partial_inputs и сохраняется в итоговом статусе",
+      "Никаких новых paid calls, публикаций, сообщений или ACL-изменений из координатора"
+    ]
+  }
+}

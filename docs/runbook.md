@@ -1,13 +1,20 @@
-# Работа с проектом
+# Runbook Codex
 
-Запрос → выбранный профиль → preflight → минимальный workflow → проверенные входы → run → coverage/QA → review задач → отдельное поручение на изменение → проверка production → отдельное измерение.
+1. Прочитать профиль и поручение. При onboarding собрать недостающий полный контекст по onboarding/onboard.md; не задавать уже отвеченные вопросы.
+2. Выбрать минимальный workflow/роль. `seo process plan --workflow keyword-strategy`, `full-seo-audit`, `agency-cycle`, `team:<name>` или `role:<id>` показывает входы, действия, выходные sections и зависимости.
+3. Проверить реальные capabilities/permissions/source freshness; не требовать все аккаунты. Готовые пригодные файлы использовать повторно. Таблицу рекомендаций/задач не считать измерениями.
+4. Сохранить реальный raw вне Git; явно нормализовать нужные поля в JSON evidence без выдуманных значений. Schema process-source.json фиксирует source_locator, primary_origin, hash, kind, scope, dates, revision, purpose, classification и coverage. Для client run обязателен original: file/sha256/format/normalization; coordinator копирует и проверяет исходные байты, содержательное соответствие mapping проверяет Codex.
+5. Создать процесс: `seo process start --profile <profile.json> --workflow <id> --workspace <private-dir>`. Сохранить project_id/run_id из ответа. `--synthetic` только для вымышленных тестовых данных; они не допускаются в client run.
+6. Зарегистрировать источник: `seo process source --workspace <dir> --project <id> --run <run> --manifest <source.json>`. JSON evidence должен быть разрешённым локальным файлом с совпадающим hash. Raw оригинал и mapping сохраняются отдельно, source_locator указывает точную версию.
+7. Проверить `seo process status --workspace <dir> --project <id> --run <run>`. Готовые независимые ветки доступны даже при blocked другой ветки.
+8. Получить каркас: `seo process template --workspace <dir> --project <id> --run <run> --node <node>`. Он содержит незаполненные sections и проваленный QA; сам по себе не является результатом.
+9. Прочитать procedures/roles/<team>/<name>.md, входящие products и currentness.md. Выполнить предметную работу Codex с разрешёнными инструментами, заполнить sections и claims. Fact/inference ссылаются на source_id/JSON pointer/value; гипотеза подписана. Пройти содержательный и critical QA.
+10. Принять: `seo process submit --workspace <dir> --project <id> --run <run> --node <node> --result <product.json>`. Input artifact IDs должны совпадать с принятыми dependencies. Координатор валидирует структуру/ссылки/значения, не заменяет экспертную проверку текста.
+11. При проблеме `seo process mark ... --node <node> --state blocked_input|blocked_permission --reason '<точная причина>'`; вернуться в pending после устранения. Not_applicable только для optional предметно неприменимого модуля. Для partial нужен продукт с явным coverage и limitations; downstream должен явно принимать неполноту и тоже остаётся partial.
+12. Принятые products неизменяемы; исправление или новый цикл — новый run/version. Для публичной доставки/внедрения нужны реальные действия и evidence; coordinator не делает сеть, upload, apply/publish, email, paid calls или schedule.
 
-`seo plan --workflow technical|go` показывает фиксированный офлайн-DAG. Это не планировщик произвольных workflow и не запуск внешних источников. `seo preflight --profile ...` валидирует профиль и описывает локальные возможности; он не проверяет OAuth и квоты. Недоступные коннекторы не имитируются.
+Release record должен соответствовать зарегистрированному источнику и реальному поручению; authorization_ref не создаёт полномочий. Fresh verification — после release time на target revision, все URL, expected/actual и source pointers. Post-migration audit требует новых pages, не старого baseline. Measurement сверяет values/definitions/units/scope, закрытые сравнимые окна и calculations; post-release окна обрамляют release.
 
-`seo run` принимает один pages-manifest; объединение нескольких отчётов, аналитики, keywords и AI dataset ещё не реализовано. Нет crawl, fetch, paid calls или публикации. Профиль и manifest замораживаются в run. Inputs с неправильными scope/hash/date/types/revision блокируются; исправлять следует источник/mapping, а не ожидаемый checksum результата.
+Для historical baseline сохранять фактические исходные даты и purpose, не омолаживать старые данные загрузкой. При необходимости ограниченного исторического анализа явно выбирать scope/partial; current verification этим не закрывается. Currentness и fresh observations после изменения важнее формально молодого старого crawl.
 
-Результаты берутся по пути из ответа CLI или через `seo resolve --workspace ... --project ... --run ... --artifact ...`. Artifact ID берётся из artifacts.json; resolver проверяет проект/run и SHA-256. На старте повторного run повторно проверяются источник и свежесть, затем все зарегистрированные выходы. Кэш не делает устаревший источник актуальным.
-
-Открой report/coverage, затем priority/roadmap и tasks.json. Порядок P1 → P2 является техническим порядком проверки, не прогнозом денег. Effort неизвестен; не обещать календарь, пока нет мощности и ревью. Для первого внедрения создай запись templates/change-record.md в приватном workspace и заполни её фактами. Не считать наличие шаблона или текста публикацией.
-
-Если вход недоступен, сохранить точный блокер и продолжить независимые действия по проекту. Не запускать платный анализ в обход отсутствующей выгрузки. Полный аудит с отсутствующими модулями остаётся partial. Критический QA не допускает фиктивных результатов.
+Legacy технический import и process registry разделены: нормализованный результат pages можно явно зарегистрировать как evidence с provenance. Автоматического переноса/объединения state нет. Restore/Drive sync ещё не реализованы; следовать docs/recovery.md.
