@@ -15,6 +15,6 @@
 
 Release record должен соответствовать зарегистрированному источнику и реальному поручению; authorization_ref не создаёт полномочий. Fresh verification — после release time на target revision, все URL, expected/actual и source pointers. Post-migration audit требует новых pages, не старого baseline. Measurement сверяет values/definitions/units/scope, закрытые сравнимые окна и calculations; post-release окна обрамляют release.
 
-Для historical baseline сохранять фактические исходные даты и purpose, не омолаживать старые данные загрузкой. При необходимости ограниченного исторического анализа явно выбирать scope/partial; current verification этим не закрывается. Currentness и fresh observations после изменения важнее формально молодого старого crawl.
+Для historical baseline сохранять фактические исходные даты и purpose, не омолаживать старые данные загрузкой. Текущий coordinator применяет freshness guard также к purpose=baseline: старый snapshot будет отклонён уже при source registration, partial не обходит этот guard. Допустим свежесформированный экспорт исторического analytics периода с исходными record dates; скачивание старого файла не меняет source_generated_at. Отдельный режим архивных snapshots пока не реализован. Current verification всегда требует новых наблюдений.
 
 Legacy технический import и process registry разделены: нормализованный результат pages можно явно зарегистрировать как evidence с provenance. Автоматического переноса/объединения state нет. Restore/Drive sync ещё не реализованы; следовать docs/recovery.md.

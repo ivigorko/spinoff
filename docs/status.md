@@ -42,3 +42,5 @@ Session Drive search/read/native Sheets export подтверждены пред
 Нет multi-worker leases, scheduler, deployment, live SEO monitor, универсальных provider-format нормализаторов и реального клиентского сквозного кейса. SQLite рассчитана на одного локального писателя. Secret/data repository guard ограничен паттернами, не является полным DLP/security audit.
 
 Возможен ограниченный пилот: однозначно выбранный сайт/цель, разрешённый существующий dataset с проверенными датами/scope и ручная приёмка каждого предметного результата. Недоступные модули остаются blocked/partial. Production apply, live verification и измерение результата не считаются выполненными по synthetic fixtures. Все API заранее не требуются; новые доступы нужны лишь для конкретного шага.
+
+Итоговая сверка с каждым из 20 разделов исходного ТЗ от 07.11.2026 — [requirements-review.md](requirements-review.md). Drive storage, реальные provider adapters и клиентский closed loop остаются незавершёнными этапами ТЗ. Публикация отдельной ветки разрешена новым поручением Игоря; прежнее ограничение на непрошеную публикацию не блокирует этот push.
