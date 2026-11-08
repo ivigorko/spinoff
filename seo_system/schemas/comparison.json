@@ -92,6 +92,24 @@
             "pointer"
           ],
           "additionalProperties": false
+        },
+        "coverage_evidence": {
+          "type": "object",
+          "properties": {
+            "source_id": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9-]{0,80}$"
+            },
+            "pointer": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "source_id",
+            "pointer"
+          ],
+          "additionalProperties": false
         }
       },
       "required": [
@@ -195,6 +213,24 @@
             "pointer"
           ],
           "additionalProperties": false
+        },
+        "coverage_evidence": {
+          "type": "object",
+          "properties": {
+            "source_id": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9-]{0,80}$"
+            },
+            "pointer": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "source_id",
+            "pointer"
+          ],
+          "additionalProperties": false
         }
       },
       "required": [
@@ -219,6 +255,14 @@
         "number",
         "null"
       ]
+    },
+    "mode": {
+      "enum": [
+        "equal_duration",
+        "calendar_month"
+      ],
+      "default": "equal_duration",
+      "description": "Explicit opt-in; calendar_month requires complete observation evidence for two whole calendar months."
     }
   },
   "required": [
@@ -227,5 +271,33 @@
     "absolute_change",
     "percent_change"
   ],
-  "additionalProperties": false
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "mode": {
+            "const": "calendar_month"
+          }
+        },
+        "required": [
+          "mode"
+        ]
+      },
+      "then": {
+        "properties": {
+          "baseline": {
+            "required": [
+              "coverage_evidence"
+            ]
+          },
+          "current": {
+            "required": [
+              "coverage_evidence"
+            ]
+          }
+        }
+      }
+    }
+  ]
 }

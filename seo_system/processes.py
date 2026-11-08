@@ -1,6 +1,8 @@
 """Persistent coordination of Codex-executed procedures; never calls external services."""
 from __future__ import annotations
 import json
+import calendar
+import math
 import re
 import sqlite3
 import uuid
@@ -282,7 +284,10 @@ def validate_comparison(comparison, clock=None, sources=None):
         raise WorkflowError('Measurement scope/metric/unit mismatch')
     a0, a1 = datetime.fromisoformat(a['start']), datetime.fromisoformat(a['end'])
     b0, b1 = datetime.fromisoformat(b['start']), datetime.fromisoformat(b['end'])
-    if a1 < a0 or b1 < b0 or (a1-a0) != (b1-b0) or a1 >= b0:
+    if a1 < a0 or b1 < b0 or a1 >= b0:
+        raise WorkflowError('Measurement periods overlap or are not comparable')
+    mode = comparison.get('mode', 'equal_duration')
+    if mode == 'equal_duration' and (a1-a0) != (b1-b0):
         raise WorkflowError('Measurement periods overlap or are not comparable')
     try:
         zone = ZoneInfo(b['scope']['timezone'])
@@ -290,10 +295,67 @@ def validate_comparison(comparison, clock=None, sources=None):
         raise WorkflowError('Invalid measurement timezone') from exc
     if b1.date() >= (clock or now()).astimezone(zone).date():
         raise WorkflowError('Measurement period is not closed; awaiting_measurement')
+    if mode == 'calendar_month':
+        for measurement in (a, b):
+            validate_calendar_observation(measurement, sources, zone, clock)
     absolute = b['value'] - a['value'] if a['value'] is not None and b['value'] is not None else None
     percent = 100 * absolute / a['value'] if absolute is not None and a['value'] else None
     if comparison['absolute_change'] != absolute or (percent is None and comparison['percent_change'] is not None) or (percent is not None and (comparison['percent_change'] is None or abs(comparison['percent_change']-percent)>1e-8)):
         raise WorkflowError('Measurement calculation contradicts supplied values')
+
+
+def validate_calendar_observation(measurement, sources, zone, clock=None):
+    """Whole additive calendar totals need source-attested continuous observation.
+
+    Daily rows alone cannot establish that tracking was active throughout a month.
+    This validates supplied evidence, not the authenticity of a tracking provider.
+    """
+    from datetime import date, timedelta
+    start, end = date.fromisoformat(measurement['start']), date.fromisoformat(measurement['end'])
+    if start.day != 1 or (start.year, start.month) != (end.year, end.month) or end.day != calendar.monthrange(start.year, start.month)[1]:
+        raise WorkflowError('Calendar mode requires two whole calendar months')
+    if sources is None:
+        raise WorkflowError('Calendar mode requires registered analytics observation coverage')
+    ref = measurement['coverage_evidence']
+    if ref['source_id'] not in sources or sources[ref['source_id']][0]['kind'] != 'analytics':
+        raise WorkflowError('Calendar observation coverage needs an analytics evidence source')
+    manifest, document = sources[ref['source_id']]
+    coverage = pointer(document, ref['pointer'])
+    validate('observation-coverage', coverage)
+    if any(coverage[key] != measurement[key] for key in ['start','end','scope','metric','unit']):
+        raise WorkflowError('Calendar coverage scope/definition/period mismatch')
+    scope = measurement['scope']
+    if manifest['host'] != scope['host'] or any(manifest['scope'][key] is not None and manifest['scope'][key] != scope[key] for key in ['region','engine','device']):
+        raise WorkflowError('Calendar coverage contradicts source market metadata')
+    if any(manifest.get('analytics_signature', {}).get(key) != scope[key] for key in ['property_ref','timezone','definition_version','filters_hash']):
+        raise WorkflowError('Calendar coverage analytics signature mismatch')
+    period = manifest['period']
+    if period is None or measurement['start'] < period['start'] or measurement['end'] > period['end']:
+        raise WorkflowError('Calendar coverage outside declared source period')
+    month_start = datetime.combine(start, datetime.min.time(), tzinfo=zone)
+    month_end = datetime.combine(end + timedelta(days=1), datetime.min.time(), tzinfo=zone)
+    observed_start, observed_end = timestamp(coverage['observation_start']), timestamp(coverage['observation_end'])
+    if observed_start > month_start or observed_end < month_end or observed_start >= observed_end:
+        raise WorkflowError('Calendar month lacks full observation history')
+    if observed_end > timestamp(manifest['source_generated_at']) or observed_end > (clock or now()):
+        raise WorkflowError('Calendar observation history exceeds its evidence timestamp')
+    if not coverage['coverage_basis'].strip():
+        raise WorkflowError('Calendar coverage needs an explicit source-backed basis')
+    if coverage['coverage_status'] != 'confirmed_complete' or coverage['known_gaps']:
+        raise WorkflowError('Calendar month has incomplete or unknown tracking coverage')
+    daily = coverage['daily_values']
+    dates = [row['date'] for row in daily]
+    expected = {(start + timedelta(days=i)).isoformat() for i in range((end-start).days+1)}
+    if len(dates) != len(set(dates)) or set(dates) != expected:
+        raise WorkflowError('Calendar daily coverage is missing, duplicated or outside the month')
+    if measurement['value'] is None or not math.isfinite(measurement['value']) or any(not math.isfinite(row['value']) for row in daily):
+        raise WorkflowError('Calendar totals and daily observations must be known and finite')
+    try:
+        daily_total = math.fsum(row['value'] for row in daily)
+    except OverflowError as exc:
+        raise WorkflowError('Calendar daily total exceeds finite numeric range') from exc
+    if not math.isclose(daily_total, measurement['value'], rel_tol=1e-12, abs_tol=1e-9):
+        raise WorkflowError('Calendar daily observations do not reconcile to the period total')
 
 
 def check_release_scope(release, profile, clock=None):

@@ -60,3 +60,5 @@ uv build
 ```
 
 [AGENTS](AGENTS.md) · [.agents/skills](.agents/skills) · [Предметные роли](procedures/roles) · [Leaders](procedures/leads) · [Workflows](workflows) · [Контракты](instructions/data-flow.md) · [Статус](docs/status.md) · [Восстановление](docs/recovery.md) · [План внедрения](docs/implementation-plan.md).
+
+Для описательного сравнения полных календарных месяцев разной длины доступен `calendar_month` с проверкой source-backed непрерывного наблюдения и дневных сумм. По умолчанию остаётся равная длина окон. Контракт и ограничения — [docs/calendar-comparison.md](docs/calendar-comparison.md).
