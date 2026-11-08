@@ -198,7 +198,10 @@ class PilotReviewTests(unittest.TestCase):
                     self.assertEqual(con.execute("SELECT count(*) FROM process_events WHERE event LIKE 'completed:%'").fetchone()[0],len(spec['nodes']))
                 finally:con.close()
                 self.assertEqual(status['status'],'completed')
-                if workflow=='agency-cycle':self.assertEqual(len(spec['nodes']),30)
+                if workflow=='agency-cycle':
+                    self.assertEqual(len(spec['nodes']),32)
+                    self.assertEqual(next(n for n in spec['nodes'] if n['id']=='crawl')['depends_on'],['clusters'])
+                    self.assertEqual(next(n for n in spec['nodes'] if n['id']=='competitors')['depends_on'],['algorithms'])
                 if workflow=='quarterly-review':
                     from datetime import date
                     raw=json.loads((directory/'inputs/analytics.json').read_text())['records'][0]

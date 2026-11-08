@@ -1,3 +1,9 @@
+# Действующий порядок и приёмка
+
+Порядок Нины — основа: пять файлов карточки → настоящая приёмка → исследование → приёмка → аудит → приёмка → стратегия → утверждение/отдельный запуск исполнения. Подробные процедуры и технические проверки сохранены. [Правила](instructions/operating-policy.md), [содержательная сверка](docs/operating-policy-review.md).
+
+`seo gates --profile <profile.json> --workspace <private-dir>` показывает operating readiness. Contract4 одинаков для role/team/workflow/legacy execute; QA/submit не являются реальной приёмкой. В этой поставке нет доверенного reader решений Нины/Игоря, общей очереди и Drive adapter: client phases без проверенных внешних решений закрыты. Синтетическая демонстрация работает только на зарезервированных example-доменах. Тестовый reader не изображает интеграцию или клиентскую приёмку.
+
 # spinoff
 
 SEO Agency for Codex: адаптация [SEO Agency in a Box](https://github.com/z1fex/SEO-AGENCY-IN-A-BOX) по техническому заданию версии 1.1. Поддерживает **Onboard → Research → Audit → Strategy → Execute → Verify/Measure → Report → обновление стратегии**.

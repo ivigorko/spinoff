@@ -16,13 +16,13 @@
 
 | Узел / фаза | Процедура | Зависимости | Результат |
 |---|---|---|---|
-| `facets` / analysis | `ecommerce.faceted-navigation-auditor` | Внешние входы | parameter_inventory, index_policy, conflicts, tests |
-| `categories` / analysis | `ecommerce.category-strategist` | facets | taxonomy, mapping, category_briefs, linking, priorities |
-| `products` / analysis | `ecommerce.product-page-optimizer` | categories | sample, product_facts, content_changes, acceptance |
-| `schema` / analysis | `ecommerce.product-schema-generator` | products | eligibility, product_data, json_ld, validation |
-| `feed` / analysis | `ecommerce.shopping-feed-optimizer` | products | feed_inventory, validation, consistency, fixes |
-| `priority` / analysis | `strategy.priority-matrix-builder` | facets, categories, products, schema, feed | scale, scored_tasks, dependencies, sequence |
-| `roadmap` / analysis | `strategy.roadmap-planner` | priority | capacity, phases, tasks, dependencies, checkpoints |
+| `facets` / audit | `ecommerce.faceted-navigation-auditor` | Внешние входы | parameter_inventory, index_policy, conflicts, tests |
+| `categories` / audit | `ecommerce.category-strategist` | facets | taxonomy, mapping, category_briefs, linking, priorities |
+| `products` / audit | `ecommerce.product-page-optimizer` | categories | sample, product_facts, content_changes, acceptance |
+| `schema` / audit | `ecommerce.product-schema-generator` | products | eligibility, product_data, json_ld, validation |
+| `feed` / audit | `ecommerce.shopping-feed-optimizer` | products | feed_inventory, validation, consistency, fixes |
+| `priority` / strategy | `strategy.priority-matrix-builder` | facets, categories, products, schema, feed | scale, scored_tasks, dependencies, sequence |
+| `roadmap` / strategy | `strategy.roadmap-planner` | priority | capacity, phases, tasks, dependencies, checkpoints |
 
 Входы и режимы узлов (переопределяют standalone role только в этом workflow):
 
@@ -49,10 +49,14 @@
 - Применить quality/qa-checklist.md, source freshness, immutable lineage и subject-specific currentness decisions.
 - Результаты соответствуют scope/цели, а не просто наличию заполненного JSON.
 
+## Общий порядок пользователя
+
+instructions/operating-policy.md имеет приоритет над сокращениями upstream. Пять файлов карточки и настоящая приёмка Нины обязательны до исследования; принятые исследование/аудит — до следующей фазы. Команда Игоря, утверждение, приёмка и QA — разные факты. Специальный workflow не выдаёт разрешения перескочить фазу; выбранный каталог может ожидать внешние принятые входы. Параллельны только независимые задачи внутри разрешённого этапа. Доверенного reader решений и общей очереди пока нет; для клиента без проверенных решений переход закрыт.
+
 ## Фактический режим
 
 Процедура адаптирована для исполнения Codex. CLI автоматизирует DAG, state, проверку контрактов/ссылок/значений evidence и фиксацию результата. Предметный анализ и ревью — ручная работа Codex с реальными разрешёнными источниками. Сетевые адаптеры, store/apply/publish/scheduling не имитируются.
 
 ## Команды
 
-`seo process plan --workflow ecommerce-audit` → `seo process start --profile <profile.json> --workflow ecommerce-audit --workspace <private-dir>` → `source` → `template` → выполнение Codex → `submit` → `status`. Для сухого примера только synthetic fixtures с `--synthetic`.
+`seo process plan --workflow ecommerce-audit` → `seo gates --profile <profile.json> --workspace <private-dir>` → `seo process start --profile <profile.json> --workflow ecommerce-audit --workspace <private-dir>` → `source` → `template` → выполнение Codex → `submit` → `status`. Для сухого примера только synthetic fixtures с `--synthetic` на зарезервированных example-доменах.

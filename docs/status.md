@@ -1,3 +1,11 @@
+# Обновление 08.11.2026: действующий operating gate
+
+Пользовательский порядок Нины объединён с техническими процедурами: instructions/operating-policy.md, docs/operating-policy-review.md. Contract4 закрывает обходы через role/team, источники и legacy execute; пять файлов карточки и handoff не заменяются profile.json. QA и локальный completed отдельно от реальной приёмки Ниной. Основной DAG — 32 узла с market/algorithms/competitors до семантики/аудита. Подробная библиотека и строгие source/subject/measurement guards сохранены.
+
+Доверенный reader решений Нины/Игоря, shared queue и Drive adapter отсутствуют. CLI не принимает произвольный JSON approval; client gates без проверенных внешних решений закрыты. Позитивные client-format tests используют фиктивный test reader, не Нину. Не заявлять working multi-user orchestration, Grok skills transfer или автоматическую публикацию. Клиентские материалы и состояния этим обновлением не менялись; старые snapshots legacy_unreviewed не мигрированы молча.
+
+Ниже — предыдущая техническая инвентаризация, читать с указанным новым ограничением.
+
 # Текущее состояние v0.4 — 08.11.2026
 
 Исправлены две проблемы реального аналитического пилота: добавлен явный режим `calendar_month` с source-backed полным наблюдением и разъяснён scope legacy technical CLI в instructions/data-quality.md. Прежняя защита равных окон по умолчанию сохранена; произвольные неравные периоды не допускаются. Контракт, проверки и пределы — [calendar-comparison.md](calendar-comparison.md).
@@ -35,7 +43,7 @@
 
 Получение разрешённых данных доступными инструментами, нормализация неподдержанных provider exports, предметное исследование, диагнозы, стратегии, тексты, полное содержательное ревью и финальная приёмка. Coordinator не заменяет эти действия. QA=true остаётся декларацией исполнителя. Не все 75 роли имеют typed gates и негативные предметные тесты.
 
-Весь agency-cycle содержит 30 узлов: onboarding/market, все ветки full audit, strategy/roadmap, preparation/release/verify/measurement/report/refresh/next roadmap. Это исполняемый coordinator DAG, а не автономный SEO-аналитик. Тестовая цепочка несёт один fictional finding→task→title patch→release→fresh title→100/120 comparison→refresh. Остальные outputs сокращённые contract cases, не клиентские deliverables.
+В предыдущем contract3 agency-cycle содержал 30 узлов (текущий contract4 — 32, см. выше): onboarding/market, все ветки full audit, strategy/roadmap, preparation/release/verify/measurement/report/refresh/next roadmap. Это исполняемый coordinator DAG, а не автономный SEO-аналитик. Тестовая цепочка несёт один fictional finding→task→title patch→release→fresh title→100/120 comparison→refresh. Остальные outputs сокращённые contract cases, не клиентские deliverables.
 
 Применение/публикация/доставка требуют фактического инструмента и полномочий в поручении; JSON authorization_ref их не выдаёт. Никаких внешних изменений coordinator сам не выполняет.
 

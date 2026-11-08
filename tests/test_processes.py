@@ -19,6 +19,9 @@ class ProcessTests(unittest.TestCase):
         self.root=self.base/'state'
 
     def start(self,workflow='agency-cycle',synthetic=True,register=True):
+        if not synthetic:
+            from tests.governance_fixtures import launch
+            launch(self.root,self.inputs['profile'],p.plan(workflow)['workflow']['nodes'][0]['role'],CLOCK)
         self.state=p.start(self.inputs['profile'],workflow,self.root,synthetic,CLOCK)
         if register:
             for manifest in self.inputs['manifests'].values():p.add_source(self.root,self.state['project_id'],self.state['run_id'],manifest,CLOCK)

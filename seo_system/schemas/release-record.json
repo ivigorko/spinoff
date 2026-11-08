@@ -68,6 +68,16 @@
         ],
         "additionalProperties": false
       }
+    },
+    "change_kind": {
+      "enum": [
+        "content",
+        "technical"
+      ]
+    },
+    "executor": {
+      "type": "string",
+      "minLength": 1
     }
   },
   "required": [

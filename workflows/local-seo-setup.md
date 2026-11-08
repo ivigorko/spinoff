@@ -16,12 +16,12 @@
 
 | Узел / фаза | Процедура | Зависимости | Результат |
 |---|---|---|---|
-| `competitors` / analysis | `local.local-competitor-analyst` | Внешние входы | geo_scope, profiles, pack_observations, gaps |
-| `profile` / analysis | `local.gbp-optimizer` | competitors | profile_audit, accuracy, categories, content, actions |
-| `citations` / analysis | `local.citation-builder` | profile | canonical_nap, citation_inventory, inconsistencies, submission_pack |
-| `content` / analysis | `local.local-content-writer` | competitors, profile | locations, page_copy, local_facts, links, acceptance |
-| `reviews` / analysis | `local.review-strategist` | profile | review_inventory, sentiment, response_drafts, collection_plan |
-| `roadmap` / analysis | `strategy.roadmap-planner` | citations, content, reviews | capacity, phases, tasks, dependencies, checkpoints |
+| `competitors` / audit | `local.local-competitor-analyst` | Внешние входы | geo_scope, profiles, pack_observations, gaps |
+| `profile` / audit | `local.gbp-optimizer` | competitors | profile_audit, accuracy, categories, content, actions |
+| `citations` / audit | `local.citation-builder` | profile | canonical_nap, citation_inventory, inconsistencies, submission_pack |
+| `content` / audit | `local.local-content-writer` | competitors, profile | locations, page_copy, local_facts, links, acceptance |
+| `reviews` / audit | `local.review-strategist` | profile | review_inventory, sentiment, response_drafts, collection_plan |
+| `roadmap` / strategy | `strategy.roadmap-planner` | citations, content, reviews | capacity, phases, tasks, dependencies, checkpoints |
 
 Входы и режимы узлов (переопределяют standalone role только в этом workflow):
 
@@ -47,10 +47,14 @@
 - Применить quality/qa-checklist.md, source freshness, immutable lineage и subject-specific currentness decisions.
 - Результаты соответствуют scope/цели, а не просто наличию заполненного JSON.
 
+## Общий порядок пользователя
+
+instructions/operating-policy.md имеет приоритет над сокращениями upstream. Пять файлов карточки и настоящая приёмка Нины обязательны до исследования; принятые исследование/аудит — до следующей фазы. Команда Игоря, утверждение, приёмка и QA — разные факты. Специальный workflow не выдаёт разрешения перескочить фазу; выбранный каталог может ожидать внешние принятые входы. Параллельны только независимые задачи внутри разрешённого этапа. Доверенного reader решений и общей очереди пока нет; для клиента без проверенных решений переход закрыт.
+
 ## Фактический режим
 
 Процедура адаптирована для исполнения Codex. CLI автоматизирует DAG, state, проверку контрактов/ссылок/значений evidence и фиксацию результата. Предметный анализ и ревью — ручная работа Codex с реальными разрешёнными источниками. Сетевые адаптеры, store/apply/publish/scheduling не имитируются.
 
 ## Команды
 
-`seo process plan --workflow local-seo-setup` → `seo process start --profile <profile.json> --workflow local-seo-setup --workspace <private-dir>` → `source` → `template` → выполнение Codex → `submit` → `status`. Для сухого примера только synthetic fixtures с `--synthetic`.
+`seo process plan --workflow local-seo-setup` → `seo gates --profile <profile.json> --workspace <private-dir>` → `seo process start --profile <profile.json> --workflow local-seo-setup --workspace <private-dir>` → `source` → `template` → выполнение Codex → `submit` → `status`. Для сухого примера только synthetic fixtures с `--synthetic` на зарезервированных example-доменах.

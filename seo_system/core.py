@@ -381,6 +381,11 @@ def resolve(con, project_id, run_id, artifact_id, root):
 def execute(profile_path, manifest_path, root, workflow="technical", clock=None):
     if workflow not in config("workflows"):
         raise WorkflowError("Unsupported executable workflow")
+    from . import governance
+    scoped_profile = read_json(profile_path)
+    check_project(scoped_profile)
+    synthetic_demo = governance.is_demo(scoped_profile) and scoped_profile['project_id'].startswith('synthetic-')
+    governance.require_phase(root, scoped_profile, 'audit', 'technical.site-crawler', synthetic_demo)
     profile, manifest, raw, pages = intake(profile_path, manifest_path, clock)
     root = Path(root).resolve()
     project_id = profile["project_id"]

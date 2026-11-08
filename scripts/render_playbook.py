@@ -6,6 +6,7 @@ import json
 import sys
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from seo_system.subject_gates import subject_roles
+from seo_system.governance import phase_for
 
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG = ROOT / 'seo_system/config'
@@ -21,6 +22,7 @@ def rendered():
   team,name=rid.split('.')
   parts=[f"# {role['purpose']}",'',f"Источник: `{role['source']}`; функциональная адаптация, не команда из vendor. ID: `{rid}`.",'','## Назначение и триггер','',role['trigger'],'','## Входы и зависимости','',f"Обязательно: versioned profile, поручение и evidence kinds: {', '.join(role['required_evidence_kinds'])}.",f"Дополнительно по выводу: {', '.join(role['optional_evidence_kinds']) or 'нет'}.",'В workflow сначала принять перечисленные depends_on продукты. Для отдельной роли требуемый контекст получить явно, с IDs и происхождением. Проверить market/period/revision/freshness по instructions/data-flow.md.','', '## Действия','']
   parts += [f'{i}. {action}.' for i,action in enumerate(role['actions'],1)]
+  parts += ['', '## Действующий порядок и приёмка','',f"Фаза роли: `{phase_for(rid)}`. До работы проверить instructions/operating-policy.md и `seo gates`. `role:`/`team:` не обходят пять файлов карточки, настоящую приёмку Нины, команду Игоря и явные ограничения проекта. Внутри разрешённой фазы независимые задачи могут выполняться одновременно. Submit/QA — техническая регистрация, не приёмка Ниной. Доверенный reader решений и общая очередь пока не реализованы: клиентские переходы без проверенных внешних решений закрыты."]
   parts += ['', '## Результат и завершение','',f"Work-product role=`{rid}`, обязательные предметные sections: `"+'`, `'.join(role['sections'])+'`.',role['completion'],'Путь результата: `projects/<project_id>/processes/<run_id>/products/<artifact_id>.json`. Использовать source IDs, claims/evidence и точные input_artifact_ids. Не сохранять клиентский payload в Git.','', '## Проверки','']
   parts += ['- '+q+'.' for q in role['qa']]
   parts += ['', '## Ошибки и ограничения','']+['- '+e+'.' for e in role['errors']]
@@ -35,6 +37,7 @@ def rendered():
   for node,role in zip(contract['nodes'],ordered):parts.append(f"| `{role['id']}` | {', '.join(node['depends_on']) or 'Контекст и источник'} | {', '.join(role['sections'])} |")
   parts += ['', '## Результат и критерий завершения','',contract['completion']+'.','Все выбранные обязательные outputs зарегистрированы; consumer видит ограничения. Общая команда не выдаёт среднюю оценку, скрывающую критический провал.','', '## Проверки, ошибки и ограничения','',*['- '+s+'.' for s in contract['errors']],'- Обязательны quality/qa-checklist.md и instructions/currentness.md.','- Optional logs/migration допустимо not_applicable только при неприменимости scope; отсутствие данных — blocked/partial.','- Для узкой задачи `role:<id>`, для полной библиотеки направления `team:'+team+'`. Роли не являются одновременно запущенными subagents.']
   text='\n'.join(parts)+'\n'
+  text+='\n## Общий gate\n\ninstructions/operating-policy.md обязателен до выбора подграфа. Leader не заменяет Нину и не выдаёт команду Игоря. Отдельная роль/команда/адаптер не пропускает приёмку фазы. Параллельны только независимые задачи разрешённого этапа; локальная SQLite не является общей многопользовательской очередью.\n'
   outputs[f'procedures/leads/{team}.md']=text
   outputs[f'instructions/teams/{TEAM_FILES[team]}.md']=text
  for wid,w in workflows.items():
@@ -42,14 +45,14 @@ def rendered():
   parts += ['- Профиль проекта и фактические права; source manifest и принятые контекстные продукты.','', '## Действия и результаты этапов','', '| Узел / фаза | Процедура | Зависимости | Результат |','|---|---|---|---|']
   for node in w['nodes']:
    role={**roles,**ops}[node['role']]
-   parts.append(f"| `{node['id']}` / {node['phase']} | `{node['role']}` | {', '.join(node['depends_on']) or 'Внешние входы'} | {', '.join(node.get('sections',role['sections']))} |")
+   parts.append(f"| `{node['id']}` / {phase_for(node['role'])} | `{node['role']}` | {', '.join(node['depends_on']) or 'Внешние входы'} | {', '.join(node.get('sections',role['sections']))} |")
   parts += ['', 'Входы и режимы узлов (переопределяют standalone role только в этом workflow):','']
   for node in w['nodes']:
    role={**roles,**ops}[node['role']]
    parts.append(f"- `{node['id']}`: {', '.join(node.get('required_evidence_kinds',role['required_evidence_kinds']))}; режим `{node.get('work_mode','analysis')}`.")
    parts += ['  - '+action+'.' for action in node.get('procedural_overrides',[])]
   parts += ['', 'На каждом узле выполнить предметную процедуру procedures/roles/<team>/<name>.md, её QA и work-product contract. Readiness рассчитывается coordinator; он не пишет экспертный результат вместо Codex.','', '## Условия перехода и завершения','',w['completion'],'При partial dependencies consumer обязан явно принимать неполноту; итог остаётся partial. Optional-модуль исключается только с предметным обоснованием. Все остальные обязательные узлы должны иметь принятый продукт.','', '## Проверки и ошибки','']+['- '+e+'.' for e in w['errors']]
-  parts += ['- Применить quality/qa-checklist.md, source freshness, immutable lineage и subject-specific currentness decisions.','- Результаты соответствуют scope/цели, а не просто наличию заполненного JSON.','', '## Фактический режим','', 'Процедура адаптирована для исполнения Codex. CLI автоматизирует DAG, state, проверку контрактов/ссылок/значений evidence и фиксацию результата. Предметный анализ и ревью — ручная работа Codex с реальными разрешёнными источниками. Сетевые адаптеры, store/apply/publish/scheduling не имитируются.','', '## Команды','',f'`seo process plan --workflow {wid}` → `seo process start --profile <profile.json> --workflow {wid} --workspace <private-dir>` → `source` → `template` → выполнение Codex → `submit` → `status`. Для сухого примера только synthetic fixtures с `--synthetic`.']
+  parts += ['- Применить quality/qa-checklist.md, source freshness, immutable lineage и subject-specific currentness decisions.','- Результаты соответствуют scope/цели, а не просто наличию заполненного JSON.','', '## Общий порядок пользователя','', 'instructions/operating-policy.md имеет приоритет над сокращениями upstream. Пять файлов карточки и настоящая приёмка Нины обязательны до исследования; принятые исследование/аудит — до следующей фазы. Команда Игоря, утверждение, приёмка и QA — разные факты. Специальный workflow не выдаёт разрешения перескочить фазу; выбранный каталог может ожидать внешние принятые входы. Параллельны только независимые задачи внутри разрешённого этапа. Доверенного reader решений и общей очереди пока нет; для клиента без проверенных решений переход закрыт.','', '## Фактический режим','', 'Процедура адаптирована для исполнения Codex. CLI автоматизирует DAG, state, проверку контрактов/ссылок/значений evidence и фиксацию результата. Предметный анализ и ревью — ручная работа Codex с реальными разрешёнными источниками. Сетевые адаптеры, store/apply/publish/scheduling не имитируются.','', '## Команды','',f'`seo process plan --workflow {wid}` → `seo gates --profile <profile.json> --workspace <private-dir>` → `seo process start --profile <profile.json> --workflow {wid} --workspace <private-dir>` → `source` → `template` → выполнение Codex → `submit` → `status`. Для сухого примера только synthetic fixtures с `--synthetic` на зарезервированных example-доменах.']
   path='workflows/'+(wid if wid!='agency-cycle' else 'agency-cycle')+'.md'
   outputs[path]='\n'.join(parts)+'\n'
  # Twelve team entry skills plus the existing cross-cutting skills.
@@ -67,14 +70,14 @@ description: Предметные процедуры направления {tea
 Поручение на это направление, отдельную специализацию или этап workflow. Выбирать минимальный нужный scope.
 
 ## Входы
-Профиль, поручение, действующие полномочия, необходимые evidence и принятые входящие продукты. Прочитать instructions/permissions.md, instructions/data-flow.md и instructions/currentness.md. Наличие provider/tool не означает авторизацию.
+Профиль, поручение, действующие полномочия, необходимые evidence и принятые входящие продукты. Сначала instructions/operating-policy.md: пять файлов карточки, приёмка Нины, команда Игоря и явные ограничения проекта обязательны также для role/team/адаптера. Прочитать instructions/permissions.md, instructions/data-flow.md и instructions/currentness.md. Наличие provider/tool не означает авторизацию.
 
 ## Процедура
 1. Прочитать procedures/leads/{team}.md и instructions/teams/{TEAM_FILES[team]}.md.
 2. Выбрать нужную предметную процедуру из списка ниже; прочитать её полностью до анализа.
 3. Проверить входы/свежесть, выполнить предметные действия и сохранить findings/decisions с evidence.
 4. Передать точные input_artifact_ids; заполнить все обязательные sections work-product.
-5. Выполнить предметный QA и critical gates; зарегистрировать результат через process submit. Coordinator не делает экспертный анализ за Codex.
+5. Выполнить предметный QA и critical gates; зарегистрировать результат через process submit. Это технический продукт, не приёмка Нины. Доверенный reader внешних решений/общая очередь пока не реализованы. Независимые задачи могут идти одновременно только внутри разрешённой фазы.
 
 ## Специализации
 

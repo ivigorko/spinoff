@@ -16,15 +16,15 @@
 
 | Узел / фаза | Процедура | Зависимости | Результат |
 |---|---|---|---|
-| `discovery` / analysis | `keywords.keyword-discovery` | Внешние входы | seeds, candidates, metrics, coverage |
-| `serp` / analysis | `keywords.serp-analyzer` | discovery | query_scope, features, page_types, intent_evidence |
-| `intent` / analysis | `keywords.intent-classifier` | discovery, serp | intent_map, mixed_intents, page_types |
-| `competitor-keywords` / analysis | `keywords.competitor-keyword-spy` | discovery | candidate_targets, verified_positions, overlap |
-| `gaps` / analysis | `keywords.keyword-gap-analyst` | intent, competitor-keywords | comparison, gaps, defensive_actions |
-| `clusters` / analysis | `keywords.cluster-builder` | intent, gaps | clusters, url_mapping, link_relationships, unresolved |
-| `content-strategy` / analysis | `content.content-strategist` | clusters | pillars, page_mapping, priorities, metrics, dependencies |
-| `priority` / analysis | `strategy.priority-matrix-builder` | content-strategy | scale, scored_tasks, dependencies, sequence |
-| `roadmap` / analysis | `strategy.roadmap-planner` | priority | capacity, phases, tasks, dependencies, checkpoints |
+| `discovery` / research | `keywords.keyword-discovery` | Внешние входы | seeds, candidates, metrics, coverage |
+| `serp` / research | `keywords.serp-analyzer` | discovery | query_scope, features, page_types, intent_evidence |
+| `intent` / research | `keywords.intent-classifier` | discovery, serp | intent_map, mixed_intents, page_types |
+| `competitor-keywords` / research | `keywords.competitor-keyword-spy` | discovery | candidate_targets, verified_positions, overlap |
+| `gaps` / research | `keywords.keyword-gap-analyst` | intent, competitor-keywords | comparison, gaps, defensive_actions |
+| `clusters` / research | `keywords.cluster-builder` | intent, gaps | clusters, url_mapping, link_relationships, unresolved |
+| `content-strategy` / strategy | `content.content-strategist` | clusters | pillars, page_mapping, priorities, metrics, dependencies |
+| `priority` / strategy | `strategy.priority-matrix-builder` | content-strategy | scale, scored_tasks, dependencies, sequence |
+| `roadmap` / strategy | `strategy.roadmap-planner` | priority | capacity, phases, tasks, dependencies, checkpoints |
 
 Входы и режимы узлов (переопределяют standalone role только в этом workflow):
 
@@ -53,10 +53,14 @@
 - Применить quality/qa-checklist.md, source freshness, immutable lineage и subject-specific currentness decisions.
 - Результаты соответствуют scope/цели, а не просто наличию заполненного JSON.
 
+## Общий порядок пользователя
+
+instructions/operating-policy.md имеет приоритет над сокращениями upstream. Пять файлов карточки и настоящая приёмка Нины обязательны до исследования; принятые исследование/аудит — до следующей фазы. Команда Игоря, утверждение, приёмка и QA — разные факты. Специальный workflow не выдаёт разрешения перескочить фазу; выбранный каталог может ожидать внешние принятые входы. Параллельны только независимые задачи внутри разрешённого этапа. Доверенного reader решений и общей очереди пока нет; для клиента без проверенных решений переход закрыт.
+
 ## Фактический режим
 
 Процедура адаптирована для исполнения Codex. CLI автоматизирует DAG, state, проверку контрактов/ссылок/значений evidence и фиксацию результата. Предметный анализ и ревью — ручная работа Codex с реальными разрешёнными источниками. Сетевые адаптеры, store/apply/publish/scheduling не имитируются.
 
 ## Команды
 
-`seo process plan --workflow keyword-strategy` → `seo process start --profile <profile.json> --workflow keyword-strategy --workspace <private-dir>` → `source` → `template` → выполнение Codex → `submit` → `status`. Для сухого примера только synthetic fixtures с `--synthetic`.
+`seo process plan --workflow keyword-strategy` → `seo gates --profile <profile.json> --workspace <private-dir>` → `seo process start --profile <profile.json> --workflow keyword-strategy --workspace <private-dir>` → `source` → `template` → выполнение Codex → `submit` → `status`. Для сухого примера только synthetic fixtures с `--synthetic` на зарезервированных example-доменах.

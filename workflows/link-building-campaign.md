@@ -16,13 +16,13 @@
 
 | Узел / фаза | Процедура | Зависимости | Результат |
 |---|---|---|---|
-| `audit` / analysis | `links.backlink-auditor` | Внешние входы | coverage, domains, anchors, risks, recommendations |
-| `competitors` / analysis | `links.competitor-backlink-analyzer` | audit | profiles, verified_placements, gaps, opportunities |
-| `prospects` / analysis | `links.link-prospector` | competitors | prospects, relevance, public_contacts, asset_mapping |
-| `broken` / analysis | `links.broken-link-finder` | prospects | candidates, status_checks, replacements, drafts |
-| `pr` / analysis | `links.digital-pr-strategist` | prospects | assets, campaigns, media_targets, calendar, measurement |
-| `outreach` / analysis | `links.outreach-writer` | prospects, broken, pr | drafts, personalization_evidence, followups, recipient_scope |
-| `summary` / analysis | `audit.executive-summary-writer` | audit, competitors, prospects, broken, pr, outreach | campaign_summary, prospect_register, draft_messages, tracking_plan, limitations |
+| `audit` / audit | `links.backlink-auditor` | Внешние входы | coverage, domains, anchors, risks, recommendations |
+| `competitors` / audit | `links.competitor-backlink-analyzer` | audit | profiles, verified_placements, gaps, opportunities |
+| `prospects` / execute | `links.link-prospector` | competitors | prospects, relevance, public_contacts, asset_mapping |
+| `broken` / execute | `links.broken-link-finder` | prospects | candidates, status_checks, replacements, drafts |
+| `pr` / execute | `links.digital-pr-strategist` | prospects | assets, campaigns, media_targets, calendar, measurement |
+| `outreach` / execute | `links.outreach-writer` | prospects, broken, pr | drafts, personalization_evidence, followups, recipient_scope |
+| `summary` / audit | `audit.executive-summary-writer` | audit, competitors, prospects, broken, pr, outreach | campaign_summary, prospect_register, draft_messages, tracking_plan, limitations |
 
 Входы и режимы узлов (переопределяют standalone role только в этом workflow):
 
@@ -51,10 +51,14 @@
 - Применить quality/qa-checklist.md, source freshness, immutable lineage и subject-specific currentness decisions.
 - Результаты соответствуют scope/цели, а не просто наличию заполненного JSON.
 
+## Общий порядок пользователя
+
+instructions/operating-policy.md имеет приоритет над сокращениями upstream. Пять файлов карточки и настоящая приёмка Нины обязательны до исследования; принятые исследование/аудит — до следующей фазы. Команда Игоря, утверждение, приёмка и QA — разные факты. Специальный workflow не выдаёт разрешения перескочить фазу; выбранный каталог может ожидать внешние принятые входы. Параллельны только независимые задачи внутри разрешённого этапа. Доверенного reader решений и общей очереди пока нет; для клиента без проверенных решений переход закрыт.
+
 ## Фактический режим
 
 Процедура адаптирована для исполнения Codex. CLI автоматизирует DAG, state, проверку контрактов/ссылок/значений evidence и фиксацию результата. Предметный анализ и ревью — ручная работа Codex с реальными разрешёнными источниками. Сетевые адаптеры, store/apply/publish/scheduling не имитируются.
 
 ## Команды
 
-`seo process plan --workflow link-building-campaign` → `seo process start --profile <profile.json> --workflow link-building-campaign --workspace <private-dir>` → `source` → `template` → выполнение Codex → `submit` → `status`. Для сухого примера только synthetic fixtures с `--synthetic`.
+`seo process plan --workflow link-building-campaign` → `seo gates --profile <profile.json> --workspace <private-dir>` → `seo process start --profile <profile.json> --workflow link-building-campaign --workspace <private-dir>` → `source` → `template` → выполнение Codex → `submit` → `status`. Для сухого примера только synthetic fixtures с `--synthetic` на зарезервированных example-доменах.

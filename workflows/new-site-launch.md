@@ -16,16 +16,16 @@
 
 | Узел / фаза | Процедура | Зависимости | Результат |
 |---|---|---|---|
-| `discovery` / analysis | `keywords.keyword-discovery` | Внешние входы | seeds, candidates, metrics, coverage |
-| `intent` / analysis | `keywords.intent-classifier` | discovery | intent_map, mixed_intents, page_types |
-| `clusters` / analysis | `keywords.cluster-builder` | intent | clusters, url_mapping, link_relationships, unresolved |
-| `architecture` / analysis | `content.content-strategist` | clusters | pillars, page_mapping, priorities, metrics, dependencies |
-| `schema` / analysis | `technical.schema-specialist` | architecture | target_pages, planned_changes, acceptance_plan, limitations |
-| `indexation` / analysis | `technical.indexation-manager` | architecture | target_pages, planned_changes, acceptance_plan, limitations |
-| `brief` / analysis | `content.brief-writer` | architecture | intent, outline, unique_value, facts, links, acceptance |
-| `content` / analysis | `content.seo-blog-writer` | brief | draft, metadata, links, sources, editorial_checks |
-| `meta` / analysis | `content.meta-tag-writer` | content | variants, selected_metadata, rationale, acceptance |
-| `roadmap` / analysis | `strategy.roadmap-planner` | schema, indexation, meta | capacity, phases, tasks, dependencies, checkpoints |
+| `discovery` / research | `keywords.keyword-discovery` | Внешние входы | seeds, candidates, metrics, coverage |
+| `intent` / research | `keywords.intent-classifier` | discovery | intent_map, mixed_intents, page_types |
+| `clusters` / research | `keywords.cluster-builder` | intent | clusters, url_mapping, link_relationships, unresolved |
+| `architecture` / strategy | `content.content-strategist` | clusters | pillars, page_mapping, priorities, metrics, dependencies |
+| `schema` / audit | `technical.schema-specialist` | architecture | target_pages, planned_changes, acceptance_plan, limitations |
+| `indexation` / audit | `technical.indexation-manager` | architecture | target_pages, planned_changes, acceptance_plan, limitations |
+| `brief` / execute | `content.brief-writer` | architecture | intent, outline, unique_value, facts, links, acceptance |
+| `content` / execute | `content.seo-blog-writer` | brief | draft, metadata, links, sources, editorial_checks |
+| `meta` / execute | `content.meta-tag-writer` | content | variants, selected_metadata, rationale, acceptance |
+| `roadmap` / strategy | `strategy.roadmap-planner` | schema, indexation, meta | capacity, phases, tasks, dependencies, checkpoints |
 
 Входы и режимы узлов (переопределяют standalone role только в этом workflow):
 
@@ -61,10 +61,14 @@
 - Применить quality/qa-checklist.md, source freshness, immutable lineage и subject-specific currentness decisions.
 - Результаты соответствуют scope/цели, а не просто наличию заполненного JSON.
 
+## Общий порядок пользователя
+
+instructions/operating-policy.md имеет приоритет над сокращениями upstream. Пять файлов карточки и настоящая приёмка Нины обязательны до исследования; принятые исследование/аудит — до следующей фазы. Команда Игоря, утверждение, приёмка и QA — разные факты. Специальный workflow не выдаёт разрешения перескочить фазу; выбранный каталог может ожидать внешние принятые входы. Параллельны только независимые задачи внутри разрешённого этапа. Доверенного reader решений и общей очереди пока нет; для клиента без проверенных решений переход закрыт.
+
 ## Фактический режим
 
 Процедура адаптирована для исполнения Codex. CLI автоматизирует DAG, state, проверку контрактов/ссылок/значений evidence и фиксацию результата. Предметный анализ и ревью — ручная работа Codex с реальными разрешёнными источниками. Сетевые адаптеры, store/apply/publish/scheduling не имитируются.
 
 ## Команды
 
-`seo process plan --workflow new-site-launch` → `seo process start --profile <profile.json> --workflow new-site-launch --workspace <private-dir>` → `source` → `template` → выполнение Codex → `submit` → `status`. Для сухого примера только synthetic fixtures с `--synthetic`.
+`seo process plan --workflow new-site-launch` → `seo gates --profile <profile.json> --workspace <private-dir>` → `seo process start --profile <profile.json> --workflow new-site-launch --workspace <private-dir>` → `source` → `template` → выполнение Codex → `submit` → `status`. Для сухого примера только synthetic fixtures с `--synthetic` на зарезервированных example-доменах.

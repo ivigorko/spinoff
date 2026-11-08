@@ -16,15 +16,15 @@
 
 | Узел / фаза | Процедура | Зависимости | Результат |
 |---|---|---|---|
-| `strategy` / planning | `content.content-strategist` | Внешние входы | pillars, page_mapping, priorities, metrics, dependencies |
-| `calendar` / analysis | `content.content-calendar-planner` | strategy | calendar, capacity, dependencies, refresh_slots |
-| `serp` / analysis | `keywords.serp-analyzer` | calendar | query_scope, features, page_types, intent_evidence |
-| `brief` / analysis | `content.brief-writer` | calendar, serp | intent, outline, unique_value, facts, links, acceptance |
-| `draft` / analysis | `content.seo-blog-writer` | brief | draft, metadata, links, sources, editorial_checks |
-| `meta` / analysis | `content.meta-tag-writer` | draft | variants, selected_metadata, rationale, acceptance |
-| `faq` / analysis | `content.faq-paa-writer` | brief, draft | questions, answers, sources, placement, eligibility |
-| `optimize` / analysis | `content.content-optimizer` | draft, meta, faq | baseline, gaps, edit_plan, revised_content, acceptance |
-| `summary` / analysis | `audit.executive-summary-writer` | optimize | state, risks, opportunities, decisions, next_steps |
+| `strategy` / strategy | `content.content-strategist` | Внешние входы | pillars, page_mapping, priorities, metrics, dependencies |
+| `calendar` / execute | `content.content-calendar-planner` | strategy | calendar, capacity, dependencies, refresh_slots |
+| `serp` / research | `keywords.serp-analyzer` | calendar | query_scope, features, page_types, intent_evidence |
+| `brief` / execute | `content.brief-writer` | calendar, serp | intent, outline, unique_value, facts, links, acceptance |
+| `draft` / execute | `content.seo-blog-writer` | brief | draft, metadata, links, sources, editorial_checks |
+| `meta` / execute | `content.meta-tag-writer` | draft | variants, selected_metadata, rationale, acceptance |
+| `faq` / execute | `content.faq-paa-writer` | brief, draft | questions, answers, sources, placement, eligibility |
+| `optimize` / execute | `content.content-optimizer` | draft, meta, faq | baseline, gaps, edit_plan, revised_content, acceptance |
+| `summary` / audit | `audit.executive-summary-writer` | optimize | state, risks, opportunities, decisions, next_steps |
 
 Входы и режимы узлов (переопределяют standalone role только в этом workflow):
 
@@ -57,10 +57,14 @@
 - Применить quality/qa-checklist.md, source freshness, immutable lineage и subject-specific currentness decisions.
 - Результаты соответствуют scope/цели, а не просто наличию заполненного JSON.
 
+## Общий порядок пользователя
+
+instructions/operating-policy.md имеет приоритет над сокращениями upstream. Пять файлов карточки и настоящая приёмка Нины обязательны до исследования; принятые исследование/аудит — до следующей фазы. Команда Игоря, утверждение, приёмка и QA — разные факты. Специальный workflow не выдаёт разрешения перескочить фазу; выбранный каталог может ожидать внешние принятые входы. Параллельны только независимые задачи внутри разрешённого этапа. Доверенного reader решений и общей очереди пока нет; для клиента без проверенных решений переход закрыт.
+
 ## Фактический режим
 
 Процедура адаптирована для исполнения Codex. CLI автоматизирует DAG, state, проверку контрактов/ссылок/значений evidence и фиксацию результата. Предметный анализ и ревью — ручная работа Codex с реальными разрешёнными источниками. Сетевые адаптеры, store/apply/publish/scheduling не имитируются.
 
 ## Команды
 
-`seo process plan --workflow content-sprint` → `seo process start --profile <profile.json> --workflow content-sprint --workspace <private-dir>` → `source` → `template` → выполнение Codex → `submit` → `status`. Для сухого примера только synthetic fixtures с `--synthetic`.
+`seo process plan --workflow content-sprint` → `seo gates --profile <profile.json> --workspace <private-dir>` → `seo process start --profile <profile.json> --workflow content-sprint --workspace <private-dir>` → `source` → `template` → выполнение Codex → `submit` → `status`. Для сухого примера только synthetic fixtures с `--synthetic` на зарезервированных example-доменах.

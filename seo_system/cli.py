@@ -33,6 +33,9 @@ def main():
     artifact.add_argument("--artifact", required=True)
     roles = sub.add_parser("roles")
     roles.add_argument("--team")
+    gates = sub.add_parser("gates", help="Read operating readiness; cannot manufacture Nina/Igor decisions")
+    gates.add_argument("--profile", required=True)
+    gates.add_argument("--workspace", required=True)
     process = sub.add_parser("process", help="Coordinate Codex work products; no external execution")
     operations = process.add_subparsers(dest="operation", required=True)
     pp = operations.add_parser("plan")
@@ -58,7 +61,14 @@ def main():
             command.add_argument("--reason", required=True)
     args = parser.parse_args()
     try:
-        if args.command == "roles":
+        if args.command == "gates":
+            from . import governance
+            profile = read_json(args.profile)
+            check_project(profile)
+            representatives = ['operations.onboard','research.market-researcher','technical.site-crawler','strategy.seo-strategist','audit.fix-generator','operations.production-verify','analytics.monthly-report-writer']
+            result = {'project_id':profile['project_id'], 'phases':{governance.phase_for(r):governance.readiness(args.workspace,profile,r) for r in representatives},
+                      'decision_reader':'not_implemented; no JSON/QA approval shortcut', 'shared_queue':'not_implemented', 'external_actions_performed':False}
+        elif args.command == "roles":
             from .processes import catalog
             result = {k: v for k, v in catalog().items() if args.team is None or k.startswith(args.team + ".")}
         elif args.command == "process":
@@ -87,6 +97,7 @@ def main():
                       "yandex_webmaster": "not_verified", "yandex_metrika": "not_verified", "wordstat": "not_verified",
                       "paid_calls": "not_implemented", "publication": "not_implemented",
                       "access_probe": "not_performed_by_cli",
+                      "operating_gates": "Nina/Igor authenticated decision bridge not implemented; client phases fail closed",
                       "session_tools": "not_inherited; see dated read-only probe evidence in docs/access-verification.md"}
         elif args.command == "inspect-import":
             result = inspect_import(args.file, args.format, args.sheet)

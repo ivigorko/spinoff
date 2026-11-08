@@ -1,0 +1,37 @@
+{
+  "verified_on": "2026-11-08",
+  "read_only": true,
+  "unknown": "Internal Grok skills unavailable; no transfer or integration claimed",
+  "sources": [
+    {
+      "title": "Рабочий цикл SEO-проекта",
+      "id": "1KI1XlU5m5u9RcYSn8SvET820izTup2uAuqKsZ0TOq1o",
+      "url": "https://docs.google.com/document/d/1KI1XlU5m5u9RcYSn8SvET820izTup2uAuqKsZ0TOq1o/edit",
+      "modified_at": "2026-11-07T20:02:59.911Z",
+      "read_on": "2026-11-08",
+      "scope": "operating rules only; no Grok internal skill content retrieved",
+      "sha256_utf8": "ab956d63445bbdb482da8ae174a5f310118cce71e93319556095358e1dc5f9fe",
+      "text_length": 30425
+    },
+    {
+      "title": "Карточка проекта",
+      "id": "1exaZpA3syQgdGIGN-MOOfHAy-aAWhwnXnVLLK1Q3lvE",
+      "url": "https://docs.google.com/document/d/1exaZpA3syQgdGIGN-MOOfHAy-aAWhwnXnVLLK1Q3lvE/edit",
+      "modified_at": "2026-11-06T21:25:33.761Z",
+      "read_on": "2026-11-08",
+      "scope": "operating rules only; no Grok internal skill content retrieved",
+      "sha256_utf8": "8b60fc8004d468226d4b0501e82aeb790a482b4cbe62eb84dd349711d72fe662",
+      "text_length": 764
+    },
+    {
+      "title": "Онбординг — чек-лист",
+      "id": "1IoL7Q70W53FiJp797VHGGLzvDn2o_ZgVzK8OUDG9ABw",
+      "url": "https://docs.google.com/document/d/1IoL7Q70W53FiJp797VHGGLzvDn2o_ZgVzK8OUDG9ABw/edit",
+      "modified_at": "2026-11-07T19:37:29.386Z",
+      "read_on": "2026-11-08",
+      "scope": "operating rules only; no Grok internal skill content retrieved",
+      "sha256_utf8": "f5d4a9ad9a1b1f47786757c7105155923064029242ede9a7516ef1ecf0cb965b",
+      "text_length": 680
+    }
+  ]
+}

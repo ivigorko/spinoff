@@ -15,9 +15,9 @@
 
 Незарегистрированный каталог после аварии не считать принятым продуктом и не перезаписывать. Сначала сохранить единственную копию и сверить state; правила восстановления в docs/recovery.md. Перенос старых vault-разделов описан в provenance/source-map.json; исторический snapshot не является активным хранилищем клиента.
 
-## Приёмка v0.3
+## Технические контракты и operating gate
 
-Профиль, DAG, contracts и freshness policy замораживаются с contract_version=3. Старые запуски отображаются legacy_unreviewed; их нельзя незаметно продолжить по новым правилам — нужен новый run. Registered-source readiness означает наличие kinds; hashes/возраст повторно проверяются при submit.
+Профиль, DAG, contracts и freshness policy замораживаются с contract_version=4 (включая operating policy). Старые запуски отображаются legacy_unreviewed; их нельзя незаметно продолжить по новым правилам — нужен новый run. Readiness учитывает kinds, dependencies и operating gate; hashes/возраст повторно проверяются при submit.
 
 `work_mode` фиксируется в узле: analysis, draft или planning. У launch schema/indexation sections target_pages/planned_changes/acceptance_plan/limitations заменяют live-аудит; proposed URL не является проверенным опубликованным URL. Draft meta/optimizer принимают утверждённый предшествующий черновик. Workflow override имеет приоритет над standalone contract; это видно в template и workflow-документе.
 
@@ -30,3 +30,7 @@ Analytics comparison связывает property_ref, timezone, definition_versi
 `validation_level=typed_subject_contract` означает набор выбранных предметных guards, не автоматическую проверку всех действий роли. `manual_checklist` — общие schema/lineage/claims и заявленный ручной QA. Полное содержательное ревью, исходная подлинность и полнота выборки остаются ответственностью Codex. Ограничения и проверенные сценарии перечислены в docs/pilot-critical-review.md.
 
 В выбранных audit/strategy/report tables пустой список findings/tasks/work_log допускается только с непустым no_action_reason. Это не повод придумывать работу или проблему; при этом принятые upstream findings нельзя потерять в compile/report. Такой clean-analysis результат не создаёт фиктивный release: если внедрять нечего, execution workflow не запускают.
+
+## Contract4: operating decisions отдельно от продуктов
+
+Правила и trust boundary — instructions/operating-policy.md. Governance events в process-state.sqlite3 хранят project/profile hash, source provenance и exact artifact subjects. Ни source registration, ни локальный JSON/QA не создают фактическую приёмку. Старый contract3 не становится принятой фазой. `VerifiedRead` может создавать только доверенная интеграция после проверки реального источника/автора; в поставке такой интеграции нет, generic JSON approval endpoint отсутствует. Новый root без записей блокируется. Синтетические examples проверяют код, не принимают клиента.

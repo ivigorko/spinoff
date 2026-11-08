@@ -16,13 +16,13 @@
 
 | Узел / фаза | Процедура | Зависимости | Результат |
 |---|---|---|---|
-| `rankings` / analysis | `analytics.ranking-tracker` | Внешние входы | scope, rankings, distribution, movers, limitations |
-| `traffic` / analysis | `analytics.traffic-analyst` | Внешние входы | definitions, periods, segments, changes, explanations |
-| `conversions` / analysis | `analytics.conversion-analyst` | Внешние входы | goal_definitions, funnel, conversions, attribution, actions |
-| `content` / analysis | `content.content-performance-analyst` | traffic, conversions | inventory, segments, performance, actions, risks |
-| `roi` / analysis | `analytics.roi-calculator` | traffic, conversions | costs, value_model, calculations, scenarios, limitations |
-| `report` / analysis | `analytics.monthly-report-writer` | rankings, traffic, conversions, content, roi | summary, kpis, work_log, changes, next_month, limitations |
-| `refresh` / analysis | `operations.strategy-refresh` | report | continue, change, stop, next_backlog, review_window |
+| `rankings` / report | `analytics.ranking-tracker` | Внешние входы | scope, rankings, distribution, movers, limitations |
+| `traffic` / report | `analytics.traffic-analyst` | Внешние входы | definitions, periods, segments, changes, explanations |
+| `conversions` / report | `analytics.conversion-analyst` | Внешние входы | goal_definitions, funnel, conversions, attribution, actions |
+| `content` / report | `content.content-performance-analyst` | traffic, conversions | inventory, segments, performance, actions, risks |
+| `roi` / report | `analytics.roi-calculator` | traffic, conversions | costs, value_model, calculations, scenarios, limitations |
+| `report` / report | `analytics.monthly-report-writer` | rankings, traffic, conversions, content, roi | summary, kpis, work_log, changes, next_month, limitations |
+| `refresh` / strategy | `operations.strategy-refresh` | report | continue, change, stop, next_backlog, review_window |
 
 Входы и режимы узлов (переопределяют standalone role только в этом workflow):
 
@@ -49,10 +49,14 @@
 - Применить quality/qa-checklist.md, source freshness, immutable lineage и subject-specific currentness decisions.
 - Результаты соответствуют scope/цели, а не просто наличию заполненного JSON.
 
+## Общий порядок пользователя
+
+instructions/operating-policy.md имеет приоритет над сокращениями upstream. Пять файлов карточки и настоящая приёмка Нины обязательны до исследования; принятые исследование/аудит — до следующей фазы. Команда Игоря, утверждение, приёмка и QA — разные факты. Специальный workflow не выдаёт разрешения перескочить фазу; выбранный каталог может ожидать внешние принятые входы. Параллельны только независимые задачи внутри разрешённого этапа. Доверенного reader решений и общей очереди пока нет; для клиента без проверенных решений переход закрыт.
+
 ## Фактический режим
 
 Процедура адаптирована для исполнения Codex. CLI автоматизирует DAG, state, проверку контрактов/ссылок/значений evidence и фиксацию результата. Предметный анализ и ревью — ручная работа Codex с реальными разрешёнными источниками. Сетевые адаптеры, store/apply/publish/scheduling не имитируются.
 
 ## Команды
 
-`seo process plan --workflow monthly-reporting` → `seo process start --profile <profile.json> --workflow monthly-reporting --workspace <private-dir>` → `source` → `template` → выполнение Codex → `submit` → `status`. Для сухого примера только synthetic fixtures с `--synthetic`.
+`seo process plan --workflow monthly-reporting` → `seo gates --profile <profile.json> --workspace <private-dir>` → `seo process start --profile <profile.json> --workflow monthly-reporting --workspace <private-dir>` → `source` → `template` → выполнение Codex → `submit` → `status`. Для сухого примера только synthetic fixtures с `--synthetic` на зарезервированных example-доменах.

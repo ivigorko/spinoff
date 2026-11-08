@@ -9,3 +9,7 @@ Obsidian app/appearance/graph настройки и старый .gitignore со
 CLAUDE.md функционально заменён AGENTS.md, routing skill, roles/teams/workflows catalogs. Специализации сохранены как предметные процедуры, а не как 75 обязательных параллельных workers. Aliases отсутствующих файлов исправлены по фактическим IDs. MIT notice сохранён.
 
 Legacy `seo run --workflow technical|go` остаётся совместимым офлайн-импортом с тремя правилами и всегда partial. В разговоре «go/full audit» теперь означает процесс full-seo-audit по новому каталогу. Для полного жизненного цикла — agency-cycle. Не считать старый CLI go автоматическим выполнением новой библиотеки.
+
+## Contract4 и текущий порядок пользователя
+
+С 08.11.2026 client start/submit/source/legacy execute проверяют общий operating gate. Legacy compatibility относится к формату technical demo, не к обходу приёмки. Contract3 и ниже остаются legacy_unreviewed, без скрытой миграции. История не переписывается; для продолжения нужен новый run и настоящие внешние решения. В поставке нет authenticated decision reader, поэтому реальный client CLI без bridge закрыт.

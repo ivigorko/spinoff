@@ -16,16 +16,16 @@
 
 | Узел / фаза | Процедура | Зависимости | Результат |
 |---|---|---|---|
-| `baseline` / analysis | `technical.site-crawler` | Внешние входы | inventory, status_summary, redirects, coverage |
-| `mapping` / analysis | `technical.site-migration-specialist` | baseline | baseline, url_mapping, redirect_rules, parity, rollback, verification |
-| `indexation` / analysis | `technical.indexation-manager` | mapping | robots, sitemaps, canonicals, indexation_map, conflicts |
-| `meta` / analysis | `content.meta-tag-writer` | mapping | variants, selected_metadata, rationale, acceptance |
-| `links` / analysis | `technical.internal-linking-architect` | mapping | graph, orphans, link_changes, acceptance |
-| `dashboard` / analysis | `analytics.dashboard-builder` | mapping | kpi_definitions, views, source_links, refresh_spec, alerts |
-| `prepared` / analysis | `audit.fix-generator` | indexation, meta, links, dashboard | baseline, patches, tests, rollback, authorization_boundary |
+| `baseline` / audit | `technical.site-crawler` | Внешние входы | inventory, status_summary, redirects, coverage |
+| `mapping` / execute | `technical.site-migration-specialist` | baseline | baseline, url_mapping, redirect_rules, parity, rollback, verification |
+| `indexation` / audit | `technical.indexation-manager` | mapping | robots, sitemaps, canonicals, indexation_map, conflicts |
+| `meta` / execute | `content.meta-tag-writer` | mapping | variants, selected_metadata, rationale, acceptance |
+| `links` / audit | `technical.internal-linking-architect` | mapping | graph, orphans, link_changes, acceptance |
+| `dashboard` / report | `analytics.dashboard-builder` | mapping | kpi_definitions, views, source_links, refresh_spec, alerts |
+| `prepared` / execute | `audit.fix-generator` | indexation, meta, links, dashboard | baseline, patches, tests, rollback, authorization_boundary |
 | `release` / execute | `operations.release-record` | prepared | release, authorization_boundary, tests, rollback |
 | `verify` / verify | `operations.production-verify` | release | checks, regressions, decision |
-| `post-audit` / verify | `technical.site-migration-specialist` | verify | baseline, url_mapping, redirect_rules, parity, rollback, verification |
+| `post-audit` / execute | `technical.site-migration-specialist` | verify | baseline, url_mapping, redirect_rules, parity, rollback, verification |
 
 Входы и режимы узлов (переопределяют standalone role только в этом workflow):
 
@@ -55,10 +55,14 @@
 - Применить quality/qa-checklist.md, source freshness, immutable lineage и subject-specific currentness decisions.
 - Результаты соответствуют scope/цели, а не просто наличию заполненного JSON.
 
+## Общий порядок пользователя
+
+instructions/operating-policy.md имеет приоритет над сокращениями upstream. Пять файлов карточки и настоящая приёмка Нины обязательны до исследования; принятые исследование/аудит — до следующей фазы. Команда Игоря, утверждение, приёмка и QA — разные факты. Специальный workflow не выдаёт разрешения перескочить фазу; выбранный каталог может ожидать внешние принятые входы. Параллельны только независимые задачи внутри разрешённого этапа. Доверенного reader решений и общей очереди пока нет; для клиента без проверенных решений переход закрыт.
+
 ## Фактический режим
 
 Процедура адаптирована для исполнения Codex. CLI автоматизирует DAG, state, проверку контрактов/ссылок/значений evidence и фиксацию результата. Предметный анализ и ревью — ручная работа Codex с реальными разрешёнными источниками. Сетевые адаптеры, store/apply/publish/scheduling не имитируются.
 
 ## Команды
 
-`seo process plan --workflow site-migration` → `seo process start --profile <profile.json> --workflow site-migration --workspace <private-dir>` → `source` → `template` → выполнение Codex → `submit` → `status`. Для сухого примера только synthetic fixtures с `--synthetic`.
+`seo process plan --workflow site-migration` → `seo gates --profile <profile.json> --workspace <private-dir>` → `seo process start --profile <profile.json> --workflow site-migration --workspace <private-dir>` → `source` → `template` → выполнение Codex → `submit` → `status`. Для сухого примера только synthetic fixtures с `--synthetic` на зарезервированных example-доменах.

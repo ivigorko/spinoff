@@ -12,6 +12,7 @@ from zoneinfo import ZoneInfo
 
 from .core import WorkflowError, canonical, check_project, config, digest, now, read_json, timestamp, validate, MAX_BYTES, parse_json, selected_input
 from .subject_gates import subject_roles, validate_subject
+from . import governance
 
 STATES = {'pending', 'completed', 'partial', 'blocked_input', 'blocked_permission', 'not_applicable'}
 DDL = '''
@@ -46,9 +47,11 @@ def plan(workflow):
         if node['id'] in seen or node['role'] not in roles or not set(node['depends_on']) <= seen:
             raise WorkflowError('Invalid process DAG or unknown role')
         seen.add(node['id'])
+    for node in spec['nodes']:
+        node['governance_phase'] = governance.phase_for(node['role'])
     return {'workflow': spec, 'execution': 'Codex performs analysis; coordinator validates and records supplied work products',
             'roles': {n['role']: roles[n['role']] for n in spec['nodes']}, 'external_actions': 'none',
-            'contract_version': 3, 'freshness_policy': config('freshness')}
+            'contract_version': 4, 'operating_policy': 'nina-phase-gates-v1', 'freshness_policy': config('freshness')}
 
 
 def connection(root):
@@ -92,6 +95,8 @@ def start(profile_path, workflow, root, synthetic=False, clock=None):
     profile = read_json(profile_path)
     check_project(profile)
     frozen = plan(workflow)
+    first_role = frozen['workflow']['nodes'][0]['role']
+    governance.require_phase(root, profile, governance.phase_for(first_role), first_role, synthetic)
     run = 'process-' + uuid.uuid4().hex[:20]
     project = profile['project_id']
     con = connection(root)
@@ -126,7 +131,10 @@ def status(root, project, run):
             missing = [d for d in node['depends_on'] if rows[d]['status'] not in {'completed', 'not_applicable'} and not (node['accept_partial_inputs'] and rows[d]['status'] == 'partial')]
             role = record['snapshot']['roles'][node['role']]
             needed = set(node.get('required_evidence_kinds', role['required_evidence_kinds']))-available_kinds
-            output.append({**node, **{k: row[k] for k in ('status', 'reason', 'artifact_id')}, 'ready': row['status'] == 'pending' and not missing and not needed,
+            operating = governance.readiness(root, record['profile'], node['role'], bool(record['synthetic']), con)
+            output.append({**node, **{k: row[k] for k in ('status', 'reason', 'artifact_id')}, 'ready': row['status'] == 'pending' and not missing and not needed and operating['allowed'],
+                           'operating_gate': operating,
+                           'nina_acceptance': 'synthetic_not_applicable' if record['synthetic'] else governance.product_review(con, root, record['profile'], node['role'], row['artifact_id']),
                            'dependencies_ready': not missing, 'waiting_for': missing, 'missing_evidence_kinds': sorted(needed),
                            'validation_level': 'typed_subject_contract' if node['role'] in subject_roles() else 'manual_checklist',
                            'source_readiness_basis': 'registered kinds; freshness/hashes rechecked at submit'})
@@ -139,11 +147,16 @@ def status(root, project, run):
             overall = 'blocked'
         else:
             overall = 'in_progress'
-        if record['snapshot'].get('contract_version', 0) < 3:
+        if record['snapshot'].get('contract_version', 0) < 4:
             overall = 'legacy_unreviewed'
+            for node in output:
+                node['ready'] = False
+        elif overall == 'completed' and not record['synthetic'] and any(n['status'] != 'not_applicable' and n['nina_acceptance'] != 'accepted_by_nina' for n in output):
+            overall = 'awaiting_nina_review'
         return {'project_id': project, 'run_id': run, 'workflow': record['workflow'], 'status': overall,
                 'synthetic': bool(record['synthetic']), 'nodes': output, 'external_actions_performed': False,
-                'completion_basis': 'Accepted work products and declared Codex QA; not independent expert certification'}
+                'completion_basis': 'Technical product validation; completed is not Nina acceptance',
+                'acceptance_backend': 'No authenticated Nina/Igor reader or shared queue shipped; client gates fail closed without verified external decisions'}
     finally:
         con.close()
 
@@ -184,6 +197,10 @@ def add_source(root, project, run, manifest_path, clock=None):
         with con:
             con.execute('BEGIN IMMEDIATE')
             record = run_record(con, project, run)
+            if record['snapshot'].get('contract_version', 0) < 4:
+                raise WorkflowError('Legacy process is unreviewed under current operating gates; start a new run')
+            first_role = record['snapshot']['workflow']['nodes'][0]['role']
+            governance.require_phase(root, record['profile'], governance.phase_for(first_role), first_role, bool(record['synthetic']), con)
             if manifest['project_id'] != project or manifest['host'] not in record['profile']['allowed_hosts']:
                 raise WorkflowError('Evidence project/host scope mismatch')
             market = record['profile']['market']
@@ -381,11 +398,14 @@ def submit(root, project, run, node_id, result_path, clock=None):
             con.execute('BEGIN IMMEDIATE')
             record = run_record(con, project, run)
             specs = {n['id']: n for n in record['snapshot']['workflow']['nodes']}
-            if record['snapshot'].get('contract_version', 0) < 3:
+            if record['snapshot'].get('contract_version', 0) < 4:
                 raise WorkflowError('Legacy process is unreviewed under current contracts; start a new run')
             if node_id not in specs:
                 raise WorkflowError('Unknown process node')
             spec = specs[node_id]
+            governance.require_phase(root, record['profile'], governance.phase_for(spec['role']), spec['role'], bool(record['synthetic']), con)
+            if spec['role'] == 'operations.release-record' and not record['synthetic']:
+                governance.require_release(root, record['profile'], result.get('data', {}).get('release', {}), con)
             rows = node_rows(con, project, run)
             if rows[node_id]['status'] != 'pending':
                 raise WorkflowError('Node is not pending; accepted products are immutable')
@@ -458,6 +478,8 @@ def submit(root, project, run, node_id, result_path, clock=None):
                     raise WorkflowError('Onboarding profile differs from the frozen project profile')
                 if not {'business_profile', 'competitors', 'brand_voice', 'resources', 'conversion_definitions', 'source_bindings'} <= profile.keys():
                     raise WorkflowError('Complete onboarding needs the full business/brand/resource/source profile')
+                if not record['synthetic']:
+                    governance.validate_card_files(result['data'].get('card_files'), result['data'].get('handoff'))
             if spec['role'] == 'operations.release-record' and result['coverage']['complete']:
                 release = result['data']['release']
                 check_release_scope(release, record['profile'], clock)
@@ -571,6 +593,9 @@ def mark(root, project, run, node_id, state, reason, clock=None):
             specs = {n['id']: n for n in record['snapshot']['workflow']['nodes']}
             if node_id not in specs:
                 raise WorkflowError('Unknown process node')
+            if state == 'not_applicable':
+                role = specs[node_id]['role']
+                governance.require_phase(root, record['profile'], governance.phase_for(role), role, bool(record['synthetic']), con)
             row = node_rows(con, project, run)[node_id]
             if row['status'] in {'completed', 'partial', 'not_applicable'}:
                 raise WorkflowError('Accepted result is immutable; create a new process run')

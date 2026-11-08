@@ -16,14 +16,14 @@
 
 | Узел / фаза | Процедура | Зависимости | Результат |
 |---|---|---|---|
-| `traffic` / analysis | `analytics.traffic-analyst` | Внешние входы | definitions, periods, segments, changes, explanations |
-| `rankings` / analysis | `analytics.ranking-tracker` | Внешние входы | scope, rankings, distribution, movers, limitations |
-| `roi` / analysis | `analytics.roi-calculator` | traffic | costs, value_model, calculations, scenarios, limitations |
-| `competitive` / analysis | `strategy.competitive-strategy-analyst` | traffic, rankings | landscape, attack, defend, differentiate, defer |
-| `strategy` / analysis | `strategy.seo-strategist` | traffic, rankings, competitive, roi | assessment, pillars, kpis, risks, decisions |
-| `roadmap` / analysis | `strategy.roadmap-planner` | strategy | capacity, phases, tasks, dependencies, checkpoints |
-| `summary` / analysis | `strategy.client-communication-manager` | roadmap | audience, summary, decision_requests, status, faq |
-| `refresh` / analysis | `operations.strategy-refresh` | summary | continue, change, stop, next_backlog, review_window |
+| `traffic` / report | `analytics.traffic-analyst` | Внешние входы | definitions, periods, segments, changes, explanations |
+| `rankings` / report | `analytics.ranking-tracker` | Внешние входы | scope, rankings, distribution, movers, limitations |
+| `roi` / report | `analytics.roi-calculator` | traffic | costs, value_model, calculations, scenarios, limitations |
+| `competitive` / strategy | `strategy.competitive-strategy-analyst` | traffic, rankings | landscape, attack, defend, differentiate, defer |
+| `strategy` / strategy | `strategy.seo-strategist` | traffic, rankings, competitive, roi | assessment, pillars, kpis, risks, decisions |
+| `roadmap` / strategy | `strategy.roadmap-planner` | strategy | capacity, phases, tasks, dependencies, checkpoints |
+| `summary` / report | `strategy.client-communication-manager` | roadmap | audience, summary, decision_requests, status, faq |
+| `refresh` / strategy | `operations.strategy-refresh` | summary | continue, change, stop, next_backlog, review_window |
 
 Входы и режимы узлов (переопределяют standalone role только в этом workflow):
 
@@ -51,10 +51,14 @@
 - Применить quality/qa-checklist.md, source freshness, immutable lineage и subject-specific currentness decisions.
 - Результаты соответствуют scope/цели, а не просто наличию заполненного JSON.
 
+## Общий порядок пользователя
+
+instructions/operating-policy.md имеет приоритет над сокращениями upstream. Пять файлов карточки и настоящая приёмка Нины обязательны до исследования; принятые исследование/аудит — до следующей фазы. Команда Игоря, утверждение, приёмка и QA — разные факты. Специальный workflow не выдаёт разрешения перескочить фазу; выбранный каталог может ожидать внешние принятые входы. Параллельны только независимые задачи внутри разрешённого этапа. Доверенного reader решений и общей очереди пока нет; для клиента без проверенных решений переход закрыт.
+
 ## Фактический режим
 
 Процедура адаптирована для исполнения Codex. CLI автоматизирует DAG, state, проверку контрактов/ссылок/значений evidence и фиксацию результата. Предметный анализ и ревью — ручная работа Codex с реальными разрешёнными источниками. Сетевые адаптеры, store/apply/publish/scheduling не имитируются.
 
 ## Команды
 
-`seo process plan --workflow quarterly-review` → `seo process start --profile <profile.json> --workflow quarterly-review --workspace <private-dir>` → `source` → `template` → выполнение Codex → `submit` → `status`. Для сухого примера только synthetic fixtures с `--synthetic`.
+`seo process plan --workflow quarterly-review` → `seo gates --profile <profile.json> --workspace <private-dir>` → `seo process start --profile <profile.json> --workflow quarterly-review --workspace <private-dir>` → `source` → `template` → выполнение Codex → `submit` → `status`. Для сухого примера только synthetic fixtures с `--synthetic` на зарезервированных example-доменах.

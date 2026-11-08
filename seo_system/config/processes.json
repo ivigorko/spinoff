@@ -1338,7 +1338,8 @@
     "trigger": "Запрос на onboard → research → audit → strategy → execute → report → обновление стратегии",
     "prerequisites": [
       "Явное поручение и полный профиль",
-      "Принятые реальные источники на каждом этапе; выполнение внешних действий отдельно от регистрации"
+      "Принятые реальные источники на каждом этапе; выполнение внешних действий отдельно от регистрации",
+      "Действующий пользовательский порядок: пять файлов карточки, настоящая приёмка Нины, отдельная команда Игоря на разрешённую фазу; instructions/operating-policy.md"
     ],
     "nodes": [
       {
@@ -1360,70 +1361,30 @@
         "phase": "research"
       },
       {
-        "id": "crawl",
-        "role": "technical.site-crawler",
+        "id": "algorithms",
+        "role": "research.algorithm-monitor",
         "depends_on": [
-          "onboard"
+          "market"
         ],
         "accept_partial_inputs": false,
         "optional": false,
-        "phase": "audit"
+        "phase": "research"
       },
       {
-        "id": "indexation",
-        "role": "technical.indexation-manager",
+        "id": "competitors",
+        "role": "competitor.competitor-site-crawler",
         "depends_on": [
-          "crawl"
+          "algorithms"
         ],
-        "accept_partial_inputs": true,
+        "accept_partial_inputs": false,
         "optional": false,
-        "phase": "audit"
-      },
-      {
-        "id": "cwv",
-        "role": "technical.core-web-vitals-analyst",
-        "depends_on": [
-          "crawl"
-        ],
-        "accept_partial_inputs": true,
-        "optional": false,
-        "phase": "audit"
-      },
-      {
-        "id": "schema",
-        "role": "technical.schema-specialist",
-        "depends_on": [
-          "crawl"
-        ],
-        "accept_partial_inputs": true,
-        "optional": false,
-        "phase": "audit"
-      },
-      {
-        "id": "internal-links",
-        "role": "technical.internal-linking-architect",
-        "depends_on": [
-          "crawl"
-        ],
-        "accept_partial_inputs": true,
-        "optional": false,
-        "phase": "audit"
-      },
-      {
-        "id": "mobile",
-        "role": "technical.mobile-seo-auditor",
-        "depends_on": [
-          "crawl"
-        ],
-        "accept_partial_inputs": true,
-        "optional": false,
-        "phase": "audit"
+        "phase": "research"
       },
       {
         "id": "keyword-discovery",
         "role": "keywords.keyword-discovery",
         "depends_on": [
-          "onboard"
+          "competitors"
         ],
         "accept_partial_inputs": false,
         "optional": false,
@@ -1480,6 +1441,66 @@
         "accept_partial_inputs": true,
         "optional": false,
         "phase": "research"
+      },
+      {
+        "id": "crawl",
+        "role": "technical.site-crawler",
+        "depends_on": [
+          "clusters"
+        ],
+        "accept_partial_inputs": false,
+        "optional": false,
+        "phase": "audit"
+      },
+      {
+        "id": "indexation",
+        "role": "technical.indexation-manager",
+        "depends_on": [
+          "crawl"
+        ],
+        "accept_partial_inputs": true,
+        "optional": false,
+        "phase": "audit"
+      },
+      {
+        "id": "cwv",
+        "role": "technical.core-web-vitals-analyst",
+        "depends_on": [
+          "crawl"
+        ],
+        "accept_partial_inputs": true,
+        "optional": false,
+        "phase": "audit"
+      },
+      {
+        "id": "schema",
+        "role": "technical.schema-specialist",
+        "depends_on": [
+          "crawl"
+        ],
+        "accept_partial_inputs": true,
+        "optional": false,
+        "phase": "audit"
+      },
+      {
+        "id": "internal-links",
+        "role": "technical.internal-linking-architect",
+        "depends_on": [
+          "crawl"
+        ],
+        "accept_partial_inputs": true,
+        "optional": false,
+        "phase": "audit"
+      },
+      {
+        "id": "mobile",
+        "role": "technical.mobile-seo-auditor",
+        "depends_on": [
+          "crawl"
+        ],
+        "accept_partial_inputs": true,
+        "optional": false,
+        "phase": "audit"
       },
       {
         "id": "content-gaps",
@@ -1553,7 +1574,9 @@
           "ai",
           "local",
           "ecommerce",
-          "market"
+          "market",
+          "algorithms",
+          "competitors"
         ],
         "accept_partial_inputs": true,
         "optional": false,

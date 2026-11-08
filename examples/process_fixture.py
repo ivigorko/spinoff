@@ -119,6 +119,8 @@ def result_for(root, state, node, inputs):
       'checks': [{'url': 'https://example.com/', 'field': 'title', 'expected': 'Synthetic service', 'actual': 'Synthetic service', 'evidence': {'source_id': 'src-verification', 'pointer': '/records/0/title'}}]
     }
     named['profile'] = json.loads(inputs['profile'].read_text())
+    named['card_files'] = {key:{'locator':'synthetic:card-'+key,'sha256':digest(('Fictional card '+key).encode())} for key in ['profile','site_access','competitors','goals','brand_voice']}
+    named['handoff'] = {key:'synthetic:project-'+key for key in ['card','tasks','chat','registry']}
     task={'task_id':'synthetic-title-task','finding_ids':['synthetic-missing-title'],'url':'https://example.com/','action':'Set title to Synthetic service','owner':'synthetic developer','effort_hours':None,'dependencies':[],'risk':'Preserve page content','acceptance_test':'Fresh rendered title equals Synthetic service','metric':'organic_sessions','measurement_window':'Synthetic closed 28-day windows','required_permission':'No real permission: fixture only'}
     named.update(tasks=[task],scored_tasks=[task],recommendations=[task],priorities=[task],baseline={'revision':'synthetic-v1','url':'https://example.com/','title':''},
                  patches=[{'task_id':'synthetic-title-task','finding_ids':['synthetic-missing-title'],'url':'https://example.com/','field':'title','before':'','after':'Synthetic service'}],
